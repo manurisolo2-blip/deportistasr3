@@ -1177,14 +1177,7 @@ body {
 }
 
 .card-featured-tag {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 800;
-  color: var(--accent-gold-dark);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  margin-bottom: 0.35rem;
+  display: none !important;
 }
 
 /* Número dorsal gigante en marca de agua: Oculto por requerimiento de diseño limpio */
@@ -1571,10 +1564,7 @@ body {
 }
 
 .club-acronym-badge {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--text-muted);
+  display: none !important;
 }
 
 .club-name-title {
@@ -1582,30 +1572,22 @@ body {
   font-size: 1.75rem;
   line-height: 1.05;
   color: var(--text-primary);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.65rem;
 }
 
 .club-focus-tag {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--accent-track);
-  margin-bottom: 0.85rem;
+  display: none !important;
 }
 
 .club-desc-text {
   font-size: 0.88rem;
   color: var(--text-secondary);
   line-height: 1.55;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
 }
 
 .club-origin-footer {
-  border-top: 1px solid var(--border-card);
-  padding-top: 0.85rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
+  display: none !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -1622,42 +1604,26 @@ body {
   margin: 3rem auto 0;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .timeline-milestone-item {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 2rem;
-  align-items: flex-start;
+  display: block;
   background: var(--bg-surface);
   border: 1px solid var(--border-card);
   border-radius: 10px;
-  padding: 1.75rem 2rem;
+  padding: 1.5rem 2rem;
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
 
 .timeline-milestone-item:hover {
   transform: translateX(4px);
-  border-color: var(--accent-gold);
-}
-
-@media (max-width: 640px) {
-  .timeline-milestone-item {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
+  border-color: var(--border-strong);
 }
 
 .timeline-period-badge {
-  font-family: var(--font-mono);
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--accent-gold-dark);
-  text-align: left;
-  width: fit-content;
-  letter-spacing: -0.01em;
+  display: none !important;
 }
 
 .timeline-content-body h3 {
@@ -1728,18 +1694,14 @@ body {
 
 .proposal-code-num {
   font-family: var(--font-display);
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 400;
   line-height: 1;
-  color: var(--accent-gold);
+  color: var(--text-muted);
 }
 
 .proposal-target-tag {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
+  display: none !important;
 }
 
 .proposal-card-title {
@@ -1835,9 +1797,7 @@ body {
 }
 
 .footer-law-badge {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-muted);
+  display: none !important;
 }
 
 .footer-credits-note {

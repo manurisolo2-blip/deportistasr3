@@ -252,11 +252,8 @@ document.addEventListener('DOMContentLoaded', () => {
           />
           <!-- Badges Deportivos -->
           <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10 card-badges-wrap">
-            <span class="bg-slate-950 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
+            <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
               ${atleta.disciplina}
-            </span>
-            <span class="bg-amber-500 text-slate-950 font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
-              ${atleta.categoria}
             </span>
           </div>
         </div>
@@ -264,10 +261,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <!-- Datos Editoriales -->
         <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
           <div>
-            <p class="font-mono text-xs font-bold text-amber-700 uppercase tracking-widest card-club-origin">
+            <p class="font-mono text-xs font-bold text-slate-500 uppercase tracking-widest card-club-origin">
               ${atleta.clubOrigen}
             </p>
-            <h3 class="mt-1 font-['Bebas_Neue',sans-serif] text-3xl font-black uppercase tracking-tight text-slate-950 group-hover:text-amber-600 transition-colors card-name-title">
+            <h3 class="mt-1 font-['Bebas_Neue',sans-serif] text-3xl font-black uppercase tracking-tight text-slate-950 group-hover:text-slate-700 transition-colors card-name-title">
               ${atleta.nombre}
             </h3>
             <p class="card-athlete-bio">${atleta.descripcion || ''}</p>
