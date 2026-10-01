@@ -69,7 +69,65 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------------------------------------
   const navAnchors = document.querySelectorAll('.nav-anchor');
   const monitoredSections = document.querySelectorAll('section[id], footer[id]');
+  const mobileNavToggle = document.getElementById('mobileNavToggle');
+  const mainNav = document.getElementById('mainNav');
 
+  // Control del Menú Móvil Desplegable
+  function closeMobileNav() {
+    if (mainNav && mainNav.classList.contains('is-open')) {
+      mainNav.classList.remove('is-open');
+      if (mobileNavToggle) {
+        mobileNavToggle.setAttribute('aria-expanded', 'false');
+        mobileNavToggle.setAttribute('aria-label', 'Abrir menú');
+      }
+      document.body.style.overflow = '';
+      if (lenis) lenis.start();
+    }
+  }
+
+  function toggleMobileNav() {
+    if (!mainNav || !mobileNavToggle) return;
+    const isOpen = mainNav.classList.contains('is-open');
+    if (isOpen) {
+      closeMobileNav();
+    } else {
+      mainNav.classList.add('is-open');
+      mobileNavToggle.setAttribute('aria-expanded', 'true');
+      mobileNavToggle.setAttribute('aria-label', 'Cerrar menú');
+      document.body.style.overflow = 'hidden';
+      if (lenis) lenis.stop();
+    }
+  }
+
+  if (mobileNavToggle && mainNav) {
+    mobileNavToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileNav();
+    });
+
+    // Cerrar al pulsar Escape
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mainNav.classList.contains('is-open')) {
+        closeMobileNav();
+      }
+    });
+
+    // Cerrar si redimensiona la pantalla a escritorio
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 860 && mainNav.classList.contains('is-open')) {
+        closeMobileNav();
+      }
+    });
+
+    // Cerrar al hacer clic fuera del menú
+    document.addEventListener('click', (e) => {
+      if (mainNav.classList.contains('is-open') && !mainNav.contains(e.target) && !mobileNavToggle.contains(e.target)) {
+        closeMobileNav();
+      }
+    });
+  }
+
+  // Desplazamiento suave al hacer clic en enlaces de ancla
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const targetId = anchor.getAttribute('href');
@@ -77,8 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetEl = document.querySelector(targetId);
         if (targetEl) {
           e.preventDefault();
+          closeMobileNav();
+          const headerOffset = window.innerWidth <= 768 ? -58 : -70;
           if (lenis) {
-            lenis.scrollTo(targetEl, { offset: -70, duration: 1.0 });
+            lenis.scrollTo(targetEl, { offset: headerOffset, duration: 1.0 });
           } else {
             targetEl.scrollIntoView({ behavior: 'smooth' });
           }
