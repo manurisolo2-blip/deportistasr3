@@ -1590,12 +1590,13 @@ body {
 }
 
 .club-focus-tag {
-  font-family: var(--font-body, 'Inter', -apple-system, sans-serif);
-  font-size: 0.84rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.75rem;
   line-height: 1.4;
+  letter-spacing: 0.25px;
 }
 
 .club-desc-text {
@@ -1606,7 +1607,17 @@ body {
 }
 
 .club-origin-footer {
-  display: none !important;
+  border-top: 1px solid var(--border-card);
+  padding-top: 0.85rem;
+  margin-top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.club-origin-footer strong {
+  color: var(--text-primary);
+  font-weight: 700;
 }
 
 /* --------------------------------------------------------------------------
