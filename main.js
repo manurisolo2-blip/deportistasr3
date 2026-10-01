@@ -252,58 +252,75 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 1. Desplazamiento hacia Manifiesto (rueda con rotación angular física)
-    ballJourney.to(physicsBall, {
-      x: () => window.innerWidth * 0.15,
-      y: () => window.innerHeight * 0.62,
-      rotation: 540,
-      ease: 'none'
-    });
-    ballJourney.to(ballShadow, { scale: 0.9, opacity: 0.6 }, '<');
+    // 1. Desplazamiento hacia Manifiesto (rueda con rotación angular física y leve compresión)
+    ballJourney
+      .to(physicsBall, {
+        x: () => window.innerWidth * 0.15,
+        y: () => window.innerHeight * 0.62,
+        rotation: 540,
+        ease: 'power1.inOut'
+      })
+      .to(ballShadow, { scale: 0.95, opacity: 0.65 }, '<')
+      .to(ballVisual, { scaleX: 1.06, scaleY: 0.94, duration: 0.1, yoyo: true, repeat: 1 }, '-=0.15');
 
-    // 2. Rebote y desplazamiento hacia Fútbol (acelera hacia la derecha)
-    ballJourney.to(physicsBall, {
-      x: () => window.innerWidth > 900 ? window.innerWidth * 0.72 : window.innerWidth * 0.55,
-      y: () => window.innerHeight * 0.48,
-      rotation: 1080,
-      ease: 'none'
-    });
-    ballJourney.to(ballShadow, { scale: 1.05, opacity: 0.7 }, '<');
+    // 2. Rebote y desplazamiento hacia Fútbol (acelera hacia la derecha en altura media)
+    ballJourney
+      .to(physicsBall, {
+        x: () => window.innerWidth > 900 ? window.innerWidth * 0.72 : window.innerWidth * 0.55,
+        y: () => window.innerHeight * 0.48,
+        rotation: 1080,
+        ease: 'power1.inOut'
+      })
+      .to(ballShadow, { scale: 1.05, opacity: 0.72 }, '<')
+      .to(ballVisual, { scaleX: 1.08, scaleY: 0.92, duration: 0.1, yoyo: true, repeat: 1 }, '-=0.15');
 
     // 3. Tenis (diagonal descendente hacia el polvo de ladrillo)
-    ballJourney.to(physicsBall, {
-      x: () => window.innerWidth * 0.22,
-      y: () => window.innerHeight * 0.58,
-      rotation: 1620,
-      ease: 'none'
-    });
+    ballJourney
+      .to(physicsBall, {
+        x: () => window.innerWidth * 0.22,
+        y: () => window.innerHeight * 0.58,
+        rotation: 1620,
+        ease: 'power1.inOut'
+      })
+      .to(ballShadow, { scale: 0.85, opacity: 0.6 }, '<');
 
     // 4. Básquet (elevación en arco y caída hacia el aro)
-    ballJourney.to(physicsBall, {
-      x: () => window.innerWidth > 900 ? window.innerWidth * 0.68 : window.innerWidth * 0.5,
-      y: () => window.innerHeight * 0.42,
-      rotation: 2160,
-      ease: 'none'
-    });
+    ballJourney
+      .to(physicsBall, {
+        x: () => window.innerWidth > 900 ? window.innerWidth * 0.68 : window.innerWidth * 0.5,
+        y: () => window.innerHeight * 0.38,
+        rotation: 2160,
+        ease: 'power2.out'
+      })
+      .to(ballShadow, { scale: 0.6, opacity: 0.35 }, '<')
+      .to(physicsBall, {
+        y: () => window.innerHeight * 0.52,
+        rotation: 2400,
+        ease: 'power2.in'
+      })
+      .to(ballShadow, { scale: 1, opacity: 0.7 }, '<');
 
-    // 5. Atletismo (recta de aceleración)
-    ballJourney.to(physicsBall, {
-      x: () => window.innerWidth * 0.18,
-      y: () => window.innerHeight * 0.65,
-      rotation: 2700,
-      ease: 'none'
-    });
+    // 5. Atletismo (recta de aceleración potente)
+    ballJourney
+      .to(physicsBall, {
+        x: () => window.innerWidth * 0.18,
+        y: () => window.innerHeight * 0.64,
+        rotation: 3000,
+        ease: 'power1.inOut'
+      })
+      .to(ballShadow, { scale: 0.9, opacity: 0.65 }, '<');
 
     // 6. Cierre (absorción central hacia el emblema cívico)
-    ballJourney.to(physicsBall, {
-      x: () => window.innerWidth * 0.5,
-      y: () => window.innerHeight * 0.45,
-      rotation: 3240,
-      scale: 0.4,
-      opacity: 0,
-      ease: 'power2.in'
-    });
-    ballJourney.to(ballShadow, { scale: 0.1, opacity: 0 }, '<');
+    ballJourney
+      .to(physicsBall, {
+        x: () => window.innerWidth * 0.5,
+        y: () => window.innerHeight * 0.45,
+        rotation: 3600,
+        scale: 0.35,
+        opacity: 0,
+        ease: 'power2.in'
+      })
+      .to(ballShadow, { scale: 0.1, opacity: 0 }, '<');
   }
 
   // ------------------------------------------------------------------------
@@ -311,14 +328,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------------------------------------
   if (!prefersReducedMotion) {
 
-    // 9.1 FÚTBOL: Comba de pelota al ángulo, estirada del arquero y red reactiva
+    // 9.1 FÚTBOL: Comba de tiro con efecto Magnus, estirada del arquero y red reactiva
     const keeperFigure = document.getElementById('keeperFigure');
+    const keeperAirShadow = document.getElementById('keeperAirShadow');
     const stageSoccerBall = document.getElementById('stageSoccerBall');
     const stageSoccerShadow = document.getElementById('stageSoccerShadow');
+    const soccerShotCurveTrail = document.getElementById('soccerShotCurveTrail');
     const goalNetMesh = document.getElementById('goalNetMesh');
     const goalCallout = document.getElementById('goalCallout');
 
     if (keeperFigure && stageSoccerBall && goalCallout) {
+      if (soccerShotCurveTrail) {
+        const trailLen = soccerShotCurveTrail.getTotalLength ? soccerShotCurveTrail.getTotalLength() : 450;
+        gsap.set(soccerShotCurveTrail, { strokeDasharray: trailLen, strokeDashoffset: trailLen });
+      }
+
       const soccerTl = gsap.timeline({
         scrollTrigger: {
           trigger: '#sport-futbol',
@@ -328,234 +352,429 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Disparo con comba hacia el ángulo superior
-      soccerTl.to(stageSoccerBall, {
-        x: 230,
-        y: -140,
-        rotation: 720,
-        scale: 0.85,
-        duration: 0.9,
-        ease: 'power2.in'
-      });
+      // 1. Fase de disparo: Pelota viaja con curva ascendente hacia el ángulo superior derecho
+      soccerTl
+        .to(stageSoccerBall, {
+          x: 360,
+          y: -165,
+          rotation: 900,
+          scale: 0.8,
+          duration: 0.85,
+          ease: 'power2.inOut'
+        })
+        .to(soccerShotCurveTrail, {
+          strokeDashoffset: 0,
+          duration: 0.85,
+          ease: 'power2.inOut'
+        }, 0);
 
+      // Sombra en el césped se difumina y reduce al despegar
       if (stageSoccerShadow) {
         soccerTl.to(stageSoccerShadow, {
+          scale: 0.15,
           opacity: 0,
-          scale: 0.2,
-          duration: 0.35
+          duration: 0.45,
+          ease: 'power1.out'
         }, 0);
       }
 
-      // Estirada en diagonal del arquero intentando llegar
+      // 2. Arquero: anticipación y estirada horizontal en el aire hacia la pelota
       soccerTl.to(keeperFigure, {
-        x: '-=70',
-        y: '-=45',
-        rotation: -28,
+        x: '+=85',
+        y: '-=60',
+        rotation: -32,
         transformOrigin: 'bottom center',
-        duration: 0.9
+        duration: 0.85,
+        ease: 'power2.out'
       }, 0);
 
-      // Impacto en la red (deformación de malla absorbiendo energía)
-      soccerTl.to(goalNetMesh, {
-        scaleX: 1.15,
-        scaleY: 1.1,
-        transformOrigin: 'right top',
-        duration: 0.2
-      });
+      if (keeperAirShadow) {
+        soccerTl.to(keeperAirShadow, {
+          scale: 0.4,
+          opacity: 0.15,
+          duration: 0.85
+        }, 0);
+      }
 
+      // 3. Impacto en la red del ángulo: deformación elástica de la malla y amortiguación
+      soccerTl
+        .to(goalNetMesh, {
+          scaleX: 1.25,
+          scaleY: 1.15,
+          transformOrigin: 'top right',
+          duration: 0.12,
+          ease: 'power1.in'
+        })
+        .to(goalNetMesh, {
+          scaleX: 1,
+          scaleY: 1,
+          duration: 0.35,
+          ease: 'elastic.out(1.4, 0.25)'
+        })
+        .to(stageSoccerBall, {
+          x: '+=10',
+          y: '+=8',
+          rotation: '+=45',
+          duration: 0.18,
+          ease: 'power1.out'
+        }, '<');
+
+      // 4. Aparición del callout editorial
       soccerTl.to(goalCallout, {
         opacity: 1,
-        scale: 1.15,
+        scale: 1.1,
         transformOrigin: 'center center',
-        duration: 0.4
-      }, '-=0.1');
+        duration: 0.35,
+        ease: 'back.out(2)'
+      }, '-=0.15');
     }
 
-    // 9.2 TENIS: Swing en cadena cinética, parábola, impacto, squash y nube de polvo
+    // 9.2 TENIS: Swing en cadena cinética, parábola, impacto en polvo y kick de salida
     const racketGroup = document.getElementById('racketGroup');
     const tennisBallVisual = document.getElementById('tennisBallVisual');
-    const tennisArc = document.getElementById('tennisArcPath');
-    const clayDustPuff = document.getElementById('clayDustPuff');
+    const tennisArcPath = document.getElementById('tennisArcPath');
+    const tennisSpeedTrail = document.getElementById('tennisSpeedTrail');
+    const clayDustGroup = document.getElementById('clayDustGroup');
+    const tennisCallout = document.getElementById('tennisCallout');
 
-    if (racketGroup && tennisBallVisual && tennisArc) {
-      const arcLen = tennisArc.getTotalLength ? tennisArc.getTotalLength() : 380;
-      gsap.set(tennisArc, { strokeDasharray: arcLen, strokeDashoffset: arcLen });
+    if (racketGroup && tennisBallVisual) {
+      if (tennisArcPath) {
+        const arcLen = tennisArcPath.getTotalLength ? tennisArcPath.getTotalLength() : 480;
+        gsap.set(tennisArcPath, { strokeDasharray: arcLen, strokeDashoffset: arcLen });
+      }
 
-      gsap.timeline({
+      const tennisTl = gsap.timeline({
         scrollTrigger: {
           trigger: '#sport-tenis',
           start: 'top 65%',
           end: 'bottom 40%',
           scrub: 0.8
         }
-      })
-      // 1. Preparación hacia atrás (backswing)
-      .to(racketGroup, {
-        rotation: -65,
-        x: '-=25',
-        y: '+=10',
-        transformOrigin: '80% 90%',
-        duration: 0.35
-      })
-      // 2. Aceleración explosiva hacia adelante con ángulo de topspin
-      .to(racketGroup, {
-        rotation: 30,
-        x: '+=65',
-        y: '-=20',
-        transformOrigin: '80% 90%',
-        duration: 0.65,
-        ease: 'power3.out'
-      })
-      // 3. Salida de la pelota a gran velocidad con rotación topspin
-      .to(tennisBallVisual, {
-        x: '+=210',
-        y: '+=70', // desciende hacia la superficie de arcilla
-        rotation: 540,
-        scale: 1.05,
-        duration: 0.6,
-        ease: 'power2.in'
-      }, '-=0.55')
-      .to(tennisArc, {
-        strokeDashoffset: 140,
-        duration: 0.6
-      }, '<')
-      // 4. Pique en el polvo de ladrillo: squash elástico y estallido de polvo
-      .to(tennisBallVisual, {
-        scaleX: 1.25,
-        scaleY: 0.75,
-        duration: 0.08
-      })
-      .to(clayDustPuff, {
-        opacity: 0.9,
-        scale: 1.6,
-        duration: 0.12
-      }, '<')
-      .to(tennisBallVisual, {
-        scaleX: 1,
-        scaleY: 1,
-        duration: 0.12
-      })
-      // 5. Elevación posterior al pique (kick alto con rotación)
-      .to(tennisBallVisual, {
-        x: '+=130',
-        y: '-=45',
-        rotation: 900,
-        scale: 1.2,
-        duration: 0.5,
-        ease: 'power1.out'
-      })
-      .to(tennisArc, {
-        strokeDashoffset: 0,
-        duration: 0.5
-      }, '<')
-      .to(clayDustPuff, {
-        opacity: 0,
-        scale: 2.2,
-        duration: 0.4
-      }, '-=0.3');
+      });
+
+      tennisTl
+        // 1. Armado hacia atrás (backswing)
+        .to(racketGroup, {
+          rotation: -75,
+          x: '-=30',
+          y: '+=15',
+          transformOrigin: '80% 90%',
+          duration: 0.3,
+          ease: 'power1.inOut'
+        })
+        // 2. Aceleración explosiva hacia la pelota
+        .to(racketGroup, {
+          rotation: 35,
+          x: '+=70',
+          y: '-=22',
+          transformOrigin: '80% 90%',
+          duration: 0.45,
+          ease: 'power3.out'
+        })
+        // 3. Momento del impacto en cuerdas: squash breve y salida veloz
+        .to(tennisBallVisual, {
+          scaleX: 1.25,
+          scaleY: 0.78,
+          duration: 0.06
+        }, '-=0.35')
+        .to(tennisBallVisual, {
+          scaleX: 1,
+          scaleY: 1,
+          duration: 0.1
+        })
+        // 4. Trayectoria de topspin sobre la red hacia el fleje de arcilla
+        .to(tennisBallVisual, {
+          x: '+=210',
+          y: '+=70',
+          rotation: 680,
+          duration: 0.55,
+          ease: 'power2.in'
+        }, '<')
+        .to(tennisArcPath, {
+          strokeDashoffset: 160,
+          duration: 0.55
+        }, '<');
+
+      if (tennisSpeedTrail) {
+        tennisTl.to(tennisSpeedTrail, {
+          opacity: 0.8,
+          duration: 0.15
+        }, '-=0.5').to(tennisSpeedTrail, {
+          opacity: 0,
+          duration: 0.35
+        });
+      }
+
+      // 5. Pique en el polvo de ladrillo: deformación por contacto y estallido de polvo
+      tennisTl
+        .to(tennisBallVisual, {
+          scaleX: 1.35,
+          scaleY: 0.68,
+          duration: 0.08,
+          ease: 'power1.inOut'
+        })
+        .to(clayDustGroup, {
+          opacity: 1,
+          scale: 1.8,
+          duration: 0.15
+        }, '<')
+        .to(tennisBallVisual, {
+          scaleX: 1,
+          scaleY: 1,
+          duration: 0.1
+        })
+        // 6. Rebote vivo (kick de topspin profundo hacia el fondo)
+        .to(tennisBallVisual, {
+          x: '+=130',
+          y: '-=45',
+          rotation: 1080,
+          scale: 1.12,
+          duration: 0.45,
+          ease: 'power1.out'
+        })
+        .to(tennisArcPath, {
+          strokeDashoffset: 0,
+          duration: 0.45
+        }, '<')
+        .to(clayDustGroup, {
+          opacity: 0,
+          scale: 2.6,
+          duration: 0.35
+        }, '-=0.3');
+
+      // 7. Callout de punto
+      if (tennisCallout) {
+        tennisTl.to(tennisCallout, {
+          opacity: 1,
+          scale: 1.08,
+          duration: 0.3,
+          ease: 'back.out(2)'
+        }, '-=0.2');
+      }
     }
 
     // 9.3 BÁSQUET: Tiro parabólico con rotación inversa (backspin), impacto y sacudida de red
     const basketBallItem = document.getElementById('basketBallItem');
     const basketRimLine = document.getElementById('basketRimLine');
     const basketNetGroup = document.getElementById('basketNetGroup');
+    const basketCallout = document.getElementById('basketCallout');
 
     if (basketBallItem && basketNetGroup) {
-      gsap.timeline({
+      const basketTl = gsap.timeline({
         scrollTrigger: {
           trigger: '#sport-basquet',
           start: 'top 65%',
           end: 'bottom 40%',
           scrub: 0.8
         }
-      })
-      // Arco parabólico con rotación inversa (backspin de básquet)
-      .to(basketBallItem, {
-        x: 185,
-        y: 65,
-        rotation: -420,
-        duration: 0.8,
-        ease: 'power1.out'
-      })
-      // Rozamiento del aro metálico (vibración física)
-      .to(basketRimLine, {
-        y: 4,
-        duration: 0.08,
-        yoyo: true,
-        repeat: 3
-      }, '-=0.1')
-      // Entrada a través del aro
-      .to(basketBallItem, {
-        x: 190,
-        y: 115,
-        rotation: -540,
-        duration: 0.28,
-        ease: 'power2.in'
-      })
-      // Deformación física en ola de la red elástica (swish wave)
-      .to(basketNetGroup, {
-        scaleY: 1.4,
-        scaleX: 0.82,
-        transformOrigin: 'top center',
-        duration: 0.2
-      }, '-=0.12')
-      .to(basketNetGroup, {
-        scaleY: 1,
-        scaleX: 1,
-        duration: 0.45,
-        ease: 'elastic.out(1.15, 0.35)'
-      })
-      // Caída al piso
-      .to(basketBallItem, {
-        y: 220,
-        opacity: 0.35,
-        duration: 0.5
       });
+
+      basketTl
+        // 1. Fase ascendente de la parábola con backspin continuo
+        .to(basketBallItem, {
+          x: 120,
+          y: -25,
+          rotation: -320,
+          duration: 0.5,
+          ease: 'power2.out'
+        })
+        // 2. Caída por gravedad hacia el aro
+        .to(basketBallItem, {
+          x: 185,
+          y: 65,
+          rotation: -540,
+          duration: 0.42,
+          ease: 'power2.in'
+        })
+        // 3. Roce con el aro metálico: vibración instantánea del metal
+        .to(basketRimLine, {
+          y: 4,
+          duration: 0.06,
+          yoyo: true,
+          repeat: 3
+        }, '-=0.08')
+        // 4. Paso limpio a través de la red (swish)
+        .to(basketBallItem, {
+          x: 190,
+          y: 115,
+          rotation: -640,
+          duration: 0.22,
+          ease: 'power1.in'
+        })
+        // 5. Deformación ondulada y retracción de la malla de algodón
+        .to(basketNetGroup, {
+          scaleY: 1.48,
+          scaleX: 0.78,
+          transformOrigin: 'top center',
+          duration: 0.16
+        }, '-=0.15')
+        .to(basketNetGroup, {
+          scaleY: 0.88,
+          scaleX: 1.15,
+          duration: 0.16
+        })
+        .to(basketNetGroup, {
+          scaleY: 1,
+          scaleX: 1,
+          duration: 0.38,
+          ease: 'elastic.out(1.2, 0.35)'
+        })
+        // 6. Caída hacia el parquet y pequeño rebote
+        .to(basketBallItem, {
+          y: 215,
+          rotation: -780,
+          duration: 0.38,
+          ease: 'power2.in'
+        }, '-=0.25')
+        .to(basketBallItem, {
+          y: 190,
+          duration: 0.18,
+          ease: 'power1.out'
+        })
+        .to(basketBallItem, {
+          y: 215,
+          opacity: 0.35,
+          duration: 0.15,
+          ease: 'power1.in'
+        });
+
+      if (basketCallout) {
+        basketTl.to(basketCallout, {
+          opacity: 1,
+          scale: 1.1,
+          duration: 0.3,
+          ease: 'back.out(2)'
+        }, '-=0.4');
+      }
     }
 
-    // 9.4 ATLETISMO: Trazado de pista y zancada
-    const trackLine = document.getElementById('trackLinePath');
+    // 9.4 ATLETISMO: Trazado de pista, zancada biomecánica y cruce de meta
+    const trackLinePath = document.getElementById('trackLinePath');
     const trackRunner = document.getElementById('trackRunner');
-    if (trackLine && trackRunner) {
-      gsap.set(trackLine, { strokeDasharray: 600, strokeDashoffset: 600 });
+    const runnerShadow = document.getElementById('runnerShadow');
+    const runnerCallout = document.getElementById('runnerCallout');
 
-      gsap.timeline({
+    if (trackLinePath && trackRunner) {
+      const pathLen = trackLinePath.getTotalLength ? trackLinePath.getTotalLength() : 620;
+      gsap.set(trackLinePath, { strokeDasharray: pathLen, strokeDashoffset: pathLen });
+
+      const runnerTl = gsap.timeline({
         scrollTrigger: {
           trigger: '#sport-atletismo',
           start: 'top 65%',
           end: 'bottom 40%',
           scrub: 0.8
         }
-      })
-      .to(trackLine, {
-        strokeDashoffset: 0,
-        duration: 1
-      })
-      .to(trackRunner, {
-        x: '+=250',
-        y: '-=90',
-        scale: 1.2,
-        duration: 1
-      }, '<');
+      });
+
+      runnerTl
+        // 1. Dibujo de la línea de andarivel en pista
+        .to(trackLinePath, {
+          strokeDashoffset: 0,
+          duration: 1,
+          ease: 'none'
+        })
+        // 2. Aceleración del fondista a lo largo de la curva
+        .to(trackRunner, {
+          x: '+=250',
+          y: '-=130',
+          scale: 1.25,
+          rotation: -10,
+          duration: 1,
+          ease: 'power1.inOut'
+        }, 0);
+
+      if (runnerShadow) {
+        runnerTl.to(runnerShadow, {
+          scaleX: 1.2,
+          scaleY: 0.85,
+          duration: 1
+        }, 0);
+      }
+
+      if (runnerCallout) {
+        runnerTl.to(runnerCallout, {
+          opacity: 1,
+          scale: 1.08,
+          duration: 0.35,
+          ease: 'back.out(2)'
+        }, '-=0.3');
+      }
     }
 
-    // 9.5 NATACIÓN: Carriles y avance
+    // 9.5 NATACIÓN: Carriles, ondulación de agua, rolido de crol y brazada
     const swimLaneA = document.getElementById('swimLaneA');
+    const swimLaneB = document.getElementById('swimLaneB');
+    const swimLaneC = document.getElementById('swimLaneC');
+    const waterWave1 = document.getElementById('waterWave1');
+    const waterWave2 = document.getElementById('waterWave2');
     const swimmerGlyph = document.getElementById('swimmerGlyph');
-    if (swimLaneA && swimmerGlyph) {
-      gsap.timeline({
+    const swimmerWake = document.getElementById('swimmerWake');
+    const swimmerArmRecovery = document.getElementById('swimmerArmRecovery');
+    const swimCallout = document.getElementById('swimCallout');
+
+    if (swimmerGlyph) {
+      const swimTl = gsap.timeline({
         scrollTrigger: {
           trigger: '#sport-natacion',
           start: 'top 65%',
           end: 'bottom 40%',
           scrub: 0.8
         }
-      })
-      .to(swimmerGlyph, {
-        x: '+=300',
-        rotation: 4,
-        duration: 1
       });
+
+      // 1. Desplazamiento del nadador a lo largo de la piscina
+      swimTl.to(swimmerGlyph, {
+        x: '+=260',
+        duration: 1,
+        ease: 'none'
+      });
+
+      // 2. Rolido biomecánico del cuerpo durante el crol
+      swimTl.to(swimmerGlyph, {
+        rotation: 6,
+        yoyo: true,
+        repeat: 3,
+        duration: 0.25,
+        ease: 'sine.inOut'
+      }, 0);
+
+      // 3. Estela de espuma expandiéndose detrás
+      if (swimmerWake) {
+        swimTl.to(swimmerWake, {
+          scaleX: 1.35,
+          opacity: 0.65,
+          duration: 0.5,
+          yoyo: true,
+          repeat: 1
+        }, 0);
+      }
+
+      // 4. Movimiento del brazo en fase de recobro aéreo
+      if (swimmerArmRecovery) {
+        swimTl.to(swimmerArmRecovery, {
+          rotation: 25,
+          transformOrigin: 'right center',
+          yoyo: true,
+          repeat: 3,
+          duration: 0.25
+        }, 0);
+      }
+
+      // 5. Ondulación de las líneas de agua y boyas
+      if (waterWave1 && waterWave2) {
+        swimTl.to(waterWave1, { x: 30, duration: 1, ease: 'sine.inOut' }, 0);
+        swimTl.to(waterWave2, { x: -25, duration: 1, ease: 'sine.inOut' }, 0);
+      }
+
+      if (swimCallout) {
+        swimTl.to(swimCallout, {
+          opacity: 1,
+          scale: 1.08,
+          duration: 0.35,
+          ease: 'back.out(2)'
+        }, '-=0.25');
+      }
     }
   }
 

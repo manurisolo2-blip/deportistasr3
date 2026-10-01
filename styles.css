@@ -839,18 +839,25 @@ body {
   line-height: 1.65;
 }
 
-/* Cajas de escenario vectorial */
+/* Cajas de escenario vectorial de alta fidelidad */
 .sport-stage-box {
   width: 100%;
   aspect-ratio: 16 / 10;
-  background: rgba(15, 20, 28, 0.6);
-  border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  background: radial-gradient(circle at 50% 40%, rgba(26, 34, 48, 0.85) 0%, rgba(12, 16, 23, 0.96) 100%);
+  border: 1px solid rgba(245, 242, 235, 0.12);
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sport-stage-box:hover {
+  border-color: rgba(216, 74, 56, 0.35);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .editorial-stage-svg {
@@ -858,6 +865,43 @@ body {
   height: 100%;
   overflow: visible;
 }
+
+/* Sombras y renderizado de objetos en los escenarios */
+#stageSoccerImg {
+  filter: drop-shadow(2px 6px 8px rgba(0, 0, 0, 0.6));
+}
+
+#tennisBallVisual image {
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
+}
+
+#racketImg {
+  filter: drop-shadow(4px 8px 12px rgba(0, 0, 0, 0.7));
+}
+
+#basketBallItem image {
+  filter: drop-shadow(3px 8px 10px rgba(0, 0, 0, 0.6));
+}
+
+/* Callouts tipográficos en los escenarios */
+.goal-callout,
+.tennis-callout,
+.basket-callout,
+.runner-callout,
+.swim-callout {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.85));
+  pointer-events: none;
+  user-select: none;
+}
+
+.goal-callout { fill: var(--accent-clay); }
+.tennis-callout { fill: #E5A93C; }
+.basket-callout { fill: #FF6B2C; }
+.runner-callout { fill: var(--accent-clay); }
+.swim-callout { fill: var(--accent-river); }
 
 /* --------------------------------------------------------------------------
    10. SECCIÓN 4: MARCADOR DE NÚMEROS REALES (RESISTENTE A FALLAS)
