@@ -241,6 +241,28 @@ body {
   color: var(--text-primary);
 }
 
+.brand-emblem-logo {
+  height: 42px;
+  width: auto;
+  max-width: 42px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(15, 23, 42, 0.08));
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.brand-block:hover .brand-emblem-logo {
+  transform: scale(1.06);
+}
+
+.civic-strip-emblem {
+  height: 14px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
 .brand-law-tag {
   font-family: var(--font-mono);
   font-weight: 700;
@@ -589,6 +611,21 @@ body {
   max-width: 48rem;
 }
 
+.hero-kicker-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.hero-kicker-emblem {
+  height: 32px;
+  width: auto;
+  max-width: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(15, 23, 42, 0.12));
+}
+
 .hero-kicker-tag {
   display: inline-block;
   border: 1px solid #0F172A;
@@ -599,7 +636,7 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #0F172A;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0;
   background: #FFFFFF;
   border-radius: 2px;
 }
@@ -1977,6 +2014,27 @@ body {
   }
 }
 
+.footer-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  text-align: left;
+}
+
+.footer-brand-logo {
+  height: 48px;
+  width: auto;
+  max-width: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.08));
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.footer-brand-wrap:hover .footer-brand-logo {
+  transform: scale(1.08);
+}
+
 .footer-brand-title {
   font-family: var(--font-display);
   font-size: 1.45rem;
@@ -2503,6 +2561,21 @@ body {
 
   .brand-law-tag {
     display: none;
+  }
+
+  .brand-emblem-logo {
+    height: 34px;
+    max-width: 34px;
+  }
+
+  .hero-kicker-emblem {
+    height: 24px;
+    max-width: 24px;
+  }
+
+  .footer-brand-logo {
+    height: 38px;
+    max-width: 38px;
   }
 
   .brand-title {
