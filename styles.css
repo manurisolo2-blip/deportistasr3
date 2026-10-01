@@ -153,57 +153,6 @@ body {
 /* --------------------------------------------------------------------------
    3. CABECERA & NAVEGACIÓN INSTITUCIONAL EN MODO CLARO
    -------------------------------------------------------------------------- */
-.civic-header-strip {
-  background: #FFFFFF;
-  border-bottom: 1px solid var(--border-card);
-  padding: 0.45rem 0;
-}
-
-.civic-header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.civic-strip-left {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.civic-dot-pulse {
-  width: 8px;
-  height: 8px;
-  border-radius: 9999px;
-  background-color: #F59E0B;
-  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.25);
-  animation: civicPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  display: inline-block;
-  flex-shrink: 0;
-}
-
-@keyframes civicPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.45; transform: scale(0.9); }
-}
-
-.civic-strip-code {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #475569;
-}
-
-.civic-strip-location {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  color: #475569;
-  letter-spacing: 0.05em;
-}
 
 .site-header {
   position: fixed;
@@ -255,13 +204,6 @@ body {
   transform: scale(1.06);
 }
 
-.civic-strip-emblem {
-  height: 14px;
-  width: auto;
-  object-fit: contain;
-  opacity: 0.9;
-  flex-shrink: 0;
-}
 
 .brand-law-tag {
   font-family: var(--font-mono);
