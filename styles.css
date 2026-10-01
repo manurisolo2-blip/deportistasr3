@@ -205,18 +205,6 @@ body {
 }
 
 
-.brand-law-tag {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 0.72rem;
-  background: var(--accent-gold-light);
-  color: var(--accent-gold-dark);
-  border: 1px solid var(--accent-gold-border);
-  padding: 0.25rem 0.55rem;
-  border-radius: 4px;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-}
 
 .brand-text-col {
   display: flex;
@@ -553,35 +541,6 @@ body {
   max-width: 48rem;
 }
 
-.hero-kicker-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
-.hero-kicker-emblem {
-  height: 32px;
-  width: auto;
-  max-width: 32px;
-  object-fit: contain;
-  filter: drop-shadow(0 1px 2px rgba(15, 23, 42, 0.12));
-}
-
-.hero-kicker-tag {
-  display: inline-block;
-  border: 1px solid #0F172A;
-  padding: 0.25rem 0.65rem;
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #0F172A;
-  margin-bottom: 0;
-  background: #FFFFFF;
-  border-radius: 2px;
-}
 
 .hero-editorial-title {
   font-family: var(--font-display);
@@ -760,15 +719,11 @@ body {
 
 .bento-discipline-pill {
   font-family: var(--font-sub);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: var(--accent-gold-dark);
-  background: var(--accent-gold-light);
-  border: 1px solid var(--accent-gold-border);
-  padding: 0.25rem 0.65rem;
-  border-radius: 4px;
 }
 
 .bento-hall-star {
@@ -794,10 +749,6 @@ body {
   font-size: 0.78rem;
   font-weight: 700;
   color: var(--accent-track);
-  background: var(--accent-track-light);
-  border: 1px solid var(--accent-track-border);
-  padding: 0.35rem 0.75rem;
-  border-radius: 4px;
   margin-bottom: 1.25rem;
   width: fit-content;
 }
@@ -1462,13 +1413,9 @@ body {
   align-items: center;
   gap: 0.45rem;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: var(--accent-track);
-  background: var(--accent-track-light);
-  border: 1px solid var(--accent-track-border);
-  padding: 0.32rem 0.65rem;
-  border-radius: 4px;
+  color: #B45309;
   margin-bottom: 0.95rem;
   width: fit-content;
   letter-spacing: 0.2px;
@@ -1719,9 +1666,6 @@ body {
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--text-muted);
-  background: var(--bg-muted);
-  padding: 0.25rem 0.55rem;
-  border-radius: 4px;
 }
 
 .club-name-title {
@@ -1799,15 +1743,12 @@ body {
 
 .timeline-period-badge {
   font-family: var(--font-mono);
-  font-size: 0.88rem;
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 800;
   color: var(--accent-gold-dark);
-  background: var(--accent-gold-light);
-  border: 1px solid var(--accent-gold-border);
-  padding: 0.35rem 0.65rem;
-  border-radius: 4px;
-  text-align: center;
+  text-align: left;
   width: fit-content;
+  letter-spacing: -0.01em;
 }
 
 .timeline-content-body h3 {
