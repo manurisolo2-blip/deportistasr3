@@ -163,7 +163,7 @@ body {
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border-card);
+  border-bottom: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -411,7 +411,7 @@ body {
   padding-top: 7.25rem;
   padding-bottom: 5.25rem;
   background-color: #F8FAFC;
-  border-bottom: 1px solid var(--border-card);
+  border-bottom: none;
 }
 
 .section-hero-editorial > .container {
@@ -917,11 +917,11 @@ body {
 .section-filter-explorer {
   padding: 2rem 0;
   background: var(--bg-surface);
-  border-bottom: 1px solid var(--border-card);
+  border-bottom: none;
   position: sticky;
   top: 61px;
   z-index: 900;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.04);
 }
 
 .filter-explorer-bar {
@@ -1070,8 +1070,8 @@ body {
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 2.5rem;
-  border-bottom: 1px solid var(--border-card);
-  padding-bottom: 1.25rem;
+  border-bottom: none;
+  padding-bottom: 0.5rem;
 }
 
 .directory-section-title {
@@ -1493,12 +1493,53 @@ body {
 }
 
 /* --------------------------------------------------------------------------
+   DIVISORES DE SECCIÓN ORGÁNICOS (WAVE CURVES ESTILO MOJO GRILLE)
+   Inspirados en las curvas del Río Ctalamochita - Sin líneas duras ni bordes 1px
+   -------------------------------------------------------------------------- */
+.section-divider-curve {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+  line-height: 0;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  z-index: 10;
+}
+
+.section-divider-curve .curve-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.section-divider-curve .curve-svg {
+  display: block;
+  width: 100%;
+  height: 48px;
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .section-divider-curve .curve-svg {
+    height: 72px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-divider-curve .curve-svg {
+    height: 100px;
+  }
+}
+
+/* --------------------------------------------------------------------------
    8. SECCIÓN DE CLUBES & PATRIMONIO FORMATIVO
    -------------------------------------------------------------------------- */
 .section-clubs-editorial {
   padding: clamp(5rem, 8vw, 7rem) 0;
-  background: var(--bg-canvas);
-  border-bottom: 1px solid var(--border-card);
+  background: #FFFFFF;
+  border-bottom: none;
 }
 
 .clubs-grid-strip {
@@ -1520,7 +1561,7 @@ body {
 }
 
 .club-editorial-card {
-  background: var(--bg-surface);
+  background: #F8FAFC;
   border: 1px solid var(--border-card);
   border-radius: 12px;
   padding: 2rem 1.75rem;
@@ -1626,7 +1667,7 @@ body {
 .section-timeline-editorial {
   padding: clamp(5rem, 8vw, 7rem) 0;
   background: var(--bg-muted);
-  border-bottom: 1px solid var(--border-card);
+  border-bottom: none;
 }
 
 .timeline-editorial-flow {
@@ -1696,7 +1737,7 @@ body {
 .section-proposals-editorial {
   padding: clamp(5rem, 8vw, 7rem) 0;
   background: var(--bg-surface);
-  border-bottom: 1px solid var(--border-card);
+  border-bottom: none;
 }
 
 .proposals-editorial-grid {
@@ -1775,7 +1816,7 @@ body {
 .section-civic-closing {
   padding: clamp(5rem, 8vw, 7rem) 0 3rem;
   background: var(--bg-muted);
-  border-top: 1px solid var(--border-card);
+  border-top: none;
 }
 
 .closing-banner-box {
@@ -1801,7 +1842,7 @@ body {
 }
 
 .civic-editorial-footer {
-  border-top: 1px solid var(--border-strong);
+  border-top: none;
   padding-top: 2.5rem;
   display: flex;
   flex-direction: column;
