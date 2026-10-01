@@ -114,6 +114,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Desplazamiento automático si se carga con hash (ej: #deportes)
+  if (window.location.hash) {
+    const hashTarget = document.querySelector(window.location.hash);
+    if (hashTarget) {
+      setTimeout(() => {
+        if (lenis) {
+          lenis.scrollTo(hashTarget, { offset: -70, immediate: true });
+        } else {
+          hashTarget.scrollIntoView();
+        }
+      }, 200);
+    }
+  }
+
   // ------------------------------------------------------------------------
   // 6. BARRA DE PROGRESO DE LECTURA Y ESTADO ACTIVO
   // ------------------------------------------------------------------------
@@ -300,43 +314,56 @@ document.addEventListener('DOMContentLoaded', () => {
     // 9.1 FÚTBOL: Comba de pelota al ángulo, estirada del arquero y red reactiva
     const keeperFigure = document.getElementById('keeperFigure');
     const stageSoccerBall = document.getElementById('stageSoccerBall');
+    const stageSoccerShadow = document.getElementById('stageSoccerShadow');
     const goalNetMesh = document.getElementById('goalNetMesh');
     const goalCallout = document.getElementById('goalCallout');
 
     if (keeperFigure && stageSoccerBall && goalCallout) {
-      gsap.timeline({
+      const soccerTl = gsap.timeline({
         scrollTrigger: {
           trigger: '#sport-futbol',
           start: 'top 65%',
           end: 'bottom 40%',
           scrub: 0.8
         }
-      })
+      });
+
       // Disparo con comba hacia el ángulo superior
-      .to(stageSoccerBall, {
+      soccerTl.to(stageSoccerBall, {
         x: 230,
         y: -140,
         rotation: 720,
-        scale: 0.9,
+        scale: 0.85,
         duration: 0.9,
         ease: 'power2.in'
-      })
+      });
+
+      if (stageSoccerShadow) {
+        soccerTl.to(stageSoccerShadow, {
+          opacity: 0,
+          scale: 0.2,
+          duration: 0.35
+        }, 0);
+      }
+
       // Estirada en diagonal del arquero intentando llegar
-      .to(keeperFigure, {
+      soccerTl.to(keeperFigure, {
         x: '-=70',
         y: '-=45',
         rotation: -28,
         transformOrigin: 'bottom center',
         duration: 0.9
-      }, '<')
+      }, 0);
+
       // Impacto en la red (deformación de malla absorbiendo energía)
-      .to(goalNetMesh, {
-        scaleX: 1.1,
-        scaleY: 1.08,
+      soccerTl.to(goalNetMesh, {
+        scaleX: 1.15,
+        scaleY: 1.1,
         transformOrigin: 'right top',
         duration: 0.2
-      })
-      .to(goalCallout, {
+      });
+
+      soccerTl.to(goalCallout, {
         opacity: 1,
         scale: 1.15,
         transformOrigin: 'center center',
@@ -344,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, '-=0.1');
     }
 
-    // 9.2 TENIS: Swing en cadena cinética, parábola, impacto y nube de polvo
+    // 9.2 TENIS: Swing en cadena cinética, parábola, impacto, squash y nube de polvo
     const racketGroup = document.getElementById('racketGroup');
     const tennisBallVisual = document.getElementById('tennisBallVisual');
     const tennisArc = document.getElementById('tennisArcPath');
@@ -364,23 +391,27 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       // 1. Preparación hacia atrás (backswing)
       .to(racketGroup, {
-        rotation: -55,
-        x: '-=20',
+        rotation: -65,
+        x: '-=25',
+        y: '+=10',
+        transformOrigin: '80% 90%',
         duration: 0.35
       })
       // 2. Aceleración explosiva hacia adelante con ángulo de topspin
       .to(racketGroup, {
-        rotation: 40,
-        x: '+=50',
-        y: '-=15',
+        rotation: 30,
+        x: '+=65',
+        y: '-=20',
+        transformOrigin: '80% 90%',
         duration: 0.65,
         ease: 'power3.out'
       })
-      // 3. Salida de la pelota a gran velocidad por la parábola
+      // 3. Salida de la pelota a gran velocidad con rotación topspin
       .to(tennisBallVisual, {
         x: '+=210',
-        y: '+=70', // cae al piso de polvo de ladrillo
-        scale: 1.1,
+        y: '+=70', // desciende hacia la superficie de arcilla
+        rotation: 540,
+        scale: 1.05,
         duration: 0.6,
         ease: 'power2.in'
       }, '-=0.55')
@@ -388,17 +419,28 @@ document.addEventListener('DOMContentLoaded', () => {
         strokeDashoffset: 140,
         duration: 0.6
       }, '<')
-      // 4. Pique en la arcilla: estallido de polvo de ladrillo
-      .to(clayDustPuff, {
-        opacity: 0.85,
-        scale: 1.4,
-        duration: 0.15
+      // 4. Pique en el polvo de ladrillo: squash elástico y estallido de polvo
+      .to(tennisBallVisual, {
+        scaleX: 1.25,
+        scaleY: 0.75,
+        duration: 0.08
       })
-      // 5. Elevación posterior al pique
+      .to(clayDustPuff, {
+        opacity: 0.9,
+        scale: 1.6,
+        duration: 0.12
+      }, '<')
+      .to(tennisBallVisual, {
+        scaleX: 1,
+        scaleY: 1,
+        duration: 0.12
+      })
+      // 5. Elevación posterior al pique (kick alto con rotación)
       .to(tennisBallVisual, {
         x: '+=130',
-        y: '-=40',
-        scale: 1.25,
+        y: '-=45',
+        rotation: 900,
+        scale: 1.2,
         duration: 0.5,
         ease: 'power1.out'
       })
@@ -408,7 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, '<')
       .to(clayDustPuff, {
         opacity: 0,
-        scale: 1.8,
+        scale: 2.2,
         duration: 0.4
       }, '-=0.3');
     }
@@ -431,41 +473,42 @@ document.addEventListener('DOMContentLoaded', () => {
       .to(basketBallItem, {
         x: 185,
         y: 65,
-        rotation: -360,
+        rotation: -420,
         duration: 0.8,
         ease: 'power1.out'
       })
-      // Rozamiento del aro (micro-vibración del aro metálico)
+      // Rozamiento del aro metálico (vibración física)
       .to(basketRimLine, {
-        y: 3,
+        y: 4,
         duration: 0.08,
         yoyo: true,
-        repeat: 2
+        repeat: 3
       }, '-=0.1')
-      // Entrada a través de la red
+      // Entrada a través del aro
       .to(basketBallItem, {
         x: 190,
         y: 115,
+        rotation: -540,
         duration: 0.28,
         ease: 'power2.in'
       })
-      // Deformación física en ola de la red elástica (swish)
+      // Deformación física en ola de la red elástica (swish wave)
       .to(basketNetGroup, {
-        scaleY: 1.35,
-        scaleX: 0.85,
+        scaleY: 1.4,
+        scaleX: 0.82,
         transformOrigin: 'top center',
         duration: 0.2
       }, '-=0.12')
       .to(basketNetGroup, {
         scaleY: 1,
         scaleX: 1,
-        duration: 0.4,
-        ease: 'elastic.out(1.1, 0.35)'
+        duration: 0.45,
+        ease: 'elastic.out(1.15, 0.35)'
       })
       // Caída al piso
       .to(basketBallItem, {
         y: 220,
-        opacity: 0.3,
+        opacity: 0.35,
         duration: 0.5
       });
     }

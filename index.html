@@ -74,8 +74,8 @@
   <!-- PELOTA DE FÚTBOL VIAJERA CON TEXTURA DE CUERO REAL, FÍSICA Y SOMBRA PROYECTADA -->
   <div class="physics-ball-traveler" id="physicsBall" aria-hidden="true">
     <div class="ball-sphere-3d" id="ballVisual">
-      <!-- Textura fotográfica de cuero real (Unsplash 200 OK) -->
-      <img src="https://images.unsplash.com/photo-1614632537423-1e6c2e7e0aab?auto=format&fit=crop&w=600&q=80" alt="Pelota de fútbol realista" class="ball-photo-texture" id="ballTextureImg">
+      <!-- Textura fotográfica de cuero real de alta definición -->
+      <img src="assets/soccer-ball.png" alt="Pelota de fútbol de cuero cosido" class="ball-photo-texture" id="ballTextureImg">
       <!-- Brillo especular y oclusión de esfera 3D -->
       <div class="ball-specular-light"></div>
     </div>
@@ -201,7 +201,7 @@
               <!-- Foto histórica real de Claudio 'Piojo' López -->
               <div class="athlete-archive-card">
                 <div class="athlete-photo-frame">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Claudio_L%C3%B3pez_Racing_Club_1995.jpg/800px-Claudio_L%C3%B3pez_Racing_Club_1995.jpg" alt="Claudio Piojo López nacido en Río Tercero" class="athlete-photo-img" loading="lazy">
+                  <img src="assets/piojo.png" alt="Claudio Piojo López nacido en Río Tercero" class="athlete-photo-img" loading="lazy">
                   <span class="photo-caption-badge">Archivo Histórico · Río 3</span>
                 </div>
                 <div class="athlete-meta-data">
@@ -231,15 +231,10 @@
                   <line x1="240" y1="20" x2="240" y2="300"/>
                   <line x1="320" y1="20" x2="320" y2="300"/>
                 </g>
-                <!-- Pelota de fútbol con textura real que entra al ángulo -->
+                <!-- Pelota de fútbol fotorrealista con sombra dinámica y rotación -->
                 <g id="stageSoccerBall" transform="translate(100, 240)">
-                  <circle cx="0" cy="0" r="18" fill="#F5F2EB" stroke="#0F141C" stroke-width="2"/>
-                  <polygon points="0,-8 7,-3 4,6 -4,6 -7,-3" fill="#0F141C"/>
-                  <line x1="0" y1="-8" x2="0" y2="-18" stroke="#0F141C" stroke-width="2"/>
-                  <line x1="7" y1="-3" x2="16" y2="-7" stroke="#0F141C" stroke-width="2"/>
-                  <line x1="4" y1="6" x2="13" y2="13" stroke="#0F141C" stroke-width="2"/>
-                  <line x1="-4" y1="6" x2="-13" y2="13" stroke="#0F141C" stroke-width="2"/>
-                  <line x1="-7" y1="-3" x2="-16" y2="-7" stroke="#0F141C" stroke-width="2"/>
+                  <ellipse cx="0" cy="22" rx="16" ry="5" fill="rgba(0, 0, 0, 0.45)" id="stageSoccerShadow"/>
+                  <image href="assets/soccer-ball.png" x="-22" y="-22" width="44" height="44" id="stageSoccerImg"/>
                 </g>
                 <!-- Arquero con estirada biomecánica -->
                 <g class="keeper-figure" id="keeperFigure" transform="translate(240, 150)">
@@ -265,11 +260,11 @@
               <div class="athlete-archive-card">
                 <div class="tennis-duo-photos">
                   <div class="athlete-photo-frame">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Gustavo_Fern%C3%A1ndez_en_Roland_Garros_2016.jpg/800px-Gustavo_Fern%C3%A1ndez_en_Roland_Garros_2016.jpg" alt="Gustavo Fernández tenista de Río Tercero en Roland Garros" class="athlete-photo-img" loading="lazy">
+                    <img src="assets/gustavo.jpg" alt="Gustavo Fernández tenista de Río Tercero en acción" class="athlete-photo-img" loading="lazy">
                     <span class="photo-caption-badge">Gustavo Fernández</span>
                   </div>
                   <div class="athlete-photo-frame">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Ivanna_Madruga_1980.jpg/800px-Ivanna_Madruga_1980.jpg" alt="Ivanna Madruga tenista de Río Tercero" class="athlete-photo-img" loading="lazy">
+                    <img src="assets/ivanna.jpg" alt="Ivanna Madruga tenista de Río Tercero" class="athlete-photo-img" loading="lazy">
                     <span class="photo-caption-badge">Ivanna Madruga</span>
                   </div>
                 </div>
@@ -285,26 +280,25 @@
             <div class="sport-stage-box">
               <svg class="editorial-stage-svg" viewBox="0 0 500 320" id="stageTenisSvg">
                 <!-- Cancha de arcilla y red -->
-                <rect x="20" y="220" width="460" height="80" fill="rgba(216, 74, 56, 0.2)"/>
+                <rect x="20" y="220" width="460" height="80" fill="rgba(216, 74, 56, 0.25)"/>
                 <line x1="20" y1="220" x2="480" y2="220" stroke="#F5F2EB" stroke-width="2"/>
+                <!-- Líneas de la cancha de polvo de ladrillo -->
+                <line x1="160" y1="220" x2="160" y2="300" stroke="rgba(245, 242, 235, 0.4)" stroke-width="1.5"/>
+                <line x1="340" y1="220" x2="340" y2="300" stroke="rgba(245, 242, 235, 0.4)" stroke-width="1.5"/>
+                <!-- Poste y red de tenis -->
                 <line x1="250" y1="160" x2="250" y2="280" stroke="#F5F2EB" stroke-width="4"/>
+                <line x1="230" y1="160" x2="270" y2="160" stroke="#F5F2EB" stroke-width="2"/>
                 <!-- Trayectoria parabólica con pique real en la cancha -->
                 <path d="M120 150 Q240 70 330 220 Q390 150 460 180" fill="none" stroke="#E0482B" stroke-width="3" stroke-dasharray="6 4" id="tennisArcPath" opacity="0.8"/>
-                <!-- Pelota de tenis con textura y fieltro amarillo -->
+                <!-- Pelota de tenis fotorrealista de fieltro con física -->
                 <g id="tennisBallVisual" transform="translate(120, 150)">
-                  <circle cx="0" cy="0" r="12" fill="#D4E157" stroke="#0F141C" stroke-width="2"/>
-                  <path d="M-8 -5 C-2 -5 2 5 8 5" fill="none" stroke="#F5F2EB" stroke-width="2"/>
-                  <path d="M-8 5 C-2 5 2 -5 8 -5" fill="none" stroke="#F5F2EB" stroke-width="2"/>
+                  <image href="assets/tennis-ball.png" x="-18" y="-18" width="36" height="36"/>
                 </g>
                 <!-- Nube de polvo de ladrillo al momento del pique -->
-                <ellipse cx="330" cy="225" rx="20" ry="6" fill="#D84A38" opacity="0" id="clayDustPuff"/>
-                <!-- Raqueta con preparación y follow-through -->
-                <g id="racketGroup" transform="translate(100, 180) rotate(-35)">
-                  <ellipse cx="0" cy="-45" rx="28" ry="38" fill="none" stroke="#D84A38" stroke-width="5"/>
-                  <line x1="-15" y1="-45" x2="15" y2="-45" stroke="#F5F2EB" stroke-width="1.5"/>
-                  <line x1="0" y1="-75" x2="0" y2="-15" stroke="#F5F2EB" stroke-width="1.5"/>
-                  <rect x="-5" y="-5" width="10" height="45" fill="#F5F2EB" rx="2"/>
-                  <rect x="-6" y="20" width="12" height="20" fill="#0F141C" rx="1"/>
+                <ellipse cx="330" cy="225" rx="22" ry="7" fill="#D84A38" opacity="0" id="clayDustPuff"/>
+                <!-- Raqueta de grafito fotorrealista articulada desde el grip -->
+                <g id="racketGroup" transform="translate(85, 205) rotate(-35)">
+                  <image href="assets/tennis-racket.png" x="-105" y="-105" width="125" height="122" id="racketImg"/>
                 </g>
               </svg>
             </div>
@@ -346,13 +340,9 @@
                   <line x1="265" y1="160" x2="320" y2="160"/>
                   <line x1="270" y1="180" x2="315" y2="180"/>
                 </g>
-                <!-- Balón de básquet de cuero con rotación inversa (backspin) -->
+                <!-- Balón de básquet de cuero granulado fotorrealista con backspin -->
                 <g id="basketBallItem" transform="translate(100, 60)">
-                  <circle cx="0" cy="0" r="22" fill="#E65100" stroke="#0F141C" stroke-width="2.5"/>
-                  <line x1="-22" y1="0" x2="22" y2="0" stroke="#0F141C" stroke-width="2"/>
-                  <line x1="0" y1="-22" x2="0" y2="22" stroke="#0F141C" stroke-width="2"/>
-                  <path d="M-14 -17 Q0 0 -14 17" fill="none" stroke="#0F141C" stroke-width="2"/>
-                  <path d="M14 -17 Q0 0 14 17" fill="none" stroke="#0F141C" stroke-width="2"/>
+                  <image href="assets/basketball.png" x="-26" y="-26" width="52" height="52"/>
                 </g>
               </svg>
             </div>
@@ -499,7 +489,7 @@
             <div class="club-sheet-top">
               <!-- Escudo Oficial del CART -->
               <div class="club-crest-frame">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Escudo_Club_Atl%C3%A9tico_R%C3%ADo_Tercero.png/800px-Escudo_Club_Atl%C3%A9tico_R%C3%ADo_Tercero.png" alt="Escudo oficial Club Atlético Río Tercero" class="club-crest-img" loading="lazy">
+                <img src="assets/escudo_cart.jpg" alt="Escudo oficial Club Atlético Río Tercero" class="club-crest-img" loading="lazy">
               </div>
               <span class="club-tag">Fundación Histórica</span>
             </div>
@@ -514,7 +504,7 @@
             <div class="club-sheet-top">
               <!-- Escudo Oficial del Club Sportivo 9 de Julio -->
               <div class="club-crest-frame">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Escudo_del_Club_Sportivo_9_de_Julio.svg/800px-Escudo_del_Club_Sportivo_9_de_Julio.svg.png" alt="Escudo oficial Club Sportivo 9 de Julio" class="club-crest-img" loading="lazy">
+                <img src="assets/escudo_9dejulio.png" alt="Escudo oficial Club Sportivo 9 de Julio" class="club-crest-img" loading="lazy">
               </div>
               <span class="club-tag">Tradición Patriota</span>
             </div>

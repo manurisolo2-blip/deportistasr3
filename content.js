@@ -75,7 +75,7 @@ window.SITE_CONTENT = {
     {
       id: "atletismo",
       name: "Atletismo y Triatlón",
-      tagline: "Resistencia forjada en las rutas cordobesas",
+      tagline: "Resistencia en ruta y pista cordobesa",
       highlight: "Oscar Galíndez",
       detail: "Riotercerense, múltiple campeón panamericano, olímpico en Sydney 2000 y referente histórico mundial de la distancia Ironman en triatlón.",
       localContext: "El Polideportivo Municipal y los circuitos costeros son el espacio de entrenamiento diario de corredores y fondistas.",
