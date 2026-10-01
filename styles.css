@@ -1112,7 +1112,7 @@ body {
   .trading-card.card-featured {
     grid-column: span 2;
     display: grid;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 360px 1fr;
     align-items: stretch;
   }
 
@@ -1187,27 +1187,17 @@ body {
   margin-bottom: 0.35rem;
 }
 
-/* Número dorsal gigante en marca de agua transparente */
+/* Número dorsal gigante en marca de agua: Oculto por requerimiento de diseño limpio */
 .card-dorsal-watermark {
-  position: absolute;
-  top: 10px;
-  right: 14px;
-  font-family: var(--font-mono);
-  font-size: 6.8rem;
-  font-weight: 800;
-  line-height: 1;
-  color: rgba(148, 163, 184, 0.16);
-  pointer-events: none;
-  user-select: none;
-  z-index: 1;
-  letter-spacing: -2px;
+  display: none !important;
 }
 
-/* Contenedor Fotográfico (Proporción vertical 3:4 con estética de prensa gráfica) */
+/* Contenedor Fotográfico (Proporción vertical generosa 3:4 con presencia nítida) */
 .card-photo-frame {
   position: relative;
   width: 100%;
   aspect-ratio: 3 / 4;
+  min-height: 280px;
   background: #F1F5F9;
   border-bottom: 1px solid var(--border-card);
   overflow: hidden;
@@ -1219,8 +1209,20 @@ body {
   aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: top center;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
   filter: grayscale(100%) contrast(110%);
   transition: filter 300ms ease, transform 300ms ease;
+}
+
+/* Biografía concisa debajo del nombre del deportista */
+.card-athlete-bio {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.5;
+  margin-top: 0.35rem;
+  margin-bottom: 0.75rem;
 }
 
 .trading-card:hover .card-athlete-photo,
@@ -2223,13 +2225,7 @@ body {
 
   .card-photo-frame {
     aspect-ratio: 3 / 4;
-  }
-
-  .card-dorsal-watermark {
-    font-size: 4.8rem;
-    top: 6px;
-    right: 8px;
-    opacity: 0.22;
+    min-height: 260px;
   }
 
   .card-content-body {
@@ -2559,11 +2555,6 @@ body {
 .trading-card:hover .card-athlete-photo {
   filter: grayscale(0%) contrast(100%) !important;
   transform: scale(1.05) !important;
-}
-
-.group:hover .card-dorsal-watermark,
-.trading-card:hover .card-dorsal-watermark {
-  color: #FEF3C7 !important; /* amber-100 */
 }
 
 .group:hover .card-name-title,

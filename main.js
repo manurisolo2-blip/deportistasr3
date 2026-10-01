@@ -242,11 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }"
         data-discipline="${atleta.disciplina.toUpperCase()}"
       >
-        <!-- Dorsal Fantasma Técnico en Capa Posterior -->
-        <span class="pointer-events-none absolute right-2 top-2 font-mono text-8xl font-black text-slate-100 select-none transition-colors group-hover:text-amber-100 card-dorsal-watermark" aria-hidden="true">
-          ${atleta.dorsal}
-        </span>
-
         <!-- Contenedor Fotográfico Vertical -->
         <div class="relative aspect-[3/4] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
           <img
@@ -275,6 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 class="mt-1 font-['Bebas_Neue',sans-serif] text-3xl font-black uppercase tracking-tight text-slate-950 group-hover:text-amber-600 transition-colors card-name-title">
               ${atleta.nombre}
             </h3>
+            <p class="card-athlete-bio">${atleta.descripcion || ''}</p>
           </div>
 
           <!-- Telemetría y Palmarés Inferior -->

@@ -18,6 +18,7 @@ window.DEPORTISTAS_DATA = [
     dorsal: '09',
     imagenUrl: 'assets/prigioni.jpg',
     destacado: true,
+    descripcion: 'Base titular de la Generación Dorada y medallista olímpico de bronce en Pekín 2008. Disputó 4 temporadas en la NBA (Knicks, Rockets, Clippers) y actualmente es entrenador jefe de la Selección Argentina.'
   },
   {
     id: '2',
@@ -29,6 +30,7 @@ window.DEPORTISTAS_DATA = [
     dorsal: '37',
     imagenUrl: 'assets/pechito.jpg',
     destacado: true,
+    descripcion: 'Pentacampeón mundial de la FIA (tricampeón WTCC y bicampeón WEC) y ganador absoluto de las 24 Horas de Le Mans con Toyota Gazoo Racing.'
   },
   {
     id: '3',
@@ -39,6 +41,7 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Internacional',
     dorsal: '04',
     imagenUrl: 'assets/andrea_berrino.jpg',
+    descripcion: 'Plusmarquista sudamericana en 50m y 100m espalda, medallista panamericana en Lima 2019 y máxima referente histórica de la natación argentina.'
   },
   {
     id: '4',
@@ -49,6 +52,7 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Profesional',
     dorsal: '11',
     imagenUrl: 'assets/catalina_primo.png',
+    descripcion: 'Delantera internacional de la Selección Argentina con destacadas etapas en River Plate y UAI Urquiza, campeona de Primera División y participante de Copa Libertadores.'
   },
   {
     id: '5',
@@ -59,6 +63,7 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Nacional',
     dorsal: '01',
     imagenUrl: 'https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?auto=format&fit=crop&w=800&q=80',
+    descripcion: 'Destacado tirador deportivo de precisión de nivel nacional e internacional en fosa y hélice, laureado representante del Tiro Federal Río Tercero.'
   },
   {
     id: '6',
@@ -69,6 +74,7 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Olímpico / Mundial',
     dorsal: '07',
     imagenUrl: 'assets/piojo.png',
+    descripcion: 'Medallista de plata en los Juegos Olímpicos de Atlanta 1996 y dos veces mundialista (Francia 1998 y Corea-Japón 2002). Ídolo histórico en Valencia CF, Lazio y Racing Club.'
   },
   {
     id: '7',
@@ -79,6 +85,7 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Grand Slam / Élite',
     dorsal: '01',
     imagenUrl: 'assets/gustavo.jpg',
+    descripcion: 'Cinco veces campeón individual de Grand Slam (Roland Garros, Wimbledon y Abierto de Australia) y ex número 1 del mundo en tenis adaptado.'
   },
   {
     id: '8',
@@ -89,6 +96,7 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Pionera Grand Slam',
     dorsal: '14',
     imagenUrl: 'assets/ivanna.jpg',
+    descripcion: 'Pionera del tenis sudamericano que alcanzó el puesto 14 del ranking mundial WTA, cuartofinalista individual en Roland Garros 1980 y finalista en el US Open.'
   },
   {
     id: '9',
@@ -99,6 +107,7 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Triple Olímpica',
     dorsal: '08',
     imagenUrl: 'assets/comba.jpg',
+    descripcion: 'Histórica lanzadora de disco con tres participaciones olímpicas consecutivas (Pekín 2008, Londres 2012 y Río 2016) y finalista en el Campeonato Mundial de Moscú 2013.'
   },
   {
     id: '10',
@@ -109,6 +118,7 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Olímpico / Ironman',
     dorsal: '22',
     imagenUrl: 'https://images.unsplash.com/photo-1486218119243-13883505764c?auto=format&fit=crop&w=800&q=80',
+    descripcion: 'Leyenda del triatlón latinoamericano, representante olímpico en Sydney 2000, campeón mundial de duatlón y múltiple vencedor del circuito Ironman.'
   }
 ];
 
