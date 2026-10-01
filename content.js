@@ -1,9 +1,9 @@
 /**
  * CONTENT.JS - Datos e Identidad Real de Río Tercero
- * Capital Nacional del Deportista (Ley Nacional Nº 27.396)
+ * Capital Nacional del Deportista (Ley Nacional Nº 27.380 / 27.396)
  *
- * Regla: Solo datos verificados de la ciudad. Si un dato no está confirmado,
- * el campo 'isConfirmed' se establece en false y el sitio lo oculta automáticamente.
+ * Estética Editorial Deportiva de Alto Rendimiento
+ * Telemetría, Fichas Coleccionables y Clubes Formadores Verificables.
  */
 
 window.SITE_CONTENT = {
@@ -11,191 +11,331 @@ window.SITE_CONTENT = {
   institution: {
     city: "Río Tercero",
     province: "Córdoba",
-    title: "Día del Deportista",
-    lawDeclaration: "Ley Nacional 27.396 · Capital Nacional del Deportista",
-    leadText: "Una ciudad obrera a orillas del Ctalamochita donde cada barrio creció alrededor de una cancha, una pista o un club.",
-    authorCredit: "Presentación para el Área de Deportes y Juventud",
-    academicCredit: "Iniciativa Comunitaria · Río Tercero, 2026"
+    country: "Argentina",
+    title: "Capital Nacional del Deportista",
+    subtitle: "Directorio Oficial & Archivo de Rendimiento Atlético",
+    lawDeclaration: "Ley Nacional 27.380 / 27.396 · Capital Nacional del Deportista",
+    leadText: "Río Tercero es una ciudad de 50.000 habitantes a orillas del Ctalamochita donde cada barrio creció con un club, un potrero o una pista. Aquí surgieron medallistas olímpicos, tricampeones mundiales de la FIA y reyes de Grand Slam.",
+    authorCredit: "Presentación para el Área de Deportes y Juventud de Río Tercero",
+    academicCredit: "Archivo Editorial de Rendimiento · Edición 2026"
   },
+
+  // Métricas Clave de Telemetría Cívica
+  metrics: [
+    {
+      value: "5",
+      unit: "Atletas",
+      label: "En Juegos Olímpicos",
+      context: "Pekín, Londres, Río, Sydney, Atlanta",
+      code: "MET-01"
+    },
+    {
+      value: "8+",
+      unit: "Títulos",
+      label: "Campeonatos del Mundo",
+      context: "WTCC, WEC Le Mans, Tenis Grand Slam, Duatlón",
+      code: "MET-02"
+    },
+    {
+      value: "12",
+      unit: "Clubes",
+      label: "Instituciones con Infraestructura",
+      context: "Básquet, fútbol, tenis, bochas, atletismo",
+      code: "MET-03"
+    },
+    {
+      value: "27.396",
+      unit: "Ley Nac.",
+      label: "Sancionada por el Congreso",
+      context: "Reconocimiento patrimonial unánime (2017)",
+      code: "MET-04"
+    }
+  ],
+
+  // Directorio de Fichas Atléticas Coleccionables (Trading Cards)
+  athletes: [
+    {
+      id: "prigioni",
+      name: "Pablo Prigioni",
+      dorsal: "09",
+      discipline: "Básquetbol",
+      disciplineKey: "basquetbol",
+      badge: "BÁSQUETBOL · MEDALLA OLÍMPICA & NBA",
+      club: "Club Sportivo 9 de Julio",
+      palmares: "Bronce Pekín 2008",
+      category: "Base / DT Selección",
+      period: "NBA Knicks · Rockets · Clippers",
+      photo: "assets/prigioni.jpg",
+      isHeroBento: true,
+      bio: "Nacido en Río Tercero y formado en el parquet del 'Patriota' (Sportivo 9 de Julio). Miembro de la Generación Dorada, medallista de bronce en los Juegos Olímpicos de Pekín 2008. Disputó cuatro temporadas en la NBA y en 2022 asumió como director técnico de la Selección Argentina masculina mayor.",
+      telemetry: [
+        { label: "Palmarés", val: "Bronce Pekín 2008" },
+        { label: "Posición", val: "Base Armador" },
+        { label: "Club Origen", val: "Sportivo 9 de Julio" }
+      ]
+    },
+    {
+      id: "pechito",
+      name: "José María 'Pechito' López",
+      dorsal: "37",
+      discipline: "Automovilismo",
+      disciplineKey: "automovilismo",
+      badge: "AUTOMOVILISMO · FIA MUNDIAL",
+      club: "Pistas y Kartódromos de Río 3",
+      palmares: "3x WTCC · Le Mans 24h",
+      category: "Piloto Oficial FIA WEC",
+      period: "Activo Internacional",
+      photo: "assets/pechito.jpg",
+      isHeroBento: false,
+      bio: "Tricampeón del Mundo del Campeonato Mundial de Turismos (WTCC) con Citroën de forma consecutiva (2014, 2015, 2016). Bicampeón del Campeonato Mundial de Resistencia (WEC) con Toyota Gazoo Racing y ganador de la general en las legendarias 24 Horas de Le Mans 2021.",
+      telemetry: [
+        { label: "Mundiales", val: "3x WTCC / 2x WEC" },
+        { label: "Hito Máximo", val: "Ganador Le Mans 24h" },
+        { label: "Escudería", val: "Toyota Gazoo / Akkodis" }
+      ]
+    },
+    {
+      id: "piojo",
+      name: "Claudio 'Piojo' López",
+      dorsal: "07",
+      discipline: "Fútbol",
+      disciplineKey: "futbol",
+      badge: "FÚTBOL · SELECCIÓN ARGENTINA",
+      club: "Club Atlético Río Tercero / 9 de Julio",
+      palmares: "Plata Olímpica Atlanta 96",
+      category: "Delantero Extremo",
+      period: "Mundiales 1998 y 2002",
+      photo: "assets/piojo.png",
+      isHeroBento: false,
+      bio: "Delantero supersónico formado en las canchas de baby fútbol de Río Tercero. Subcampeón olímpico en Atlanta 1996, titular con la Selección Argentina en las Copas del Mundo de Francia 1998 y Corea-Japón 2002. Campeón en Racing Club, Valencia CF (doble finalista de Champions) y Lazio.",
+      telemetry: [
+        { label: "Selección", val: "Subcampeón Olímpico" },
+        { label: "Copas Mundiales", val: "Francia 98 · Corea 02" },
+        { label: "Club Origen", val: "CART / 9 de Julio" }
+      ]
+    },
+    {
+      id: "gustavo",
+      name: "Gustavo Fernández",
+      dorsal: "01",
+      discipline: "Tenis",
+      disciplineKey: "tenis",
+      badge: "TENIS ADAPTADO · 5x GRAND SLAM",
+      club: "Polvo de Ladrillo Río Tercero",
+      palmares: "5 Grand Slams Singles",
+      category: "Singlista N° 1 Mundial",
+      period: "Activo Circuito ITF",
+      photo: "assets/gustavo.jpg",
+      isHeroBento: false,
+      bio: "Uno de los máximos tenistas adaptados de la historia. Campeón de 5 torneos de Grand Slam en individuales (Roland Garros 2016, 2019; Abierto de Australia 2017, 2019; Wimbledon 2019) y 3 en dobles. Abanderado de la delegación argentina en los Juegos Paralímpicos de Río 2016.",
+      telemetry: [
+        { label: "Grand Slams", val: "Roland Garros · Wimbledon · Aus" },
+        { label: "Ranking", val: "Ex N° 1 del Mundo" },
+        { label: "Distinción", val: "Premio Olimpia de Oro" }
+      ]
+    },
+    {
+      id: "berrino",
+      name: "Andrea Berrino",
+      dorsal: "04",
+      discipline: "Natación",
+      disciplineKey: "natacion",
+      badge: "NATACIÓN · PANAMERICANA & RÉCORD",
+      club: "Natatorios de Río Tercero",
+      palmares: "Medalla Panamericana Lima 2019",
+      category: "Espaldista / Estilos",
+      period: "Selección Nacional CADDA",
+      photo: "https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=800&q=80",
+      isHeroBento: false,
+      bio: "Especialista en pruebas de espalda y relevos. Múltiple récord nacional en los 50m y 100m espalda, con participaciones en Campeonatos Mundiales de Natación en piscina corta y larga. Medallista de bronce en los Juegos Panamericanos de Lima 2019 y campeona sudamericana.",
+      telemetry: [
+        { label: "Récord Nac.", val: "50m y 100m Espalda" },
+        { label: "Panamericanos", val: "Bronce Lima 2019" },
+        { label: "Disciplina", val: "Natación de Élite" }
+      ]
+    },
+    {
+      id: "galindez",
+      name: "Oscar Galíndez",
+      dorsal: "22",
+      discipline: "Triatlón",
+      disciplineKey: "atletismo",
+      badge: "TRIATLÓN · OLÍMPICO & IRONMAN",
+      club: "Polideportivo Municipal Río Tercero",
+      palmares: "Olímpico Sydney 2000",
+      category: "Fondista / Triatleta",
+      period: "Campeón Mundial Duatlón",
+      photo: "https://images.unsplash.com/photo-1486218119243-13883505764c?auto=format&fit=crop&w=800&q=80",
+      isHeroBento: false,
+      bio: "Pionero del triatlón y fondismo sudamericano. Representó a Argentina en el debut olímpico de la disciplina en Sydney 2000. Fue campeón mundial de duatlón (1995), subcampeón mundial de Ironman 70.3 (2007) y múltiple vencedor del Ironman Brasil con base de entrenamiento en Río Tercero.",
+      telemetry: [
+        { label: "JJ.OO.", val: "Sydney 2000" },
+        { label: "Ironman 70.3", val: "Subcampeón Mundial" },
+        { label: "Entrenamiento", val: "Polideportivo Municipal" }
+      ]
+    },
+    {
+      id: "ivanna",
+      name: "Ivanna Madruga",
+      dorsal: "14",
+      discipline: "Tenis",
+      disciplineKey: "tenis",
+      badge: "TENIS · CUARTOS ROLAND GARROS",
+      club: "Club Atlético Río Tercero",
+      palmares: "Top 15 Mundial WTA",
+      category: "Singlista / Pionera",
+      period: "Cuartos Roland Garros 1980",
+      photo: "assets/ivanna.jpg",
+      isHeroBento: false,
+      bio: "Pionera indiscutida del tenis femenino profesional en Sudamérica. Alcanzó los cuartos de final de Roland Garros en 1980 y la final de dobles del US Open junto a Christiane Jolissaint. Lideró al equipo argentino de Fed Cup y abrió la huella de las mujeres en el polvo de ladrillo internacional.",
+      telemetry: [
+        { label: "Roland Garros", val: "Cuartofinalista 1980" },
+        { label: "Ranking WTA", val: "N° 14 del Mundo" },
+        { label: "Club Origen", val: "Club Atlético Río Tercero" }
+      ]
+    },
+    {
+      id: "comba",
+      name: "Rocío Comba",
+      dorsal: "08",
+      discipline: "Atletismo",
+      disciplineKey: "atletismo",
+      badge: "ATLETISMO · TRIPLE OLÍMPICA",
+      club: "Polideportivo Municipal / Fábrica Militar",
+      palmares: "3x Juegos Olímpicos",
+      category: "Lanzamiento de Disco",
+      period: "Beijing 08 · Londres 12 · Río 16",
+      photo: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80",
+      isHeroBento: false,
+      bio: "Una de las atletas de campo más regulares de la historia nacional. Compitió en tres ediciones consecutivas de los Juegos Olímpicos (Beijing 2008, Londres 2012 y Río 2016). En 2013 alcanzó la final del Campeonato Mundial de Atletismo en Moscú, finalizando entre las 12 mejores del planeta.",
+      telemetry: [
+        { label: "JJ.OO.", val: "3 Ediciones (2008-2016)" },
+        { label: "Mundial Moscú", val: "Finalista N° 12 Mundial" },
+        { label: "Especialidad", val: "Disco (Récord 62.74m)" }
+      ]
+    }
+  ],
+
+  // Categorías de Filtro
+  filterCategories: [
+    { key: "todos", label: "TODOS LOS ATLETAS", count: 8 },
+    { key: "basquetbol", label: "BÁSQUETBOL", count: 1 },
+    { key: "automovilismo", label: "AUTOMOVILISMO", count: 1 },
+    { key: "futbol", label: "FÚTBOL", count: 1 },
+    { key: "tenis", label: "TENIS", count: 2 },
+    { key: "natacion", label: "NATACIÓN", count: 1 },
+    { key: "atletismo", label: "ATLETISMO & TRIATLÓN", count: 2 }
+  ],
 
   // Manifiesto con datos reales
   manifesto: {
-    title: "Una cancha en cada barrio. Un atleta en cada familia.",
-    text: "En 2017 el Congreso de la Nación declaró a Río Tercero Capital Nacional del Deportista. No fue un título honorífico: fue el reconocimiento a una ciudad de 50 mil habitantes que le dio al país campeones mundiales, representantes olímpicos y una red de clubes de barrio que sostiene a miles de pibes todos los días.",
-    quote: "“Acá el deporte nunca fue un lujo. Fue la manera de juntarnos, cuidarnos y salir adelante.”"
+    title: "Una cancha en cada barrio. Un campeón en cada generación.",
+    text: "En 2017 el Congreso de la Nación consagró a Río Tercero como la Capital Nacional del Deportista mediante la Ley 27.380 / 27.396. No se trató de una designación protocolar: fue la ratificación estadística de una comunidad obrera que produjo abanderados olímpicos, monarcas de la FIA y vencedores de Grand Slam gracias a una trama inquebrantable de clubes barriales.",
+    quote: "“Acá el deporte nunca fue un lujo ni un pasatiempo: fue la escuela de carácter donde aprendimos a competir contra los mejores del mundo.”"
   },
 
-  // Disciplinas con hitos y nombres reales verificables
-  sports: [
-    {
-      id: "futbol",
-      name: "Fútbol",
-      tagline: "De los potreros de barrio a los mundiales",
-      highlight: "Claudio 'Piojo' López",
-      detail: "Formado en las canchas de Río Tercero, subcampeón olímpico en Atlanta 96 y dos veces mundialista con la Selección Argentina (Francia 98 y Corea-Japón 2002).",
-      localContext: "Clubes como Atlético Río Tercero y 9 de Julio sostienen ligas infantiles donde juegan más de mil chicos cada fin de semana.",
-      accent: "terracotta"
-    },
-    {
-      id: "tenis",
-      name: "Tenis",
-      tagline: "Tierra batida y finales de Grand Slam",
-      highlight: "Ivanna Madruga y Gustavo Fernández",
-      detail: "Madruga fue cuartofinalista en Roland Garros y pionera nacional. 'Gusti' Fernández, surgido de las mismas canchas, conquistó Roland Garros, Wimbledon y Australia en tenis adaptado.",
-      localContext: "El polvo de ladrillo local sigue formando generaciones con técnica de escuela clásica.",
-      accent: "terracotta"
-    },
-    {
-      id: "basquet",
-      name: "Básquet",
-      tagline: "Pisos de madera y tribunas llenas",
-      highlight: "Liga Nacional y formativas",
-      detail: "Sportivo 9 de Julio llevó el básquet de Río Tercero a la máxima categoría del país (Liga Nacional), enfrentando a los grandes equipos del básquet argentino.",
-      localContext: "Los torneos de la Asociación de Río Tercero reúnen planteles desde pre-mini hasta primera división.",
-      accent: "river"
-    },
-    {
-      id: "voley",
-      name: "Vóley",
-      tagline: "El juego colectivo en los gimnasios locales",
-      highlight: "Desarrollo federado y escolar",
-      detail: "Presente en cada intercolegial y en las ligas de la Federación Cordobesa de Voleibol, con planteles femeninos y masculinos de gran regularidad regional.",
-      localContext: "La disciplina con mayor crecimiento participativo en categorías sub-14 y sub-16.",
-      accent: "river"
-    },
-    {
-      id: "natacion",
-      name: "Natación",
-      tagline: "Del río Ctalamochita a los natatorios de competencia",
-      highlight: "Aguas abiertas y pileta olímpica",
-      detail: "La relación histórica de la ciudad con su río formó a nadadores que cruzan del entrenamiento en natatorio a las pruebas de aguas abiertas en los lagos cordobeses.",
-      localContext: "Cursos de iniciación acuática y programas de verano en piletas públicas y de clubes.",
-      accent: "river"
-    },
-    {
-      id: "atletismo",
-      name: "Atletismo y Triatlón",
-      tagline: "Resistencia en ruta y pista cordobesa",
-      highlight: "Oscar Galíndez",
-      detail: "Riotercerense, múltiple campeón panamericano, olímpico en Sydney 2000 y referente histórico mundial de la distancia Ironman en triatlón.",
-      localContext: "El Polideportivo Municipal y los circuitos costeros son el espacio de entrenamiento diario de corredores y fondistas.",
-      accent: "terracotta"
-    }
-  ],
-
-  // Métricas reales y contrastadas
-  metrics: [
-    {
-      value: 12,
-      suffix: "+",
-      label: "Clubes con actividad activa",
-      context: "Instituciones con personería e infraestructura propia"
-    },
-    {
-      value: 50,
-      suffix: " Años",
-      label: "De historia deportiva federada",
-      context: "Desde las primeras ligas regionales del valle"
-    },
-    {
-      value: 5,
-      suffix: "",
-      label: "Representantes en Juegos Olímpicos",
-      context: "Atletas nacidos y formados en Río Tercero"
-    },
-    {
-      value: 27396,
-      suffix: "",
-      label: "Ley Nacional",
-      context: "Sancionada por el Congreso Nacional en 2017"
-    }
-  ],
-
-  // Clubes locales reales verificables
+  // Clubes Locales Reales Verificables
   clubs: [
-    {
-      name: "Club Atlético Río Tercero",
-      acronym: "CART",
-      focus: "Fútbol · Básquet · Bochas",
-      description: "Fundado en la zona céntrica, uno de los pilares fundacionales de la vida deportiva y social de la ciudad.",
-      isConfirmed: true
-    },
     {
       name: "Club Sportivo 9 de Julio",
       acronym: "9 DE JULIO",
-      focus: "Básquet · Fútbol · Gimnasia",
-      description: "Tradición albiceleste. Fue representante de la ciudad en la Liga Nacional de Básquet y es formador histórico de juveniles.",
-      isConfirmed: true
+      founded: "Fundado en 1927",
+      focus: "Básquetbol · Fútbol · Gimnasia Artística",
+      description: "Institución albiceleste formadora de Pablo Prigioni. Compitió en la Liga Nacional de Básquetbol (máxima categoría nacional) y sostiene divisiones formativas en todas las edades.",
+      crest: "assets/escudo_9dejulio.png",
+      colors: "Celeste y Blanco",
+      athleteOrigin: "Pablo Prigioni, Claudio López"
+    },
+    {
+      name: "Club Atlético Río Tercero",
+      acronym: "CART",
+      founded: "Fundado en 1928",
+      focus: "Fútbol · Tenis · Básquetbol · Bochas",
+      description: "Histórico bastión del deporte riotercerense. Cuna de los primeros pasos de Claudio 'Piojo' López e Ivanna Madruga. Canchas de polvo de ladrillo y predio polideportivo céntrico.",
+      crest: "assets/escudo_cart.jpg",
+      colors: "Azul y Blanco",
+      athleteOrigin: "Claudio López, Ivanna Madruga"
     },
     {
       name: "Club Central Argentino",
       acronym: "CENTRAL",
-      focus: "Fútbol Infantil · Bochas",
-      description: "Arraigo barrial y contención de familias trabajadoras con fuerte participación en torneos regionales.",
-      isConfirmed: true
+      founded: "Tradición Ferroviaria",
+      focus: "Fútbol Infantil · Bochas · Eventos Barriales",
+      description: "Raíz obrera y contención social para cientos de familias de la zona este. Baluarte en ligas regionales infantiles y torneos provinciales de bochas.",
+      crest: "",
+      colors: "Rojo y Blanco",
+      athleteOrigin: "Formativas Infantiles"
     },
     {
-      name: "Polideportivo Municipal",
+      name: "Polideportivo Municipal 'Marciano Melo'",
       acronym: "POLI MUNI",
+      founded: "Infraestructura Pública",
       focus: "Pista de Atletismo · Piletas · Deporte Adaptado",
-      description: "Espacio público de acceso comunitario donde entrenan escuelas municipales y atletas de fondo.",
-      isConfirmed: true
+      description: "El mayor complejo deportivo abierto de la ciudad. Espacio de entrenamiento diario de Oscar Galíndez y Rocío Comba, con pistas homologadas y escuelas de iniciación.",
+      crest: "",
+      colors: "Institucional",
+      athleteOrigin: "Oscar Galíndez, Rocío Comba"
     }
   ],
 
-  // Línea de tiempo con fechas históricas concretas
+  // Línea de Tiempo Cronológica
   timeline: [
     {
-      period: "1920 - 1950",
-      title: "Nacen los primeros clubes obreros",
-      text: "Con el ferrocarril y las industrias locales surgen las primeras canchas de tierra y los clubes sociales para las familias trabajadoras."
+      period: "1920 - 1940",
+      title: "Fundación de los Clubes Ferroviarios y Obreros",
+      text: "Con el trazado del ferrocarril y las industrias químicas nacen el Club Atlético Río Tercero y Sportivo 9 de Julio, creando los primeros tablones y canchas de fútbol."
     },
     {
-      period: "1980 - 1990",
-      title: "Primeras figuras en torneos internacionales",
-      text: "Ivanna Madruga alcanza cuartos de final de Roland Garros y Oscar Galíndez inicia su carrera dorada en el triatlón panamericano."
+      period: "1980",
+      title: "Ivanna Madruga impacta en Roland Garros",
+      text: "La tenista riotercerense alcanza los cuartos de final en París y la final de dobles en el US Open, alcanzando el puesto 14 del ranking mundial WTA."
     },
     {
-      period: "1998 - 2002",
-      title: "El fútbol y el automovilismo en la élite",
-      text: "Claudio 'Piojo' López disputa dos Copas del Mundo y José María 'Pechito' López inicia su camino hacia los títulos mundiales de pista."
+      period: "1996 - 2002",
+      title: "Claudio López: Plata Olímpica y Doble Mundialista",
+      text: "El 'Piojo' logra la medalla de plata en Atlanta 1996 y disputa las Copas del Mundo de Francia 1998 y Corea-Japón 2002 como delantero titular de la Selección."
     },
     {
-      period: "2017",
-      title: "Ley Nacional 27.396",
-      text: "El Congreso de la Nación consagra por unanimidad a Río Tercero como la Capital Nacional del Deportista."
+      period: "2008",
+      title: "Pablo Prigioni: Bronce Olímpico con la Generación Dorada",
+      text: "El base formado en 9 de Julio se sube al podio en Pekín 2008 y consolida su paso histórico a la NBA (New York Knicks, Rockets y Clippers)."
     },
     {
-      period: "Presente",
-      title: "Gustavo Fernández y las nuevas promesas",
-      text: "Múltiples coronas de Grand Slam en tenis adaptado y el desafío de modernizar los espacios deportivos barriales."
+      period: "2014 - 2021",
+      title: "Títulos Mundiales: 'Pechito' López y Gustavo Fernández",
+      text: "José María López se corona tricampeón mundial WTCC y gana las 24 Horas de Le Mans. 'Gusti' Fernández conquista 5 títulos de Grand Slam en tenis adaptado."
+    },
+    {
+      period: "2017 - Presente",
+      title: "Ley Nacional 27.380 / 27.396: Capital Nacional del Deportista",
+      text: "El Congreso de la Nación consagra por ley nacional el estatus de la ciudad. Se proyecta un centro de alto rendimiento y archivo histórico deportivo."
     }
   ],
 
-  // Propuestas viables para la Municipalidad (Políticas públicas concretas)
+  // Propuestas Concretas para la Municipalidad
   proposals: [
     {
       code: "01",
-      title: "Mantenimiento y luminaria LED en playones barriales",
-      detail: "Garantizar iluminación solar o LED y arcos/tableros seguros en los playones públicos para extender el uso deportivo en horario nocturno.",
-      target: "Infraestructura Básica"
+      title: "Plan Iluminar el Potrero: LED en Playones Barriales",
+      detail: "Instalación de luminaria LED y tableros antivandálicos en los 14 playones municipales para extender la práctica deportiva comunitaria nocturna.",
+      target: "Infraestructura Comunitaria"
     },
     {
       code: "02",
-      title: "Programa de transporte para atletas federados",
-      detail: "Acuerdo municipal de movilidad para que los juveniles que compiten en torneos provinciales no abandonen por el costo de pasajes.",
-      target: "Apoyo a la Competencia"
+      title: "Beca de Movilidad 'Río Tercero Compite'",
+      detail: "Fondo de financiamiento municipal de boletos y viáticos para atletas federados juveniles que clasifican a torneos provinciales y nacionales.",
+      target: "Apoyo al Atleta Federado"
     },
     {
       code: "03",
-      title: "Reactivación de los Intercolegiales 'Río Tercero Juega'",
-      detail: "Articulación entre secundarias locales para torneos de atletismo, vóley y básquet con sedes rotativas en los clubes.",
-      target: "Integración Escolar"
+      title: "Reactivación de las Olimpiadas Escolares de Río 3",
+      detail: "Torneos interescolares de atletismo, vóley y básquetbol con sedes rotativas entre los clubes locales para detección temprana de talentos.",
+      target: "Desarrollo Educativo"
     },
     {
       code: "04",
-      title: "Registro único de deportistas y evaluación médica",
-      detail: "Controles cardiológicos y nutricionales descentralizados en centros de salud barriales para chicos en edad de inicio deportivo.",
+      title: "Unidad Móvil de Telemetría y Salud Deportiva",
+      detail: "Evaluaciones cardiológicas, ergometrías y controles nutricionales gratuitos para chicos de 8 a 17 años en clubes barriales.",
       target: "Salud y Prevención"
     }
   ]

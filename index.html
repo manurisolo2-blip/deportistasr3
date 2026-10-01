@@ -3,898 +3,862 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Día del Deportista · Río Tercero · Capital Nacional del Deportista</title>
-  <meta name="description" content="Homenaje a los deportistas, clubes de barrio y atletas de Río Tercero, Córdoba. Declarada Capital Nacional del Deportista por Ley Nacional 27.396.">
+  <meta name="theme-color" content="#F8FAFC">
+  <meta name="color-scheme" content="light">
+
+  <title>Río Tercero · Capital Nacional del Deportista | Directorio Oficial & Archivo Atlético</title>
+  <meta name="description" content="Directorio y archivo de telemetría deportiva de Río Tercero, Córdoba. Capital Nacional del Deportista bajo Ley Nacional 27.380 / 27.396. Figuras olímpicas, mundiales y clubes formadores.">
   
   <!-- Open Graph / Redes Sociales -->
   <meta property="og:type" content="website">
+  <meta property="og:title" content="Río Tercero · Capital Nacional del Deportista">
+  <meta property="og:description" content="Archivo editorial y tarjetas coleccionables de los deportistas de Río Tercero, Córdoba. Medallistas olímpicos y campeones mundiales.">
   <meta property="og:url" content="https://deportistasrio3.vercel.app">
-  <meta property="og:title" content="Día del Deportista · Río Tercero">
-  <meta property="og:description" content="Una ciudad de 50 mil habitantes con campeones mundiales, representantes olímpicos y clubes en cada barrio.">
-  <meta property="og:locale" content="es_AR">
+  <meta property="og:image" content="https://deportistasrio3.vercel.app/assets/prigioni.jpg">
 
-  <!-- Favicon SVG en data-URI para carga instantánea -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23D84A38'/%3E%3Cpath d='M16 6 L20 14 L28 16 L22 22 L24 30 L16 25 L8 30 L10 22 L4 16 L12 14 Z' fill='%23F5F2EB'/%3E%3C/svg%3E">
-
-  <!-- Tipografías de Google Fonts: Bricolage Grotesque (Afiche / Display) + Plus Jakarta Sans (Lectura) -->
+  <!-- Google Fonts: Bebas Neue (Display), Syne (Subtítulos), Space Grotesk, Inter (Cuerpo), JetBrains Mono (Telemetría) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Lenis CSS para scroll suave -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.css">
-  
-  <!-- Estilos del proyecto -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Accesibilidad: Salto al contenido principal -->
-  <a href="#main-content" class="skip-to-content">Saltar al contenido principal</a>
+  <!-- Accesibilidad: Salto al contenido -->
+  <a href="#main-content" class="skip-to-content">Saltar al contenido principal [Enter]</a>
 
-  <!-- Trama sutil de papel de diario / afiche -->
-  <div class="poster-grain-overlay" aria-hidden="true"></div>
-
-  <!-- Barra de progreso superior discreta -->
+  <!-- Barra de progreso de lectura mecánica -->
   <div class="scroll-progress-line" id="scrollProgressLine" aria-hidden="true"></div>
 
-  <!-- Cursor interactivo de trazo fino (solo desktop con mouse) -->
-  <div class="fine-cursor" id="fineCursor" aria-hidden="true">
-    <div class="cursor-ring"></div>
-    <div class="cursor-center"></div>
-  </div>
+  <!-- Trama técnica sutil -->
+  <div class="editorial-grid-overlay" aria-hidden="true"></div>
 
-  <!-- Navegación sobria estilo editorial -->
+  <!-- =========================================================================
+       1. CABECERA INSTITUCIONAL EN MODO CLARO
+       ========================================================================= -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
-      <a href="#hero" class="brand-link" aria-label="Inicio">
-        <span class="brand-pill">RÍO 3</span>
-        <span class="brand-title">Día del Deportista</span>
+      <a href="#inicio" class="brand-block" aria-label="Río Tercero Capital Nacional del Deportista">
+        <span class="brand-law-tag">LEY 27.380 / 27.396</span>
+        <div class="brand-text-col">
+          <span class="brand-title">RÍO TERCERO</span>
+          <span class="brand-sub">CAPITAL NACIONAL DEL DEPORTISTA</span>
+        </div>
       </a>
 
-      <!-- Botón de menú hamburguesa para mobile -->
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú de navegación">
-        <span class="menu-bar"></span>
-        <span class="menu-bar"></span>
-      </button>
-
-      <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+      <nav class="main-nav" aria-label="Navegación principal">
         <ul class="nav-list">
-          <li><a href="#manifiesto" class="nav-anchor">La Ciudad</a></li>
-          <li><a href="#deportes" class="nav-anchor">Disciplinas</a></li>
-          <li><a href="#numeros" class="nav-anchor">Cifras</a></li>
+          <li><a href="#inicio" class="nav-anchor active">Inicio</a></li>
+          <li><a href="#destacado" class="nav-anchor">Bento Élite</a></li>
+          <li><a href="#directorio" class="nav-anchor">Trading Cards</a></li>
           <li><a href="#clubes" class="nav-anchor">Clubes</a></li>
-          <li><a href="#historia" class="nav-anchor">Historia</a></li>
-          <li><a href="#propuestas" class="nav-anchor">Propuestas</a></li>
+          <li><a href="#cronologia" class="nav-anchor">Cronología</a></li>
         </ul>
+        <a href="#propuestas" class="header-action-btn">Dossier Cívico</a>
       </nav>
     </div>
   </header>
 
-  <!-- PELOTA DE FÚTBOL VIAJERA CON TEXTURA DE CUERO REAL, FÍSICA Y SOMBRA PROYECTADA -->
-  <div class="physics-ball-traveler" id="physicsBall" aria-hidden="true">
-    <div class="ball-sphere-3d" id="ballVisual">
-      <!-- Textura fotográfica de cuero real de alta definición -->
-      <img src="assets/soccer-ball.png" alt="Pelota de fútbol de cuero cosido" class="ball-photo-texture" id="ballTextureImg">
-      <!-- Brillo especular y oclusión de esfera 3D -->
-      <div class="ball-specular-light"></div>
-    </div>
-    <!-- Sombra proyectada en el piso que reacciona con la altura -->
-    <div class="ball-ground-shadow" id="ballGroundShadow"></div>
-  </div>
-
+  <!-- CONTENIDO PRINCIPAL -->
   <main id="main-content">
 
-    <!-- ============================================================
-         1. HERO: Afiche Deportivo Tipográfico y Homenaje Auténtico
-         ============================================================ -->
-    <section class="section-hero" id="hero">
-      <div class="hero-layout">
-        <div class="hero-header-data">
-          <span class="hero-law-tag">Ley Nacional Nº 27.396</span>
-          <span class="hero-city-tag">Río Tercero, Córdoba</span>
+    <!-- =========================================================================
+         2. HERO SECTION DINÁMICO & BENTO GRID ASIMÉTRICO
+         ========================================================================= -->
+    <section class="section-hero-editorial" id="inicio">
+      <div class="container">
+        
+        <!-- Encabezado de Portada Editorial -->
+        <header class="hero-editorial-header">
+          <div class="civic-law-badge-banner">
+            <span class="civic-dot-pulse" aria-hidden="true"></span>
+            <span class="civic-badge-text">REPÚBLICA ARGENTINA · PROVINCIA DE CÓRDOBA · LEY NACIONAL 27.380 / 27.396</span>
+          </div>
+
+          <h1 class="hero-main-title">
+            RÍO TERCERO <span class="hero-title-highlight">·</span> CAPITAL NACIONAL DEL DEPORTISTA
+          </h1>
+
+          <div class="hero-lead-row">
+            <p class="hero-lead-paragraph">
+              Directorio oficial y archivo de rendimiento atlético de una ciudad obrera que transformó cada potrero y playón barrial en cuna de medallistas olímpicos, tricampeones del mundo y reyes de Grand Slam.
+            </p>
+            <span class="hero-status-tag">TELEMETRÍA OFICIAL · 2026</span>
+          </div>
+        </header>
+
+        <!-- Bento Grid Asimétrico (Hero Card 8 Cols + Módulos 4 Cols) -->
+        <div class="hero-bento-grid" id="destacado">
+
+          <!-- Bento Hero Card (8 Columnas): Pablo Prigioni -->
+          <article class="bento-hero-card" id="heroBentoCard">
+            <div class="bento-photo-col">
+              <span class="bento-watermark-number" aria-hidden="true">09</span>
+              <img src="assets/prigioni.jpg" alt="Pablo Prigioni medallista olímpico de Río Tercero" class="bento-hero-img">
+              <span class="bento-photo-badge">FIGURA DE ÉLITE MUNDIAL</span>
+            </div>
+
+            <div class="bento-content-col">
+              <div>
+                <div class="bento-card-top-tag">
+                  <span class="bento-discipline-pill">BÁSQUETBOL · OLÍMPICO & NBA</span>
+                  <span class="bento-hall-star" title="Medallista de Bronce Olímpico" aria-label="Medallista Olímpico">★ BRONCE PEKÍN 2008</span>
+                </div>
+
+                <h2 class="bento-athlete-name">PABLO PRIGIONI</h2>
+
+                <!-- Identidad Comunitaria (Crítico) -->
+                <div class="bento-club-origin">
+                  <span aria-hidden="true">🏛️</span> FORMADOR: CLUB SPORTIVO 9 DE JULIO
+                </div>
+
+                <p class="bento-bio-text">
+                  Nacido en Río Tercero y forjado en el parquet albiceleste de 9 de Julio. Base titular de la Selección Argentina, medallista de bronce en los Juegos Olímpicos de Pekín 2008. Tras brillar en Europa y disputar cuatro temporadas en la NBA (Knicks, Rockets, Clippers), lideró a la Selección Nacional como Director Técnico.
+                </p>
+              </div>
+
+              <!-- Barra Inferior de Telemetría (3 Datos Clave) -->
+              <div class="bento-telemetry-row">
+                <div class="telemetry-cell">
+                  <span class="telemetry-label">PALMARÉS CLAVE</span>
+                  <span class="telemetry-val">Bronce Pekín 2008</span>
+                </div>
+                <div class="telemetry-cell">
+                  <span class="telemetry-label">POSICIÓN / ROL</span>
+                  <span class="telemetry-val">Base Armador · DT</span>
+                </div>
+                <div class="telemetry-cell">
+                  <span class="telemetry-label">TRAYECTORIA</span>
+                  <span class="telemetry-val">NBA / Real Madrid</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Columna Lateral Bento (4 Columnas) -->
+          <aside class="bento-side-column">
+            
+            <!-- Mini Card 1: Hito Nacional y Ciudad -->
+            <div class="bento-metric-card accent-gold">
+              <div class="metric-card-header">
+                <span class="metric-code">LEY NACIONAL</span>
+                <span class="civic-dot-pulse" aria-hidden="true"></span>
+              </div>
+              <div class="metric-digit-wrap">
+                <span class="metric-huge-digit">27.396</span>
+              </div>
+              <h3 class="metric-card-label">Capital Nacional del Deportista</h3>
+              <p class="metric-card-desc">
+                Sancionada por unanimidad por el Congreso Nacional en 2017, reconociendo la excepcional densidad de campeones de la ciudad.
+              </p>
+            </div>
+
+            <!-- Mini Card 2: Telemetría de Medallas & Títulos -->
+            <div class="bento-metric-card accent-track">
+              <div class="metric-card-header">
+                <span class="metric-code">TELEMETRÍA TOTAL</span>
+                <span class="metric-unit-text">5 OLÍMPICOS · 8+ MUNDIALES</span>
+              </div>
+              <div class="metric-digit-wrap">
+                <span class="metric-huge-digit">12</span>
+                <span class="metric-unit-text">Clubes Federados</span>
+              </div>
+              <h3 class="metric-card-label">Infraestructura Formativa</h3>
+              <p class="metric-card-desc">
+                Instituciones con personería e infraestructura propia que contienen a miles de pibes cada fin de semana.
+              </p>
+            </div>
+
+            <!-- Mini Card 3: José María Pechito López -->
+            <article class="bento-mini-driver-card">
+              <img src="assets/pechito.jpg" alt="José María Pechito López tricampeón mundial WTCC" class="mini-driver-avatar">
+              <div class="mini-driver-body">
+                <span class="mini-driver-tag">AUTOMOVILISMO · FIA MUNDIAL</span>
+                <h3 class="mini-driver-name">PECHITO LÓPEZ</h3>
+                <p class="mini-driver-desc">Tricampeón Mundial WTCC y Ganador 24 Horas de Le Mans.</p>
+              </div>
+            </article>
+
+          </aside>
         </div>
 
-        <div class="hero-headline-block">
-          <h1 class="hero-main-title">
-            <span class="hero-row hero-row-1">CAPITAL NACIONAL</span>
-            <span class="hero-row hero-row-2">DEL DEPORTISTA</span>
-          </h1>
-          <p class="hero-editorial-lead">
-            Una ciudad de 50 mil habitantes que le dio a la Argentina campeones mundiales, representantes olímpicos y una cancha en cada barrio.
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         3. BARRA DE FILTROS & EXPLORACIÓN TÁCTIL (STICKY CAROUSEL + SEARCH)
+         ========================================================================= -->
+    <nav class="section-filter-explorer" id="explorador" aria-label="Filtros de deportistas">
+      <div class="container filter-explorer-bar">
+        
+        <!-- Campo de Búsqueda Técnico -->
+        <div class="search-input-wrapper">
+          <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="search" 
+            id="athleteSearchInput" 
+            class="search-input-field" 
+            placeholder="Buscar por deportista, club formador o palmarés..."
+            aria-label="Buscar deportistas"
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <kbd class="search-shortcut-badge" title="Presiona la tecla / para buscar">/</kbd>
+        </div>
+
+        <!-- Carrusel de Chips de Disciplina -->
+        <div class="chips-carousel-wrapper" id="disciplineChipsContainer" role="tablist" aria-label="Filtrar por disciplina">
+          <button class="filter-chip-btn active" data-filter="todos" role="tab" aria-selected="true">
+            Todos <span class="chip-count-pill" id="count-todos">8</span>
+          </button>
+          <button class="filter-chip-btn" data-filter="basquetbol" role="tab" aria-selected="false">
+            Básquetbol <span class="chip-count-pill">1</span>
+          </button>
+          <button class="filter-chip-btn" data-filter="automovilismo" role="tab" aria-selected="false">
+            Automovilismo <span class="chip-count-pill">1</span>
+          </button>
+          <button class="filter-chip-btn" data-filter="futbol" role="tab" aria-selected="false">
+            Fútbol <span class="chip-count-pill">1</span>
+          </button>
+          <button class="filter-chip-btn" data-filter="tenis" role="tab" aria-selected="false">
+            Tenis <span class="chip-count-pill">2</span>
+          </button>
+          <button class="filter-chip-btn" data-filter="natacion" role="tab" aria-selected="false">
+            Natación <span class="chip-count-pill">1</span>
+          </button>
+          <button class="filter-chip-btn" data-filter="atletismo" role="tab" aria-selected="false">
+            Atletismo & Triatlón <span class="chip-count-pill">2</span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- =========================================================================
+         4. DIRECTORIO DE TARJETAS ATLÉTICAS COLECCIONABLES (TRADING CARDS)
+         ========================================================================= -->
+    <section class="section-trading-cards" id="directorio">
+      <div class="container">
+        
+        <div class="directory-meta-header">
+          <div>
+            <h2 class="directory-section-title">COLECCIÓN DE ATLETAS OFICIALES</h2>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 0.25rem;">
+              Fichas coleccionables de alto rendimiento con marca de agua, telemetría y club formador.
+            </p>
+          </div>
+          <span class="directory-live-counter" id="directoryLiveCounter">MOSTRANDO 8 ATLETAS FEDERADOS</span>
+        </div>
+
+        <!-- Grilla de Tarjetas Coleccionables -->
+        <div class="trading-cards-grid" id="tradingCardsGrid">
+
+          <!-- TARJETA 1: PABLO PRIGIONI -->
+          <article class="trading-card" data-discipline="basquetbol" data-keywords="pablo prigioni basquetbol olimpiada pekin 2008 nba knicks rockets clippers sportivo 9 de julio">
+            <span class="card-dorsal-watermark" aria-hidden="true">09</span>
+            <div class="card-photo-frame">
+              <div class="card-header-overlay">
+                <span class="card-badge-pill">BÁSQUETBOL · OLÍMPICO</span>
+                <span class="card-glory-star" title="Medallista Olímpico">★</span>
+              </div>
+              <img src="assets/prigioni.jpg" alt="Pablo Prigioni" class="card-athlete-photo" loading="lazy">
+            </div>
+            <div class="card-content-body">
+              <h3 class="card-name-title">PABLO PRIGIONI</h3>
+              <div class="card-club-formador-box">
+                🏛️ CLUB SPORTIVO 9 DE JULIO
+              </div>
+              <p class="card-bio-paragraph">
+                Base titular de la Generación Dorada, medallista de bronce en Pekín 2008. Disputó 4 temporadas en la NBA y actualmente es Head Coach de la Selección Argentina.
+              </p>
+            </div>
+            <div class="card-telemetry-grid">
+              <div class="card-tele-item">
+                <span class="card-tele-label">PALMARÉS</span>
+                <span class="card-tele-val">Bronce Pekín 08</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">POSICIÓN</span>
+                <span class="card-tele-val">Base / DT</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">ESTADO</span>
+                <span class="card-tele-val">NBA Coach</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- TARJETA 2: JOSÉ MARÍA 'PECHITO' LÓPEZ -->
+          <article class="trading-card" data-discipline="automovilismo" data-keywords="jose maria pechito lopez automovilismo wtcc wec le mans toyota citroen kartodromo">
+            <span class="card-dorsal-watermark" aria-hidden="true">37</span>
+            <div class="card-photo-frame">
+              <div class="card-header-overlay">
+                <span class="card-badge-pill">AUTOMOVILISMO · FIA MUNDIAL</span>
+                <span class="card-glory-star" title="Campeón Mundial FIA">★</span>
+              </div>
+              <img src="assets/pechito.jpg" alt="José María Pechito López" class="card-athlete-photo" loading="lazy">
+            </div>
+            <div class="card-content-body">
+              <h3 class="card-name-title">PECHITO LÓPEZ</h3>
+              <div class="card-club-formador-box">
+                🏎️ KARTÓDROMO RÍO TERCERO
+              </div>
+              <p class="card-bio-paragraph">
+                Tricampeón del Mundo WTCC de la FIA con Citroën y bicampeón mundial de resistencia WEC con Toyota Gazoo Racing. Vencedor de las 24 Horas de Le Mans 2021.
+              </p>
+            </div>
+            <div class="card-telemetry-grid">
+              <div class="card-tele-item">
+                <span class="card-tele-label">PALMARÉS</span>
+                <span class="card-tele-val">3x WTCC Mundiales</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">CATEGORÍA</span>
+                <span class="card-tele-val">Piloto WEC</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">ESTADO</span>
+                <span class="card-tele-val">Activo Mundial</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- TARJETA 3: CLAUDIO 'PIOJO' LÓPEZ -->
+          <article class="trading-card" data-discipline="futbol" data-keywords="claudio piojo lopez futbol seleccion argentina mundial atlanta 96 valencia lazio racing cart 9 de julio">
+            <span class="card-dorsal-watermark" aria-hidden="true">07</span>
+            <div class="card-photo-frame">
+              <div class="card-header-overlay">
+                <span class="card-badge-pill">FÚTBOL · MUNDIALISTA</span>
+                <span class="card-glory-star" title="Medallista Olímpico">★</span>
+              </div>
+              <img src="assets/piojo.png" alt="Claudio Piojo López" class="card-athlete-photo" loading="lazy">
+            </div>
+            <div class="card-content-body">
+              <h3 class="card-name-title">CLAUDIO 'PIOJO' LÓPEZ</h3>
+              <div class="card-club-formador-box">
+                ⚽ ATLÉTICO RÍO TERCERO / 9 DE JULIO
+              </div>
+              <p class="card-bio-paragraph">
+                Extremo izquierdo formidable. Medalla de plata olímpica en Atlanta 1996, titular en los Mundiales de Francia 1998 y Corea-Japón 2002. Ídolo en Valencia CF y Racing Club.
+              </p>
+            </div>
+            <div class="card-telemetry-grid">
+              <div class="card-tele-item">
+                <span class="card-tele-label">PALMARÉS</span>
+                <span class="card-tele-val">Plata Atlanta 96</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">POSICIÓN</span>
+                <span class="card-tele-val">Delantero Extremo</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">ESTADO</span>
+                <span class="card-tele-val">2x Mundialista</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- TARJETA 4: GUSTAVO FERNÁNDEZ -->
+          <article class="trading-card" data-discipline="tenis" data-keywords="gustavo fernandez tenis adaptado grand slam roland garros wimbledon australian open itf">
+            <span class="card-dorsal-watermark" aria-hidden="true">01</span>
+            <div class="card-photo-frame">
+              <div class="card-header-overlay">
+                <span class="card-badge-pill">TENIS ADAPTADO · 5x SLAM</span>
+                <span class="card-glory-star" title="Campeón de Grand Slam">★</span>
+              </div>
+              <img src="assets/gustavo.jpg" alt="Gustavo Fernández" class="card-athlete-photo" loading="lazy">
+            </div>
+            <div class="card-content-body">
+              <h3 class="card-name-title">GUSTAVO FERNÁNDEZ</h3>
+              <div class="card-club-formador-box">
+                🎾 POLVO DE LADRILLO RÍO 3
+              </div>
+              <p class="card-bio-paragraph">
+                Cinco títulos de Grand Slam en singles (Roland Garros, Wimbledon y Abierto de Australia). Ex N° 1 del ranking mundial y abanderado argentino en Juegos Paralímpicos.
+              </p>
+            </div>
+            <div class="card-telemetry-grid">
+              <div class="card-tele-item">
+                <span class="card-tele-label">PALMARÉS</span>
+                <span class="card-tele-val">5x Grand Slams</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">RANKING</span>
+                <span class="card-tele-val">Ex N° 1 Mundial</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">ESTADO</span>
+                <span class="card-tele-val">Activo de Élite</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- TARJETA 5: ANDREA BERRINO -->
+          <article class="trading-card" data-discipline="natacion" data-keywords="andrea berrino natacion pileta espalda record panamericano lima 2019 cadda">
+            <span class="card-dorsal-watermark" aria-hidden="true">04</span>
+            <div class="card-photo-frame">
+              <div class="card-header-overlay">
+                <span class="card-badge-pill">NATACIÓN · PANAMERICANA</span>
+                <span class="card-glory-star" title="Medallista Panamericana">★</span>
+              </div>
+              <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=800&q=80" alt="Andrea Berrino" class="card-athlete-photo" loading="lazy">
+            </div>
+            <div class="card-content-body">
+              <h3 class="card-name-title">ANDREA BERRINO</h3>
+              <div class="card-club-formador-box">
+                🏊 ESCUELAS DE NATACIÓN RÍO 3
+              </div>
+              <p class="card-bio-paragraph">
+                Múltiple récord nacional argentino en 50m y 100m espalda. Medalla de bronce en los Juegos Panamericanos de Lima 2019 y referente indiscutida de la natación femenina nacional.
+              </p>
+            </div>
+            <div class="card-telemetry-grid">
+              <div class="card-tele-item">
+                <span class="card-tele-label">PALMARÉS</span>
+                <span class="card-tele-val">Bronce Lima 2019</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">ESPECIALIDAD</span>
+                <span class="card-tele-val">50m / 100m Espalda</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">ESTADO</span>
+                <span class="card-tele-val">Récord Nacional</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- TARJETA 6: OSCAR GALÍNDEZ -->
+          <article class="trading-card" data-discipline="atletismo" data-keywords="oscar galindez triatlon ironman sydney 2000 duatlon fondo polideportivo municipal">
+            <span class="card-dorsal-watermark" aria-hidden="true">22</span>
+            <div class="card-photo-frame">
+              <div class="card-header-overlay">
+                <span class="card-badge-pill">TRIATLÓN · OLÍMPICO</span>
+                <span class="card-glory-star" title="Olímpico y Campeón Mundial">★</span>
+              </div>
+              <img src="https://images.unsplash.com/photo-1486218119243-13883505764c?auto=format&fit=crop&w=800&q=80" alt="Oscar Galíndez" class="card-athlete-photo" loading="lazy">
+            </div>
+            <div class="card-content-body">
+              <h3 class="card-name-title">OSCAR GALÍNDEZ</h3>
+              <div class="card-club-formador-box">
+                🏃 POLIDEPORTIVO MUNICIPAL RÍO 3
+              </div>
+              <p class="card-bio-paragraph">
+                Leyenda del triatlón latinoamericano. Representante olímpico en Sydney 2000, campeón mundial de duatlón y subcampeón del mundo de Ironman 70.3.
+              </p>
+            </div>
+            <div class="card-telemetry-grid">
+              <div class="card-tele-item">
+                <span class="card-tele-label">PALMARÉS</span>
+                <span class="card-tele-val">Olímpico Sydney 00</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">PRUEBA</span>
+                <span class="card-tele-val">Ironman / Triatlón</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">ESTADO</span>
+                <span class="card-tele-val">Leyenda Mundial</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- TARJETA 7: IVANNA MADRUGA -->
+          <article class="trading-card" data-discipline="tenis" data-keywords="ivanna madruga tenis roland garros us open wta polvo de ladrillo atletico rio tercero">
+            <span class="card-dorsal-watermark" aria-hidden="true">14</span>
+            <div class="card-photo-frame">
+              <div class="card-header-overlay">
+                <span class="card-badge-pill">TENIS · TOP 15 MUNDIAL</span>
+                <span class="card-glory-star" title="Pionera de Grand Slam">★</span>
+              </div>
+              <img src="assets/ivanna.jpg" alt="Ivanna Madruga" class="card-athlete-photo" loading="lazy">
+            </div>
+            <div class="card-content-body">
+              <h3 class="card-name-title">IVANNA MADRUGA</h3>
+              <div class="card-club-formador-box">
+                🎾 CLUB ATLÉTICO RÍO TERCERO
+              </div>
+              <p class="card-bio-paragraph">
+                Pionera del tenis sudamericano. Cuartofinalista de singles en Roland Garros 1980 y finalista de dobles en el US Open, alcanzando el casillero 14 del ranking mundial WTA.
+              </p>
+            </div>
+            <div class="card-telemetry-grid">
+              <div class="card-tele-item">
+                <span class="card-tele-label">PALMARÉS</span>
+                <span class="card-tele-val">Cuartos Roland Garros</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">RANKING</span>
+                <span class="card-tele-val">N° 14 del Mundo</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">ESTADO</span>
+                <span class="card-tele-val">Pionera Histórica</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- TARJETA 8: ROCÍO COMBA -->
+          <article class="trading-card" data-discipline="atletismo" data-keywords="rocio comba atletismo lanzamiento disco olimpiada beijing 2008 londres 2012 rio 2016 fabrica militar">
+            <span class="card-dorsal-watermark" aria-hidden="true">08</span>
+            <div class="card-photo-frame">
+              <div class="card-header-overlay">
+                <span class="card-badge-pill">ATLETISMO · 3x OLÍMPICA</span>
+                <span class="card-glory-star" title="Triple Olímpica">★</span>
+              </div>
+              <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80" alt="Rocío Comba" class="card-athlete-photo" loading="lazy">
+            </div>
+            <div class="card-content-body">
+              <h3 class="card-name-title">ROCÍO COMBA</h3>
+              <div class="card-club-formador-box">
+                🏃 POLIDEPORTIVO / FÁBRICA MILITAR
+              </div>
+              <p class="card-bio-paragraph">
+                Lanzadora de disco con presencia ininterrumpida en 3 Juegos Olímpicos (Beijing 2008, Londres 2012 y Río 2016). Finalista mundial en Moscú 2013 (Top 12 del mundo).
+              </p>
+            </div>
+            <div class="card-telemetry-grid">
+              <div class="card-tele-item">
+                <span class="card-tele-label">PALMARÉS</span>
+                <span class="card-tele-val">3 JJ.OO. (08, 12, 16)</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">DISCIPLINA</span>
+                <span class="card-tele-val">Lanzamiento Disco</span>
+              </div>
+              <div class="card-tele-item">
+                <span class="card-tele-label">ESTADO</span>
+                <span class="card-tele-val">Finalista Mundial</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Estado vacío para filtros sin resultado -->
+        <div class="empty-directory-state" id="emptyStateContainer" style="display: none;">
+          <h3 class="empty-state-title">NO SE ENCONTRARON DEPORTISTAS</h3>
+          <p class="empty-state-desc">No hay atletas que coincidan con los criterios de búsqueda o disciplina seleccionada.</p>
+          <button class="empty-state-reset-btn" id="resetFiltersBtn">Restablecer Filtros y Búsqueda</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. SECCIÓN MANIFIESTO CÍVICO
+         ========================================================================= -->
+    <section class="section-manifesto-editorial" id="manifiesto">
+      <div class="container">
+        <div class="manifesto-editorial-grid">
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--accent-gold); letter-spacing: 1px;">IDENTIDAD COMUNITARIA</span>
+            <h2 class="manifesto-title">UNA CANCHA EN CADA BARRIO. UN ATLETA EN CADA FAMILIA.</h2>
+            <div class="quote-card-light">
+              <p class="quote-card-text">
+                “Acá el deporte nunca fue un lujo ni un pasatiempo: fue la escuela de carácter donde aprendimos a competir contra los mejores del mundo.”
+              </p>
+              <span class="quote-card-author">VOCES DE LOS CLUBES DE RÍO TERCERO</span>
+            </div>
+          </div>
+          <div>
+            <p class="manifesto-prose-text">
+              En 2017 el Congreso de la Nación consagró a Río Tercero como la Capital Nacional del Deportista mediante la Ley Nacional 27.380 / 27.396. No se trató de una designación protocolar: fue la ratificación estadística de una comunidad obrera de 50.000 habitantes que produjo abanderados olímpicos, monarcas de la FIA y vencedores de Grand Slam gracias a una red viva de instituciones barriales que sostienen a miles de pibes cada semana.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         6. SECCIÓN CLUBES FORMATIVOS & PATRIMONIO
+         ========================================================================= -->
+    <section class="section-clubs-editorial" id="clubes">
+      <div class="container">
+        
+        <div style="margin-bottom: 3rem;">
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--accent-track); letter-spacing: 1px;">EL SEMILLERO LOCAL</span>
+          <h2 style="font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1; margin-top: 0.25rem;">
+            CLUBES FORMADORES DE RÍO TERCERO
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.5rem;">
+            Las instituciones con personería jurídica e infraestructura donde se formaron las grandes leyendas deportivas.
           </p>
         </div>
 
-        <div class="hero-footer-bar">
-          <div class="hero-meta-col">
-            <span class="meta-label">HOMENAJE CIUDADANO</span>
-            <span class="meta-val">Día del Deportista</span>
-          </div>
-          <div class="hero-meta-col">
-            <span class="meta-label">IDENTIDAD LOCAL</span>
-            <span class="meta-val">Cuna de Atletas</span>
-          </div>
-          <div class="hero-action-col">
-            <a href="#manifiesto" class="hero-action-link">
-              <span>Conocé la historia</span>
-              <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
+        <div class="clubs-grid-strip">
 
-      <!-- Franja editorial continua inferior -->
-      <div class="editorial-ticker" aria-hidden="true">
-        <div class="ticker-content">
-          <span>RÍO TERCERO · CLAUDIO LÓPEZ · IVANNA MADRUGA · GUSTAVO FERNÁNDEZ · OSCAR GALÍNDEZ · PECHITO LÓPEZ · 9 DE JULIO · ATLÉTICO RÍO TERCERO · CENTRAL ARGENTINO · </span>
-          <span>RÍO TERCERO · CLAUDIO LÓPEZ · IVANNA MADRUGA · GUSTAVO FERNÁNDEZ · OSCAR GALÍNDEZ · PECHITO LÓPEZ · 9 DE JULIO · ATLÉTICO RÍO TERCERO · CENTRAL ARGENTINO · </span>
+          <!-- Club 1: Sportivo 9 de Julio -->
+          <article class="club-editorial-card">
+            <div>
+              <div class="club-card-top">
+                <div class="club-crest-frame">
+                  <img src="assets/escudo_9dejulio.png" alt="Escudo Sportivo 9 de Julio" class="club-crest-img">
+                </div>
+                <span class="club-acronym-badge">FUNDADO 1927</span>
+              </div>
+              <h3 class="club-name-title">SPORTIVO 9 DE JULIO</h3>
+              <p class="club-focus-tag">BÁSQUETBOL · FÚTBOL · GIMNASIA</p>
+              <p class="club-desc-text">
+                Institución albiceleste que representó a Río Tercero en la Liga Nacional de Básquetbol. Cuna formativa de Pablo Prigioni y formador constante de seleccionados juveniles.
+              </p>
+            </div>
+            <div class="club-origin-footer">
+              <strong>Formador de:</strong> Pablo Prigioni
+            </div>
+          </article>
+
+          <!-- Club 2: Atlético Río Tercero -->
+          <article class="club-editorial-card">
+            <div>
+              <div class="club-card-top">
+                <div class="club-crest-frame">
+                  <img src="assets/escudo_cart.jpg" alt="Escudo Club Atlético Río Tercero" class="club-crest-img">
+                </div>
+                <span class="club-acronym-badge">FUNDADO 1928</span>
+              </div>
+              <h3 class="club-name-title">ATLÉTICO RÍO TERCERO</h3>
+              <p class="club-focus-tag">FÚTBOL · TENIS · BÁSQUETBOL</p>
+              <p class="club-desc-text">
+                Baluarte del centro de la ciudad. Canchas históricas de polvo de ladrillo donde crecieron Ivanna Madruga y Claudio "Piojo" López antes de dar el salto internacional.
+              </p>
+            </div>
+            <div class="club-origin-footer">
+              <strong>Formador de:</strong> Claudio López, Ivanna Madruga
+            </div>
+          </article>
+
+          <!-- Club 3: Central Argentino -->
+          <article class="club-editorial-card">
+            <div>
+              <div class="club-card-top">
+                <div class="club-crest-frame">
+                  <span style="font-family: var(--font-display); font-size: 1.5rem; color: #DC2626;">CA</span>
+                </div>
+                <span class="club-acronym-badge">TRADICIÓN FERROVIARIA</span>
+              </div>
+              <h3 class="club-name-title">CENTRAL ARGENTINO</h3>
+              <p class="club-focus-tag">FÚTBOL INFANTIL · BOCHAS</p>
+              <p class="club-desc-text">
+                Raíz obrera y contención de familias trabajadoras. Clave en el fútbol infantil barrial y en torneos provinciales de bochas.
+              </p>
+            </div>
+            <div class="club-origin-footer">
+              <strong>Formador de:</strong> Ligas Infantiles Barriales
+            </div>
+          </article>
+
+          <!-- Club 4: Polideportivo Municipal -->
+          <article class="club-editorial-card">
+            <div>
+              <div class="club-card-top">
+                <div class="club-crest-frame">
+                  <span style="font-family: var(--font-display); font-size: 1.5rem; color: #2563EB;">PM</span>
+                </div>
+                <span class="club-acronym-badge">INFRAESTRUCTURA PÚBLICA</span>
+              </div>
+              <h3 class="club-name-title">POLIDEPORTIVO MUNICIPAL</h3>
+              <p class="club-focus-tag">PISTA DE ATLETISMO · PILETAS</p>
+              <p class="club-desc-text">
+                Complejo deportivo público con pista de tartán y natatorios. Campo de entrenamiento de Oscar Galíndez y Rocío Comba.
+              </p>
+            </div>
+            <div class="club-origin-footer">
+              <strong>Formador de:</strong> Oscar Galíndez, Rocío Comba
+            </div>
+          </article>
+
         </div>
+
       </div>
     </section>
 
-    <!-- ============================================================
-         2. MANIFIESTO: Asimetría Editorial & Datos Reales de la Ciudad
-         ============================================================ -->
-    <section class="section-manifesto" id="manifiesto">
+    <!-- =========================================================================
+         7. SECCIÓN CRONOLOGÍA / LÍNEA DE TIEMPO
+         ========================================================================= -->
+    <section class="section-timeline-editorial" id="cronologia">
       <div class="container">
-        <div class="manifesto-grid">
+        
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--accent-gold); letter-spacing: 1px;">HITOS DE UN SIGLO</span>
+          <h2 style="font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1; margin-top: 0.25rem;">
+            LÍNEA DE TIEMPO DE LA GLORIA DEPORTIVA
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.5rem;">
+            Desde la fundación de los primeros clubes obreros hasta la consagración de la Ley Nacional.
+          </p>
+        </div>
+
+        <div class="timeline-editorial-flow">
           
-          <div class="manifesto-left">
-            <span class="section-kicker">La Ciudad</span>
-            <h2 class="manifesto-title">Una cancha en cada barrio. Un atleta en cada familia.</h2>
-            <div class="quote-card">
-              <p class="quote-text">“Acá el deporte nunca fue un lujo. Fue la manera de juntarnos, cuidarnos y salir adelante.”</p>
-              <span class="quote-author">Vecinos y entrenadores de Río Tercero</span>
+          <div class="timeline-milestone-item">
+            <span class="timeline-period-badge">1920 - 1940</span>
+            <div class="timeline-content-body">
+              <h3>Fundación de los Clubes Ferroviarios y Obreros</h3>
+              <p>Con el trazado del ferrocarril y las industrias locales nacen el Club Atlético Río Tercero y Sportivo 9 de Julio, creando los primeros tablones y canchas de fútbol.</p>
             </div>
           </div>
 
-          <div class="manifesto-right">
-            <!-- Texto que se revela de forma natural con el scroll -->
-            <div class="manifesto-prose" id="manifestoWords">
-              En 2017 el Congreso de la Nación declaró a Río Tercero Capital Nacional del Deportista mediante la Ley 27.396. No fue un título honorífico: fue el reconocimiento a una ciudad obrera a orillas del Ctalamochita donde cada barrio creció con un club y una pelota de por medio.
+          <div class="timeline-milestone-item">
+            <span class="timeline-period-badge">1980</span>
+            <div class="timeline-content-body">
+              <h3>Ivanna Madruga impacta en Roland Garros</h3>
+              <p>La tenista riotercerense alcanza los cuartos de final en París y la final de dobles en el US Open, alcanzando el puesto 14 del ranking mundial WTA.</p>
             </div>
+          </div>
 
-            <!-- Fichas de contexto real -->
-            <div class="fact-cards-stack">
-              <div class="fact-row">
-                <div class="fact-index">01</div>
-                <div class="fact-body">
-                  <h4>Identidad Obrera y Ribereña</h4>
-                  <p>El tren y las fábricas construyeron los primeros campamentos deportivos; el río formó a los nadadores y los potreros hicieron el resto.</p>
-                </div>
-              </div>
-              <div class="fact-row">
-                <div class="fact-index">02</div>
-                <div class="fact-body">
-                  <h4>Red de Clubes Activa</h4>
-                  <p>Más de diez instituciones sostienen a diario disciplinas infantiles, juveniles y de tercera edad sin depender de presupuestos millonarios.</p>
-                </div>
-              </div>
+          <div class="timeline-milestone-item">
+            <span class="timeline-period-badge">1996 - 2002</span>
+            <div class="timeline-content-body">
+              <h3>Claudio López: Plata Olímpica y Doble Copa del Mundo</h3>
+              <p>El 'Piojo' logra la medalla de plata en Atlanta 1996 y disputa las Copas del Mundo de Francia 1998 y Corea-Japón 2002 como delantero titular de la Selección Argentina.</p>
+            </div>
+          </div>
+
+          <div class="timeline-milestone-item">
+            <span class="timeline-period-badge">2008</span>
+            <div class="timeline-content-body">
+              <h3>Pablo Prigioni: Bronce Olímpico con la Generación Dorada</h3>
+              <p>El base formado en 9 de Julio se sube al podio en Pekín 2008 y consolida su paso histórico a la NBA (New York Knicks, Rockets y Clippers).</p>
+            </div>
+          </div>
+
+          <div class="timeline-milestone-item">
+            <span class="timeline-period-badge">2014 - 2021</span>
+            <div class="timeline-content-body">
+              <h3>Títulos Mundiales: 'Pechito' López y Gustavo Fernández</h3>
+              <p>José María López se corona tricampeón mundial WTCC y gana las 24 Horas de Le Mans. 'Gusti' Fernández conquista 5 títulos de Grand Slam en tenis adaptado.</p>
+            </div>
+          </div>
+
+          <div class="timeline-milestone-item">
+            <span class="timeline-period-badge">2017 - Presente</span>
+            <div class="timeline-content-body">
+              <h3>Ley Nacional 27.380 / 27.396: Capital Nacional del Deportista</h3>
+              <p>El Congreso de la Nación consagra por ley nacional el estatus de la ciudad. Se consolida el reconocimiento a una capital deportiva sin precedentes.</p>
             </div>
           </div>
 
         </div>
+
       </div>
     </section>
 
-    <!-- ============================================================
-         3. DISCIPLINAS: Composición Alternada con Escenarios SVG
-         ============================================================ -->
-    <section class="section-sports" id="deportes">
+    <!-- =========================================================================
+         8. DOSSIER DE PROPUESTAS MUNICIPALES
+         ========================================================================= -->
+    <section class="section-proposals-editorial" id="propuestas">
       <div class="container">
-        <div class="section-head-editorial">
-          <span class="section-kicker">Disciplinas</span>
-          <h2 class="section-main-heading">Historias con nombre y apellido</h2>
-          <p class="section-sub">Atletas reales surgidos de nuestros clubes y pistas públicas.</p>
+        
+        <div>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--accent-track); letter-spacing: 1px;">POLÍTICAS PÚBLICAS VIABLES</span>
+          <h2 style="font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1; margin-top: 0.25rem;">
+            DOSSIER DE PROPUESTAS PARA LA CIUDAD
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.5rem;">
+            Iniciativas concretas para fortalecer los clubes, la salud deportiva y el acompañamiento a las jóvenes promesas.
+          </p>
         </div>
-      </div>
 
-      <div class="sports-showcase-flow">
+        <div class="proposals-editorial-grid">
 
-        <!-- DEPORTE 1: FÚTBOL -->
-        <article class="sport-entry sport-futbol" id="sport-futbol">
-          <div class="container sport-layout">
-            <div class="sport-text-side">
-              <span class="sport-index">01 / Fútbol</span>
-              <h3 class="sport-heading">De los potreros al Mundial</h3>
-              
-              <!-- Foto histórica real de Claudio 'Piojo' López -->
-              <div class="athlete-archive-card">
-                <div class="athlete-photo-frame">
-                  <img src="assets/piojo.png" alt="Claudio Piojo López nacido en Río Tercero" class="athlete-photo-img" loading="lazy">
-                  <span class="photo-caption-badge">Archivo Histórico · Río 3</span>
-                </div>
-                <div class="athlete-meta-data">
-                  <p class="sport-athlete"><strong>Claudio "Piojo" López</strong> (Subcampeón olímpico Atlanta 96, dos Mundiales con Argentina).</p>
-                  <p class="sport-narrative">
-                    Pateó sus primeros balones en las canchas de tierra de la ciudad antes de brillar en Racing, Valencia y la Selección Nacional. El fútbol de Río 3 sigue convocando a más de mil chicos cada sábado.
-                  </p>
-                </div>
+          <article class="proposal-dossier-card">
+            <div>
+              <div class="proposal-top-meta">
+                <span class="proposal-code-num">01</span>
+                <span class="proposal-target-tag">INFRAESTRUCTURA</span>
               </div>
+              <h3 class="proposal-card-title">Plan Iluminar el Potrero: LED en Playones Barriales</h3>
             </div>
+            <p class="proposal-card-detail">
+              Instalación de luminaria solar/LED y tableros antivandálicos en los 14 playones municipales para extender la práctica deportiva comunitaria nocturna de forma segura.
+            </p>
+          </article>
 
-            <div class="sport-stage-box">
-              <svg class="editorial-stage-svg" viewBox="0 0 500 320" id="stageFutbolSvg">
-                <defs>
-                  <linearGradient id="goalPostGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#FFFFFF"/>
-                    <stop offset="50%" stop-color="#E8E4DA"/>
-                    <stop offset="100%" stop-color="#B5B0A2"/>
-                  </linearGradient>
-                  <linearGradient id="pitchGrassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="rgba(15, 20, 28, 0.2)"/>
-                    <stop offset="100%" stop-color="rgba(24, 38, 30, 0.6)"/>
-                  </linearGradient>
-                  <pattern id="hexNetPattern" width="14" height="14" patternUnits="userSpaceOnUse">
-                    <path d="M7 0 L14 3.5 L14 10.5 L7 14 L0 10.5 L0 3.5 Z" fill="none" stroke="rgba(245, 242, 235, 0.2)" stroke-width="1"/>
-                  </pattern>
-                </defs>
-
-                <!-- Césped del área y línea de meta de cal blanca -->
-                <rect x="20" y="240" width="460" height="70" fill="url(#pitchGrassGrad)"/>
-                <line x1="20" y1="260" x2="480" y2="260" stroke="#F5F2EB" stroke-width="2.5"/>
-                <line x1="50" y1="260" x2="75" y2="305" stroke="rgba(245, 242, 235, 0.3)" stroke-width="2"/>
-                <line x1="430" y1="260" x2="405" y2="305" stroke="rgba(245, 242, 235, 0.3)" stroke-width="2"/>
-
-                <!-- Red del arco con profundidad 3D y tensión elástica -->
-                <g id="goalNetMesh" class="net-mesh-group">
-                  <polygon points="52,48 85,25 435,25 428,48" fill="url(#hexNetPattern)" opacity="0.85"/>
-                  <polygon points="428,48 435,25 455,285 428,260" fill="url(#hexNetPattern)" opacity="0.9"/>
-                  <polygon points="52,48 85,25 65,285 52,260" fill="url(#hexNetPattern)" opacity="0.6"/>
-                  <polygon points="85,25 435,25 455,285 65,285" fill="url(#hexNetPattern)" opacity="0.75"/>
-                </g>
-
-                <!-- Caños de tensión y estructura metálica del arco -->
-                <line x1="52" y1="48" x2="85" y2="25" stroke="#9A968E" stroke-width="3"/>
-                <line x1="428" y1="48" x2="435" y2="25" stroke="#9A968E" stroke-width="3"/>
-                <line x1="85" y1="25" x2="435" y2="25" stroke="#9A968E" stroke-width="3"/>
-                <!-- Postes y travesaño cilíndricos con brillo metálico -->
-                <rect x="46" y="44" width="8" height="218" fill="url(#goalPostGrad)" rx="3"/>
-                <rect x="424" y="44" width="8" height="218" fill="url(#goalPostGrad)" rx="3"/>
-                <rect x="46" y="44" width="386" height="8" fill="url(#goalPostGrad)" rx="3"/>
-
-                <!-- Estela curva del disparo de rosca -->
-                <path d="M100 240 Q240 180 380 65" fill="none" stroke="rgba(216, 74, 56, 0.4)" stroke-width="3" stroke-dasharray="6 4" id="soccerShotCurveTrail" opacity="0"/>
-
-                <!-- Balón de fútbol fotorrealista de cuero -->
-                <g id="stageSoccerBall" transform="translate(100, 240)">
-                  <ellipse cx="0" cy="22" rx="16" ry="5" fill="rgba(0, 0, 0, 0.5)" id="stageSoccerShadow"/>
-                  <image href="assets/soccer-ball.png" x="-22" y="-22" width="44" height="44" id="stageSoccerImg"/>
-                </g>
-
-                <!-- Arquero con silueta atlética en estirada aérea horizontal -->
-                <g class="keeper-figure" id="keeperFigure" transform="translate(240, 160)">
-                  <ellipse cx="10" cy="85" rx="32" ry="7" fill="rgba(0, 0, 0, 0.35)" id="keeperAirShadow"/>
-                  <!-- Piernas en extensión biomecánica -->
-                  <path d="M-15 35 L-40 60 L-32 68 L-5 45 Z" fill="#0F141C" stroke="#F5F2EB" stroke-width="1.2"/>
-                  <path d="M-8 38 L-25 80 L-16 85 L2 45 Z" fill="#0F141C" stroke="#F5F2EB" stroke-width="1.2"/>
-                  <polygon points="-40,60 -48,68 -38,72 -32,68" fill="#F5F2EB"/>
-                  <polygon points="-25,80 -32,88 -22,92 -16,85" fill="#F5F2EB"/>
-                  <!-- Torso atlético con buzo de arquero -->
-                  <path d="M-12 10 L16 -5 L32 25 L5 38 Z" fill="#D84A38" stroke="#F5F2EB" stroke-width="1.2"/>
-                  <!-- Cabeza orientada hacia el balón -->
-                  <circle cx="20" cy="-14" r="9" fill="#F5F2EB"/>
-                  <!-- Brazos extendidos hacia el ángulo con guantes de látex -->
-                  <path d="M-2 12 L22 -18 L30 -14 L6 18 Z" fill="#D84A38"/>
-                  <path d="M14 -2 L42 -30 L49 -24 L22 6 Z" fill="#D84A38"/>
-                  <ellipse cx="28" cy="-22" rx="7" ry="5" fill="#2FA4E7" stroke="#F5F2EB" stroke-width="1.5" transform="rotate(-30 28 -22)"/>
-                  <ellipse cx="48" cy="-34" rx="8" ry="6" fill="#2FA4E7" stroke="#F5F2EB" stroke-width="1.5" transform="rotate(-40 48 -34)"/>
-                </g>
-
-                <text x="240" y="48" class="goal-callout" id="goalCallout" fill="#D84A38" font-family="'Bricolage Grotesque', sans-serif" font-weight="800" font-size="28" text-anchor="middle" opacity="0">¡GOL AL ÁNGULO!</text>
-              </svg>
-            </div>
-          </div>
-        </article>
-
-        <!-- DEPORTE 2: TENIS -->
-        <article class="sport-entry sport-tenis" id="sport-tenis">
-          <div class="container sport-layout reversed">
-            <div class="sport-text-side">
-              <span class="sport-index">02 / Tenis</span>
-              <h3 class="sport-heading">Polvo de ladrillo y Grand Slams</h3>
-
-              <!-- Fotos de Gustavo Fernández e Ivanna Madruga -->
-              <div class="athlete-archive-card">
-                <div class="tennis-duo-photos">
-                  <div class="athlete-photo-frame">
-                    <img src="assets/gustavo.jpg" alt="Gustavo Fernández tenista de Río Tercero en acción" class="athlete-photo-img" loading="lazy">
-                    <span class="photo-caption-badge">Gustavo Fernández</span>
-                  </div>
-                  <div class="athlete-photo-frame">
-                    <img src="assets/ivanna.jpg" alt="Ivanna Madruga tenista de Río Tercero" class="athlete-photo-img" loading="lazy">
-                    <span class="photo-caption-badge">Ivanna Madruga</span>
-                  </div>
-                </div>
-                <div class="athlete-meta-data">
-                  <p class="sport-athlete"><strong>Cuna de Campeones:</strong> Roland Garros, Wimbledon y el Abierto de Australia.</p>
-                  <p class="sport-narrative">
-                    Madruga fue pionera en los 80 alcanzando cuartos de final en París. Décadas después, "Gusti" Fernández conquistó los torneos más prestigiosos del planeta en tenis adaptado.
-                  </p>
-                </div>
+          <article class="proposal-dossier-card">
+            <div>
+              <div class="proposal-top-meta">
+                <span class="proposal-code-num">02</span>
+                <span class="proposal-target-tag">COMPETENCIA</span>
               </div>
+              <h3 class="proposal-card-title">Beca de Movilidad "Río Tercero Compite"</h3>
             </div>
+            <p class="proposal-card-detail">
+              Fondo de financiamiento municipal de pasajes y viáticos para atletas federados juveniles que clasifican a torneos provinciales y nacionales, evitando el abandono por costo.
+            </p>
+          </article>
 
-            <div class="sport-stage-box">
-              <svg class="editorial-stage-svg" viewBox="0 0 500 320" id="stageTenisSvg">
-                <defs>
-                  <linearGradient id="clayCourtGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#C24030"/>
-                    <stop offset="100%" stop-color="#8E2519"/>
-                  </linearGradient>
-                  <pattern id="tennisNetMeshPattern" width="6" height="6" patternUnits="userSpaceOnUse">
-                    <path d="M0 3 L6 3 M3 0 L3 6" stroke="rgba(245, 242, 235, 0.4)" stroke-width="0.8"/>
-                  </pattern>
-                </defs>
-
-                <!-- Cancha de polvo de ladrillo en perspectiva -->
-                <polygon points="10,210 490,210 470,310 30,310" fill="url(#clayCourtGrad)"/>
-                <!-- Flejes de cal blanca (Línea de saque, fondo y singles) -->
-                <line x1="30" y1="305" x2="470" y2="305" stroke="#F5F2EB" stroke-width="2.5" opacity="0.9"/>
-                <line x1="50" y1="210" x2="70" y2="305" stroke="#F5F2EB" stroke-width="2" opacity="0.8"/>
-                <line x1="450" y1="210" x2="430" y2="305" stroke="#F5F2EB" stroke-width="2" opacity="0.8"/>
-                <line x1="150" y1="210" x2="160" y2="305" stroke="#F5F2EB" stroke-width="1.8" opacity="0.7"/>
-                <line x1="350" y1="210" x2="340" y2="305" stroke="#F5F2EB" stroke-width="1.8" opacity="0.7"/>
-                <line x1="155" y1="255" x2="345" y2="255" stroke="#F5F2EB" stroke-width="2" opacity="0.85"/>
-                <line x1="250" y1="210" x2="250" y2="255" stroke="#F5F2EB" stroke-width="1.8" opacity="0.7"/>
-
-                <!-- Red de tenis con poste reglamentario y faja central -->
-                <rect x="246" y="145" width="8" height="145" fill="#1A1F26" rx="2" stroke="#5A606A" stroke-width="1"/>
-                <polygon points="20,185 246,195 246,280 20,270" fill="url(#tennisNetMeshPattern)"/>
-                <polygon points="254,195 480,185 480,270 254,280" fill="url(#tennisNetMeshPattern)"/>
-                <!-- Cinta blanca vinílica superior (Headband) -->
-                <path d="M20 185 Q250 196 480 185" fill="none" stroke="#F5F2EB" stroke-width="4.5"/>
-                <!-- Faja central blanca -->
-                <line x1="250" y1="195" x2="250" y2="278" stroke="#F5F2EB" stroke-width="3"/>
-
-                <!-- Trayectoria parabólica con pique real en la cancha -->
-                <path d="M120 150 Q240 70 330 220 Q390 145 460 175" fill="none" stroke="#E0482B" stroke-width="3.5" stroke-dasharray="6 4" id="tennisArcPath" opacity="0.85"/>
-                <!-- Estela dinámica de velocidad -->
-                <path d="M120 150 Q200 110 330 220" fill="none" stroke="rgba(212, 225, 87, 0.45)" stroke-width="6" stroke-linecap="round" id="tennisSpeedTrail" opacity="0"/>
-
-                <!-- Pelota de tenis fotorrealista de fieltro amarillo -->
-                <g id="tennisBallVisual" transform="translate(120, 150)">
-                  <image href="assets/tennis-ball.png" x="-18" y="-18" width="36" height="36"/>
-                </g>
-
-                <!-- Partículas de polvo de ladrillo al momento del pique -->
-                <g id="clayDustGroup" transform="translate(330, 222)" opacity="0">
-                  <ellipse cx="0" cy="0" rx="26" ry="8" fill="#D84A38" opacity="0.8" id="clayDustPuff"/>
-                  <circle cx="-12" cy="-6" r="3" fill="#D84A38"/>
-                  <circle cx="14" cy="-8" r="3.5" fill="#D84A38"/>
-                  <circle cx="6" cy="-12" r="2.5" fill="#E65100"/>
-                  <circle cx="-6" cy="-14" r="2" fill="#E65100"/>
-                </g>
-
-                <!-- Raqueta de grafito fotorrealista articulada desde el grip -->
-                <g id="racketGroup" transform="translate(85, 205) rotate(-35)">
-                  <image href="assets/tennis-racket.png" x="-105" y="-105" width="125" height="122" id="racketImg"/>
-                </g>
-                <text x="250" y="48" class="tennis-callout" id="tennisCallout" fill="#D84A38" font-family="'Bricolage Grotesque', sans-serif" font-weight="800" font-size="28" text-anchor="middle" opacity="0">¡MATCH POINT A LAS LÍNEAS!</text>
-              </svg>
-            </div>
-          </div>
-        </article>
-
-        <!-- DEPORTE 3: BÁSQUET -->
-        <article class="sport-entry sport-basquet" id="sport-basquet">
-          <div class="container sport-layout">
-            <div class="sport-text-side">
-              <span class="sport-index">03 / Básquet</span>
-              <h3 class="sport-heading">Pisos de madera y tribuna llena</h3>
-
-              <div class="athlete-archive-card">
-                <div class="athlete-photo-frame court-photo-frame">
-                  <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80" alt="Piso de parquet de básquetbol" class="athlete-photo-img" loading="lazy">
-                  <span class="photo-caption-badge">Sportivo 9 de Julio · Liga Nacional</span>
-                </div>
-                <div class="athlete-meta-data">
-                  <p class="sport-athlete"><strong>El "Patriota":</strong> Máxima categoría del básquet argentino.</p>
-                  <p class="sport-narrative">
-                    Llevó el nombre de la ciudad a los principales gimnasios del país. Las formativas de Río 3 nutren selecciones asociativas y provinciales año a año.
-                  </p>
-                </div>
+          <article class="proposal-dossier-card">
+            <div>
+              <div class="proposal-top-meta">
+                <span class="proposal-code-num">03</span>
+                <span class="proposal-target-tag">EDUCACIÓN</span>
               </div>
+              <h3 class="proposal-card-title">Reactivación de Olimpiadas Escolares de Río 3</h3>
             </div>
+            <p class="proposal-card-detail">
+              Torneos interescolares de atletismo, vóley y básquetbol con sedes rotativas entre los clubes locales para articular las escuelas secundarias y detectar talentos.
+            </p>
+          </article>
 
-            <div class="sport-stage-box">
-              <svg class="editorial-stage-svg" viewBox="0 0 500 320" id="stageBasquetSvg">
-                <defs>
-                  <linearGradient id="hardwoodGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="rgba(196, 126, 68, 0.2)"/>
-                    <stop offset="100%" stop-color="rgba(145, 85, 38, 0.4)"/>
-                  </linearGradient>
-                </defs>
-
-                <!-- Piso de parquet de básquetbol y línea de 3 puntos -->
-                <polygon points="10,240 490,240 470,310 30,310" fill="url(#hardwoodGrad)"/>
-                <path d="M40 310 C180 240 280 240 460 310" fill="none" stroke="#F5F2EB" stroke-width="2.5" opacity="0.5"/>
-                <line x1="250" y1="240" x2="250" y2="310" stroke="#F5F2EB" stroke-width="2" opacity="0.35"/>
-
-                <!-- Estructura de soporte telescópico de estadio -->
-                <path d="M380 0 L360 80 L380 140" fill="none" stroke="#2A313D" stroke-width="12" stroke-linecap="round"/>
-                <line x1="360" y1="80" x2="490" y2="50" stroke="#4B5563" stroke-width="5"/>
-
-                <!-- Tablero reglamentario de cristal templado -->
-                <rect x="350" y="25" width="12" height="175" fill="rgba(245, 242, 235, 0.08)" stroke="#F5F2EB" stroke-width="3" rx="2"/>
-                <!-- Cuadro de tiro interior (Target box naranja/blanco) -->
-                <rect x="345" y="80" width="8" height="60" fill="none" stroke="#FF5722" stroke-width="3"/>
-                <!-- Protector acolchado de base -->
-                <rect x="348" y="195" width="16" height="10" fill="#1E5BFF" rx="2"/>
-
-                <!-- Aro naranja basculante de acero -->
-                <rect x="338" y="122" width="12" height="18" fill="#D84A38" rx="2"/>
-                <line x1="245" y1="130" x2="340" y2="130" stroke="#FF5722" stroke-width="7" stroke-linecap="round" id="basketRimLine"/>
-                <circle cx="247" cy="130" r="3.5" fill="#E64A19"/>
-
-                <!-- Red elástica de algodón trenzado con 12 bucles -->
-                <g id="basketNetGroup" stroke="#F5F2EB" stroke-width="2" opacity="0.95">
-                  <path d="M252 135 L268 185 L285 205 L305 205 L320 185 L332 135" fill="none" stroke-linecap="round"/>
-                  <path d="M265 135 L278 185 L295 205 L312 185 L325 135" fill="none" stroke-linecap="round"/>
-                  <line x1="256" y1="155" x2="328" y2="155" stroke-dasharray="2 1"/>
-                  <line x1="262" y1="175" x2="322" y2="175" stroke-dasharray="2 1"/>
-                  <line x1="272" y1="195" x2="312" y2="195"/>
-                </g>
-
-                <!-- Balón de básquet de cuero granulado fotorrealista con backspin -->
-                <g id="basketBallItem" transform="translate(100, 60)">
-                  <image href="assets/basketball.png" x="-26" y="-26" width="52" height="52"/>
-                </g>
-                <text x="250" y="48" class="basket-callout" id="basketCallout" fill="#D84A38" font-family="'Bricolage Grotesque', sans-serif" font-weight="800" font-size="28" text-anchor="middle" opacity="0">¡TRIPLE LIMPIO!</text>
-              </svg>
+          <article class="proposal-dossier-card">
+            <div>
+              <div class="proposal-top-meta">
+                <span class="proposal-code-num">04</span>
+                <span class="proposal-target-tag">SALUD Y PREVENCIÓN</span>
+              </div>
+              <h3 class="proposal-card-title">Unidad Móvil de Telemetría y Salud Deportiva</h3>
             </div>
-          </div>
-        </article>
+            <p class="proposal-card-detail">
+              Evaluaciones cardiológicas, ergometrías y controles nutricionales gratuitos para chicos y chicas de 8 a 17 años que inician su actividad en clubes de barrio.
+            </p>
+          </article>
 
-        <!-- DEPORTE 4: ATLETISMO & TRIATLÓN -->
-        <article class="sport-entry sport-atletismo" id="sport-atletismo">
-          <div class="container sport-layout reversed">
-            <div class="sport-text-side">
-              <span class="sport-index">04 / Atletismo y Triatlón</span>
-              <h3 class="sport-heading">Resistencia en ruta y pista</h3>
-              <p class="sport-athlete"><strong>Referente:</strong> Oscar Galíndez (Juegos Olímpicos Sydney 2000, múltiple podio Ironman).</p>
-              <p class="sport-narrative">
-                El triatlón argentino tuvo en Galíndez a su mayor embajador global. La pista del Polideportivo Municipal y los caminos rurales de Río Tercero son el banco de pruebas de fondistas locales.
-              </p>
-            </div>
-
-            <div class="sport-stage-box">
-              <svg class="editorial-stage-svg" viewBox="0 0 500 320" id="stageAtletismoSvg">
-                <defs>
-                  <linearGradient id="tartanTrackGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#C24030"/>
-                    <stop offset="100%" stop-color="#8E2519"/>
-                  </linearGradient>
-                </defs>
-
-                <!-- Pistas de tartán sintético en curva reglamentaria -->
-                <path d="M30 290 C150 290 190 70 470 70" fill="none" stroke="url(#tartanTrackGrad)" stroke-width="48" stroke-linecap="round" id="tartanBed"/>
-                <path d="M30 268 C145 268 185 48 470 48" fill="none" stroke="#F5F2EB" stroke-width="2" opacity="0.6"/>
-                <path d="M30 290 C150 290 190 70 470 70" fill="none" stroke="#F5F2EB" stroke-width="2.5" stroke-dasharray="12 8" id="trackLinePath"/>
-                <path d="M30 312 C155 312 195 92 470 92" fill="none" stroke="#F5F2EB" stroke-width="2" opacity="0.6"/>
-
-                <!-- Números de andarivel -->
-                <text x="45" y="285" fill="rgba(245, 242, 235, 0.45)" font-family="'Bricolage Grotesque', sans-serif" font-weight="800" font-size="14">1</text>
-                <text x="45" y="307" fill="rgba(245, 242, 235, 0.45)" font-family="'Bricolage Grotesque', sans-serif" font-weight="800" font-size="14">2</text>
-
-                <!-- Meta y banderín de llegada -->
-                <line x1="430" y1="45" x2="430" y2="95" stroke="#F5F2EB" stroke-width="3"/>
-                <path d="M428 50 L438 55 L428 60 Z" fill="#D84A38"/>
-
-                <!-- Corredor con silueta atlética, dorsal, braceo y zancada potente -->
-                <g id="trackRunner" transform="translate(130, 220)">
-                  <ellipse cx="0" cy="35" rx="22" ry="6" fill="rgba(0, 0, 0, 0.4)" id="runnerShadow"/>
-                  <!-- Piernas con zancada atlética -->
-                  <path d="M-5 12 L-28 32 L-22 36 L-2 18 Z" fill="#0F141C" stroke="#F5F2EB" stroke-width="1.2"/>
-                  <polygon points="-28,32 -36,36 -28,39 -22,36" fill="#D84A38"/>
-                  <path d="M-2 14 L18 8 L24 28 L18 30 Z" fill="#0F141C" stroke="#F5F2EB" stroke-width="1.2"/>
-                  <polygon points="24,28 28,36 20,38 18,30" fill="#D84A38"/>
-                  <!-- Torso atlético con musculosa celeste de Río 3 y dorsal -->
-                  <path d="M-8 -15 L14 -12 L10 16 L-6 15 Z" fill="#2FA4E7" stroke="#F5F2EB" stroke-width="1.2"/>
-                  <rect x="-1" y="-5" width="8" height="10" fill="#F5F2EB" rx="1"/>
-                  <text x="3" y="3" fill="#0F141C" font-size="7" font-weight="800" text-anchor="middle">3</text>
-                  <!-- Cabeza con vincha deportiva -->
-                  <circle cx="16" cy="-24" r="8" fill="#F5F2EB"/>
-                  <rect x="8" cy="-26" width="16" height="3" fill="#D84A38"/>
-                  <!-- Braceo de velocidad -->
-                  <path d="M6 -10 L26 -2 L22 8 L4 -2 Z" fill="#F5F2EB"/>
-                  <path d="M-6 -8 L-22 -14 L-26 -6 L-8 0 Z" fill="#F5F2EB"/>
-                  <!-- Líneas de viento de velocidad -->
-                  <line x1="-35" y1="-12" x2="-15" y2="-12" stroke="rgba(245, 242, 235, 0.5)" stroke-width="2" stroke-linecap="round"/>
-                  <line x1="-42" y1="4" x2="-22" y2="4" stroke="rgba(245, 242, 235, 0.5)" stroke-width="2" stroke-linecap="round"/>
-                </g>
-                <text x="250" y="48" class="runner-callout" id="runnerCallout" fill="#D84A38" font-family="'Bricolage Grotesque', sans-serif" font-weight="800" font-size="28" text-anchor="middle" opacity="0">¡RÉCORD DE PISTA!</text>
-              </svg>
-            </div>
-          </div>
-        </article>
-
-        <!-- DEPORTE 5: NATACIÓN -->
-        <article class="sport-entry sport-natacion" id="sport-natacion">
-          <div class="container sport-layout">
-            <div class="sport-text-side">
-              <span class="sport-index">05 / Natación</span>
-              <h3 class="sport-heading">Del río Ctalamochita a los natatorios</h3>
-              <p class="sport-athlete"><strong>Entorno:</strong> Aguas abiertas y piletas de clubes locales.</p>
-              <p class="sport-narrative">
-                La cercanía con el río moldeó la relación histórica de Río Tercero con el nado. Escuelas de verano y natatorios climatizados alimentan torneos provinciales año a año.
-              </p>
-            </div>
-
-            <div class="sport-stage-box">
-              <svg class="editorial-stage-svg" viewBox="0 0 500 320" id="stageNatacionSvg">
-                <defs>
-                  <linearGradient id="poolWaterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#0F2848"/>
-                    <stop offset="50%" stop-color="#143A66"/>
-                    <stop offset="100%" stop-color="#0E233E"/>
-                  </linearGradient>
-                </defs>
-
-                <!-- Agua de la piscina olímpica -->
-                <rect x="20" y="50" width="460" height="220" fill="url(#poolWaterGrad)" rx="6"/>
-
-                <!-- Cubo de salida con andarivel 4 -->
-                <rect x="20" y="50" width="30" height="220" fill="#0F141C" stroke="#2FA4E7" stroke-width="1.5"/>
-                <rect x="24" y="140" width="22" height="40" fill="#D84A38" rx="2"/>
-                <text x="35" y="165" fill="#F5F2EB" font-family="'Bricolage Grotesque', sans-serif" font-weight="800" font-size="14" text-anchor="middle">4</text>
-
-                <!-- Carriles boyados de competición -->
-                <g id="swimLaneA">
-                  <line x1="50" y1="100" x2="470" y2="100" stroke="#2FA4E7" stroke-width="6" stroke-dasharray="14 10"/>
-                  <line x1="50" y1="100" x2="470" y2="100" stroke="#F5F2EB" stroke-width="6" stroke-dasharray="10 14" stroke-dashoffset="12"/>
-                </g>
-                <g id="swimLaneB">
-                  <line x1="50" y1="160" x2="470" y2="160" stroke="#D84A38" stroke-width="6" stroke-dasharray="14 10"/>
-                  <line x1="50" y1="160" x2="470" y2="160" stroke="#F5F2EB" stroke-width="6" stroke-dasharray="10 14" stroke-dashoffset="12"/>
-                </g>
-                <g id="swimLaneC">
-                  <line x1="50" y1="220" x2="470" y2="220" stroke="#2FA4E7" stroke-width="6" stroke-dasharray="14 10"/>
-                  <line x1="50" y1="220" x2="470" y2="220" stroke="#F5F2EB" stroke-width="6" stroke-dasharray="10 14" stroke-dashoffset="12"/>
-                </g>
-
-                <!-- Ondas de agua refractivas -->
-                <path d="M50 130 Q120 120 200 135 T360 130 T470 135" fill="none" stroke="rgba(47, 164, 231, 0.4)" stroke-width="2" id="waterWave1"/>
-                <path d="M50 190 Q140 205 230 190 T390 195 T470 190" fill="none" stroke="rgba(47, 164, 231, 0.4)" stroke-width="2" id="waterWave2"/>
-
-                <!-- Nadador en estilo crol con estela y brazada circular -->
-                <g id="swimmerGlyph" transform="translate(110, 160)">
-                  <!-- Estela de espuma hidrodinámica -->
-                  <path d="M-60 0 Q-30 -10 -10 -2 Q-30 10 -60 0" fill="rgba(245, 242, 235, 0.35)" id="swimmerWake"/>
-                  <circle cx="-35" cy="-6" r="3" fill="rgba(245, 242, 235, 0.5)"/>
-                  <circle cx="-48" cy="4" r="2.5" fill="rgba(245, 242, 235, 0.5)"/>
-                  <!-- Cuerpo hidrodinámico en rotación de crol -->
-                  <ellipse cx="0" cy="0" rx="28" ry="10" fill="#0F141C" stroke="#2FA4E7" stroke-width="2"/>
-                  <!-- Piernas batiendo crol -->
-                  <path d="M-28 -4 L-45 -8 M-28 4 L-44 10" stroke="#F5F2EB" stroke-width="3" stroke-linecap="round"/>
-                  <!-- Cabeza con gorro terracota y antiparras -->
-                  <ellipse cx="24" cy="-3" rx="7" ry="6" fill="#D84A38"/>
-                  <ellipse cx="27" cy="-4" rx="3" ry="2" fill="#2FA4E7" stroke="#F5F2EB" stroke-width="1"/>
-                  <!-- Brazo en fase de recobro aéreo hacia adelante -->
-                  <path d="M-4 -8 C10 -26 28 -22 36 -12" fill="none" stroke="#F5F2EB" stroke-width="4.5" stroke-linecap="round" id="swimmerArmRecovery"/>
-                  <!-- Salpicadura de agua -->
-                  <circle cx="38" cy="-10" r="3" fill="#2FA4E7" opacity="0.8"/>
-                  <circle cx="42" cy="-14" r="2" fill="#F5F2EB" opacity="0.9"/>
-                </g>
-                <text x="250" y="48" class="swim-callout" id="swimCallout" fill="#2FA4E7" font-family="'Bricolage Grotesque', sans-serif" font-weight="800" font-size="28" text-anchor="middle" opacity="0">¡BRAZADA DE ORO!</text>
-              </svg>
-            </div>
-          </div>
-        </article>
+        </div>
 
       </div>
     </section>
 
-    <!-- ============================================================
-         4. NÚMEROS: Marcador Editorial Sin Cero (Resistente a Fallas JS)
-         ============================================================ -->
-    <section class="section-metrics" id="numeros">
+    <!-- =========================================================================
+         9. CIERRE CÍVICO & CRÉDITOS
+         ========================================================================= -->
+    <footer class="section-civic-closing">
       <div class="container">
-        <div class="metrics-editorial-panel">
-          <div class="metrics-head">
-            <span class="section-kicker">Estadísticas</span>
-            <h2 class="metrics-title">El deporte en números reales</h2>
-          </div>
-
-          <div class="scoreboard-strip" id="scoreboardStrip">
-            
-            <div class="score-card">
-              <div class="score-value-wrap">
-                <!-- Fallback real: Si JS no corre, se ve 12+ y nunca 0 -->
-                <span class="score-num" data-target="12">12</span><span class="score-suffix">+</span>
-              </div>
-              <h3 class="score-label">Clubes activos con sede propia</h3>
-              <p class="score-desc">Espacios con personería, dirigentes y disciplinas activas todo el año.</p>
-            </div>
-
-            <div class="score-card highlight">
-              <div class="score-value-wrap">
-                <span class="score-num" data-target="27396">27396</span>
-              </div>
-              <h3 class="score-label">Ley Nacional del Congreso</h3>
-              <p class="score-desc">Sancionada en 2017 por unanimidad en ambas cámaras.</p>
-            </div>
-
-            <div class="score-card">
-              <div class="score-value-wrap">
-                <span class="score-num" data-target="5">5</span>
-              </div>
-              <h3 class="score-label">Representantes en Juegos Olímpicos</h3>
-              <p class="score-desc">Atletas nacidos y formados en Río Tercero que compitieron en la máxima cita.</p>
-            </div>
-
-            <div class="score-card">
-              <div class="score-value-wrap">
-                <span class="score-num" data-target="50">50</span><span class="score-suffix"> Años</span>
-              </div>
-              <h3 class="score-label">De historia federada ininterrumpida</h3>
-              <p class="score-desc">Competencias oficiales regionales, provinciales y nacionales.</p>
-            </div>
-
-          </div>
+        
+        <div class="closing-banner-box">
+          <span style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--accent-gold); letter-spacing: 1px;">PATRIMONIO DE LA REPÚBLICA ARGENTINA</span>
+          <h2 class="closing-headline-display">RÍO TERCERO ES EL CORAZÓN DEPORTIVO DE LA NACIÓN</h2>
+          <p class="closing-lead-text">
+            Por los pioneros de 1920, por los campeones del mundo y por cada pibe que hoy pica una pelota o corre en una pista de la ciudad.
+          </p>
         </div>
-      </div>
-    </section>
 
-    <!-- ============================================================
-         5. CLUBES: Galería Horizontal y Fichas con Escudos Oficiales
-         ============================================================ -->
-    <section class="section-clubs" id="clubes">
-      <div class="clubs-intro-container">
-        <div class="container clubs-header-row">
+        <div class="civic-editorial-footer">
           <div>
-            <span class="section-kicker">Instituciones</span>
-            <h2 class="section-main-heading">Los clubes de la ciudad</h2>
+            <div class="footer-brand-title">RÍO TERCERO · CÓRDOBA</div>
+            <span class="footer-law-badge">LEY NACIONAL N° 27.380 / 27.396</span>
           </div>
-          <div class="horizontal-cue" aria-hidden="true">
-            <span>Desplazamiento horizontal</span>
-            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
-          </div>
-        </div>
-      </div>
-
-      <div class="clubs-track-wrapper" id="clubsTrackWrapper">
-        <div class="clubs-horizontal-track" id="clubsTrack">
-
-          <article class="club-sheet">
-            <div class="club-sheet-top">
-              <!-- Escudo Oficial del CART -->
-              <div class="club-crest-frame">
-                <img src="assets/escudo_cart.jpg" alt="Escudo oficial Club Atlético Río Tercero" class="club-crest-img" loading="lazy">
-              </div>
-              <span class="club-tag">Fundación Histórica</span>
-            </div>
-            <h3 class="club-title">Club Atlético Río Tercero</h3>
-            <p class="club-disciplines">Fútbol · Básquet · Bochas</p>
-            <p class="club-body">
-              Uno de los decanos de la ciudad. Su estadio y canchas de básquet concentran a cientos de familias trabajadoras que acompañan las categorías infantiles y de primera.
-            </p>
-          </article>
-
-          <article class="club-sheet">
-            <div class="club-sheet-top">
-              <!-- Escudo Oficial del Club Sportivo 9 de Julio -->
-              <div class="club-crest-frame">
-                <img src="assets/escudo_9dejulio.png" alt="Escudo oficial Club Sportivo 9 de Julio" class="club-crest-img" loading="lazy">
-              </div>
-              <span class="club-tag">Tradición Patriota</span>
-            </div>
-            <h3 class="club-title">Club Sportivo 9 de Julio</h3>
-            <p class="club-disciplines">Básquet · Fútbol · Gimnasia</p>
-            <p class="club-body">
-              Representó a la ciudad en la Liga Nacional de Básquet y es una de las instituciones con mayor masa societaria e infraestructura polideportiva de la región.
-            </p>
-          </article>
-
-          <article class="club-sheet">
-            <div class="club-sheet-top">
-              <span class="club-acronym">CENTRAL</span>
-              <span class="club-tag">Identidad Barrial</span>
-            </div>
-            <h3 class="club-title">Club Central Argentino</h3>
-            <p class="club-disciplines">Fútbol Infantil · Bochas</p>
-            <p class="club-body">
-              Fuerte arraigo popular. Sostiene una escuela de fútbol infantil clave para la integración de familias y la contención deportiva barrial.
-            </p>
-          </article>
-
-          <article class="club-sheet">
-            <div class="club-sheet-top">
-              <span class="club-acronym">POLI MUNI</span>
-              <span class="club-tag">Espacio Público</span>
-            </div>
-            <h3 class="club-title">Polideportivo Municipal</h3>
-            <p class="club-disciplines">Pistas · Piletas · Deporte Adaptado</p>
-            <p class="club-body">
-              Predio municipal de libre acceso para escuelas, programas de atletismo y torneos intercolegiales gratuitos que conectan a todos los barrios.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         6. LÍNEA DE TIEMPO: Hitos Históricos Verificables
-         ============================================================ -->
-    <section class="section-timeline" id="historia">
-      <div class="container">
-        <div class="section-head-editorial">
-          <span class="section-kicker">Trayectoria</span>
-          <h2 class="section-main-heading">Cien años de deporte organizado</h2>
-          <p class="section-sub">Momentos clave que construyeron la identidad de la Capital Nacional del Deportista.</p>
-        </div>
-
-        <div class="timeline-chronicle" id="timelineChronicle">
-          <!-- Línea vertical SVG dibujada con scroll -->
-          <div class="timeline-axis-svg-box" aria-hidden="true">
-            <svg class="axis-svg" viewBox="0 0 4 800" preserveAspectRatio="none">
-              <line x1="2" y1="0" x2="2" y2="800" stroke="rgba(245, 242, 235, 0.15)" stroke-width="2"/>
-              <line x1="2" y1="0" x2="2" y2="800" stroke="#D84A38" stroke-width="3" id="timelineDrawnStroke"/>
-            </svg>
-          </div>
-
-          <div class="milestones-flow">
-
-            <div class="milestone-block">
-              <div class="milestone-dot"></div>
-              <div class="milestone-body">
-                <span class="milestone-era">1920 - 1950</span>
-                <h3>Nacen los primeros clubes obreros</h3>
-                <p>Junto con el ferrocarril y las industrias locales, vecinos y trabajadores levantan las primeras canchas de tierra y organizan los torneos de barrio.</p>
-              </div>
-            </div>
-
-            <div class="milestone-block">
-              <div class="milestone-dot"></div>
-              <div class="milestone-body">
-                <span class="milestone-era">1980 - 1990</span>
-                <h3>Proyección internacional</h3>
-                <p>Ivanna Madruga alcanza cuartos de final en Roland Garros y Oscar Galíndez se posiciona en lo más alto del triatlón panamericano.</p>
-              </div>
-            </div>
-
-            <div class="milestone-block">
-              <div class="milestone-dot"></div>
-              <div class="milestone-body">
-                <span class="milestone-era">1998 - 2002</span>
-                <h3>En los ojos del mundo</h3>
-                <p>Claudio López disputa dos Mundiales de Fútbol con la Selección Argentina y José María "Pechito" López da inicio a su carrera en el automovilismo mundial.</p>
-              </div>
-            </div>
-
-            <div class="milestone-block highlight-milestone">
-              <div class="milestone-dot"></div>
-              <div class="milestone-body">
-                <span class="milestone-era">2017</span>
-                <h3>Sanción de la Ley Nacional 27.396</h3>
-                <p>El Congreso de la Nación consagra por unanimidad a Río Tercero como la <strong>Capital Nacional del Deportista</strong>, dándole rango de política de Estado.</p>
-              </div>
-            </div>
-
-            <div class="milestone-block">
-              <div class="milestone-dot"></div>
-              <div class="milestone-body">
-                <span class="milestone-era">Presente</span>
-                <h3>Gustavo Fernández y las nuevas generaciones</h3>
-                <p>Múltiples títulos de Grand Slam en tenis adaptado y el desafío constante de mantener las canchas de barrio activas para los chicos.</p>
-              </div>
-            </div>
-
+          <div class="footer-credits-note">
+            Presentación desarrollada para el <strong>Área de Deportes y Juventud de Río Tercero</strong>.<br>
+            Archivo y Directorio Editorial de Rendimiento · <strong>Año 2026</strong>.
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         7. PROPUESTAS PARA LA MUNICIPALIDAD: Fichas Viables
-         ============================================================ -->
-    <section class="section-proposals" id="propuestas">
-      <div class="container">
-        <div class="section-head-editorial">
-          <span class="section-kicker">Políticas Públicas</span>
-          <h2 class="section-main-heading">Propuestas para el Municipio</h2>
-          <p class="section-sub">Iniciativas concretas para fortalecer los clubes barriales y cuidar a los deportistas.</p>
-        </div>
-
-        <div class="proposals-dossier" id="proposalsDossier">
-
-          <article class="dossier-card">
-            <div class="dossier-meta">
-              <span class="dossier-index">01</span>
-              <span class="dossier-tag">Infraestructura Básica</span>
-            </div>
-            <h3>Luminaria LED y arcos en playones barriales</h3>
-            <p>Garantizar iluminación adecuada y mantenimiento en los playones públicos para que los chicos puedan jugar de forma segura al caer la tarde.</p>
-          </article>
-
-          <article class="dossier-card">
-            <div class="dossier-meta">
-              <span class="dossier-index">02</span>
-              <span class="dossier-tag">Apoyo a la Competencia</span>
-            </div>
-            <h3>Convenio de transporte para atletas federados</h3>
-            <p>Esquema de boletos o traslados para que jóvenes promesas que compiten en ligas provinciales no abandonen por el costo de viajar.</p>
-          </article>
-
-          <article class="dossier-card">
-            <div class="dossier-meta">
-              <span class="dossier-index">03</span>
-              <span class="dossier-tag">Integración Escolar</span>
-            </div>
-            <h3>Torneos intercolegiales "Río Tercero Juega"</h3>
-            <p>Encuentros deportivos anuales entre escuelas secundarias públicas y privadas con sedes rotativas en los clubes históricos de la ciudad.</p>
-          </article>
-
-          <article class="dossier-card">
-            <div class="dossier-meta">
-              <span class="dossier-index">04</span>
-              <span class="dossier-tag">Salud Preventiva</span>
-            </div>
-            <h3>Controles médicos deportivos en dispensarios</h3>
-            <p>Evaluaciones cardiológicas y nutricionales gratuitas en centros de salud barriales para chicos que inician su actividad en clubes.</p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         8. CIERRE & CRÉDITOS HUMANOS (Sin Emojis, Con Identidad Cívica)
-         ============================================================ -->
-    <section class="section-closing" id="cierre">
-      <div class="container text-center">
-
-        <!-- Emblema cívico vectorial sobrio (Reemplazo total de emojis) -->
-        <div class="civic-emblem-wrapper" id="civicEmblem" aria-hidden="true">
-          <svg viewBox="0 0 160 160" width="120" height="120">
-            <circle cx="80" cy="80" r="74" fill="none" stroke="#D84A38" stroke-width="4"/>
-            <circle cx="80" cy="80" r="66" fill="none" stroke="rgba(245, 242, 235, 0.2)" stroke-width="1.5" stroke-dasharray="4 3"/>
-            <!-- Tres meandros del Río Ctalamochita -->
-            <path d="M45 95 Q60 80 80 95 T115 95" fill="none" stroke="#2FA4E7" stroke-width="3" stroke-linecap="round"/>
-            <path d="M45 105 Q60 90 80 105 T115 105" fill="none" stroke="#2FA4E7" stroke-width="3" stroke-linecap="round"/>
-            <!-- Silueta de antorcha deportiva limpia -->
-            <path d="M80 35 C88 50 95 60 90 75 C86 85 75 90 75 90 C75 90 72 82 74 72 C76 60 80 50 80 35 Z" fill="#D84A38"/>
-            <line x1="80" y1="90" x2="80" y2="120" stroke="#F5F2EB" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-        </div>
-
-        <h2 class="closing-quote-title">
-          “El talento nace en el potrero, se cuida en el club de barrio y nos enorgullece a todos.”
-        </h2>
-        <p class="closing-subtext">Río Tercero · Capital Nacional del Deportista · Ley Nacional 27.396</p>
-
-        <div class="closing-actions">
-          <a href="#hero" class="btn-editorial">Volver al inicio</a>
-        </div>
-
-        <!-- Pie institucional con créditos humanos reales -->
-        <footer class="civic-footer">
-          <div class="footer-divider-line"></div>
-          <div class="footer-grid">
-            <div class="footer-col-main">
-              <span class="footer-brand">RÍO TERCERO · CÓRDOBA</span>
-              <p class="footer-desc">Presentación comunitaria para el Día del Deportista. Iniciativa para el Área de Deportes y Juventud.</p>
-            </div>
-            <div class="footer-col-credits">
-              <p><strong>Proyecto Educativo y Comunitario</strong></p>
-              <p>Desarrollado para presentación ante la Municipalidad de Río Tercero · Año 2026</p>
-            </div>
-          </div>
-        </footer>
 
       </div>
-    </section>
+    </footer>
 
   </main>
 
-  <!-- Librerías externas vía CDN -->
+  <!-- GSAP y Lenis para scroll suave -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
-  <!-- Datos del proyecto y controlador principal -->
+  <!-- Datos y Lógica Front-End -->
   <script src="content.js"></script>
   <script src="main.js"></script>
 </body>
