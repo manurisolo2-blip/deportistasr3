@@ -1,6 +1,6 @@
 /* ==========================================================================
    ESTILOS EDITORIALES DE ALTO RENDIMIENTO · MODO CLARO (LIGHT MODE)
-   RÍO TERCERO · CAPITAL NACIONAL DEL DEPORTISTA (LEY 27.380 / 27.396)
+   RÍO TERCERO · CAPITAL NACIONAL DEL DEPORTISTA (LEY NACIONAL N.º 27.378)
    Inspirado en revistas de atletismo moderno, trading cards y telemetría de competición.
    ========================================================================== */
 
@@ -1556,7 +1556,7 @@ body {
 
 @media (min-width: 1024px) {
   .clubs-grid-strip {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

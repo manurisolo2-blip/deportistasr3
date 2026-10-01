@@ -1,6 +1,6 @@
 /**
  * ==========================================================================
- * RÍO TERCERO · CAPITAL NACIONAL DEL DEPORTISTA (LEY 27.380 / 27.396)
+ * RÍO TERCERO · CAPITAL NACIONAL DEL DEPORTISTA (LEY NACIONAL N.º 27.378)
  * Controlador Front-End · Modo Claro Editorial, Trading Cards & Telemetría
  * ==========================================================================
  */
