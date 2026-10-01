@@ -1638,12 +1638,15 @@ body {
 }
 
 .timeline-milestone-item {
-  display: block;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 2rem;
+  align-items: baseline;
   background: var(--bg-surface);
   border: 1px solid var(--border-card);
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 1.5rem 2rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
   transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
 
@@ -1652,8 +1655,25 @@ body {
   border-color: var(--border-strong);
 }
 
-.timeline-period-badge {
-  display: none !important;
+@media (max-width: 640px) {
+  .timeline-milestone-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+.timeline-period-badge,
+.timeline-period-text {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  display: block;
 }
 
 .timeline-content-body h3 {
@@ -2224,9 +2244,10 @@ body {
     gap: 0.6rem;
   }
 
-  .timeline-period-badge {
-    font-size: 0.78rem;
-    padding: 0.25rem 0.5rem;
+  .timeline-period-badge,
+  .timeline-period-text {
+    font-size: 0.95rem;
+    padding: 0;
   }
 
   .timeline-content-body h3 {
