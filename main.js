@@ -1,59 +1,36 @@
 /**
  * ==========================================================================
- * DÍA DEL DEPORTISTA – RÍO TERCERO (RÍO 3)
- * Archivo Principal de JavaScript | Scrollytelling, GSAP, ScrollTrigger & Lenis
+ * DÍA DEL DEPORTISTA · RÍO TERCERO (RÍO 3)
+ * Controlador Front-End · Física de Scroll, GSAP, Lenis y Scrollytelling
  * ==========================================================================
- *
- * Desarrollado con arquitectura Front-End Senior optimizada a 60 FPS:
- * - Animación sincronizada con GPU (transform3d, opacity y stroke-dashoffset).
- * - Control de desplazamiento suave con Lenis y sincronización con GSAP Ticker.
- * - Soporte total para prefers-reduced-motion y vista responsiva (Mobile First).
- * - Totalmente comentado en español para la defensa institucional del proyecto.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   // ------------------------------------------------------------------------
-  // 1. CARGA DE CONTENIDOS DINÁMICOS DESDE CONTENT.JS
-  // ------------------------------------------------------------------------
-  // Permite que la municipalidad o el equipo edite cifras y textos sin tocar el código.
-  const content = window.SITE_CONTENT || {};
-  if (content.institution) {
-    const elTagline = document.getElementById('heroTagline');
-    if (elTagline && content.institution.tagline) {
-      elTagline.textContent = content.institution.tagline;
-    }
-  }
-
-  // ------------------------------------------------------------------------
-  // 2. DETECCIÓN DE PREFERENCIAS DE MOVIMIENTO (ACCESIBILIDAD)
+  // 1. VERIFICACIÓN DE PREFERENCIAS DE MOVIMIENTO (ACCESIBILIDAD)
   // ------------------------------------------------------------------------
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ------------------------------------------------------------------------
-  // 3. INICIALIZACIÓN DE LENIS (SCROLL SUAVE MODERNO)
+  // 2. INICIALIZACIÓN DE LENIS (SCROLL SUAVE E INERCIAL)
   // ------------------------------------------------------------------------
   let lenis = null;
   if (!prefersReducedMotion && typeof Lenis !== 'undefined') {
     lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing exponencial suave
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.8
+      wheelMultiplier: 1.1,
+      touchMultiplier: 1.5
     });
 
-    // Sincronizar el scroll de Lenis con GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
-
-    // Integrar Lenis al ciclo de render (Ticker) de GSAP para evitar desfasajes
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
-
-    // Desactivar el retardo de suavizado para máxima precisión de tracking
     gsap.ticker.lagSmoothing(0);
   }
 
@@ -63,52 +40,72 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 4. CURSOR PERSONALIZADO (SOLO EN DISPOSITIVOS CON PUNTERO FINO)
+  // 3. MENÚ DE NAVEGACIÓN MÓVIL
   // ------------------------------------------------------------------------
-  const customCursor = document.getElementById('customCursor');
-  if (customCursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !prefersReducedMotion) {
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      mainNav.classList.toggle('is-open');
+    });
+
+    // Cerrar al hacer clic en un enlace de navegación
+    const navAnchors = mainNav.querySelectorAll('.nav-anchor');
+    navAnchors.forEach(a => {
+      a.addEventListener('click', () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mainNav.classList.remove('is-open');
+      });
+    });
+  }
+
+  // ------------------------------------------------------------------------
+  // 4. CURSOR FINO CON INTERPOLACIÓN SUAVE (LERP)
+  // ------------------------------------------------------------------------
+  const fineCursor = document.getElementById('fineCursor');
+  if (fineCursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !prefersReducedMotion) {
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
-    let cursorX = mouseX;
-    let cursorY = mouseY;
+    let currX = mouseX;
+    let currY = mouseY;
 
     window.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
     });
 
-    // Bucle suave de interpolación lineal (Lerp) para el cursor
     gsap.ticker.add(() => {
-      cursorX += (mouseX - cursorX) * 0.2;
-      cursorY += (mouseY - cursorY) * 0.2;
-      gsap.set(customCursor, {
-        x: cursorX,
-        y: cursorY,
+      currX += (mouseX - currX) * 0.22;
+      currY += (mouseY - currY) * 0.22;
+      gsap.set(fineCursor, {
+        x: currX,
+        y: currY,
         overwrite: 'auto'
       });
     });
 
-    // Efecto de crecimiento al pasar sobre elementos interactivos
-    const interactives = document.querySelectorAll('a, button, .metric-card, .gallery-card, .event-card, .proposal-card, .pillar-card');
-    interactives.forEach(el => {
-      el.addEventListener('mouseenter', () => customCursor.classList.add('cursor-grow'));
-      el.addEventListener('mouseleave', () => customCursor.classList.remove('cursor-grow'));
+    const clickables = document.querySelectorAll('a, button, .score-card, .club-sheet, .dossier-card');
+    clickables.forEach(elem => {
+      elem.addEventListener('mouseenter', () => fineCursor.classList.add('cursor-grow'));
+      elem.addEventListener('mouseleave', () => fineCursor.classList.remove('cursor-grow'));
     });
   }
 
   // ------------------------------------------------------------------------
-  // 5. NAVEGACIÓN SUAVE Y ANCLAS
+  // 5. NAVEGACIÓN SUAVE ENTRE ANCLAS
   // ------------------------------------------------------------------------
-  const navLinks = document.querySelectorAll('.nav-links a, .hero-actions a, .scroll-cue');
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const targetId = link.getAttribute('href');
-      if (targetId && targetId.startsWith('#')) {
-        e.preventDefault();
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = anchor.getAttribute('href');
+      if (targetId && targetId !== '#') {
         const targetEl = document.querySelector(targetId);
         if (targetEl) {
+          e.preventDefault();
           if (lenis) {
-            lenis.scrollTo(targetEl, { offset: -60, duration: 1.4 });
+            lenis.scrollTo(targetEl, { offset: -70, duration: 1.2 });
           } else {
             targetEl.scrollIntoView({ behavior: 'smooth' });
           }
@@ -118,638 +115,415 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ------------------------------------------------------------------------
-  // 6. BARRA DE PROGRESO DE LECTURA SUPERIOR
+  // 6. BARRA DE PROGRESO DE LECTURA Y ESTADO ACTIVO
   // ------------------------------------------------------------------------
-  const progressBar = document.getElementById('progressBar');
-  if (progressBar) {
+  const progressLine = document.getElementById('scrollProgressLine');
+  if (progressLine) {
     ScrollTrigger.create({
       start: 'top top',
       end: 'bottom bottom',
       onUpdate: (self) => {
-        progressBar.style.width = `${self.progress * 100}%`;
+        progressLine.style.width = `${self.progress * 100}%`;
       }
     });
   }
 
-  // ------------------------------------------------------------------------
-  // 7. NAVEGACIÓN FLOTANTE ACTIVA SEGÚN SECCIÓN VISIBLE
-  // ------------------------------------------------------------------------
-  const sections = document.querySelectorAll('.section');
-  const navItems = document.querySelectorAll('.nav-item');
+  const monitoredSections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-anchor');
 
-  sections.forEach(sec => {
+  monitoredSections.forEach(sec => {
     ScrollTrigger.create({
       trigger: sec,
-      start: 'top 40%',
-      end: 'bottom 40%',
-      onEnter: () => setActiveNav(sec.id),
-      onEnterBack: () => setActiveNav(sec.id)
+      start: 'top 45%',
+      end: 'bottom 45%',
+      onEnter: () => setNavActive(sec.id),
+      onEnterBack: () => setNavActive(sec.id)
     });
   });
 
-  function setActiveNav(id) {
-    navItems.forEach(item => {
-      if (item.getAttribute('data-target') === id) {
-        item.classList.add('active');
+  function setNavActive(id) {
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === `#${id}`) {
+        link.classList.add('active');
       } else {
-        item.classList.remove('active');
+        link.classList.remove('active');
       }
     });
   }
 
   // ------------------------------------------------------------------------
-  // 8. CAMBIO DINÁMICO DE COLOR DE FONDO POR DISCIPLINA / SECCIÓN
+  // 7. MANIFIESTO: REVELACIÓN PROGRESIVA DE PALABRAS
   // ------------------------------------------------------------------------
-  const themedSections = document.querySelectorAll('[data-theme]');
-  const themeColors = {
-    night: '#0B1B3A',
-    electric: '#0E1F42',
-    clay: '#142242',
-    hardwood: '#1C1C36',
-    ocean: '#0F2B5C',
-    azure: '#08335E',
-    terracotta: '#28173B',
-    turq: '#0D2E35'
-  };
-
-  themedSections.forEach(elem => {
-    const themeKey = elem.getAttribute('data-theme');
-    const color = themeColors[themeKey];
-    if (color) {
-      ScrollTrigger.create({
-        trigger: elem,
-        start: 'top 50%',
-        end: 'bottom 50%',
-        onEnter: () => { document.body.style.backgroundColor = color; },
-        onEnterBack: () => { document.body.style.backgroundColor = color; }
-      });
-    }
-  });
-
-  // ------------------------------------------------------------------------
-  // 9. ANIMACIONES DEL HERO (ENTRADA Y FLOTACIÓN DE LA PELOTA)
-  // ------------------------------------------------------------------------
-  const mainBallTraveler = document.getElementById('scrollyBallTraveler');
-  const heroTitle = document.getElementById('heroTitle');
-  const heroSubtitle = document.getElementById('heroSubtitle');
-  const heroBadge = document.querySelector('.hero-badge');
-  const heroActions = document.querySelector('.hero-actions');
-  const scrollCue = document.getElementById('scrollCue');
-
-  if (!prefersReducedMotion) {
-    // Posición inicial de la pelota: Caída desde arriba rebotando hasta el título
-    gsap.set(mainBallTraveler, {
-      x: window.innerWidth * 0.72,
-      y: -120,
-      scale: 1.3,
-      rotation: -180,
-      opacity: 0
-    });
-
-    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-    heroTl
-      .to(mainBallTraveler, {
-        y: window.innerHeight * 0.38,
-        opacity: 1,
-        rotation: 0,
-        duration: 1.5,
-        ease: 'bounce.out'
-      })
-      .from(heroBadge, {
-        opacity: 0,
-        y: -30,
-        duration: 0.8
-      }, '-=1.2')
-      .from('.title-line-1', {
-        opacity: 0,
-        y: 40,
-        duration: 0.8
-      }, '-=0.8')
-      .from('.title-line-2', {
-        opacity: 0,
-        scale: 0.9,
-        y: 50,
-        duration: 0.9,
-        ease: 'back.out(1.7)'
-      }, '-=0.6')
-      .from('.title-line-3', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8
-      }, '-=0.6')
-      .from([heroSubtitle, heroActions, scrollCue], {
-        opacity: 0,
-        y: 30,
-        stagger: 0.2,
-        duration: 0.8
-      }, '-=0.4');
-
-    // Efecto sutil de flotación de la pelota en el Hero mientras está ociosa
-    gsap.to(mainBallTraveler, {
-      y: '+=20',
-      rotation: '+=15',
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: 'sine.inOut'
-    });
-  }
-
-  // ------------------------------------------------------------------------
-  // 10. SECCIÓN 2: QUÉ ES EL DÍA DEL DEPORTISTA (REVELACIÓN PALABRA POR PALABRA)
-  // ------------------------------------------------------------------------
-  const manifestoTextEl = document.getElementById('manifestoText');
-  if (manifestoTextEl) {
-    // Dividir el texto en palabras individuales envueltas en <span>
-    const rawWords = manifestoTextEl.textContent.trim().split(/\s+/);
-    manifestoTextEl.innerHTML = rawWords
-      .map(word => `<span class="manifesto-word">${word}</span> `)
+  const manifestoContainer = document.getElementById('manifestoWords');
+  if (manifestoContainer) {
+    const rawWords = manifestoContainer.textContent.trim().split(/\s+/);
+    manifestoContainer.innerHTML = rawWords
+      .map(w => `<span class="manifesto-word-unit">${w}</span> `)
       .join('');
 
-    const wordSpans = manifestoTextEl.querySelectorAll('.manifesto-word');
+    const wordUnits = manifestoContainer.querySelectorAll('.manifesto-word-unit');
 
     if (!prefersReducedMotion) {
-      gsap.fromTo(wordSpans,
-        {
-          opacity: 0.18,
-          color: 'rgba(247, 247, 242, 0.2)'
-        },
+      gsap.fromTo(wordUnits,
+        { opacity: 0.25 },
         {
           opacity: 1,
-          color: '#F7F7F2',
-          stagger: 0.04,
+          stagger: 0.03,
           scrollTrigger: {
             trigger: '#manifiesto',
-            start: 'top 70%',
-            end: 'center 40%',
-            scrub: 1
+            start: 'top 75%',
+            end: 'center 45%',
+            scrub: 0.8
           }
         }
       );
-    } else {
-      wordSpans.forEach(w => w.classList.add('is-revealed'));
     }
   }
 
   // ------------------------------------------------------------------------
-  // 11. ORQUESTACIÓN DE LA PELOTA VIAJERA GLOBAL A TRAVÉS DE LAS SECCIONES
+  // 8. FÍSICA DE LA PELOTA VIAJERA CON SOMBRA PROYECTADA Y SQUASH & STRETCH
   // ------------------------------------------------------------------------
-  if (!prefersReducedMotion && mainBallTraveler) {
+  const physicsBall = document.getElementById('physicsBall');
+  const ballVisual = document.getElementById('ballVisual');
+  const ballShadow = document.getElementById('ballGroundShadow');
 
-    // Crear una línea de tiempo principal ligada al scroll (scrub)
-    const masterBallTl = gsap.timeline({
+  if (!prefersReducedMotion && physicsBall && ballVisual && ballShadow) {
+    
+    // Posición inicial en el Hero
+    gsap.set(physicsBall, {
+      x: () => window.innerWidth > 900 ? window.innerWidth * 0.76 : window.innerWidth * 0.65,
+      y: -140,
+      opacity: 0
+    });
+    gsap.set(ballShadow, { scale: 0.3, opacity: 0.1 });
+
+    // Rebote inicial con squash & stretch realista al cargar el Hero
+    const heroBounceTl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+
+    heroBounceTl
+      .to(physicsBall, {
+        y: () => window.innerHeight * 0.45,
+        opacity: 1,
+        duration: 1.2,
+        ease: 'bounce.out'
+      })
+      .to(ballShadow, {
+        scale: 1,
+        opacity: 0.7,
+        duration: 1.2,
+        ease: 'bounce.out'
+      }, 0)
+      // Squash sutil al impactar el "piso" del título
+      .to(ballVisual, {
+        scaleX: 1.15,
+        scaleY: 0.85,
+        duration: 0.12,
+        ease: 'power1.inOut'
+      }, '-=0.25')
+      .to(ballVisual, {
+        scaleX: 1,
+        scaleY: 1,
+        duration: 0.25,
+        ease: 'elastic.out(1.2, 0.4)'
+      });
+
+    // Trayectoria continua ligada al avance del scroll (Scrub suave 0.8)
+    const ballJourney = gsap.timeline({
       scrollTrigger: {
         trigger: '#main-content',
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 1.2
+        scrub: 0.8
       }
     });
 
-    // Etapa 1: Del Hero a la sección Manifiesto (se desplaza hacia la izquierda rotando)
-    masterBallTl.to(mainBallTraveler, {
-      x: () => window.innerWidth * 0.18,
-      y: () => window.innerHeight * 0.65,
-      scale: 0.9,
+    // 1. Manifiesto
+    ballJourney.to(physicsBall, {
+      x: () => window.innerWidth * 0.15,
+      y: () => window.innerHeight * 0.6,
       rotation: 360,
       ease: 'none'
     });
+    ballJourney.to(ballShadow, { scale: 0.85, opacity: 0.55 }, '<');
 
-    // Etapa 2: A través de Deportes - Panel Fútbol
-    masterBallTl.to(mainBallTraveler, {
-      x: () => window.innerWidth * 0.75,
-      y: () => window.innerHeight * 0.5,
-      scale: 1.1,
+    // 2. Fútbol
+    ballJourney.to(physicsBall, {
+      x: () => window.innerWidth > 900 ? window.innerWidth * 0.72 : window.innerWidth * 0.55,
+      y: () => window.innerHeight * 0.48,
       rotation: 720,
       ease: 'none'
     });
 
-    // Etapa 3: Hacia la raqueta de Tenis (diagonal enérgica)
-    masterBallTl.to(mainBallTraveler, {
-      x: () => window.innerWidth * 0.65,
+    // 3. Tenis
+    ballJourney.to(physicsBall, {
+      x: () => window.innerWidth * 0.25,
       y: () => window.innerHeight * 0.55,
-      scale: 0.85,
       rotation: 1080,
       ease: 'none'
     });
 
-    // Etapa 4: Hacia el aro de Básquet (cae en picada vertical)
-    masterBallTl.to(mainBallTraveler, {
-      x: () => window.innerWidth * 0.7,
-      y: () => window.innerHeight * 0.45,
-      scale: 1.05,
+    // 4. Básquet
+    ballJourney.to(physicsBall, {
+      x: () => window.innerWidth > 900 ? window.innerWidth * 0.7 : window.innerWidth * 0.5,
+      y: () => window.innerHeight * 0.42,
       rotation: 1440,
       ease: 'none'
     });
 
-    // Etapa 5: Hacia la pista de Natación y Atletismo
-    masterBallTl.to(mainBallTraveler, {
-      x: () => window.innerWidth * 0.8,
-      y: () => window.innerHeight * 0.6,
-      scale: 0.9,
+    // 5. Atletismo
+    ballJourney.to(physicsBall, {
+      x: () => window.innerWidth * 0.2,
+      y: () => window.innerHeight * 0.62,
       rotation: 1800,
       ease: 'none'
     });
 
-    // Etapa 6: Sección Métricas (se posiciona en el costado derecho)
-    masterBallTl.to(mainBallTraveler, {
-      x: () => window.innerWidth * 0.85,
-      y: () => window.innerHeight * 0.7,
-      scale: 0.95,
+    // 6. Cierre
+    ballJourney.to(physicsBall, {
+      x: () => window.innerWidth * 0.5,
+      y: () => window.innerHeight * 0.45,
       rotation: 2160,
-      ease: 'none'
-    });
-
-    // Etapa 7: Galería Horizontal (pasa al centro inferior)
-    masterBallTl.to(mainBallTraveler, {
-      x: () => window.innerWidth * 0.5,
-      y: () => window.innerHeight * 0.85,
-      scale: 0.75,
-      rotation: 2520,
-      ease: 'none'
-    });
-
-    // Etapa 8: Línea de Tiempo (acompaña el descenso por el eje central)
-    masterBallTl.to(mainBallTraveler, {
-      x: () => window.innerWidth * 0.22,
-      y: () => window.innerHeight * 0.5,
-      scale: 0.8,
-      rotation: 2880,
-      ease: 'none'
-    });
-
-    // Etapa 9: Agenda y Propuestas
-    masterBallTl.to(mainBallTraveler, {
-      x: () => window.innerWidth * 0.82,
-      y: () => window.innerHeight * 0.4,
-      scale: 0.9,
-      rotation: 3240,
-      ease: 'none'
-    });
-
-    // Etapa 10: Cierre - Converge hacia el emblema central
-    masterBallTl.to(mainBallTraveler, {
-      x: () => window.innerWidth * 0.5,
-      y: () => window.innerHeight * 0.38,
-      scale: 0.6,
-      rotation: 3600,
+      scale: 0.5,
       opacity: 0,
       ease: 'power2.in'
     });
   }
 
   // ------------------------------------------------------------------------
-  // 12. ESCENARIOS SVG ESPECÍFICOS POR DEPORTE (SCRUBBED MICRO-ANIMATIONS)
+  // 9. ESCENARIOS VECTORIALES POR DISCIPLINA (FÍSICA ESPECÍFICA)
   // ------------------------------------------------------------------------
   if (!prefersReducedMotion) {
 
-    // 12.1 FÚTBOL: Arquero que se estira y texto ¡GOL!
-    const keeperGroup = document.getElementById('keeperGroup');
-    const svgGoalText = document.getElementById('svgGoalText');
-    if (keeperGroup && svgGoalText) {
+    // 9.1 FÚTBOL: Estirada del arquero y gol
+    const keeperFigure = document.getElementById('keeperFigure');
+    const goalCallout = document.getElementById('goalCallout');
+    if (keeperFigure && goalCallout) {
       gsap.timeline({
         scrollTrigger: {
           trigger: '#sport-futbol',
-          start: 'top 60%',
+          start: 'top 65%',
           end: 'bottom 40%',
-          scrub: 1
+          scrub: 0.8
         }
       })
-      .to(keeperGroup, {
-        x: '-=70',
-        y: '-=40',
-        rotation: -25,
+      .to(keeperFigure, {
+        x: '-=60',
+        y: '-=30',
+        rotation: -20,
         transformOrigin: 'bottom center',
         duration: 1
       })
-      .to(svgGoalText, {
+      .to(goalCallout, {
         opacity: 1,
-        scale: 1.2,
+        scale: 1.15,
         transformOrigin: 'center center',
-        duration: 0.6
+        duration: 0.5
       }, '-=0.3');
     }
 
-    // 12.2 TENIS: Swing de la raqueta y disparo de la pelota de tenis
-    const tennisRacket = document.getElementById('tennisRacket');
-    const tennisBall = document.getElementById('tennisBall');
-    const tennisTrail = document.getElementById('tennisTrail');
-    if (tennisRacket && tennisBall && tennisTrail) {
-      const tennisPathLen = tennisTrail.getTotalLength ? tennisTrail.getTotalLength() : 400;
-      gsap.set(tennisTrail, { strokeDasharray: tennisPathLen, strokeDashoffset: tennisPathLen });
+    // 9.2 TENIS: Swing en tres tiempos (preparación, golpe seco, seguimiento)
+    const racketGroup = document.getElementById('racketGroup');
+    const tennisBallVisual = document.getElementById('tennisBallVisual');
+    const tennisArc = document.getElementById('tennisArcPath');
+    if (racketGroup && tennisBallVisual && tennisArc) {
+      const arcLen = tennisArc.getTotalLength ? tennisArc.getTotalLength() : 380;
+      gsap.set(tennisArc, { strokeDasharray: arcLen, strokeDashoffset: arcLen });
 
       gsap.timeline({
         scrollTrigger: {
           trigger: '#sport-tenis',
           start: 'top 65%',
-          end: 'bottom 35%',
-          scrub: 1
+          end: 'bottom 40%',
+          scrub: 0.8
         }
       })
-      .to(tennisRacket, {
-        rotation: 40,
-        x: '+=40',
-        y: '-=20',
-        duration: 1
+      // 1. Preparación hacia atrás
+      .to(racketGroup, {
+        rotation: -50,
+        x: '-=15',
+        duration: 0.4
       })
-      .to(tennisBall, {
-        x: '+=380',
-        y: '-=40',
-        scale: 1.4,
-        duration: 1
-      }, '-=0.8')
-      .to(tennisTrail, {
+      // 2. Impacto acelerado hacia adelante y follow-through
+      .to(racketGroup, {
+        rotation: 35,
+        x: '+=45',
+        y: '-=10',
+        duration: 0.7,
+        ease: 'power3.out'
+      })
+      // 3. Disparo de la pelota con curva parabólica y pique
+      .to(tennisBallVisual, {
+        x: '+=320',
+        y: '+=30',
+        scale: 1.25,
+        duration: 1,
+        ease: 'power2.out'
+      }, '-=0.6')
+      .to(tennisArc, {
         strokeDashoffset: 0,
         duration: 1
       }, '-=1');
     }
 
-    // 12.3 BÁSQUET: Pelota entra en el aro y sacude la red
-    const basketballItem = document.getElementById('basketballItem');
-    const basketballNet = document.getElementById('basketballNet');
-    if (basketballItem && basketballNet) {
+    // 9.3 BÁSQUET: Tiro parabólico, impacto en aro y sacudida de red
+    const basketBallItem = document.getElementById('basketBallItem');
+    const basketNetGroup = document.getElementById('basketNetGroup');
+    if (basketBallItem && basketNetGroup) {
       gsap.timeline({
         scrollTrigger: {
           trigger: '#sport-basquet',
           start: 'top 65%',
-          end: 'bottom 35%',
-          scrub: 1
+          end: 'bottom 40%',
+          scrub: 0.8
         }
       })
-      .to(basketballItem, {
-        x: 120, // entra directamente por el aro
+      .to(basketBallItem, {
+        x: 185,
+        y: 65,
+        duration: 0.8,
+        ease: 'power1.out'
+      })
+      // Descenso a través de la red
+      .to(basketBallItem, {
+        x: 190,
         y: 110,
-        duration: 1,
+        duration: 0.3,
         ease: 'power2.in'
       })
-      .to(basketballNet, {
-        scaleY: 1.35,
-        scaleX: 0.85,
+      // Deformación física de la red
+      .to(basketNetGroup, {
+        scaleY: 1.3,
+        scaleX: 0.88,
         transformOrigin: 'top center',
-        duration: 0.3
-      }, '-=0.2')
-      .to(basketballNet, {
+        duration: 0.25
+      }, '-=0.15')
+      .to(basketNetGroup, {
         scaleY: 1,
         scaleX: 1,
-        duration: 0.3
+        duration: 0.35,
+        ease: 'elastic.out(1, 0.4)'
       })
-      .to(basketballItem, {
-        y: 280,
-        opacity: 0.2,
+      .to(basketBallItem, {
+        y: 220,
+        opacity: 0.3,
         duration: 0.5
       });
     }
 
-    // 12.4 VÓLEY: Parábola de remate
-    const voleyBall = document.getElementById('voleyBall');
-    if (voleyBall) {
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: '#sport-voley',
-          start: 'top 65%',
-          end: 'bottom 35%',
-          scrub: 1
-        }
-      })
-      .to(voleyBall, {
-        x: '+=180',
-        y: '+=200',
-        scale: 1.3,
-        rotation: 360,
-        duration: 1
-      });
-    }
+    // 9.4 ATLETISMO: Trazado de pista y zancada
+    const trackLine = document.getElementById('trackLinePath');
+    const trackRunner = document.getElementById('trackRunner');
+    if (trackLine && trackRunner) {
+      gsap.set(trackLine, { strokeDasharray: 600, strokeDashoffset: 600 });
 
-    // 12.5 NATACIÓN: Carriles que se dibujan y nadador que avanza
-    const lane1 = document.getElementById('lane1');
-    const lane2 = document.getElementById('lane2');
-    const swimmerIcon = document.getElementById('swimmerIcon');
-    if (lane1 && swimmerIcon) {
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: '#sport-natacion',
-          start: 'top 65%',
-          end: 'bottom 35%',
-          scrub: 1
-        }
-      })
-      .fromTo([lane1, lane2], { strokeDashoffset: 500 }, { strokeDashoffset: 0, duration: 1 })
-      .to(swimmerIcon, {
-        x: '+=380',
-        rotation: 6,
-        duration: 1
-      }, '-=1');
-    }
-
-    // 12.6 ATLETISMO: Pista de atletismo y silueta del corredor
-    const trackLane1 = document.getElementById('trackLane1');
-    const runnerFigure = document.getElementById('runnerFigure');
-    if (trackLane1 && runnerFigure) {
       gsap.timeline({
         scrollTrigger: {
           trigger: '#sport-atletismo',
           start: 'top 65%',
-          end: 'bottom 35%',
-          scrub: 1
+          end: 'bottom 40%',
+          scrub: 0.8
         }
       })
-      .fromTo(trackLane1, { strokeDasharray: 800, strokeDashoffset: 800 }, { strokeDashoffset: 0, duration: 1 })
-      .to(runnerFigure, {
-        x: '+=280',
-        y: '-=120',
-        scale: 1.25,
+      .to(trackLine, {
+        strokeDashoffset: 0,
         duration: 1
-      }, '-=1');
+      })
+      .to(trackRunner, {
+        x: '+=250',
+        y: '-=90',
+        scale: 1.2,
+        duration: 1
+      }, '<');
     }
 
-    // 12.7 HOCKEY: Golpe del palo y bocha disparada
-    const hockeyStick = document.getElementById('hockeyStick');
-    const hockeyBall = document.getElementById('hockeyBall');
-    if (hockeyStick && hockeyBall) {
+    // 9.5 NATACIÓN: Carriles y avance
+    const swimLaneA = document.getElementById('swimLaneA');
+    const swimmerGlyph = document.getElementById('swimmerGlyph');
+    if (swimLaneA && swimmerGlyph) {
       gsap.timeline({
         scrollTrigger: {
-          trigger: '#sport-hockey',
+          trigger: '#sport-natacion',
           start: 'top 65%',
-          end: 'bottom 35%',
-          scrub: 1
+          end: 'bottom 40%',
+          scrub: 0.8
         }
       })
-      .to(hockeyStick, {
-        rotation: 45,
-        duration: 0.6
-      })
-      .to(hockeyBall, {
-        x: '+=180',
-        duration: 0.6
-      }, '-=0.4');
+      .to(swimmerGlyph, {
+        x: '+=300',
+        rotation: 4,
+        duration: 1
+      });
     }
   }
 
   // ------------------------------------------------------------------------
-  // 13. SECCIÓN 4: CONTADORES NUMÉRICOS ANIMADOS
+  // 10. MARCADOR DE NÚMEROS: ANIMACIÓN CONDICIONAL (SIN ARRANQUE EN CERO)
   // ------------------------------------------------------------------------
-  const counters = document.querySelectorAll('.counter');
-  counters.forEach(counter => {
-    const target = parseInt(counter.getAttribute('data-target'), 10) || 0;
-
-    ScrollTrigger.create({
-      trigger: counter,
-      start: 'top 85%',
-      once: true,
-      onEnter: () => {
-        if (!prefersReducedMotion) {
-          const obj = { val: 0 };
-          gsap.to(obj, {
-            val: target,
-            duration: 2,
+  const scoreNumbers = document.querySelectorAll('.score-num');
+  scoreNumbers.forEach(elem => {
+    const finalValue = parseInt(elem.getAttribute('data-target'), 10);
+    if (!isNaN(finalValue) && !prefersReducedMotion) {
+      ScrollTrigger.create({
+        trigger: elem,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+          const counterObj = { val: 0 };
+          gsap.to(counterObj, {
+            val: finalValue,
+            duration: 1.8,
             ease: 'power2.out',
             onUpdate: () => {
-              counter.textContent = Math.floor(obj.val).toLocaleString('es-AR');
+              elem.textContent = Math.floor(counterObj.val).toLocaleString('es-AR');
             }
           });
-        } else {
-          counter.textContent = target.toLocaleString('es-AR');
         }
-      }
-    });
+      });
+    }
   });
 
   // ------------------------------------------------------------------------
-  // 14. SECCIÓN 5: GALERÍA HORIZONTAL CON SCROLLTRIGGER PIN
+  // 11. CLUBES: SCROLL HORIZONTAL CONDICIONAL (SOLO EN ESCRITORIO/TABLET)
   // ------------------------------------------------------------------------
-  const horizontalTrack = document.getElementById('horizontalTrack');
-  const galleryWrapper = document.getElementById('galleryPinWrapper');
+  const clubsTrack = document.getElementById('clubsTrack');
+  const clubsWrapper = document.getElementById('clubsTrackWrapper');
 
-  if (horizontalTrack && galleryWrapper && !prefersReducedMotion) {
-    // Calculamos el desplazamiento total requerido para mostrar todas las tarjetas
-    const getScrollAmount = () => {
-      const trackWidth = horizontalTrack.scrollWidth;
-      return -(trackWidth - window.innerWidth + 120);
-    };
+  if (clubsTrack && clubsWrapper && window.innerWidth > 768 && !prefersReducedMotion) {
+    const getTravelDistance = () => -(clubsTrack.scrollWidth - window.innerWidth + 80);
 
-    gsap.to(horizontalTrack, {
-      x: getScrollAmount,
+    gsap.to(clubsTrack, {
+      x: getTravelDistance,
       ease: 'none',
       scrollTrigger: {
-        trigger: '#galeria',
+        trigger: '#clubes',
         pin: true,
-        scrub: 1,
+        scrub: 0.8,
         start: 'top top',
-        end: () => `+=${horizontalTrack.scrollWidth - window.innerWidth + 400}`,
+        end: () => `+=${clubsTrack.scrollWidth - window.innerWidth + 300}`,
         invalidateOnRefresh: true
       }
     });
   }
 
   // ------------------------------------------------------------------------
-  // 15. SECCIÓN 6: LÍNEA DE TIEMPO SVG DIBUJADA CON EL SCROLL
+  // 12. LÍNEA DE TIEMPO: TRAZADO VERTICAL CON SCROLL
   // ------------------------------------------------------------------------
-  const timelinePathDrawn = document.getElementById('timelinePathDrawn');
-  const milestones = document.querySelectorAll('.milestone-item');
+  const timelineStroke = document.getElementById('timelineDrawnStroke');
+  if (timelineStroke && !prefersReducedMotion) {
+    gsap.set(timelineStroke, { strokeDasharray: 800, strokeDashoffset: 800 });
 
-  if (timelinePathDrawn && !prefersReducedMotion) {
-    const timelineLen = 1000;
-    gsap.set(timelinePathDrawn, {
-      strokeDasharray: timelineLen,
-      strokeDashoffset: timelineLen
-    });
-
-    gsap.to(timelinePathDrawn, {
+    gsap.to(timelineStroke, {
       strokeDashoffset: 0,
       ease: 'none',
       scrollTrigger: {
-        trigger: '#timelineContainer',
-        start: 'top 70%',
-        end: 'bottom 60%',
-        scrub: 1
-      }
-    });
-
-    milestones.forEach(item => {
-      gsap.from(item, {
-        opacity: 0,
-        y: 40,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: item,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-    });
-  }
-
-  // ------------------------------------------------------------------------
-  // 16. SECCIÓN 7 & 8: TARJETAS DE EVENTOS Y PROPUESTAS MUNICIPALES (STAGGER)
-  // ------------------------------------------------------------------------
-  const eventCards = document.querySelectorAll('.event-card');
-  if (eventCards.length && !prefersReducedMotion) {
-    gsap.from(eventCards, {
-      opacity: 0,
-      y: 50,
-      stagger: 0.15,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '#eventsGrid',
-        start: 'top 75%'
+        trigger: '#timelineChronicle',
+        start: 'top 75%',
+        end: 'bottom 55%',
+        scrub: 0.8
       }
     });
   }
 
-  const proposalCards = document.querySelectorAll('.proposal-card');
-  if (proposalCards.length && !prefersReducedMotion) {
-    gsap.from(proposalCards, {
-      opacity: 0,
-      y: 50,
-      scale: 0.95,
-      stagger: 0.15,
-      duration: 0.9,
-      ease: 'back.out(1.4)',
-      scrollTrigger: {
-        trigger: '#proposalsGrid',
-        start: 'top 75%'
-      }
-    });
-  }
-
-  // ------------------------------------------------------------------------
-  // 17. SECCIÓN 9: CONVERGENCIA FINAL Y SELLO MUNICIPAL
-  // ------------------------------------------------------------------------
-  const finalEmblem = document.getElementById('finalEmblem');
-  const convergeParticles = document.querySelectorAll('.converge-particle');
-
-  if (finalEmblem && convergeParticles.length && !prefersReducedMotion) {
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: '#cierre',
-        start: 'top 60%',
-        end: 'center 45%',
-        scrub: 1
-      }
-    })
-    .to(convergeParticles, {
-      x: 0,
-      y: 0,
-      scale: 0.2,
-      opacity: 0,
-      stagger: 0.05,
-      duration: 1
-    })
-    .to(finalEmblem, {
-      scale: 1.1,
-      opacity: 1,
-      filter: 'drop-shadow(0 0 45px rgba(255, 212, 0, 0.7))',
-      duration: 1
-    }, '-=0.5')
-    .to(finalEmblem, {
-      scale: 1,
-      duration: 0.4
-    });
-  }
-
-  // Refrescar ScrollTrigger para asegurar que todas las alturas se computen correctamente
+  // Refrescar cálculo de coordenadas
   ScrollTrigger.refresh();
 });

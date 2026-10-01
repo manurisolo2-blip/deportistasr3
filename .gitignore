@@ -17,3 +17,6 @@ desktop.ini
 *.njsproj
 *.sln
 *.sw?
+
+# Testing screenshots
+screenshot_*.png
