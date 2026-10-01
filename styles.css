@@ -298,27 +298,46 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   5. PELOTA VIAJERA CON FÍSICA Y SOMBRA REAL
+   5. PELOTA VIAJERA CON TEXTURA FOTOGRÁFICA 3D, FÍSICA Y SOMBRA REAL
    -------------------------------------------------------------------------- */
 .physics-ball-traveler {
   position: fixed;
   top: 0;
   left: 0;
-  width: 76px;
-  height: 76px;
+  width: 78px;
+  height: 78px;
   pointer-events: none;
   z-index: 100;
   transform: translate3d(-50%, -50%, 0);
   will-change: transform;
 }
 
-.ball-visual-svg {
+.ball-sphere-3d {
   width: 100%;
   height: 100%;
-  display: block;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), inset -4px -4px 10px rgba(0, 0, 0, 0.35);
   transform-origin: center center;
   will-change: transform;
+}
+
+.ball-photo-texture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.ball-specular-light {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 50%),
+              radial-gradient(circle at 78% 82%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 60%);
+  pointer-events: none;
 }
 
 /* Sombra proyectada en el suelo */
@@ -326,9 +345,9 @@ body {
   position: absolute;
   bottom: -14px;
   left: 50%;
-  width: 60px;
+  width: 62px;
   height: 12px;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 75%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 75%);
   transform: translateX(-50%);
   border-radius: 50%;
   pointer-events: none;
@@ -337,13 +356,96 @@ body {
 
 @media (max-width: 768px) {
   .physics-ball-traveler {
-    width: 58px;
-    height: 58px;
+    width: 60px;
+    height: 60px;
   }
   .ball-ground-shadow {
-    width: 44px;
+    width: 46px;
     height: 10px;
   }
+}
+
+/* Tarjetas de archivo fotográfico de atletas reales */
+.athlete-archive-card {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+
+.athlete-photo-frame {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(245, 242, 235, 0.1);
+}
+
+.court-photo-frame {
+  height: 180px;
+}
+
+.athlete-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(25%) contrast(108%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.athlete-archive-card:hover .athlete-photo-img {
+  filter: grayscale(0%) contrast(105%);
+  transform: scale(1.02);
+}
+
+.photo-caption-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: rgba(15, 20, 28, 0.85);
+  color: var(--accent-clay);
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  backdrop-filter: blur(4px);
+}
+
+.tennis-duo-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.tennis-duo-photos .athlete-photo-frame {
+  height: 180px;
+}
+
+/* Escudos de clubes en la galería */
+.club-crest-frame {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245, 242, 235, 0.06);
+  border-radius: 4px;
+  padding: 4px;
+  border: 1px solid var(--border-subtle);
+}
+
+.club-crest-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 /* --------------------------------------------------------------------------
