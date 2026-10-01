@@ -62,7 +62,7 @@ window.DEPORTISTAS_DATA = [
     logroPrincipal: 'Representante Internacional y Nacional',
     categoria: 'Nacional',
     dorsal: '01',
-    imagenUrl: 'https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?auto=format&fit=crop&w=800&q=80',
+    imagenUrl: 'assets/ivano_falchetti.jpg',
     descripcion: 'Destacado tirador deportivo de precisión de nivel nacional e internacional en fosa y hélice, laureado representante del Tiro Federal Río Tercero.'
   },
   {
@@ -73,7 +73,7 @@ window.DEPORTISTAS_DATA = [
     logroPrincipal: 'Plata Olímpica Atlanta 96 · Copas del Mundo 98 y 02',
     categoria: 'Olímpico / Mundial',
     dorsal: '07',
-    imagenUrl: 'assets/piojo.png',
+    imagenUrl: 'assets/piojo_hd.jpg',
     descripcion: 'Medallista de plata en los Juegos Olímpicos de Atlanta 1996 y dos veces mundialista (Francia 1998 y Corea-Japón 2002). Ídolo histórico en Valencia CF, Lazio y Racing Club.'
   },
   {
@@ -84,7 +84,7 @@ window.DEPORTISTAS_DATA = [
     logroPrincipal: '5x Campeón Grand Slam · Ex N° 1 Mundial',
     categoria: 'Grand Slam / Élite',
     dorsal: '01',
-    imagenUrl: 'assets/gustavo.jpg',
+    imagenUrl: 'assets/gustavo_hd.jpg',
     descripcion: 'Cinco veces campeón individual de Grand Slam (Roland Garros, Wimbledon y Abierto de Australia) y ex número 1 del mundo en tenis adaptado.'
   },
   {
@@ -95,7 +95,7 @@ window.DEPORTISTAS_DATA = [
     logroPrincipal: 'Top 15 WTA · Cuartos Roland Garros 1980',
     categoria: 'Pionera Grand Slam',
     dorsal: '14',
-    imagenUrl: 'assets/ivanna.jpg',
+    imagenUrl: 'assets/ivanna_hd.jpg',
     descripcion: 'Pionera del tenis sudamericano que alcanzó el puesto 14 del ranking mundial WTA, cuartofinalista individual en Roland Garros 1980 y finalista en el US Open.'
   },
   {
@@ -117,7 +117,7 @@ window.DEPORTISTAS_DATA = [
     logroPrincipal: 'Olímpico Sydney 2000 · Campeón Mundial Duatlón',
     categoria: 'Olímpico / Ironman',
     dorsal: '22',
-    imagenUrl: 'https://images.unsplash.com/photo-1486218119243-13883505764c?auto=format&fit=crop&w=800&q=80',
+    imagenUrl: 'assets/oscar_galindez.jpg',
     descripcion: 'Leyenda del triatlón latinoamericano, representante olímpico en Sydney 2000, campeón mundial de duatlón y múltiple vencedor del circuito Ironman.'
   }
 ];
@@ -223,7 +223,7 @@ window.SITE_CONTENT = {
       palmares: "Plata Olímpica Atlanta 96",
       category: "Delantero Extremo",
       period: "Mundiales 1998 y 2002",
-      photo: "assets/piojo.png",
+      photo: "assets/piojo_hd.jpg",
       isHeroBento: false,
       bio: "Delantero supersónico formado en las canchas de baby fútbol de Río Tercero. Subcampeón olímpico en Atlanta 1996, titular con la Selección Argentina en las Copas del Mundo de Francia 1998 y Corea-Japón 2002. Campeón en Racing Club, Valencia CF (doble finalista de Champions) y Lazio.",
       telemetry: [
@@ -243,7 +243,7 @@ window.SITE_CONTENT = {
       palmares: "5 Grand Slams Singles",
       category: "Singlista N° 1 Mundial",
       period: "Activo Circuito ITF",
-      photo: "assets/gustavo.jpg",
+      photo: "assets/gustavo_hd.jpg",
       isHeroBento: false,
       bio: "Uno de los máximos tenistas adaptados de la historia. Campeón de 5 torneos de Grand Slam en individuales (Roland Garros 2016, 2019; Abierto de Australia 2017, 2019; Wimbledon 2019) y 3 en dobles. Abanderado de la delegación argentina en los Juegos Paralímpicos de Río 2016.",
       telemetry: [
@@ -283,7 +283,7 @@ window.SITE_CONTENT = {
       palmares: "Olímpico Sydney 2000",
       category: "Fondista / Triatleta",
       period: "Campeón Mundial Duatlón",
-      photo: "https://images.unsplash.com/photo-1486218119243-13883505764c?auto=format&fit=crop&w=800&q=80",
+      photo: "assets/oscar_galindez.jpg",
       isHeroBento: false,
       bio: "Pionero del triatlón y fondismo sudamericano. Representó a Argentina en el debut olímpico de la disciplina en Sydney 2000. Fue campeón mundial de duatlón (1995), subcampeón mundial de Ironman 70.3 (2007) y múltiple vencedor del Ironman Brasil con base de entrenamiento en Río Tercero.",
       telemetry: [
@@ -303,7 +303,7 @@ window.SITE_CONTENT = {
       palmares: "Top 15 Mundial WTA",
       category: "Singlista / Pionera",
       period: "Cuartos Roland Garros 1980",
-      photo: "assets/ivanna.jpg",
+      photo: "assets/ivanna_hd.jpg",
       isHeroBento: false,
       bio: "Pionera indiscutida del tenis femenino profesional en Sudamérica. Alcanzó los cuartos de final de Roland Garros en 1980 y la final de dobles del US Open junto a Christiane Jolissaint. Lideró al equipo argentino de Fed Cup y abrió la huella de las mujeres en el polvo de ladrillo internacional.",
       telemetry: [
@@ -345,12 +345,6 @@ window.SITE_CONTENT = {
     { key: "atletismo", label: "ATLETISMO & TRIATLÓN", count: 2 }
   ],
 
-  // Manifiesto con datos reales
-  manifesto: {
-    title: "Una cancha en cada barrio. Un campeón en cada generación.",
-    text: "En 2017 el Congreso de la Nación consagró a Río Tercero como la Capital Nacional del Deportista mediante la Ley 27.380 / 27.396. No se trató de una designación protocolar: fue la ratificación estadística de una comunidad obrera que produjo abanderados olímpicos, monarcas de la FIA y vencedores de Grand Slam gracias a una trama inquebrantable de clubes barriales.",
-    quote: "“Acá el deporte nunca fue un lujo ni un pasatiempo: fue la escuela de carácter donde aprendimos a competir contra los mejores del mundo.”"
-  },
 
   // Clubes Locales Reales Verificables
   clubs: [
