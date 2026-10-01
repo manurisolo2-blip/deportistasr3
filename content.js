@@ -6,6 +6,114 @@
  * Telemetría, Fichas Coleccionables y Clubes Formadores Verificables.
  */
 
+// Colección Estructurada conforme a interfaz Deportista
+window.DEPORTISTAS_DATA = [
+  {
+    id: '1',
+    nombre: 'Pablo Prigioni',
+    disciplina: 'Básquetbol',
+    clubOrigen: 'Club Sportivo 9 de Julio',
+    logroPrincipal: 'Bronce Olímpico Pekín 2008 · Ex NBA',
+    categoria: 'Olímpico / Élite',
+    dorsal: '09',
+    imagenUrl: 'assets/prigioni.jpg',
+    destacado: true,
+  },
+  {
+    id: '2',
+    nombre: 'José María López',
+    disciplina: 'Automovilismo',
+    clubOrigen: 'Kartódromo Río Tercero',
+    logroPrincipal: '5x Campeón Mundial FIA (WTCC & WEC)',
+    categoria: 'Mundial',
+    dorsal: '37',
+    imagenUrl: 'assets/pechito.jpg',
+    destacado: true,
+  },
+  {
+    id: '3',
+    nombre: 'Andrea Berrino',
+    disciplina: 'Natación',
+    clubOrigen: 'C.A. Río Tercero',
+    logroPrincipal: 'Plusmarquista Sudamericana 50m y 100m Espalda',
+    categoria: 'Internacional',
+    dorsal: '04',
+    imagenUrl: 'assets/andrea_berrino.jpg',
+  },
+  {
+    id: '4',
+    nombre: 'Catalina Primo',
+    disciplina: 'Fútbol',
+    clubOrigen: 'Club Sportivo 9 de Julio',
+    logroPrincipal: 'Selección Nacional Mayor / River Plate',
+    categoria: 'Profesional',
+    dorsal: '11',
+    imagenUrl: 'assets/catalina_primo.png',
+  },
+  {
+    id: '5',
+    nombre: 'Ivano Falchetti',
+    disciplina: 'Tiro',
+    clubOrigen: 'Tiro Federal Río Tercero',
+    logroPrincipal: 'Representante Internacional y Nacional',
+    categoria: 'Nacional',
+    dorsal: '01',
+    imagenUrl: 'https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: '6',
+    nombre: 'Claudio "Piojo" López',
+    disciplina: 'Fútbol',
+    clubOrigen: 'C.A. Río Tercero / 9 de Julio',
+    logroPrincipal: 'Plata Olímpica Atlanta 96 · Copas del Mundo 98 y 02',
+    categoria: 'Olímpico / Mundial',
+    dorsal: '07',
+    imagenUrl: 'assets/piojo.png',
+  },
+  {
+    id: '7',
+    nombre: 'Gustavo Fernández',
+    disciplina: 'Tenis',
+    clubOrigen: 'Club Sportivo 9 de Julio',
+    logroPrincipal: '5x Campeón Grand Slam · Ex N° 1 Mundial',
+    categoria: 'Grand Slam / Élite',
+    dorsal: '01',
+    imagenUrl: 'assets/gustavo.jpg',
+  },
+  {
+    id: '8',
+    nombre: 'Ivanna Madruga',
+    disciplina: 'Tenis',
+    clubOrigen: 'Club Atlético Río Tercero',
+    logroPrincipal: 'Top 15 WTA · Cuartos Roland Garros 1980',
+    categoria: 'Pionera Grand Slam',
+    dorsal: '14',
+    imagenUrl: 'assets/ivanna.jpg',
+  },
+  {
+    id: '9',
+    nombre: 'Rocío Comba',
+    disciplina: 'Atletismo',
+    clubOrigen: 'Polideportivo / Fábrica Militar',
+    logroPrincipal: 'Triple Olímpica (08, 12, 16) · Finalista Mundial',
+    categoria: 'Triple Olímpica',
+    dorsal: '08',
+    imagenUrl: 'assets/comba.jpg',
+  },
+  {
+    id: '10',
+    nombre: 'Oscar Galíndez',
+    disciplina: 'Atletismo',
+    clubOrigen: 'Polideportivo Municipal',
+    logroPrincipal: 'Olímpico Sydney 2000 · Campeón Mundial Duatlón',
+    categoria: 'Olímpico / Ironman',
+    dorsal: '22',
+    imagenUrl: 'https://images.unsplash.com/photo-1486218119243-13883505764c?auto=format&fit=crop&w=800&q=80',
+  }
+];
+
+window.DISCIPLINAS = ['TODOS', 'BÁSQUETBOL', 'AUTOMOVILISMO', 'NATACIÓN', 'FÚTBOL', 'TIRO', 'TENIS', 'ATLETISMO'];
+
 window.SITE_CONTENT = {
   // Identidad Institucional
   institution: {

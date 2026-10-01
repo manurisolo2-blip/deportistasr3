@@ -38,6 +38,17 @@
        1. CABECERA INSTITUCIONAL EN MODO CLARO
        ========================================================================= -->
   <header class="site-header" id="siteHeader">
+    <!-- Barra de Afiliación Cívica y Memoria -->
+    <div class="civic-header-strip">
+      <div class="container civic-header-inner">
+        <div class="civic-strip-left">
+          <span class="civic-dot-pulse" aria-hidden="true"></span>
+          <span class="civic-strip-code">ARCHIVO OFICIAL · LEY NACIONAL N° 27.380</span>
+        </div>
+        <span class="civic-strip-location">CÓRDOBA, ARGENTINA</span>
+      </div>
+    </div>
+
     <div class="header-inner">
       <a href="#inicio" class="brand-block" aria-label="Río Tercero Capital Nacional del Deportista">
         <span class="brand-law-tag">LEY 27.380 / 27.396</span>
@@ -57,8 +68,7 @@
       <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
         <ul class="nav-list">
           <li><a href="#inicio" class="nav-anchor active">Inicio</a></li>
-          <li><a href="#destacado" class="nav-anchor">Bento Élite</a></li>
-          <li><a href="#directorio" class="nav-anchor">Trading Cards</a></li>
+          <li><a href="#directorio" class="nav-anchor">Fichas Atléticas</a></li>
           <li><a href="#clubes" class="nav-anchor">Clubes</a></li>
           <li><a href="#cronologia" class="nav-anchor">Cronología</a></li>
         </ul>
@@ -71,187 +81,84 @@
   <main id="main-content">
 
     <!-- =========================================================================
-         2. HERO SECTION DINÁMICO & BENTO GRID ASIMÉTRICO
+         2. HERO SECTION EDITORIAL
          ========================================================================= -->
-    <section class="section-hero-editorial" id="inicio">
+    <section class="section-hero-editorial bg-white border-b border-slate-200" id="inicio">
       <!-- Fondo Editorial Ofuscado de la Ciudad de Río Tercero (Balneario y Río Ctalamochita) -->
       <div class="hero-bg-backdrop" aria-hidden="true">
         <img src="assets/rio_tercero_balneario.jpg" alt="" class="hero-bg-img" loading="eager" decoding="async">
         <div class="hero-bg-overlay"></div>
       </div>
 
-      <div class="container">
-        
-        <!-- Encabezado de Portada Editorial -->
-        <header class="hero-editorial-header">
-          <div class="civic-law-badge-banner">
-            <span class="civic-dot-pulse" aria-hidden="true"></span>
-            <span class="civic-badge-text">REPÚBLICA ARGENTINA · PROVINCIA DE CÓRDOBA · LEY NACIONAL 27.380 / 27.396</span>
-          </div>
+      <div class="container relative z-10">
+        <div class="hero-editorial-max max-w-3xl">
+          <span class="hero-kicker-tag inline-block border border-slate-900 px-2.5 py-0.5 text-xs font-mono font-bold tracking-widest uppercase text-slate-900 mb-4">
+            CUNA DE CAMPEONES
+          </span>
 
-          <h1 class="hero-main-title">
-            RÍO TERCERO <span class="hero-title-highlight">·</span> CAPITAL NACIONAL DEL DEPORTISTA
+          <h1 class="hero-editorial-title text-6xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight text-slate-950 font-['Bebas_Neue',sans-serif] leading-[0.9]">
+            CAPITAL NACIONAL <br>
+            <span class="text-amber-600 highlight">DEL DEPORTISTA</span>
           </h1>
 
-          <div class="hero-lead-row">
-            <p class="hero-lead-paragraph">
-              Directorio oficial y archivo de rendimiento atlético de una ciudad obrera que transformó cada potrero y playón barrial en cuna de medallistas olímpicos, tricampeones del mundo y reyes de Grand Slam.
-            </p>
-            <span class="hero-status-tag">TELEMETRÍA OFICIAL · 2026</span>
-          </div>
-        </header>
-
-        <!-- Bento Grid Asimétrico (Hero Card 8 Cols + Módulos 4 Cols) -->
-        <div class="hero-bento-grid" id="destacado">
-
-          <!-- Bento Hero Card (8 Columnas): Pablo Prigioni -->
-          <article class="bento-hero-card" id="heroBentoCard">
-            <div class="bento-photo-col">
-              <span class="bento-watermark-number" aria-hidden="true">09</span>
-              <img src="assets/prigioni.jpg" alt="Pablo Prigioni medallista olímpico de Río Tercero" class="bento-hero-img">
-              <span class="bento-photo-badge">FIGURA DE ÉLITE MUNDIAL</span>
-            </div>
-
-            <div class="bento-content-col">
-              <div>
-                <div class="bento-card-top-tag">
-                  <span class="bento-discipline-pill">BÁSQUETBOL · OLÍMPICO & NBA</span>
-                  <span class="bento-hall-star" title="Medallista de Bronce Olímpico" aria-label="Medallista Olímpico">★ BRONCE PEKÍN 2008</span>
-                </div>
-
-                <h2 class="bento-athlete-name">PABLO PRIGIONI</h2>
-
-                <!-- Identidad Comunitaria (Crítico) -->
-                <div class="bento-club-origin">
-                  <svg class="club-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  <span class="club-label-prefix">CLUB DE ORIGEN:</span>
-                  <span class="club-name-text">CLUB SPORTIVO 9 DE JULIO</span>
-                </div>
-
-                <p class="bento-bio-text">
-                  Nacido en Río Tercero y forjado en el parquet albiceleste de 9 de Julio. Base titular de la Selección Argentina, medallista de bronce en los Juegos Olímpicos de Pekín 2008. Tras brillar en Europa y disputar cuatro temporadas en la NBA (Knicks, Rockets, Clippers), lideró a la Selección Nacional como Director Técnico.
-                </p>
-              </div>
-
-              <!-- Barra Inferior de Telemetría (3 Datos Clave) -->
-              <div class="bento-telemetry-row">
-                <div class="telemetry-cell">
-                  <span class="telemetry-label">PALMARÉS CLAVE</span>
-                  <span class="telemetry-val">Bronce Pekín 2008</span>
-                </div>
-                <div class="telemetry-cell">
-                  <span class="telemetry-label">POSICIÓN / ROL</span>
-                  <span class="telemetry-val">Base Armador · DT</span>
-                </div>
-                <div class="telemetry-cell">
-                  <span class="telemetry-label">TRAYECTORIA</span>
-                  <span class="telemetry-val">NBA / Real Madrid</span>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Columna Lateral Bento (4 Columnas) -->
-          <aside class="bento-side-column">
-            
-            <!-- Mini Card 1: Hito Nacional y Ciudad -->
-            <div class="bento-metric-card accent-gold">
-              <div class="metric-card-header">
-                <span class="metric-code">LEY NACIONAL</span>
-                <span class="civic-dot-pulse" aria-hidden="true"></span>
-              </div>
-              <div class="metric-digit-wrap">
-                <span class="metric-huge-digit">27.396</span>
-              </div>
-              <h3 class="metric-card-label">Capital Nacional del Deportista</h3>
-              <p class="metric-card-desc">
-                Sancionada por unanimidad por el Congreso Nacional en 2017, reconociendo la excepcional densidad de campeones de la ciudad.
-              </p>
-            </div>
-
-            <!-- Mini Card 2: Telemetría de Medallas & Títulos -->
-            <div class="bento-metric-card accent-track">
-              <div class="metric-card-header">
-                <span class="metric-code">TELEMETRÍA TOTAL</span>
-                <span class="metric-unit-text">5 OLÍMPICOS · 8+ MUNDIALES</span>
-              </div>
-              <div class="metric-digit-wrap">
-                <span class="metric-huge-digit">12</span>
-                <span class="metric-unit-text">Clubes Federados</span>
-              </div>
-              <h3 class="metric-card-label">Infraestructura Formativa</h3>
-              <p class="metric-card-desc">
-                Instituciones con personería e infraestructura propia que contienen a miles de pibes cada fin de semana.
-              </p>
-            </div>
-
-            <!-- Mini Card 3: José María Pechito López -->
-            <article class="bento-mini-driver-card">
-              <img src="assets/pechito.jpg" alt="José María Pechito López tricampeón mundial WTCC" class="mini-driver-avatar">
-              <div class="mini-driver-body">
-                <span class="mini-driver-tag">AUTOMOVILISMO · FIA MUNDIAL</span>
-                <h3 class="mini-driver-name">PECHITO LÓPEZ</h3>
-                <p class="mini-driver-desc">Tricampeón Mundial WTCC y Ganador 24 Horas de Le Mans.</p>
-              </div>
-            </article>
-
-          </aside>
+          <p class="hero-editorial-lead mt-4 text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl">
+            Registro histórico y contemporáneo de los atletas formados en los clubes de Río Tercero que alcanzaron la consagración nacional, panamericana y mundial.
+          </p>
         </div>
 
+        <!-- Métricas Comunitarias de Alto Contraste -->
+        <div class="hero-metrics-strip mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-slate-100">
+          <div class="hero-metric-box">
+            <p class="hero-metric-number font-mono text-2xl font-bold text-slate-900">N° 27.380</p>
+            <p class="hero-metric-label font-mono text-xs text-slate-600 uppercase tracking-wide">Ley Nacional</p>
+          </div>
+          <div class="hero-metric-box">
+            <p class="hero-metric-number font-mono text-2xl font-bold text-slate-900">5+</p>
+            <p class="hero-metric-label font-mono text-xs text-slate-600 uppercase tracking-wide">Títulos Mundiales</p>
+          </div>
+          <div class="hero-metric-box">
+            <p class="hero-metric-number font-mono text-2xl font-bold text-slate-900">Pekín 2008</p>
+            <p class="hero-metric-label font-mono text-xs text-slate-600 uppercase tracking-wide">Medallero Olímpico</p>
+          </div>
+          <div class="hero-metric-box">
+            <p class="hero-metric-number font-mono text-2xl font-bold text-slate-900">12</p>
+            <p class="hero-metric-label font-mono text-xs text-slate-600 uppercase tracking-wide">Clubes Formadores</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- =========================================================================
-         3. BARRA DE FILTROS & EXPLORACIÓN TÁCTIL (STICKY CAROUSEL + SEARCH)
+         3. CONTROLES: FILTROS TÁCTILES Y BÚSQUEDA
          ========================================================================= -->
-    <nav class="section-filter-explorer" id="explorador" aria-label="Filtros de deportistas">
-      <div class="container filter-explorer-bar">
-        
-        <!-- Campo de Búsqueda Técnico -->
-        <div class="search-input-wrapper">
-          <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input 
-            type="search" 
-            id="athleteSearchInput" 
-            class="search-input-field" 
-            placeholder="Buscar por deportista, club formador o palmarés..."
-            aria-label="Buscar deportistas"
+    <section class="section-filter-explorer sticky top-0 z-20 bg-[#F8FAFC]/95 backdrop-blur-md border-b border-slate-200 py-4" id="explorador" aria-label="Filtros y Búsqueda">
+      <div class="container filter-controls-row flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <!-- Botonera de Chips -->
+        <div class="chips-horizontal-bar flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none" id="disciplineChipsContainer" role="tablist">
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap active bg-slate-950 text-white shadow-sm" data-filter="TODOS" role="tab" aria-selected="true">TODOS</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="BÁSQUETBOL" role="tab" aria-selected="false">BÁSQUETBOL</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="AUTOMOVILISMO" role="tab" aria-selected="false">AUTOMOVILISMO</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="NATACIÓN" role="tab" aria-selected="false">NATACIÓN</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="FÚTBOL" role="tab" aria-selected="false">FÚTBOL</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="TIRO" role="tab" aria-selected="false">TIRO</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="TENIS" role="tab" aria-selected="false">TENIS</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="ATLETISMO" role="tab" aria-selected="false">ATLETISMO</button>
+        </div>
+
+        <!-- Campo de Búsqueda -->
+        <div class="search-box-wrap relative min-w-[260px]">
+          <input
+            type="text"
+            id="athleteSearchInput"
+            class="search-input-control w-full bg-white border border-slate-300 rounded-md px-3.5 py-1.5 text-sm text-slate-900 placeholder:text-slate-600 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 font-sans"
+            placeholder="Buscar atleta o club..."
+            aria-label="Buscar atleta o club"
             autocomplete="off"
             spellcheck="false"
           >
-          <kbd class="search-shortcut-badge" title="Presiona la tecla / para buscar">/</kbd>
         </div>
-
-        <!-- Carrusel de Chips de Disciplina -->
-        <div class="chips-carousel-wrapper" id="disciplineChipsContainer" role="tablist" aria-label="Filtrar por disciplina">
-          <button class="filter-chip-btn active" data-filter="todos" role="tab" aria-selected="true">
-            Todos <span class="chip-count-pill" id="count-todos">8</span>
-          </button>
-          <button class="filter-chip-btn" data-filter="basquetbol" role="tab" aria-selected="false">
-            Básquetbol <span class="chip-count-pill">1</span>
-          </button>
-          <button class="filter-chip-btn" data-filter="automovilismo" role="tab" aria-selected="false">
-            Automovilismo <span class="chip-count-pill">1</span>
-          </button>
-          <button class="filter-chip-btn" data-filter="futbol" role="tab" aria-selected="false">
-            Fútbol <span class="chip-count-pill">1</span>
-          </button>
-          <button class="filter-chip-btn" data-filter="tenis" role="tab" aria-selected="false">
-            Tenis <span class="chip-count-pill">2</span>
-          </button>
-          <button class="filter-chip-btn" data-filter="natacion" role="tab" aria-selected="false">
-            Natación <span class="chip-count-pill">1</span>
-          </button>
-          <button class="filter-chip-btn" data-filter="atletismo" role="tab" aria-selected="false">
-            Atletismo & Triatlón <span class="chip-count-pill">2</span>
-          </button>
-        </div>
-
       </div>
-    </nav>
+    </section>
 
     <!-- =========================================================================
          4. DIRECTORIO DE TARJETAS ATLÉTICAS COLECCIONABLES (TRADING CARDS)
@@ -266,7 +173,7 @@
               Fichas coleccionables de alto rendimiento con marca de agua, telemetría y club formador.
             </p>
           </div>
-          <span class="directory-live-counter" id="directoryLiveCounter">MOSTRANDO 8 ATLETAS FEDERADOS</span>
+          <span class="directory-live-counter" id="directoryLiveCounter">MOSTRANDO 10 DE 10 ATLETAS OFICIALES</span>
         </div>
 
         <!-- Grilla de Tarjetas Coleccionables -->

@@ -177,77 +177,162 @@ document.addEventListener('DOMContentLoaded', () => {
   const chipsContainer = document.getElementById('disciplineChipsContainer');
   const filterChips = document.querySelectorAll('.filter-chip-btn');
   const cardsGrid = document.getElementById('tradingCardsGrid');
-  const tradingCards = Array.from(document.querySelectorAll('.trading-card'));
   const liveCounter = document.getElementById('directoryLiveCounter');
-  const emptyState = document.getElementById('emptyStateContainer');
   const resetFiltersBtn = document.getElementById('resetFiltersBtn');
 
-  let activeDiscipline = 'todos';
-  let activeSearchQuery = '';
+  let disciplinaActiva = 'TODOS';
+  let busqueda = '';
 
-  // Filtrar tarjetas
-  function applyFilters() {
-    let visibleCount = 0;
-    const query = activeSearchQuery.trim().toLowerCase();
+  function normalize(str) {
+    return (str || '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim();
+  }
 
-    tradingCards.forEach(card => {
-      const cardDiscipline = card.getAttribute('data-discipline') || '';
-      const cardKeywords = (card.getAttribute('data-keywords') || '').toLowerCase();
-      const cardText = card.innerText.toLowerCase();
+  function renderCards() {
+    if (!cardsGrid || !window.DEPORTISTAS_DATA) return;
 
-      // Validación por disciplina
-      const matchesDiscipline = (activeDiscipline === 'todos') || (cardDiscipline === activeDiscipline);
+    const queryNorm = normalize(busqueda);
 
-      // Validación por texto de búsqueda
-      let matchesSearch = true;
-      if (query.length > 0) {
-        matchesSearch = cardKeywords.includes(query) || cardText.includes(query);
-      }
+    const filtrados = window.DEPORTISTAS_DATA.filter(dep => {
+      const depDiscNorm = normalize(dep.disciplina);
+      const activeDiscNorm = normalize(disciplinaActiva);
 
-      if (matchesDiscipline && matchesSearch) {
-        card.style.display = '';
-        visibleCount++;
-      } else {
-        card.style.display = 'none';
-      }
+      const coincideDisciplina =
+        disciplinaActiva === 'TODOS' ||
+        depDiscNorm === activeDiscNorm ||
+        (disciplinaActiva === 'TIRO' && depDiscNorm.includes('tiro')) ||
+        (disciplinaActiva === 'ATLETISMO' && (depDiscNorm.includes('atletismo') || depDiscNorm.includes('triatlon')));
+
+      const coincideTexto =
+        queryNorm === '' ||
+        normalize(dep.nombre).includes(queryNorm) ||
+        normalize(dep.clubOrigen).includes(queryNorm) ||
+        normalize(dep.logroPrincipal).includes(queryNorm) ||
+        normalize(dep.disciplina).includes(queryNorm) ||
+        normalize(dep.categoria).includes(queryNorm);
+
+      return coincideDisciplina && coincideTexto;
     });
 
-    // Actualizar contador en vivo
     if (liveCounter) {
-      liveCounter.textContent = `MOSTRANDO ${visibleCount} DE ${tradingCards.length} ATLETAS FEDERADOS`;
+      liveCounter.textContent = `MOSTRANDO ${filtrados.length} DE ${window.DEPORTISTAS_DATA.length} ATLETAS OFICIALES`;
     }
 
-    // Toggle de estado vacío
-    if (emptyState) {
-      if (visibleCount === 0) {
-        emptyState.style.display = 'block';
-      } else {
-        emptyState.style.display = 'none';
-      }
+    if (filtrados.length === 0) {
+      cardsGrid.innerHTML = `
+        <div style="grid-column: 1 / -1;" class="text-center py-20 border border-dashed border-slate-300 rounded-lg bg-white p-8">
+          <p class="font-mono text-sm uppercase text-slate-600 font-bold mb-4">
+            No se encontraron registros para el filtro seleccionado.
+          </p>
+          <button class="empty-state-reset-btn" id="inlineResetBtn">Restablecer Filtros y Búsqueda</button>
+        </div>
+      `;
+      const btn = document.getElementById('inlineResetBtn');
+      if (btn) btn.addEventListener('click', resetFilters);
+      return;
     }
+
+    cardsGrid.innerHTML = filtrados.map(atleta => `
+      <article
+        class="group relative bg-white border border-slate-200 rounded-lg overflow-hidden flex flex-col transition-all duration-200 hover:-translate-y-1 hover:border-slate-900 hover:shadow-lg trading-card ${
+          atleta.destacado ? 'card-featured' : ''
+        }"
+        data-discipline="${atleta.disciplina.toUpperCase()}"
+      >
+        <!-- Dorsal Fantasma Técnico en Capa Posterior -->
+        <span class="pointer-events-none absolute right-2 top-2 font-mono text-8xl font-black text-slate-100 select-none transition-colors group-hover:text-amber-100 card-dorsal-watermark" aria-hidden="true">
+          ${atleta.dorsal}
+        </span>
+
+        <!-- Contenedor Fotográfico Vertical -->
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
+          <img
+            src="${atleta.imagenUrl}"
+            alt="${atleta.nombre}"
+            class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
+            loading="lazy"
+          />
+          <!-- Badges Deportivos -->
+          <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10 card-badges-wrap">
+            <span class="bg-slate-950 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
+              ${atleta.disciplina}
+            </span>
+            <span class="bg-amber-500 text-slate-950 font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
+              ${atleta.categoria}
+            </span>
+          </div>
+        </div>
+
+        <!-- Datos Editoriales -->
+        <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
+          <div>
+            <p class="font-mono text-xs font-bold text-amber-700 uppercase tracking-widest card-club-origin">
+              ${atleta.clubOrigen}
+            </p>
+            <h3 class="mt-1 font-['Bebas_Neue',sans-serif] text-3xl font-black uppercase tracking-tight text-slate-950 group-hover:text-amber-600 transition-colors card-name-title">
+              ${atleta.nombre}
+            </h3>
+          </div>
+
+          <!-- Telemetría y Palmarés Inferior -->
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
+            <div class="telemetry-info">
+              <span class="block font-mono text-[9px] uppercase tracking-wider text-slate-600 telemetry-label">
+                Consagración
+              </span>
+              <span class="font-sans text-xs font-bold text-slate-800 telemetry-val">
+                ${atleta.logroPrincipal}
+              </span>
+            </div>
+            <span class="font-mono text-xs font-bold text-slate-600 group-hover:text-slate-950 group-hover:translate-x-0.5 transition-all telemetry-arrow" aria-hidden="true">
+              →
+            </span>
+          </div>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  function updateChipButtons() {
+    const chips = document.querySelectorAll('.filter-chip-btn');
+    chips.forEach(chip => {
+      const chipFilter = chip.getAttribute('data-filter') || 'TODOS';
+      if (chipFilter.toUpperCase() === disciplinaActiva.toUpperCase()) {
+        chip.classList.add('active');
+        chip.setAttribute('aria-selected', 'true');
+      } else {
+        chip.classList.remove('active');
+        chip.setAttribute('aria-selected', 'false');
+      }
+    });
+  }
+
+  function resetFilters() {
+    disciplinaActiva = 'TODOS';
+    busqueda = '';
+    if (searchInput) searchInput.value = '';
+    updateChipButtons();
+    renderCards();
+    if (searchInput) searchInput.focus();
   }
 
   // Escuchar clics en los chips de disciplina
   filterChips.forEach(chip => {
     chip.addEventListener('click', () => {
-      filterChips.forEach(c => {
-        c.classList.remove('active');
-        c.setAttribute('aria-selected', 'false');
-      });
-
-      chip.classList.add('active');
-      chip.setAttribute('aria-selected', 'true');
-      activeDiscipline = chip.getAttribute('data-filter') || 'todos';
-
-      applyFilters();
+      disciplinaActiva = chip.getAttribute('data-filter') || 'TODOS';
+      updateChipButtons();
+      renderCards();
     });
   });
 
   // Escuchar entrada en el campo de búsqueda
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
-      activeSearchQuery = e.target.value;
-      applyFilters();
+      busqueda = e.target.value;
+      renderCards();
     });
   }
 
@@ -264,27 +349,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Botón para restablecer filtros
   if (resetFiltersBtn) {
-    resetFiltersBtn.addEventListener('click', () => {
-      if (searchInput) searchInput.value = '';
-      activeSearchQuery = '';
-      activeDiscipline = 'todos';
-
-      filterChips.forEach(c => {
-        if (c.getAttribute('data-filter') === 'todos') {
-          c.classList.add('active');
-          c.setAttribute('aria-selected', 'true');
-        } else {
-          c.classList.remove('active');
-          c.setAttribute('aria-selected', 'false');
-        }
-      });
-
-      applyFilters();
-      if (searchInput) searchInput.focus();
-    });
+    resetFiltersBtn.addEventListener('click', resetFilters);
   }
+
+  // Render inicial de tarjetas
+  renderCards();
 
   // ------------------------------------------------------------------------
   // 6. ANIMACIONES MECÁNICAS DE ENTRADA CON GSAP
@@ -357,6 +427,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Ejecución inicial de filtros
-  applyFilters();
+  // Sincronización inicial completada con renderCards()
 });
