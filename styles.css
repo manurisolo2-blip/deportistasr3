@@ -1539,8 +1539,8 @@ body {
 
 .club-card-top {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   margin-bottom: 1.25rem;
 }
 
@@ -1555,12 +1555,26 @@ body {
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
 }
 
 .club-crest-img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+
+.club-founded-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
 .club-acronym-badge {
