@@ -565,44 +565,6 @@ body {
   margin-top: 1rem;
 }
 
-/* Métricas Comunitarias de Alto Contraste */
-.hero-metrics-strip {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-  padding-top: 1.5rem;
-  margin-top: 2.5rem;
-  border-top: 1px solid #F1F5F9;
-}
-
-@media (min-width: 768px) {
-  .hero-metrics-strip {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-  }
-}
-
-.hero-metric-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.hero-metric-number {
-  font-family: var(--font-mono);
-  font-size: clamp(1.5rem, 2.5vw, 1.95rem);
-  font-weight: 700;
-  color: #0F172A;
-  line-height: 1.2;
-}
-
-.hero-metric-label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: #475569;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-top: 0.25rem;
-}
 
 /* --------------------------------------------------------------------------
    5. BENTO GRID ASIMÉTRICO (HERO CARD 8 COLUMNAS + MÓDULOS 4 COLUMNAS)
