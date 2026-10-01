@@ -1586,11 +1586,16 @@ body {
   font-size: 1.75rem;
   line-height: 1.05;
   color: var(--text-primary);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.35rem;
 }
 
 .club-focus-tag {
-  display: none !important;
+  font-family: var(--font-body, 'Inter', -apple-system, sans-serif);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
 }
 
 .club-desc-text {
