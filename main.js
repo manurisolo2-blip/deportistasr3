@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (matchesDiscipline && matchesSearch) {
-        card.style.display = 'flex';
+        card.style.display = '';
         visibleCount++;
       } else {
         card.style.display = 'none';
