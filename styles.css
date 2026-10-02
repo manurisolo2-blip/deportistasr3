@@ -1924,21 +1924,25 @@ body {
   grid-template-columns: 1fr;
   gap: 1.75rem;
   margin-top: 3.5rem;
+  align-items: stretch;
 }
 
 @media (min-width: 640px) {
   .proposals-editorial-grid {
     grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
   }
 }
 
 @media (min-width: 1024px) {
   .proposals-editorial-grid {
     grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
   }
 }
 
 .proposal-dossier-card {
+  height: 100%;
   background: #FFFFFF !important;
   border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: 12px;
@@ -1981,14 +1985,18 @@ body {
   font-size: 1.15rem;
   font-weight: 700;
   color: #0F172A !important;
-  line-height: 1.25;
-  margin-bottom: 0.75rem;
+  line-height: 1.3;
+  margin-bottom: 0.85rem;
+  min-height: 3rem;
+  display: flex;
+  align-items: flex-start;
 }
 
 .proposal-card-detail {
   font-size: 0.88rem;
   color: #475569 !important;
   line-height: 1.6;
+  flex: 1 1 auto;
 }
 
 /* --------------------------------------------------------------------------

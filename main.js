@@ -453,10 +453,11 @@ document.addEventListener('DOMContentLoaded', () => {
       onEnter: (batch) => {
         gsap.from(batch, {
           opacity: 0,
-          y: 24,
+          y: 20,
           stagger: 0.08,
-          duration: 0.6,
-          ease: 'power2.out'
+          duration: 0.55,
+          ease: 'power2.out',
+          clearProps: 'transform'
         });
       }
     });
