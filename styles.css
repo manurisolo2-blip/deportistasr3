@@ -458,7 +458,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
+  text-align: center;
   padding-top: clamp(5.5rem, 10vh, 7.5rem);
   padding-bottom: clamp(3rem, 6vh, 4.5rem);
   background-color: var(--bg-canvas, #FAF9F5);
@@ -471,6 +472,11 @@ body {
   position: relative;
   z-index: 2;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 /* Telón de Fondo Panorámico de la Ciudad de Río Tercero */
@@ -595,6 +601,9 @@ body {
 /* Layout Editorial Requerido */
 .hero-editorial-max {
   max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .hero-editorial-title {
@@ -605,7 +614,8 @@ body {
   letter-spacing: -0.035em;
   color: #020617;
   line-height: 0.95;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
 }
 
@@ -620,7 +630,135 @@ body {
   line-height: 1.65;
   max-width: 46rem;
   margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* ==========================================================================
+   SCROLL EXPANSION HERO (ScrollExpandMedia)
+   ========================================================================== */
+.hero-expand-container {
+  position: relative;
+  width: 100%;
+  min-height: 75vh;
+  min-height: 75dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-expand-card {
+  position: relative;
+  width: 320px;
+  height: 420px;
+  max-width: 95vw;
+  max-height: 85vh;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.15);
+  z-index: 5;
+  will-change: width, height, border-radius, box-shadow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0F172A;
+  transition: box-shadow 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .hero-expand-card {
+    width: 270px;
+    height: 350px;
+  }
+}
+
+.hero-expand-media-asset {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hero-expand-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.25) 0%, rgba(2, 6, 23, 0.6) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-expand-inner-badge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: #FFFFFF;
+  text-align: center;
+  width: 90%;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.hero-expand-inner-badge .badge-date {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #38BDF8;
+  display: block;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero-expand-inner-badge .badge-hint {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.95);
+  margin-top: 0.3rem;
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.hero-expand-titles-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.hero-title-left,
+.hero-title-right {
+  display: block;
+  white-space: nowrap;
+  will-change: transform, opacity;
+  text-shadow: 0 3px 12px rgba(255, 255, 255, 0.95), 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 640px) {
+  .hero-title-left,
+  .hero-title-right {
+    white-space: normal;
+  }
 }
 
 

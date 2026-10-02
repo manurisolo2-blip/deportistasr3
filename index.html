@@ -86,20 +86,37 @@
         <div class="hero-bg-overlay"></div>
       </div>
 
-      <div class="container relative z-10">
-        <div class="hero-editorial-max max-w-4xl">
-          <h1 class="hero-editorial-title text-6xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight text-slate-950 font-['Plus_Jakarta_Sans',sans-serif] leading-[0.9]">
-            CAPITAL NACIONAL <br>
-            <span class="highlight text-celeste" style="color: var(--color-celeste, #0092DF);">DEL DEPORTISTA</span>
-          </h1>
+      <div class="container relative z-10 flex flex-col items-center justify-center text-center w-full">
+        <!-- Contenedor Expansivo en Scroll (ScrollExpandMedia) -->
+        <div class="hero-expand-container relative w-full flex items-center justify-center">
+          
+          <!-- Tarjeta central de medios que se expande con el scroll -->
+          <div class="hero-expand-card" id="heroExpandCard">
+            <img src="assets/rio_tercero_hero.webp" alt="Río Tercero Capital Nacional del Deportista" class="hero-expand-media-asset" loading="eager">
+            <div class="hero-expand-overlay"></div>
+            <div class="hero-expand-inner-badge" id="heroExpandInnerBadge">
+              <span class="badge-date">RÍO TERCERO · CÓRDOBA</span>
+              <span class="badge-hint font-mono text-xs">DESLIZÁ PARA EXPANDIR ↓</span>
+            </div>
+          </div>
 
-          <p class="hero-editorial-lead mt-4 text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl">
-            Declarada formalmente Capital Nacional del Deportista por la Ley Nacional N.º 27.378 del Congreso de la Nación, Río Tercero es cuna de figuras olímpicas y campeones mundiales. Su comunidad celebra cada 16 de noviembre el Día del Deportista y la Semana del Deporte como homenaje formativo y reparación simbólica tras los sucesos industriales de 1995.
-          </p>
+          <!-- Capa de Títulos Deslizantes que se separan horizontalmente al scrollear -->
+          <div class="hero-expand-titles-layer">
+            <div class="hero-editorial-max max-w-4xl mx-auto text-center">
+              <h1 class="hero-editorial-title hero-title-left text-center text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight text-slate-950 font-['Plus_Jakarta_Sans',sans-serif] leading-[0.9]" id="heroTitleLeft">
+                CAPITAL NACIONAL
+              </h1>
+              <h1 class="hero-editorial-title hero-title-right text-center text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight text-celeste font-['Plus_Jakarta_Sans',sans-serif] leading-[0.9]" id="heroTitleRight" style="color: var(--color-celeste, #0092DF);">
+                DEL DEPORTISTA
+              </h1>
 
+              <p class="hero-editorial-lead mx-auto text-center mt-4 text-slate-700 text-base sm:text-lg leading-relaxed max-w-2xl" id="heroLeadText">
+                Declarada formalmente Capital Nacional del Deportista por la Ley Nacional N.º 27.378 del Congreso de la Nación, Río Tercero es cuna de figuras olímpicas y campeones mundiales. Su comunidad celebra cada 16 de noviembre el Día del Deportista y la Semana del Deporte como homenaje formativo y reparación simbólica tras los sucesos industriales de 1995.
+              </p>
+            </div>
+          </div>
 
         </div>
-
       </div>
     </section>
 

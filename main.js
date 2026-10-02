@@ -380,6 +380,68 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------------------------------------
   if (typeof gsap !== 'undefined' && !prefersReducedMotion) {
 
+    // Scroll Expansion Hero (ScrollExpandMedia): Expansión central y desplazamiento de títulos
+    const heroCard = document.getElementById('heroExpandCard');
+    const titleLeft = document.getElementById('heroTitleLeft');
+    const titleRight = document.getElementById('heroTitleRight');
+    const heroLead = document.getElementById('heroLeadText');
+    const heroExpandHint = document.getElementById('heroExpandInnerBadge');
+    const heroBackdrop = document.querySelector('.hero-bg-backdrop');
+
+    if (typeof ScrollTrigger !== 'undefined' && heroSection && heroCard && titleLeft && titleRight) {
+      const isMobile = window.innerWidth < 768;
+      const targetWidth = isMobile ? '94vw' : '1100px';
+      const targetHeight = isMobile ? '68vh' : '76vh';
+      const textShift = isMobile ? 120 : 260;
+
+      const heroExpandTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroSection,
+          start: 'top top',
+          end: '+=85%',
+          pin: true,
+          scrub: 0.65,
+          anticipatePin: 1
+        }
+      });
+
+      heroExpandTl
+        .to(heroCard, {
+          width: targetWidth,
+          height: targetHeight,
+          borderRadius: isMobile ? '12px' : '18px',
+          boxShadow: '0 35px 80px -20px rgba(0, 0, 0, 0.65)',
+          ease: 'power1.inOut'
+        }, 0)
+        .to(titleLeft, {
+          x: -textShift,
+          opacity: 0.2,
+          ease: 'power1.inOut'
+        }, 0)
+        .to(titleRight, {
+          x: textShift,
+          opacity: 0.2,
+          ease: 'power1.inOut'
+        }, 0)
+        .to(heroExpandHint, {
+          opacity: 0,
+          y: 15,
+          ease: 'power1.out'
+        }, 0)
+        .to(heroBackdrop, {
+          opacity: 0.15,
+          ease: 'power1.out'
+        }, 0);
+
+      if (heroLead) {
+        heroExpandTl.to(heroLead, {
+          opacity: 0.2,
+          y: -15,
+          ease: 'power1.out'
+        }, 0);
+      }
+    }
+
     // Efecto Telón (Curtain Parallax): el fondo y contenido suben y cubren limpiamente al Hero
     if (typeof ScrollTrigger !== 'undefined' && heroSection) {
       gsap.to(heroSection, {
