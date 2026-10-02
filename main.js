@@ -526,20 +526,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Animación de movimiento orgánico al scrollear en las curvas divisorias
     if (typeof ScrollTrigger !== 'undefined') {
       document.querySelectorAll('.section-divider-curve').forEach((divider, idx) => {
-        const svg = divider.querySelector('.curve-svg');
-        if (svg) {
+        const wrap = divider.querySelector('.curve-wrap');
+        if (wrap) {
           // Alternar dirección de desplazamiento para mayor riqueza visual
           const direction = idx % 2 === 0 ? 1 : -1;
-          gsap.fromTo(svg,
-            { x: -35 * direction },
+          gsap.fromTo(wrap,
+            { x: -60 * direction },
             {
-              x: 35 * direction,
+              x: 60 * direction,
               ease: 'none',
               scrollTrigger: {
                 trigger: divider,
                 start: 'top bottom',
                 end: 'bottom top',
-                scrub: 1.2
+                scrub: 1.0
               }
             }
           );
