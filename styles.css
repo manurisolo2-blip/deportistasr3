@@ -2013,17 +2013,21 @@ body {
   max-width: 900px;
   margin: 0 auto 4rem;
   position: relative;
+  isolation: isolate;
   padding: 3.5rem 2.5rem;
-  background: 
-    linear-gradient(var(--bg-canvas, #FAF9F5), var(--bg-canvas, #FAF9F5)) padding-box,
-    linear-gradient(90deg, var(--color-celeste, #0092DF) 0%, var(--color-verde-acento, #41A934) 100%) border-box;
-  border: 2px solid transparent;
+  background: var(--bg-canvas, #FAF9F5);
   border-radius: 16px;
-  box-shadow: 0 10px 30px -5px rgba(0, 146, 223, 0.08), 0 4px 12px -2px rgba(65, 169, 52, 0.06);
+  box-shadow: 0 14px 38px -10px rgba(0, 146, 223, 0.12), 0 4px 16px -2px rgba(65, 169, 52, 0.08);
 }
 
 .closing-banner-box::before {
-  display: none !important;
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 19px;
+  background: linear-gradient(90deg, var(--color-celeste, #0092DF) 0%, var(--color-verde-acento, #41A934) 100%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .closing-headline-display {
