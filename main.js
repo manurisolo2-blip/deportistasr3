@@ -566,14 +566,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Animación de movimiento orgánico al scrollear en las curvas divisorias
     if (typeof ScrollTrigger !== 'undefined') {
       document.querySelectorAll('.section-divider-curve').forEach((divider, idx) => {
-        const wrap = divider.querySelector('.curve-wrap');
-        if (wrap) {
-          // Alternar dirección de desplazamiento para mayor riqueza visual
+        const track = divider.querySelector('.curve-motion-track');
+        if (track) {
+          // Alternar dirección de desplazamiento para mayor dinamismo
           const direction = idx % 2 === 0 ? 1 : -1;
-          gsap.fromTo(wrap,
-            { x: -60 * direction },
+          gsap.fromTo(track,
+            { x: -50 * direction },
             {
-              x: 60 * direction,
+              x: 50 * direction,
               ease: 'none',
               scrollTrigger: {
                 trigger: divider,
