@@ -1479,6 +1479,14 @@ body {
   box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(15, 23, 42, 0.06);
 }
 
+.video-play-overlay {
+  transition: opacity 0.35s ease, background-color 0.3s ease;
+}
+
+.video-play-overlay:hover .rounded-full {
+  transform: scale(1.08);
+}
+
 .card-club-origin {
   font-family: var(--font-mono);
   font-size: 0.75rem;

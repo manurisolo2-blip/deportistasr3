@@ -65,6 +65,7 @@
         <ul class="nav-list">
           <li><a href="#inicio" class="nav-anchor active">Inicio</a></li>
           <li><a href="#directorio" class="nav-anchor">Fichas Atléticas</a></li>
+          <li><a href="#audiovisual" class="nav-anchor">Spot Oficial</a></li>
           <li><a href="#clubes" class="nav-anchor">Clubes</a></li>
           <li><a href="#cronologia" class="nav-anchor">Cronología</a></li>
         </ul>
@@ -993,7 +994,7 @@
           </p>
         </div>
 
-        <div class="video-spot-frame relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-slate-300/80 bg-slate-950">
+        <div class="video-spot-frame relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-slate-300/80 bg-slate-950 group">
           <video
             src="assets/video_municipalidad.mp4"
             poster="assets/rio_tercero_hero.webp"
@@ -1003,6 +1004,14 @@
             class="w-full h-full object-cover"
             id="spotVideoOfficial"
           ></video>
+          <button id="videoPlayOverlayBtn" class="video-play-overlay absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-slate-950/40 backdrop-blur-[2px] transition-all duration-300 hover:bg-slate-950/25 cursor-pointer z-10" aria-label="Reproducir Spot Oficial">
+            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/95 text-sky-600 shadow-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+              <svg class="w-8 h-8 sm:w-10 sm:h-10 fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="mt-3.5 text-white font-mono text-xs uppercase tracking-widest font-bold bg-slate-900/85 px-4 py-1.5 rounded-full border border-white/20 shadow-md">
+              Ver Video Oficial
+            </span>
+          </button>
         </div>
       </div>
     </section>

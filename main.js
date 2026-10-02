@@ -335,6 +335,10 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </article>
     `).join('');
+
+    if (typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.refresh();
+    }
   }
 
   function updateChipButtons() {
@@ -564,6 +568,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
+  }
+
+  // ------------------------------------------------------------------------
+  // Control Interactivo del Video Spot Oficial
+  // ------------------------------------------------------------------------
+  const spotVideo = document.getElementById('spotVideoOfficial');
+  const videoPlayOverlayBtn = document.getElementById('videoPlayOverlayBtn');
+
+  if (spotVideo && videoPlayOverlayBtn) {
+    videoPlayOverlayBtn.addEventListener('click', () => {
+      spotVideo.play();
+    });
+
+    spotVideo.addEventListener('play', () => {
+      videoPlayOverlayBtn.style.opacity = '0';
+      videoPlayOverlayBtn.style.pointerEvents = 'none';
+    });
+
+    spotVideo.addEventListener('pause', () => {
+      if (spotVideo.currentTime === 0 || spotVideo.ended) {
+        videoPlayOverlayBtn.style.opacity = '1';
+        videoPlayOverlayBtn.style.pointerEvents = 'auto';
+      }
+    });
+
+    spotVideo.addEventListener('ended', () => {
+      videoPlayOverlayBtn.style.opacity = '1';
+      videoPlayOverlayBtn.style.pointerEvents = 'auto';
+    });
   }
 
   // Sincronización inicial completada con renderCards()
