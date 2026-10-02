@@ -12,162 +12,202 @@ window.DEPORTISTAS_DATA = [
     id: '1',
     nombre: 'Pablo Prigioni',
     disciplina: 'Básquetbol',
+    especialidad: 'Base Armador · Estratega FIBA / NBA',
     clubOrigen: 'Club Sportivo 9 de Julio',
     logroPrincipal: 'Bronce Pekín 2008 · Ex NBA · DT Selección',
     categoria: 'Olímpico / NBA',
     dorsal: '09',
+    epoca: '2000s - Presente',
     imagenUrl: 'assets/prigioni.jpg',
     destacado: true,
-    descripcion: 'Formado en Club Sportivo 9 de Julio. Bronce Olímpico Pekín 2008, 4 temporadas en NBA (Knicks, Rockets, Clippers), multicampeón con Baskonia (ACB/EuroLiga), actual DT de la Selección Argentina de Básquetbol masculina mayor.',
+    descripcion: 'Iniciado en las divisiones formativas de Club Sportivo 9 de Julio. Medallista de Bronce en los Juegos Olímpicos de Pekín 2008 con la Generación Dorada, disputó 4 temporadas en la NBA (New York Knicks, Houston Rockets, LA Clippers), multicampeón con Baskonia en España y actual entrenador principal de la Selección Argentina Masculina Mayor.',
+    legado: 'Pilar de la Generación Dorada y formador de juego reconocido mundialmente por su inteligencia táctica.',
     telemetria: [
-      { label: 'PALMARÉS', val: 'Bronce Pekín 08' },
-      { label: 'TRAYECTORIA', val: '4 Temporadas NBA' },
-      { label: 'ROL ACTUAL', val: 'DT Selección Mayor' }
+      { label: 'JUEGOS OLÍMPICOS', val: 'Bronce Pekín 2008' },
+      { label: 'NBA TRAYECTORIA', val: '4 Temporadas (NY, HOU, LAC)' },
+      { label: 'EUROLIGA / ACB', val: '3x Copa Rey · 1x Liga ACB' },
+      { label: 'ACTUALIDAD', val: 'DT Selección Argentina Mayor' }
     ]
   },
   {
     id: '2',
     nombre: 'José María «Pechito» López',
     disciplina: 'Automovilismo',
-    clubOrigen: 'Kartódromos de Río 3',
-    logroPrincipal: '3x WTCC · Ganador 24h Le Mans · WEC',
+    especialidad: 'Piloto Hypercar WEC · Resistencia y Turismos',
+    clubOrigen: 'Kartódromo Municipal Río 3',
+    logroPrincipal: '3x WTCC · Ganador 24h Le Mans · 2x WEC',
     categoria: 'Mundial FIA',
     dorsal: '37',
+    epoca: '2000s - Presente',
     imagenUrl: 'assets/pechito.jpg',
     destacado: true,
-    descripcion: 'Iniciado en los kartódromos de Río 3. Tricampeón Mundial WTCC (2014, 2015, 2016), Campeón Mundial de Resistencia WEC con Toyota Gazoo Racing, ganador de las 24 Horas de Le Mans (2021), múltiple campeón TC2000 y Top Race V6.',
+    descripcion: 'Forjado en los kartódromos y circuitos de tierra de Río Tercero. Tricampeón Mundial WTCC (2014, 2015, 2016), bicampeón del Mundial de Resistencia WEC con Toyota Gazoo Racing, triunfador absoluto de las míticas 24 Horas de Le Mans en 2021 y múltiple coronado en TC2000 y Top Race V6.',
+    legado: 'Uno de los pilotos más versátiles y laureados de la historia del deporte motor argentino en pistas internacionales.',
     telemetria: [
-      { label: 'PALMARÉS', val: '3x WTCC · 2x WEC' },
-      { label: 'HITO MÁXIMO', val: '24h Le Mans 2021' },
-      { label: 'NACIONAL', val: 'TC2000 · Top Race' }
+      { label: 'TÍTULOS FIA', val: '3x WTCC · 2x WEC Mundial' },
+      { label: 'HITO HISTÓRICO', val: 'Ganador 24h Le Mans 2021' },
+      { label: 'EQUIPO DE FÁBRICA', val: 'Toyota Gazoo Racing / Lexus' },
+      { label: 'TÍTULOS NACIONALES', val: 'TC2000, TRV6 y Súper TC2000' }
     ]
   },
   {
     id: '3',
     nombre: 'Claudio «Piojo» López',
     disciplina: 'Fútbol',
+    especialidad: 'Delantero Extremo · Velocidad y Definición',
     clubOrigen: 'C.A. Río Tercero / Sportivo 9 de Julio',
-    logroPrincipal: 'Plata Atlanta 1996 · 2x Mundialista (98, 02)',
+    logroPrincipal: 'Plata Atlanta 1996 · 2x Mundialista FIFA',
     categoria: 'Olímpico / Mundial',
     dorsal: '07',
+    epoca: '1992 - 2010',
     imagenUrl: 'assets/piojo_hd.jpg',
-    descripcion: 'Formado en C.A. Río Tercero y Sportivo 9 de Julio. Plata Olímpica Atlanta 1996, doble mundialista (Francia 1998 y Corea-Japón 2002), campeón con Racing Club, Valencia CF (doble finalista Champions), Lazio y América.',
+    descripcion: 'Surgido de las canchas de C.A. Río Tercero y Sportivo 9 de Julio. Medalla de Plata Olímpica en Atlanta 1996, titular en los Mundiales de Francia 1998 y Corea-Japón 2002 con la Selección Argentina. Ídolo en Valencia CF con quien disputó dos finales de Champions League, campeón en Racing Club, Lazio de Italia y Club América.',
+    legado: 'Símbolo del potrero riotercerense proyectado a las máximas finales del fútbol europeo y mundial.',
     telemetria: [
-      { label: 'PALMARÉS', val: 'Plata Atlanta 96' },
-      { label: 'MUNDIALES', val: 'Francia 98 · Corea 02' },
-      { label: 'EUROPA', val: 'Valencia · Lazio' }
+      { label: 'MEDALLA OLÍMPICA', val: 'Plata Atlanta 1996' },
+      { label: 'COPAS DEL MUNDO', val: 'Francia 1998 · Corea-Japón 2002' },
+      { label: 'EUROPA', val: 'Valencia (2x Final UCL) · Lazio' },
+      { label: 'CLUBES ORIGEN', val: 'CART y Sp. 9 de Julio' }
     ]
   },
   {
     id: '4',
     nombre: 'Gustavo Fernández',
     disciplina: 'Tenis',
-    clubOrigen: 'Polvo de ladrillo / 9 de Julio',
-    logroPrincipal: '5x Grand Slams Singles · Ex N° 1 Mundial',
+    especialidad: 'Tenis Adaptado · Potencia de Revés y Estrategia',
+    clubOrigen: 'Club Sportivo 9 de Julio',
+    logroPrincipal: '5x Grand Slams Singles · 3x Dobles · Ex N° 1',
     categoria: 'Grand Slam / Élite',
     dorsal: '01',
+    epoca: '2010s - Presente',
     imagenUrl: 'assets/gustavo_hd.jpg',
-    descripcion: 'Formado en polvo de ladrillo de Río Tercero y Sportivo 9 de Julio. 5 Grand Slams singles (Roland Garros 2016, 2019; Abierto de Australia 2017, 2019; Wimbledon 2019) y 3 en dobles, ex N° 1 del ranking mundial ITF, abanderado paralímpico Río 2016.',
+    descripcion: 'Criado en las canchas de polvo de ladrillo de Sportivo 9 de Julio. Conquistó 5 títulos individuales de Grand Slam (Roland Garros 2016, 2019; Australian Open 2017, 2019; Wimbledon 2019) y 3 coronas en dobles. Ex número 1 del ranking mundial de la ITF y abanderado de la delegación argentina en los Juegos Paralímpicos de Río 2016.',
+    legado: 'Referente mundial de resiliencia y jerarquía técnica, situando a Río Tercero en la cima del tenis planetario.',
     telemetria: [
-      { label: 'GRAND SLAMS', val: '5 Singles · 3 Dobles' },
-      { label: 'RANKING', val: 'Ex N° 1 Mundial ITF' },
-      { label: 'BANDERA', val: 'Abanderado Río 16' }
+      { label: 'GRAND SLAMS', val: '5 Singles · 3 Dobles (8 en Total)' },
+      { label: 'RANKING MUNDIAL', val: 'Ex N° 1 del Mundo ITF' },
+      { label: 'JUEGOS', val: 'Abanderado Río 16 · Tokio 20' },
+      { label: 'ORIGEN LOCAL', val: 'Polvo de Sp. 9 de Julio' }
     ]
   },
   {
     id: '5',
     nombre: 'Oscar Galíndez',
     disciplina: 'Atletismo',
+    especialidad: 'Triatlón y Duatlón de Larga Distancia',
     clubOrigen: 'Polideportivo Municipal Río Tercero',
-    logroPrincipal: 'Oro Panamericano 95, 03 · Olímpico Sydney 00',
+    logroPrincipal: 'Oro Panamericano 1995, 2003 · Olímpico Sydney',
     categoria: 'Olímpico / Ironman',
     dorsal: '22',
+    epoca: '1990s - 2010s',
     imagenUrl: 'assets/oscar_galindez.jpg',
-    descripcion: 'Formado en el Polideportivo Municipal Río Tercero. Oro en Juegos Panamericanos (Mar del Plata 1995, Santo Domingo 2003), 10 veces Campeón Argentino de Triatlón, triunfos Ironman, Rombo de Oro, Olímpico Sydney 2000, Campeón Mundial de Duatlón (1995).',
+    descripcion: 'Pionero absoluto formado en el Polideportivo Municipal y los circuitos costeros del Río Ctalamochita. Doble Medalla de Oro en Juegos Panamericanos (Mar del Plata 1995 y Santo Domingo 2003), Campeón Mundial de Duatlón en Cancún 1995, diploma olímpico en Sydney 2000, 10 veces Campeón Argentino y multicampeón de Ironman en Brasil y Sudamérica.',
+    legado: 'Máxima figura histórica del triatlón sudamericano y embajador deportivo ilustre de la ciudad.',
     telemetria: [
-      { label: 'PANAMERICANOS', val: 'Oro 1995 · Oro 2003' },
-      { label: 'IRONMAN', val: 'Múltiple Campeón' },
-      { label: 'OLÍMPICO', val: 'Sydney 2000' }
+      { label: 'JUEGOS PANAM', val: 'Oro MDP 1995 · Oro Sto. Domingo 03' },
+      { label: 'CAMPEONATO MUNDIAL', val: 'Campeón Mundial Duatlón 1995' },
+      { label: 'CIRCUITO IRONMAN', val: 'Múltiple Ganador Ironman 70.3' },
+      { label: 'RECONOCIMIENTO', val: 'Olímpico Sydney 2000 · Rombo Oro' }
     ]
   },
   {
     id: '6',
     nombre: 'Rocío Comba',
     disciplina: 'Atletismo',
+    especialidad: 'Lanzamiento de Disco y Bala',
     clubOrigen: 'Polideportivo Municipal / Fábrica Militar',
-    logroPrincipal: 'Triple Olímpica (08, 12, 16) · Finalista Moscú 13',
+    logroPrincipal: 'Triple Olímpica (08, 12, 16) · Récord Nacional',
     categoria: 'Triple Olímpica',
     dorsal: '08',
+    epoca: '2005 - Presente',
     imagenUrl: 'assets/comba.jpg',
-    descripcion: 'Formada en Polideportivo Municipal y Fábrica Militar. Triple representante olímpica (Pekín 2008, Londres 2012, Río 2016), finalista en Campeonato Mundial de Moscú 2013, campeona sudamericana e iberoamericana, actual conductora del área deportiva municipal de Río Tercero.',
+    descripcion: 'Forjada en la pista del Polideportivo Municipal y el predio de Fábrica Militar. Atleta con 3 participaciones en Juegos Olímpicos (Pekín 2008, Londres 2012, Río 2016), finalista en el Campeonato Mundial de Atletismo de Moscú 2013, dueña del récord argentino absoluto en lanzamiento de disco (62.74 m) y actual Secretaria de Deportes de la ciudad.',
+    legado: 'Récord nacional histórico y figura formativa central en el desarrollo atlético municipal contemporáneo.',
     telemetria: [
-      { label: 'JUEGOS OLÍMPICOS', val: '08 · 12 · 16 (Triple)' },
-      { label: 'MUNDIAL', val: 'Finalista Moscú 13' },
-      { label: 'GESTIÓN', val: 'Sec. Deportes Río 3' }
+      { label: 'JUEGOS OLÍMPICOS', val: 'Pekín 08 · Londres 12 · Río 16' },
+      { label: 'MUNDIAL IAAF', val: 'Finalista Mundial Moscú 2013' },
+      { label: 'PLUSMARCA', val: 'Récord Nacional Disco (62.74 m)' },
+      { label: 'GESTIÓN LOCAL', val: 'Sec. Deportes de Río Tercero' }
     ]
   },
   {
     id: '7',
     nombre: 'Ivanna Madruga',
     disciplina: 'Tenis',
+    especialidad: 'Tenista Profesional · Especialista en Arcilla',
     clubOrigen: 'Club Atlético Río Tercero',
-    logroPrincipal: 'N° 14 WTA · Cuartos Roland Garros 1980',
+    logroPrincipal: 'N° 14 Ranking WTA · Cuartos Roland Garros',
     categoria: 'Pionera Grand Slam',
     dorsal: '14',
+    epoca: '1975 - 1986',
     imagenUrl: 'assets/ivanna_hd.jpg',
-    descripcion: 'Formada en Club Atlético Río Tercero. Cuartos de final singles en Roland Garros 1980, finalista de dobles en US Open, N° 14 del ranking mundial WTA, capitana de Fed Cup, pionera del tenis sudamericano.',
+    descripcion: 'Pionera del tenis sudamericano formada en las canchas de polvo de ladrillo del Club Atlético Río Tercero. Alcanzó los cuartos de final individuales en Roland Garros 1980 y fue finalista del cuadro de dobles del US Open 1980. Llegó al puesto N° 14 del ranking mundial de la WTA y representó al país en Copa Federación.',
+    legado: 'Primera gran embajadora internacional del deporte riotercerense en los estadios centrales del tenis mundial.',
     telemetria: [
-      { label: 'ROLAND GARROS', val: 'Cuartos 1980' },
-      { label: 'US OPEN', val: 'Finalista Dobles' },
-      { label: 'WTA RANKING', val: 'N° 14 del Mundo' }
+      { label: 'ROLAND GARROS', val: 'Cuartos de Final Singles (1980)' },
+      { label: 'US OPEN', val: 'Finalista de Dobles (1980)' },
+      { label: 'RANKING MUNDIAL', val: 'Puesto N° 14 del Mundo (WTA)' },
+      { label: 'SELECCIÓN', val: 'Capitana y Líder en Fed Cup' }
     ]
   },
   {
     id: '8',
     nombre: 'Catalina Primo',
     disciplina: 'Fútbol',
+    especialidad: 'Delantera de Área · Desborde y Gol',
     clubOrigen: 'Club Sportivo 9 de Julio',
     logroPrincipal: 'Selección Argentina Mayor · River Plate',
     categoria: 'Profesional AFA',
     dorsal: '11',
+    epoca: '2016 - Presente',
     imagenUrl: 'assets/catalina_primo.png',
-    descripcion: 'Formada en Club Sportivo 9 de Julio. Delantera de River Plate e integrante de la Selección Argentina de Fútbol Femenino mayor, campeona de Primera División y participante de Copa Libertadores.',
+    descripcion: 'Iniciada en las categorías formativas del Club Sportivo 9 de Julio. Delantera de jerarquía en el torneo semiprofesional de AFA, con destacadas campañas en Racing Club, UAI Urquiza y actual atacante de River Plate. Convocada permanente a la Selección Argentina de Fútbol Femenino Mayor y mundialista juvenil.',
+    legado: 'Máxima exponente riotercerense en el fútbol femenino profesional de Primera División y torneos Conmebol.',
     telemetria: [
-      { label: 'SELECCIÓN', val: 'Selección Mayor AFA' },
-      { label: 'CLUB ACTUAL', val: 'River Plate' },
-      { label: 'TORNEOS', val: 'Copa Libertadores' }
+      { label: 'SELECCIÓN AFA', val: 'Selección Argentina Mayor y Sub-20' },
+      { label: 'CLUB ACTUAL', val: 'Delantera en River Plate' },
+      { label: 'COPA LIBERTADORES', val: 'Disputa de Torneos Conmebol' },
+      { label: 'CLUB FORMADOR', val: 'Club Sportivo 9 de Julio' }
     ]
   },
   {
     id: '9',
     nombre: 'Andrea Berrino',
     disciplina: 'Natación',
-    clubOrigen: 'C.A. Río Tercero / Natatorios de Río 3',
+    especialidad: 'Espaldista · Velocidad Pura en 50m y 100m',
+    clubOrigen: 'C.A. Río Tercero / Natatorios Locales',
     logroPrincipal: 'Plusmarquista Sudamericana · Bronce Lima 2019',
     categoria: 'Panamericana / Récord',
     dorsal: '04',
+    epoca: '2010s - Presente',
     imagenUrl: 'assets/andrea_berrino.jpg',
-    descripcion: 'Formada en C.A. Río Tercero y natatorios de Río Tercero. Plusmarquista sudamericana en 50m y 100m espalda, medalla de bronce panamericana en Lima 2019, múltiple mundialista de natación.',
+    descripcion: 'Formada en las piscinas del Club Atlético Río Tercero y natatorios municipales. Medallista de Bronce en los Juegos Panamericanos de Lima 2019, campeona y récord continental en 50m y 100m estilo espalda. Participante en múltiples Campeonatos Mundiales de Natación FINA en piscina corta y larga.',
+    legado: 'Referente acuática que llevó la natación de Río Tercero a los récords continentales sudamericanos.',
     telemetria: [
-      { label: 'RÉCORD', val: 'Plusmarquista Sudam.' },
-      { label: 'PANAMERICANO', val: 'Bronce Lima 2019' },
-      { label: 'ESPECIALIDAD', val: '50m y 100m Espalda' }
+      { label: 'RÉCORD CONTINENTAL', val: 'Plusmarquista Sudamericana en Espalda' },
+      { label: 'JUEGOS PANAM', val: 'Medalla de Bronce Lima 2019' },
+      { label: 'MUNDIALES FINA', val: 'Múltiple Representante Mundial' },
+      { label: 'ORIGEN Y PILETA', val: 'Club Atlético Río Tercero' }
     ]
   },
   {
     id: '10',
     nombre: 'Ivano Falchetti',
     disciplina: 'Tiro',
+    especialidad: 'Tiro al Vuelo · Fosa Olímpica y Hélice',
     clubOrigen: 'Tiro Federal Río Tercero',
-    logroPrincipal: 'Representante Internacional y Nacional',
+    logroPrincipal: 'Múltiple Campeón Nacional e Internacional',
     categoria: 'Tiro de Precisión',
     dorsal: '01',
+    epoca: '1990s - 2020s',
     imagenUrl: 'assets/ivano_falchetti.jpg',
-    descripcion: 'Formado en Tiro Federal Río Tercero. Destacado tirador deportivo de precisión de nivel nacional e internacional en fosa y hélice, laureado representante del Tiro Federal Río Tercero.',
+    descripcion: 'Consagrado en el tradicional polígono del Tiro Federal Río Tercero. Atleta de élite en las modalidades de fosa olímpica, hélice y tiro al vuelo, sumando podios en certámenes sudamericanos, copas del mundo y copas nacionales argentinas de la Federación de Tiro.',
+    legado: 'Guardián y laureado representante de la histórica tradición centenaria de tiro deportivo en Río Tercero.',
     telemetria: [
-      { label: 'DISCIPLINA', val: 'Fosa Olímpica / Hélice' },
-      { label: 'NIVEL', val: 'Nacional e Internacional' },
-      { label: 'INSTITUCIÓN', val: 'Tiro Federal Río 3' }
+      { label: 'MODALIDAD', val: 'Fosa Olímpica y Tiro a la Hélice' },
+      { label: 'COMPETENCIA', val: 'Circuitos Nacionales y Mundiales' },
+      { label: 'TRAYECTORIA', val: 'Múltiples Títulos y Copas de Oro' },
+      { label: 'POLÍGONO BASE', val: 'Tiro Federal Río Tercero' }
     ]
   }
 ];

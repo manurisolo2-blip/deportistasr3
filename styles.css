@@ -1282,72 +1282,32 @@ body {
   color: var(--text-muted);
 }
 
-/* Grilla de Trading Cards */
+/* Grilla de Trading Cards: Distribución simétrica y organizada */
 .trading-cards-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
+  grid-auto-rows: 1fr;
 }
 
 @media (min-width: 640px) {
   .trading-cards-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
   }
 }
 
 @media (min-width: 1024px) {
   .trading-cards-grid {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  /* Los 2 deportistas más destacados (Prigioni y Pechito) se muestran en módulo destacado banner horizontal de 2 columnas */
-  .trading-card.card-featured {
-    grid-column: span 2;
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    align-items: stretch;
-  }
-
-  .trading-card.card-featured .card-photo-frame {
-    height: 100%;
-    aspect-ratio: auto;
-    min-height: 100%;
-    border-bottom: none;
-    border-right: 1px solid var(--border-card);
-  }
-
-  .trading-card.card-featured .card-athlete-photo {
-    height: 100%;
-  }
-
-  .trading-card.card-featured .card-featured-right-col,
-  .trading-card.card-featured .card-content-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    justify-content: space-between;
-    height: 100%;
-    background: var(--bg-surface);
-    padding: 1.75rem 2rem;
-  }
-
-  .trading-card.card-featured .card-name-title {
-    font-size: 2.1rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    margin-bottom: 0.5rem;
-  }
-
-  .trading-card.card-featured .card-bio-paragraph {
-    font-size: 0.9rem;
-    line-height: 1.6;
+    gap: 1.75rem;
   }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1440px) {
   .trading-cards-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
 }
 
@@ -1380,12 +1340,11 @@ body {
   display: none !important;
 }
 
-/* Contenedor Fotográfico (Proporción vertical generosa 3:4 con presencia nítida) */
+/* Contenedor Fotográfico (Proporción equilibrada 16:11 con presencia nítida) */
 .card-photo-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
-  min-height: 280px;
+  aspect-ratio: 16 / 11;
   background: #F1F5F9;
   border-bottom: 1px solid var(--border-card);
   overflow: hidden;
@@ -1394,7 +1353,7 @@ body {
 .card-athlete-photo {
   width: 100%;
   height: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 16 / 11;
   object-fit: cover;
   object-position: top center;
   image-rendering: -webkit-optimize-contrast;
@@ -1403,13 +1362,13 @@ body {
   transition: filter 300ms ease, transform 300ms ease;
 }
 
-/* Biografía concisa debajo del nombre del deportista */
+/* Biografía deportiva enriquecida */
 .card-athlete-bio {
   font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: #475569;
   line-height: 1.5;
-  margin-top: 0.35rem;
+  margin-top: 0.25rem;
   margin-bottom: 0.75rem;
 }
 
@@ -1553,9 +1512,10 @@ body {
 
 /* Cuerpo de la Tarjeta */
 .card-content-body {
-  padding: 1.4rem 1.5rem;
+  padding: 1.25rem 1.35rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   flex-grow: 1;
   position: relative;
   z-index: 2;
@@ -1563,24 +1523,35 @@ body {
 
 .card-name-title {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 1.45rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.15;
   color: var(--text-primary);
+  margin-top: 0.2rem;
+  margin-bottom: 0.15rem;
+}
+
+/* Especialidad y Puesto */
+.card-athlete-specialty {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--color-celeste-dark, #0077B6);
+  letter-spacing: 0.02em;
   margin-bottom: 0.65rem;
 }
 
-/* Identidad Comunitaria (Crítico: Club Formador) */
+/* Identidad Comunitaria (Club Formador) */
 .card-club-formador-box {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   color: var(--color-celeste-dark, #0077B6);
-  margin-bottom: 0.95rem;
+  margin-bottom: 0.4rem;
   width: fit-content;
   letter-spacing: 0.2px;
 }
@@ -1602,47 +1573,78 @@ body {
   color: var(--text-primary);
 }
 
-.card-bio-paragraph {
-  font-size: 0.86rem;
-  line-height: 1.55;
-  color: var(--text-secondary);
-  margin-bottom: 1.25rem;
-  flex-grow: 1;
+/* Bloque de Legado y Huella Cívica */
+.card-legacy-box {
+  background: #F8FAFC;
+  border-left: 3px solid var(--color-celeste, #0092DF);
+  padding: 0.55rem 0.75rem;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 0.85rem;
 }
 
-/* Barra de Telemetría (3 Datos Clave en Grilla de Impacto) */
+.card-legacy-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0369A1;
+  margin-bottom: 0.15rem;
+}
+
+.card-legacy-text {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: #334155;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Barra de Telemetría (4 Métricas en Grilla 2x2 Equilibrada) */
 .card-telemetry-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.65rem;
-  background: var(--bg-muted, #F1F4F8);
-  border: 1px solid var(--border-card);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.55rem;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
   border-radius: 8px;
-  padding: 0.85rem 1rem;
-  margin: 1rem 0;
+  padding: 0.65rem 0.75rem;
+  margin-bottom: 0.85rem;
 }
 
 .card-tele-item {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
 }
 
 .card-tele-label {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-size: 0.62rem;
+  font-weight: 800;
   color: #64748B;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em;
 }
 
 .card-tele-val {
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 700;
   color: #0F172A;
   line-height: 1.25;
+}
+
+.telemetry-epoch-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #475569;
+  background: #E2E8F0;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  white-space: nowrap;
 }
 
 /* Estado de Búsqueda Vacía */
@@ -2529,16 +2531,13 @@ body {
     flex-direction: column;
   }
 
-  .trading-card.card-featured .card-photo-frame {
-    aspect-ratio: 3 / 4;
+  .trading-card.card-featured .card-photo-frame,
+  .card-photo-frame {
+    aspect-ratio: 16 / 11;
+    min-height: auto;
     height: auto;
     border-right: none;
     border-bottom: 1px solid var(--border-card);
-  }
-
-  .card-photo-frame {
-    aspect-ratio: 3 / 4;
-    min-height: 260px;
   }
 
   .card-content-body {

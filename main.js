@@ -249,13 +249,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cardsGrid.innerHTML = filtrados.map(atleta => `
       <article
-        class="group relative bg-white border border-slate-200 rounded-lg overflow-hidden flex flex-col transition-all duration-200 hover:-translate-y-1 hover:shadow-lg trading-card ${
-          atleta.destacado ? 'card-featured' : ''
-        }"
+        class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card"
         data-discipline="${atleta.disciplina.toUpperCase()}"
       >
-        <!-- Contenedor Fotográfico Vertical -->
-        <div class="relative aspect-[3/4] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
+        <!-- Contenedor Fotográfico con proporción equilibrada 16:11 -->
+        <div class="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
           <img
             src="${atleta.imagenUrl}"
             alt="${atleta.nombre}"
@@ -263,52 +261,98 @@ document.addEventListener('DOMContentLoaded', () => {
             loading="lazy"
           />
           <!-- Badges Deportivos y Estrella de Gloria -->
-          <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10 card-badges-wrap">
-            <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
-              ${atleta.disciplina}
-            </span>
+          <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 card-badges-wrap">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
+                ${atleta.disciplina}
+              </span>
+              ${atleta.categoria ? `
+                <span class="bg-sky-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
+                  ${atleta.categoria}
+                </span>
+              ` : ''}
+            </div>
             ${atleta.destacado ? `<span class="card-glory-star" title="Consagración Deportiva">★</span>` : ''}
           </div>
+          ${atleta.dorsal ? `
+            <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-white/20">
+              #${atleta.dorsal}
+            </span>
+          ` : ''}
         </div>
 
-        <!-- Datos Editoriales -->
+        <!-- Datos Editoriales Enriquecidos -->
         <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
           <div>
-            <div class="card-club-formador-box">
-              <svg class="club-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span class="club-label-prefix">ORIGEN:</span>
-              <span class="club-name-text">${atleta.clubOrigen}</span>
+            <!-- Club Formador -->
+            <div class="card-club-formador-box flex items-center gap-1.5 text-xs font-mono font-bold text-sky-700 mb-1">
+              <svg class="club-badge-icon w-3.5 h-3.5 text-sky-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span class="text-slate-400 font-semibold">ORIGEN:</span>
+              <span class="text-slate-800 uppercase tracking-tight">${atleta.clubOrigen}</span>
             </div>
-            <h3 class="mt-1 font-['Plus_Jakarta_Sans',sans-serif] text-3xl font-black uppercase tracking-tight text-slate-950 transition-colors card-name-title">
+
+            <!-- Nombre del Atleta -->
+            <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-black uppercase tracking-tight text-slate-950 transition-colors card-name-title group-hover:text-sky-600">
               ${atleta.nombre}
             </h3>
-            <p class="card-athlete-bio">${atleta.descripcion || ''}</p>
+
+            <!-- Especialidad / Puesto -->
+            ${atleta.especialidad ? `
+              <div class="card-athlete-specialty font-mono text-xs font-bold text-sky-700 mt-0.5 mb-2.5">
+                ${atleta.especialidad}
+              </div>
+            ` : ''}
+
+            <!-- Biografía Deportiva -->
+            <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+              ${atleta.descripcion || ''}
+            </p>
+
+            <!-- Bloque de Legado e Impacto en Río Tercero -->
+            ${atleta.legado ? `
+              <div class="card-legacy-box bg-slate-50 border-l-2 border-sky-500 p-2.5 rounded-r mb-3.5">
+                <span class="block font-mono text-[9px] font-black uppercase tracking-wider text-sky-800 mb-0.5">
+                  HUELLA CÍVICA & FORMATIVA
+                </span>
+                <p class="font-sans text-xs text-slate-700 leading-snug">
+                  ${atleta.legado}
+                </p>
+              </div>
+            ` : ''}
           </div>
 
+          <!-- Cuadrícula de Telemetría (4 métricas 2x2) -->
           ${atleta.telemetria && atleta.telemetria.length > 0 ? `
-            <div class="card-telemetry-grid">
+            <div class="card-telemetry-grid grid grid-cols-2 gap-2 bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 mb-3">
               ${atleta.telemetria.map(t => `
-                <div class="card-tele-item">
-                  <span class="card-tele-label">${t.label}</span>
-                  <span class="card-tele-val">${t.val}</span>
+                <div class="card-tele-item flex flex-col">
+                  <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">${t.label}</span>
+                  <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">${t.val}</span>
                 </div>
               `).join('')}
             </div>
           ` : ''}
 
-          <!-- Telemetría y Palmarés Inferior -->
-          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
+          <!-- Fila Inferior: Consagración y Época -->
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
             <div class="telemetry-info">
-              <span class="block font-mono text-[9px] uppercase tracking-wider text-slate-600 telemetry-label">
-                Consagración
+              <span class="block font-mono text-[9px] uppercase tracking-wider text-slate-600 font-bold telemetry-label">
+                Consagración Cumbre
               </span>
-              <span class="font-sans text-xs font-bold text-slate-800 telemetry-val">
+              <span class="font-sans text-xs font-bold text-slate-900 telemetry-val">
                 ${atleta.logroPrincipal}
               </span>
             </div>
-            <span class="font-mono text-xs font-bold text-slate-600 group-hover:translate-x-0.5 transition-all telemetry-arrow" aria-hidden="true">
-              →
-            </span>
+            <div class="flex items-center gap-2">
+              ${atleta.epoca ? `
+                <span class="font-mono text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                  ${atleta.epoca}
+                </span>
+              ` : ''}
+              <span class="font-mono text-sm font-bold text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all telemetry-arrow" aria-hidden="true">
+                →
+              </span>
+            </div>
           </div>
         </div>
       </article>

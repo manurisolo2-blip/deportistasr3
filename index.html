@@ -176,346 +176,1242 @@
         <!-- Grilla de Tarjetas Coleccionables -->
         <div class="trading-cards-grid" id="tradingCardsGrid">
 
-          <!-- TARJETA 1 DESTACADA: PABLO PRIGIONI (SPAN 2 COLUMNAS) -->
-          <article class="trading-card card-featured" data-discipline="basquetbol" data-keywords="pablo prigioni basquetbol olimpiada pekin 2008 nba knicks rockets clippers sportivo 9 de julio dt seleccion">
-            <div class="card-photo-frame">
-              <div class="card-header-overlay">
-                <span class="card-badge-pill">BÁSQUETBOL · OLÍMPICO & NBA</span>
-                <span class="card-glory-star" title="Medallista Olímpico">★</span>
+          <article
+            class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card"
+            data-discipline="BÁSQUETBOL"
+          >
+            <!-- Contenedor Fotográfico con proporción equilibrada 16:11 -->
+            <div class="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
+              <img
+                src="assets/prigioni.jpg"
+                alt="Pablo Prigioni"
+                class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
+                loading="lazy"
+              />
+              <!-- Badges Deportivos y Estrella de Gloria -->
+              <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 card-badges-wrap">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
+                    Básquetbol
+                  </span>
+                  
+                    <span class="bg-sky-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
+                      Olímpico / NBA
+                    </span>
+                  
+                </div>
+                <span class="card-glory-star" title="Consagración Deportiva">★</span>
               </div>
-              <img src="assets/prigioni.jpg" alt="Pablo Prigioni" class="card-athlete-photo" loading="lazy">
+              
+                <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-white/20">
+                  #09
+                </span>
+              
             </div>
-            <div class="card-featured-right-col">
-              <div class="card-content-body">
-                <h3 class="card-name-title">PABLO PRIGIONI</h3>
-                <p class="card-athlete-bio">Formado en Club Sportivo 9 de Julio. Bronce Olímpico Pekín 2008, 4 temporadas en NBA (Knicks, Rockets, Clippers), multicampeón con Baskonia (ACB/EuroLiga), actual DT de la Selección Argentina de Básquetbol masculina mayor.</p>
-                <div class="card-club-formador-box">
-                  <svg class="club-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  <span class="club-label-prefix">CLUB DE ORIGEN:</span>
-                  <span class="club-name-text">CLUB SPORTIVO 9 DE JULIO</span>
+
+            <!-- Datos Editoriales Enriquecidos -->
+            <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
+              <div>
+                <!-- Club Formador -->
+                <div class="card-club-formador-box flex items-center gap-1.5 text-xs font-mono font-bold text-sky-700 mb-1">
+                  <svg class="club-badge-icon w-3.5 h-3.5 text-sky-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span class="text-slate-400 font-semibold">ORIGEN:</span>
+                  <span class="text-slate-800 uppercase tracking-tight">Club Sportivo 9 de Julio</span>
+                </div>
+
+                <!-- Nombre del Atleta -->
+                <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-black uppercase tracking-tight text-slate-950 transition-colors card-name-title group-hover:text-sky-600">
+                  Pablo Prigioni
+                </h3>
+
+                <!-- Especialidad / Puesto -->
+                
+                  <div class="card-athlete-specialty font-mono text-xs font-bold text-sky-700 mt-0.5 mb-2.5">
+                    Base Armador · Estratega FIBA / NBA
+                  </div>
+                
+
+                <!-- Biografía Deportiva -->
+                <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                  Iniciado en las divisiones formativas de Club Sportivo 9 de Julio. Medallista de Bronce en los Juegos Olímpicos de Pekín 2008 con la Generación Dorada, disputó 4 temporadas en la NBA (New York Knicks, Houston Rockets, LA Clippers), multicampeón con Baskonia en España y actual entrenador principal de la Selección Argentina Masculina Mayor.
+                </p>
+
+                <!-- Bloque de Legado e Impacto en Río Tercero -->
+                
+                  <div class="card-legacy-box bg-slate-50 border-l-2 border-sky-500 p-2.5 rounded-r mb-3.5">
+                    <span class="block font-mono text-[9px] font-black uppercase tracking-wider text-sky-800 mb-0.5">
+                      HUELLA CÍVICA & FORMATIVA
+                    </span>
+                    <p class="font-sans text-xs text-slate-700 leading-snug">
+                      Pilar de la Generación Dorada y formador de juego reconocido mundialmente por su inteligencia táctica.
+                    </p>
+                  </div>
+                
+              </div>
+
+              <!-- Cuadrícula de Telemetría (4 métricas 2x2) -->
+              
+                <div class="card-telemetry-grid grid grid-cols-2 gap-2 bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 mb-3">
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">JUEGOS OLÍMPICOS</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Bronce Pekín 2008</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">NBA TRAYECTORIA</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">4 Temporadas (NY, HOU, LAC)</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">EUROLIGA / ACB</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">3x Copa Rey · 1x Liga ACB</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">ACTUALIDAD</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">DT Selección Argentina Mayor</span>
+                    </div>
+                  
+                </div>
+              
+
+              <!-- Fila Inferior: Consagración y Época -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
+                <div class="telemetry-info">
+                  <span class="block font-mono text-[9px] uppercase tracking-wider text-slate-600 font-bold telemetry-label">
+                    Consagración Cumbre
+                  </span>
+                  <span class="font-sans text-xs font-bold text-slate-900 telemetry-val">
+                    Bronce Pekín 2008 · Ex NBA · DT Selección
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  
+                    <span class="font-mono text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                      2000s - Presente
+                    </span>
+                  
+                  <span class="font-mono text-sm font-bold text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all telemetry-arrow" aria-hidden="true">
+                    →
+                  </span>
                 </div>
               </div>
-              <div class="card-telemetry-grid">
-                <div class="card-tele-item">
-                  <span class="card-tele-label">PALMARÉS</span>
-                  <span class="card-tele-val">Bronce Pekín 08</span>
+            </div>
+          </article>
+
+          <article
+            class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card"
+            data-discipline="AUTOMOVILISMO"
+          >
+            <!-- Contenedor Fotográfico con proporción equilibrada 16:11 -->
+            <div class="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
+              <img
+                src="assets/pechito.jpg"
+                alt="José María «Pechito» López"
+                class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
+                loading="lazy"
+              />
+              <!-- Badges Deportivos y Estrella de Gloria -->
+              <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 card-badges-wrap">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
+                    Automovilismo
+                  </span>
+                  
+                    <span class="bg-sky-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
+                      Mundial FIA
+                    </span>
+                  
                 </div>
-                <div class="card-tele-item">
-                  <span class="card-tele-label">TRAYECTORIA</span>
-                  <span class="card-tele-val">4 Temporadas NBA</span>
+                <span class="card-glory-star" title="Consagración Deportiva">★</span>
+              </div>
+              
+                <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-white/20">
+                  #37
+                </span>
+              
+            </div>
+
+            <!-- Datos Editoriales Enriquecidos -->
+            <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
+              <div>
+                <!-- Club Formador -->
+                <div class="card-club-formador-box flex items-center gap-1.5 text-xs font-mono font-bold text-sky-700 mb-1">
+                  <svg class="club-badge-icon w-3.5 h-3.5 text-sky-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span class="text-slate-400 font-semibold">ORIGEN:</span>
+                  <span class="text-slate-800 uppercase tracking-tight">Kartódromo Municipal Río 3</span>
                 </div>
-                <div class="card-tele-item">
-                  <span class="card-tele-label">ROL ACTUAL</span>
-                  <span class="card-tele-val">DT Selección Mayor</span>
+
+                <!-- Nombre del Atleta -->
+                <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-black uppercase tracking-tight text-slate-950 transition-colors card-name-title group-hover:text-sky-600">
+                  José María «Pechito» López
+                </h3>
+
+                <!-- Especialidad / Puesto -->
+                
+                  <div class="card-athlete-specialty font-mono text-xs font-bold text-sky-700 mt-0.5 mb-2.5">
+                    Piloto Hypercar WEC · Resistencia y Turismos
+                  </div>
+                
+
+                <!-- Biografía Deportiva -->
+                <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                  Forjado en los kartódromos y circuitos de tierra de Río Tercero. Tricampeón Mundial WTCC (2014, 2015, 2016), bicampeón del Mundial de Resistencia WEC con Toyota Gazoo Racing, triunfador absoluto de las míticas 24 Horas de Le Mans en 2021 y múltiple coronado en TC2000 y Top Race V6.
+                </p>
+
+                <!-- Bloque de Legado e Impacto en Río Tercero -->
+                
+                  <div class="card-legacy-box bg-slate-50 border-l-2 border-sky-500 p-2.5 rounded-r mb-3.5">
+                    <span class="block font-mono text-[9px] font-black uppercase tracking-wider text-sky-800 mb-0.5">
+                      HUELLA CÍVICA & FORMATIVA
+                    </span>
+                    <p class="font-sans text-xs text-slate-700 leading-snug">
+                      Uno de los pilotos más versátiles y laureados de la historia del deporte motor argentino en pistas internacionales.
+                    </p>
+                  </div>
+                
+              </div>
+
+              <!-- Cuadrícula de Telemetría (4 métricas 2x2) -->
+              
+                <div class="card-telemetry-grid grid grid-cols-2 gap-2 bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 mb-3">
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">TÍTULOS FIA</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">3x WTCC · 2x WEC Mundial</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">HITO HISTÓRICO</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Ganador 24h Le Mans 2021</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">EQUIPO DE FÁBRICA</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Toyota Gazoo Racing / Lexus</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">TÍTULOS NACIONALES</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">TC2000, TRV6 y Súper TC2000</span>
+                    </div>
+                  
+                </div>
+              
+
+              <!-- Fila Inferior: Consagración y Época -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
+                <div class="telemetry-info">
+                  <span class="block font-mono text-[9px] uppercase tracking-wider text-slate-600 font-bold telemetry-label">
+                    Consagración Cumbre
+                  </span>
+                  <span class="font-sans text-xs font-bold text-slate-900 telemetry-val">
+                    3x WTCC · Ganador 24h Le Mans · 2x WEC
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  
+                    <span class="font-mono text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                      2000s - Presente
+                    </span>
+                  
+                  <span class="font-mono text-sm font-bold text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all telemetry-arrow" aria-hidden="true">
+                    →
+                  </span>
                 </div>
               </div>
             </div>
           </article>
 
-          <!-- TARJETA 2 DESTACADA: JOSÉ MARÍA 'PECHITO' LÓPEZ (SPAN 2 COLUMNAS) -->
-          <article class="trading-card card-featured" data-discipline="automovilismo" data-keywords="jose maria pechito lopez automovilismo wtcc wec le mans toyota kartodromos rio 3">
-            <div class="card-photo-frame">
-              <div class="card-header-overlay">
-                <span class="card-badge-pill">AUTOMOVILISMO · FIA MUNDIAL</span>
-                <span class="card-glory-star" title="Campeón Mundial FIA">★</span>
+          <article
+            class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card"
+            data-discipline="FÚTBOL"
+          >
+            <!-- Contenedor Fotográfico con proporción equilibrada 16:11 -->
+            <div class="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
+              <img
+                src="assets/piojo_hd.jpg"
+                alt="Claudio «Piojo» López"
+                class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
+                loading="lazy"
+              />
+              <!-- Badges Deportivos y Estrella de Gloria -->
+              <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 card-badges-wrap">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
+                    Fútbol
+                  </span>
+                  
+                    <span class="bg-sky-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
+                      Olímpico / Mundial
+                    </span>
+                  
+                </div>
+                
               </div>
-              <img src="assets/pechito.jpg" alt="José María Pechito López" class="card-athlete-photo" loading="lazy">
+              
+                <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-white/20">
+                  #07
+                </span>
+              
             </div>
-            <div class="card-featured-right-col">
-              <div class="card-content-body">
-                <h3 class="card-name-title">JOSÉ MARÍA «PECHITO» LÓPEZ</h3>
-                <p class="card-athlete-bio">Iniciado en los kartódromos de Río 3. Tricampeón Mundial WTCC (2014, 2015, 2016), Campeón Mundial de Resistencia WEC con Toyota Gazoo Racing, ganador de las 24 Horas de Le Mans (2021), múltiple campeón TC2000 y Top Race V6.</p>
-                <div class="card-club-formador-box">
-                  <svg class="club-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="5.6" y1="18.4" x2="10.5" y2="14.1"/><line x1="18.4" y1="18.4" x2="13.5" y2="14.1"/></svg>
-                  <span class="club-label-prefix">CLUB DE ORIGEN:</span>
-                  <span class="club-name-text">KARTÓDROMOS DE RÍO 3</span>
+
+            <!-- Datos Editoriales Enriquecidos -->
+            <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
+              <div>
+                <!-- Club Formador -->
+                <div class="card-club-formador-box flex items-center gap-1.5 text-xs font-mono font-bold text-sky-700 mb-1">
+                  <svg class="club-badge-icon w-3.5 h-3.5 text-sky-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span class="text-slate-400 font-semibold">ORIGEN:</span>
+                  <span class="text-slate-800 uppercase tracking-tight">C.A. Río Tercero / Sportivo 9 de Julio</span>
+                </div>
+
+                <!-- Nombre del Atleta -->
+                <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-black uppercase tracking-tight text-slate-950 transition-colors card-name-title group-hover:text-sky-600">
+                  Claudio «Piojo» López
+                </h3>
+
+                <!-- Especialidad / Puesto -->
+                
+                  <div class="card-athlete-specialty font-mono text-xs font-bold text-sky-700 mt-0.5 mb-2.5">
+                    Delantero Extremo · Velocidad y Definición
+                  </div>
+                
+
+                <!-- Biografía Deportiva -->
+                <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                  Surgido de las canchas de C.A. Río Tercero y Sportivo 9 de Julio. Medalla de Plata Olímpica en Atlanta 1996, titular en los Mundiales de Francia 1998 y Corea-Japón 2002 con la Selección Argentina. Ídolo en Valencia CF con quien disputó dos finales de Champions League, campeón en Racing Club, Lazio de Italia y Club América.
+                </p>
+
+                <!-- Bloque de Legado e Impacto en Río Tercero -->
+                
+                  <div class="card-legacy-box bg-slate-50 border-l-2 border-sky-500 p-2.5 rounded-r mb-3.5">
+                    <span class="block font-mono text-[9px] font-black uppercase tracking-wider text-sky-800 mb-0.5">
+                      HUELLA CÍVICA & FORMATIVA
+                    </span>
+                    <p class="font-sans text-xs text-slate-700 leading-snug">
+                      Símbolo del potrero riotercerense proyectado a las máximas finales del fútbol europeo y mundial.
+                    </p>
+                  </div>
+                
+              </div>
+
+              <!-- Cuadrícula de Telemetría (4 métricas 2x2) -->
+              
+                <div class="card-telemetry-grid grid grid-cols-2 gap-2 bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 mb-3">
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">MEDALLA OLÍMPICA</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Plata Atlanta 1996</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">COPAS DEL MUNDO</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Francia 1998 · Corea-Japón 2002</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">EUROPA</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Valencia (2x Final UCL) · Lazio</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">CLUBES ORIGEN</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">CART y Sp. 9 de Julio</span>
+                    </div>
+                  
+                </div>
+              
+
+              <!-- Fila Inferior: Consagración y Época -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
+                <div class="telemetry-info">
+                  <span class="block font-mono text-[9px] uppercase tracking-wider text-slate-600 font-bold telemetry-label">
+                    Consagración Cumbre
+                  </span>
+                  <span class="font-sans text-xs font-bold text-slate-900 telemetry-val">
+                    Plata Atlanta 1996 · 2x Mundialista FIFA
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  
+                    <span class="font-mono text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                      1992 - 2010
+                    </span>
+                  
+                  <span class="font-mono text-sm font-bold text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all telemetry-arrow" aria-hidden="true">
+                    →
+                  </span>
                 </div>
               </div>
-              <div class="card-telemetry-grid">
-                <div class="card-tele-item">
-                  <span class="card-tele-label">PALMARÉS</span>
-                  <span class="card-tele-val">3x WTCC · 2x WEC</span>
+            </div>
+          </article>
+
+          <article
+            class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card"
+            data-discipline="TENIS"
+          >
+            <!-- Contenedor Fotográfico con proporción equilibrada 16:11 -->
+            <div class="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
+              <img
+                src="assets/gustavo_hd.jpg"
+                alt="Gustavo Fernández"
+                class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
+                loading="lazy"
+              />
+              <!-- Badges Deportivos y Estrella de Gloria -->
+              <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 card-badges-wrap">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
+                    Tenis
+                  </span>
+                  
+                    <span class="bg-sky-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
+                      Grand Slam / Élite
+                    </span>
+                  
                 </div>
-                <div class="card-tele-item">
-                  <span class="card-tele-label">HITO MÁXIMO</span>
-                  <span class="card-tele-val">24h Le Mans 2021</span>
+                
+              </div>
+              
+                <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-white/20">
+                  #01
+                </span>
+              
+            </div>
+
+            <!-- Datos Editoriales Enriquecidos -->
+            <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
+              <div>
+                <!-- Club Formador -->
+                <div class="card-club-formador-box flex items-center gap-1.5 text-xs font-mono font-bold text-sky-700 mb-1">
+                  <svg class="club-badge-icon w-3.5 h-3.5 text-sky-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span class="text-slate-400 font-semibold">ORIGEN:</span>
+                  <span class="text-slate-800 uppercase tracking-tight">Club Sportivo 9 de Julio</span>
                 </div>
-                <div class="card-tele-item">
-                  <span class="card-tele-label">NACIONAL</span>
-                  <span class="card-tele-val">TC2000 · Top Race</span>
+
+                <!-- Nombre del Atleta -->
+                <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-black uppercase tracking-tight text-slate-950 transition-colors card-name-title group-hover:text-sky-600">
+                  Gustavo Fernández
+                </h3>
+
+                <!-- Especialidad / Puesto -->
+                
+                  <div class="card-athlete-specialty font-mono text-xs font-bold text-sky-700 mt-0.5 mb-2.5">
+                    Tenis Adaptado · Potencia de Revés y Estrategia
+                  </div>
+                
+
+                <!-- Biografía Deportiva -->
+                <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                  Criado en las canchas de polvo de ladrillo de Sportivo 9 de Julio. Conquistó 5 títulos individuales de Grand Slam (Roland Garros 2016, 2019; Australian Open 2017, 2019; Wimbledon 2019) y 3 coronas en dobles. Ex número 1 del ranking mundial de la ITF y abanderado de la delegación argentina en los Juegos Paralímpicos de Río 2016.
+                </p>
+
+                <!-- Bloque de Legado e Impacto en Río Tercero -->
+                
+                  <div class="card-legacy-box bg-slate-50 border-l-2 border-sky-500 p-2.5 rounded-r mb-3.5">
+                    <span class="block font-mono text-[9px] font-black uppercase tracking-wider text-sky-800 mb-0.5">
+                      HUELLA CÍVICA & FORMATIVA
+                    </span>
+                    <p class="font-sans text-xs text-slate-700 leading-snug">
+                      Referente mundial de resiliencia y jerarquía técnica, situando a Río Tercero en la cima del tenis planetario.
+                    </p>
+                  </div>
+                
+              </div>
+
+              <!-- Cuadrícula de Telemetría (4 métricas 2x2) -->
+              
+                <div class="card-telemetry-grid grid grid-cols-2 gap-2 bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 mb-3">
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">GRAND SLAMS</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">5 Singles · 3 Dobles (8 en Total)</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">RANKING MUNDIAL</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Ex N° 1 del Mundo ITF</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">JUEGOS</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Abanderado Río 16 · Tokio 20</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">ORIGEN LOCAL</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Polvo de Sp. 9 de Julio</span>
+                    </div>
+                  
+                </div>
+              
+
+              <!-- Fila Inferior: Consagración y Época -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
+                <div class="telemetry-info">
+                  <span class="block font-mono text-[9px] uppercase tracking-wider text-slate-600 font-bold telemetry-label">
+                    Consagración Cumbre
+                  </span>
+                  <span class="font-sans text-xs font-bold text-slate-900 telemetry-val">
+                    5x Grand Slams Singles · 3x Dobles · Ex N° 1
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  
+                    <span class="font-mono text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                      2010s - Presente
+                    </span>
+                  
+                  <span class="font-mono text-sm font-bold text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all telemetry-arrow" aria-hidden="true">
+                    →
+                  </span>
                 </div>
               </div>
             </div>
           </article>
 
-          <!-- TARJETA 3: CLAUDIO 'PIOJO' LÓPEZ -->
-          <article class="trading-card" data-discipline="futbol" data-keywords="claudio piojo lopez futbol seleccion argentina mundial atlanta 96 valencia lazio racing cart 9 de julio">
-            <div class="card-photo-frame">
-              <div class="card-header-overlay">
-                <span class="card-badge-pill">FÚTBOL · MUNDIALISTA & PLATA</span>
-                <span class="card-glory-star" title="Medallista Olímpico">★</span>
+          <article
+            class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card"
+            data-discipline="ATLETISMO"
+          >
+            <!-- Contenedor Fotográfico con proporción equilibrada 16:11 -->
+            <div class="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
+              <img
+                src="assets/oscar_galindez.jpg"
+                alt="Oscar Galíndez"
+                class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
+                loading="lazy"
+              />
+              <!-- Badges Deportivos y Estrella de Gloria -->
+              <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 card-badges-wrap">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
+                    Atletismo
+                  </span>
+                  
+                    <span class="bg-sky-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
+                      Olímpico / Ironman
+                    </span>
+                  
+                </div>
+                
               </div>
-              <img src="assets/piojo_hd.jpg" alt="Claudio Piojo López" class="card-athlete-photo" loading="lazy">
+              
+                <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-white/20">
+                  #22
+                </span>
+              
             </div>
-            <div class="card-content-body">
-              <h3 class="card-name-title">CLAUDIO «PIOJO» LÓPEZ</h3>
-              <p class="card-athlete-bio">Formado en C.A. Río Tercero y Sportivo 9 de Julio. Plata Olímpica Atlanta 1996, doble mundialista (Francia 1998 y Corea-Japón 2002), campeón con Racing Club, Valencia CF (doble finalista Champions), Lazio y América.</p>
-              <div class="card-club-formador-box">
-                <svg class="club-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                <span class="club-label-prefix">CLUB DE ORIGEN:</span>
-                <span class="club-name-text">C.A. RÍO TERCERO / 9 DE JULIO</span>
+
+            <!-- Datos Editoriales Enriquecidos -->
+            <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
+              <div>
+                <!-- Club Formador -->
+                <div class="card-club-formador-box flex items-center gap-1.5 text-xs font-mono font-bold text-sky-700 mb-1">
+                  <svg class="club-badge-icon w-3.5 h-3.5 text-sky-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span class="text-slate-400 font-semibold">ORIGEN:</span>
+                  <span class="text-slate-800 uppercase tracking-tight">Polideportivo Municipal Río Tercero</span>
+                </div>
+
+                <!-- Nombre del Atleta -->
+                <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-black uppercase tracking-tight text-slate-950 transition-colors card-name-title group-hover:text-sky-600">
+                  Oscar Galíndez
+                </h3>
+
+                <!-- Especialidad / Puesto -->
+                
+                  <div class="card-athlete-specialty font-mono text-xs font-bold text-sky-700 mt-0.5 mb-2.5">
+                    Triatlón y Duatlón de Larga Distancia
+                  </div>
+                
+
+                <!-- Biografía Deportiva -->
+                <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                  Pionero absoluto formado en el Polideportivo Municipal y los circuitos costeros del Río Ctalamochita. Doble Medalla de Oro en Juegos Panamericanos (Mar del Plata 1995 y Santo Domingo 2003), Campeón Mundial de Duatlón en Cancún 1995, diploma olímpico en Sydney 2000, 10 veces Campeón Argentino y multicampeón de Ironman en Brasil y Sudamérica.
+                </p>
+
+                <!-- Bloque de Legado e Impacto en Río Tercero -->
+                
+                  <div class="card-legacy-box bg-slate-50 border-l-2 border-sky-500 p-2.5 rounded-r mb-3.5">
+                    <span class="block font-mono text-[9px] font-black uppercase tracking-wider text-sky-800 mb-0.5">
+                      HUELLA CÍVICA & FORMATIVA
+                    </span>
+                    <p class="font-sans text-xs text-slate-700 leading-snug">
+                      Máxima figura histórica del triatlón sudamericano y embajador deportivo ilustre de la ciudad.
+                    </p>
+                  </div>
+                
               </div>
-            </div>
-            <div class="card-telemetry-grid">
-              <div class="card-tele-item">
-                <span class="card-tele-label">PALMARÉS</span>
-                <span class="card-tele-val">Plata Atlanta 96</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">MUNDIALES</span>
-                <span class="card-tele-val">Francia 98 · Corea 02</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">EUROPA</span>
-                <span class="card-tele-val">Valencia · Lazio</span>
+
+              <!-- Cuadrícula de Telemetría (4 métricas 2x2) -->
+              
+                <div class="card-telemetry-grid grid grid-cols-2 gap-2 bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 mb-3">
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">JUEGOS PANAM</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Oro MDP 1995 · Oro Sto. Domingo 03</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">CAMPEONATO MUNDIAL</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Campeón Mundial Duatlón 1995</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">CIRCUITO IRONMAN</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Múltiple Ganador Ironman 70.3</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">RECONOCIMIENTO</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Olímpico Sydney 2000 · Rombo Oro</span>
+                    </div>
+                  
+                </div>
+              
+
+              <!-- Fila Inferior: Consagración y Época -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
+                <div class="telemetry-info">
+                  <span class="block font-mono text-[9px] uppercase tracking-wider text-slate-600 font-bold telemetry-label">
+                    Consagración Cumbre
+                  </span>
+                  <span class="font-sans text-xs font-bold text-slate-900 telemetry-val">
+                    Oro Panamericano 1995, 2003 · Olímpico Sydney
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  
+                    <span class="font-mono text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                      1990s - 2010s
+                    </span>
+                  
+                  <span class="font-mono text-sm font-bold text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all telemetry-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- TARJETA 4: GUSTAVO FERNÁNDEZ -->
-          <article class="trading-card" data-discipline="tenis" data-keywords="gustavo fernandez tenis adaptado grand slam roland garros wimbledon australian open itf sportivo 9 de julio">
-            <div class="card-photo-frame">
-              <div class="card-header-overlay">
-                <span class="card-badge-pill">TENIS ADAPTADO · 5x SLAM</span>
-                <span class="card-glory-star" title="Campeón de Grand Slam">★</span>
+          <article
+            class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card"
+            data-discipline="ATLETISMO"
+          >
+            <!-- Contenedor Fotográfico con proporción equilibrada 16:11 -->
+            <div class="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
+              <img
+                src="assets/comba.jpg"
+                alt="Rocío Comba"
+                class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
+                loading="lazy"
+              />
+              <!-- Badges Deportivos y Estrella de Gloria -->
+              <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 card-badges-wrap">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
+                    Atletismo
+                  </span>
+                  
+                    <span class="bg-sky-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
+                      Triple Olímpica
+                    </span>
+                  
+                </div>
+                
               </div>
-              <img src="assets/gustavo_hd.jpg" alt="Gustavo Fernández" class="card-athlete-photo" loading="lazy">
+              
+                <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-white/20">
+                  #08
+                </span>
+              
             </div>
-            <div class="card-content-body">
-              <h3 class="card-name-title">GUSTAVO FERNÁNDEZ</h3>
-              <p class="card-athlete-bio">Formado en polvo de ladrillo de Río Tercero y Sportivo 9 de Julio. 5 Grand Slams singles (Roland Garros 2016, 2019; Abierto de Australia 2017, 2019; Wimbledon 2019) y 3 en dobles, ex N° 1 del ranking mundial ITF, abanderado paralímpico Río 2016.</p>
-              <div class="card-club-formador-box">
-                <svg class="club-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                <span class="club-label-prefix">CLUB DE ORIGEN:</span>
-                <span class="club-name-text">POLVO DE LADRILLO / 9 DE JULIO</span>
+
+            <!-- Datos Editoriales Enriquecidos -->
+            <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
+              <div>
+                <!-- Club Formador -->
+                <div class="card-club-formador-box flex items-center gap-1.5 text-xs font-mono font-bold text-sky-700 mb-1">
+                  <svg class="club-badge-icon w-3.5 h-3.5 text-sky-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span class="text-slate-400 font-semibold">ORIGEN:</span>
+                  <span class="text-slate-800 uppercase tracking-tight">Polideportivo Municipal / Fábrica Militar</span>
+                </div>
+
+                <!-- Nombre del Atleta -->
+                <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-black uppercase tracking-tight text-slate-950 transition-colors card-name-title group-hover:text-sky-600">
+                  Rocío Comba
+                </h3>
+
+                <!-- Especialidad / Puesto -->
+                
+                  <div class="card-athlete-specialty font-mono text-xs font-bold text-sky-700 mt-0.5 mb-2.5">
+                    Lanzamiento de Disco y Bala
+                  </div>
+                
+
+                <!-- Biografía Deportiva -->
+                <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                  Forjada en la pista del Polideportivo Municipal y el predio de Fábrica Militar. Atleta con 3 participaciones en Juegos Olímpicos (Pekín 2008, Londres 2012, Río 2016), finalista en el Campeonato Mundial de Atletismo de Moscú 2013, dueña del récord argentino absoluto en lanzamiento de disco (62.74 m) y actual Secretaria de Deportes de la ciudad.
+                </p>
+
+                <!-- Bloque de Legado e Impacto en Río Tercero -->
+                
+                  <div class="card-legacy-box bg-slate-50 border-l-2 border-sky-500 p-2.5 rounded-r mb-3.5">
+                    <span class="block font-mono text-[9px] font-black uppercase tracking-wider text-sky-800 mb-0.5">
+                      HUELLA CÍVICA & FORMATIVA
+                    </span>
+                    <p class="font-sans text-xs text-slate-700 leading-snug">
+                      Récord nacional histórico y figura formativa central en el desarrollo atlético municipal contemporáneo.
+                    </p>
+                  </div>
+                
               </div>
-            </div>
-            <div class="card-telemetry-grid">
-              <div class="card-tele-item">
-                <span class="card-tele-label">GRAND SLAMS</span>
-                <span class="card-tele-val">5 Singles · 3 Dobles</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">RANKING</span>
-                <span class="card-tele-val">Ex N° 1 Mundial ITF</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">BANDERA</span>
-                <span class="card-tele-val">Abanderado Río 16</span>
+
+              <!-- Cuadrícula de Telemetría (4 métricas 2x2) -->
+              
+                <div class="card-telemetry-grid grid grid-cols-2 gap-2 bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 mb-3">
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">JUEGOS OLÍMPICOS</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Pekín 08 · Londres 12 · Río 16</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">MUNDIAL IAAF</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Finalista Mundial Moscú 2013</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">PLUSMARCA</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Récord Nacional Disco (62.74 m)</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">GESTIÓN LOCAL</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Sec. Deportes de Río Tercero</span>
+                    </div>
+                  
+                </div>
+              
+
+              <!-- Fila Inferior: Consagración y Época -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
+                <div class="telemetry-info">
+                  <span class="block font-mono text-[9px] uppercase tracking-wider text-slate-600 font-bold telemetry-label">
+                    Consagración Cumbre
+                  </span>
+                  <span class="font-sans text-xs font-bold text-slate-900 telemetry-val">
+                    Triple Olímpica (08, 12, 16) · Récord Nacional
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  
+                    <span class="font-mono text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                      2005 - Presente
+                    </span>
+                  
+                  <span class="font-mono text-sm font-bold text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all telemetry-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- TARJETA 5: ANDREA BERRINO -->
-          <article class="trading-card" data-discipline="natacion" data-keywords="andrea berrino natacion pileta espalda record panamericano lima 2019 cadda club atletico rio tercero">
-            <div class="card-photo-frame">
-              <div class="card-header-overlay">
-                <span class="card-badge-pill">NATACIÓN · PANAMERICANA</span>
-                <span class="card-glory-star" title="Medallista Panamericana">★</span>
+          <article
+            class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card"
+            data-discipline="TENIS"
+          >
+            <!-- Contenedor Fotográfico con proporción equilibrada 16:11 -->
+            <div class="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
+              <img
+                src="assets/ivanna_hd.jpg"
+                alt="Ivanna Madruga"
+                class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
+                loading="lazy"
+              />
+              <!-- Badges Deportivos y Estrella de Gloria -->
+              <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 card-badges-wrap">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
+                    Tenis
+                  </span>
+                  
+                    <span class="bg-sky-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
+                      Pionera Grand Slam
+                    </span>
+                  
+                </div>
+                
               </div>
-              <img src="assets/andrea_berrino.jpg" alt="Andrea Berrino" class="card-athlete-photo" loading="lazy">
+              
+                <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-white/20">
+                  #14
+                </span>
+              
             </div>
-            <div class="card-content-body">
-              <h3 class="card-name-title">ANDREA BERRINO</h3>
-              <p class="card-athlete-bio">Formada en C.A. Río Tercero y natatorios de Río Tercero. Plusmarquista sudamericana en 50m y 100m espalda, medalla de bronce panamericana en Lima 2019, múltiple mundialista de natación.</p>
-              <div class="card-club-formador-box">
-                <svg class="club-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                <span class="club-label-prefix">CLUB DE ORIGEN:</span>
-                <span class="club-name-text">C.A. RÍO TERCERO / NATATORIOS R3</span>
+
+            <!-- Datos Editoriales Enriquecidos -->
+            <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
+              <div>
+                <!-- Club Formador -->
+                <div class="card-club-formador-box flex items-center gap-1.5 text-xs font-mono font-bold text-sky-700 mb-1">
+                  <svg class="club-badge-icon w-3.5 h-3.5 text-sky-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span class="text-slate-400 font-semibold">ORIGEN:</span>
+                  <span class="text-slate-800 uppercase tracking-tight">Club Atlético Río Tercero</span>
+                </div>
+
+                <!-- Nombre del Atleta -->
+                <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-black uppercase tracking-tight text-slate-950 transition-colors card-name-title group-hover:text-sky-600">
+                  Ivanna Madruga
+                </h3>
+
+                <!-- Especialidad / Puesto -->
+                
+                  <div class="card-athlete-specialty font-mono text-xs font-bold text-sky-700 mt-0.5 mb-2.5">
+                    Tenista Profesional · Especialista en Arcilla
+                  </div>
+                
+
+                <!-- Biografía Deportiva -->
+                <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                  Pionera del tenis sudamericano formada en las canchas de polvo de ladrillo del Club Atlético Río Tercero. Alcanzó los cuartos de final individuales en Roland Garros 1980 y fue finalista del cuadro de dobles del US Open 1980. Llegó al puesto N° 14 del ranking mundial de la WTA y representó al país en Copa Federación.
+                </p>
+
+                <!-- Bloque de Legado e Impacto en Río Tercero -->
+                
+                  <div class="card-legacy-box bg-slate-50 border-l-2 border-sky-500 p-2.5 rounded-r mb-3.5">
+                    <span class="block font-mono text-[9px] font-black uppercase tracking-wider text-sky-800 mb-0.5">
+                      HUELLA CÍVICA & FORMATIVA
+                    </span>
+                    <p class="font-sans text-xs text-slate-700 leading-snug">
+                      Primera gran embajadora internacional del deporte riotercerense en los estadios centrales del tenis mundial.
+                    </p>
+                  </div>
+                
               </div>
-            </div>
-            <div class="card-telemetry-grid">
-              <div class="card-tele-item">
-                <span class="card-tele-label">RÉCORD</span>
-                <span class="card-tele-val">Plusmarquista Sudam.</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">PANAMERICANO</span>
-                <span class="card-tele-val">Bronce Lima 2019</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">ESPECIALIDAD</span>
-                <span class="card-tele-val">50m y 100m Espalda</span>
+
+              <!-- Cuadrícula de Telemetría (4 métricas 2x2) -->
+              
+                <div class="card-telemetry-grid grid grid-cols-2 gap-2 bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 mb-3">
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">ROLAND GARROS</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Cuartos de Final Singles (1980)</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">US OPEN</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Finalista de Dobles (1980)</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">RANKING MUNDIAL</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Puesto N° 14 del Mundo (WTA)</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">SELECCIÓN</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Capitana y Líder en Fed Cup</span>
+                    </div>
+                  
+                </div>
+              
+
+              <!-- Fila Inferior: Consagración y Época -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
+                <div class="telemetry-info">
+                  <span class="block font-mono text-[9px] uppercase tracking-wider text-slate-600 font-bold telemetry-label">
+                    Consagración Cumbre
+                  </span>
+                  <span class="font-sans text-xs font-bold text-slate-900 telemetry-val">
+                    N° 14 Ranking WTA · Cuartos Roland Garros
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  
+                    <span class="font-mono text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                      1975 - 1986
+                    </span>
+                  
+                  <span class="font-mono text-sm font-bold text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all telemetry-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- TARJETA 6: OSCAR GALÍNDEZ -->
-          <article class="trading-card" data-discipline="atletismo" data-keywords="oscar galindez triatlon ironman sydney 2000 duatlon fondo polideportivo municipal panamericanos mar del plata santo domingo">
-            <div class="card-photo-frame">
-              <div class="card-header-overlay">
-                <span class="card-badge-pill">TRIATLÓN · OLÍMPICO & IRONMAN</span>
-                <span class="card-glory-star" title="Olímpico y Campeón Mundial">★</span>
+          <article
+            class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card"
+            data-discipline="FÚTBOL"
+          >
+            <!-- Contenedor Fotográfico con proporción equilibrada 16:11 -->
+            <div class="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
+              <img
+                src="assets/catalina_primo.png"
+                alt="Catalina Primo"
+                class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
+                loading="lazy"
+              />
+              <!-- Badges Deportivos y Estrella de Gloria -->
+              <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 card-badges-wrap">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
+                    Fútbol
+                  </span>
+                  
+                    <span class="bg-sky-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
+                      Profesional AFA
+                    </span>
+                  
+                </div>
+                
               </div>
-              <img src="assets/oscar_galindez.jpg" alt="Oscar Galíndez" class="card-athlete-photo" loading="lazy">
+              
+                <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-white/20">
+                  #11
+                </span>
+              
             </div>
-            <div class="card-content-body">
-              <h3 class="card-name-title">OSCAR GALÍNDEZ</h3>
-              <p class="card-athlete-bio">Formado en el Polideportivo Municipal Río Tercero. Oro en Juegos Panamericanos (Mar del Plata 1995, Santo Domingo 2003), 10 veces Campeón Argentino de Triatlón, triunfos Ironman, Rombo de Oro, Olímpico Sydney 2000, Campeón Mundial de Duatlón (1995).</p>
-              <div class="card-club-formador-box">
-                <svg class="club-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                <span class="club-label-prefix">CLUB DE ORIGEN:</span>
-                <span class="club-name-text">POLIDEPORTIVO MUNICIPAL</span>
+
+            <!-- Datos Editoriales Enriquecidos -->
+            <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
+              <div>
+                <!-- Club Formador -->
+                <div class="card-club-formador-box flex items-center gap-1.5 text-xs font-mono font-bold text-sky-700 mb-1">
+                  <svg class="club-badge-icon w-3.5 h-3.5 text-sky-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span class="text-slate-400 font-semibold">ORIGEN:</span>
+                  <span class="text-slate-800 uppercase tracking-tight">Club Sportivo 9 de Julio</span>
+                </div>
+
+                <!-- Nombre del Atleta -->
+                <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-black uppercase tracking-tight text-slate-950 transition-colors card-name-title group-hover:text-sky-600">
+                  Catalina Primo
+                </h3>
+
+                <!-- Especialidad / Puesto -->
+                
+                  <div class="card-athlete-specialty font-mono text-xs font-bold text-sky-700 mt-0.5 mb-2.5">
+                    Delantera de Área · Desborde y Gol
+                  </div>
+                
+
+                <!-- Biografía Deportiva -->
+                <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                  Iniciada en las categorías formativas del Club Sportivo 9 de Julio. Delantera de jerarquía en el torneo semiprofesional de AFA, con destacadas campañas en Racing Club, UAI Urquiza y actual atacante de River Plate. Convocada permanente a la Selección Argentina de Fútbol Femenino Mayor y mundialista juvenil.
+                </p>
+
+                <!-- Bloque de Legado e Impacto en Río Tercero -->
+                
+                  <div class="card-legacy-box bg-slate-50 border-l-2 border-sky-500 p-2.5 rounded-r mb-3.5">
+                    <span class="block font-mono text-[9px] font-black uppercase tracking-wider text-sky-800 mb-0.5">
+                      HUELLA CÍVICA & FORMATIVA
+                    </span>
+                    <p class="font-sans text-xs text-slate-700 leading-snug">
+                      Máxima exponente riotercerense en el fútbol femenino profesional de Primera División y torneos Conmebol.
+                    </p>
+                  </div>
+                
               </div>
-            </div>
-            <div class="card-telemetry-grid">
-              <div class="card-tele-item">
-                <span class="card-tele-label">PANAMERICANOS</span>
-                <span class="card-tele-val">Oro 1995 · Oro 2003</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">IRONMAN</span>
-                <span class="card-tele-val">Múltiple Campeón</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">OLÍMPICO</span>
-                <span class="card-tele-val">Sydney 2000</span>
+
+              <!-- Cuadrícula de Telemetría (4 métricas 2x2) -->
+              
+                <div class="card-telemetry-grid grid grid-cols-2 gap-2 bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 mb-3">
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">SELECCIÓN AFA</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Selección Argentina Mayor y Sub-20</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">CLUB ACTUAL</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Delantera en River Plate</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">COPA LIBERTADORES</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Disputa de Torneos Conmebol</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">CLUB FORMADOR</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Club Sportivo 9 de Julio</span>
+                    </div>
+                  
+                </div>
+              
+
+              <!-- Fila Inferior: Consagración y Época -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
+                <div class="telemetry-info">
+                  <span class="block font-mono text-[9px] uppercase tracking-wider text-slate-600 font-bold telemetry-label">
+                    Consagración Cumbre
+                  </span>
+                  <span class="font-sans text-xs font-bold text-slate-900 telemetry-val">
+                    Selección Argentina Mayor · River Plate
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  
+                    <span class="font-mono text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                      2016 - Presente
+                    </span>
+                  
+                  <span class="font-mono text-sm font-bold text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all telemetry-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- TARJETA 7: IVANNA MADRUGA -->
-          <article class="trading-card" data-discipline="tenis" data-keywords="ivanna madruga tenis roland garros us open wta polvo de ladrillo club atletico rio tercero fed cup">
-            <div class="card-photo-frame">
-              <div class="card-header-overlay">
-                <span class="card-badge-pill">TENIS · TOP 15 MUNDIAL</span>
-                <span class="card-glory-star" title="Pionera de Grand Slam">★</span>
+          <article
+            class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card"
+            data-discipline="NATACIÓN"
+          >
+            <!-- Contenedor Fotográfico con proporción equilibrada 16:11 -->
+            <div class="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
+              <img
+                src="assets/andrea_berrino.jpg"
+                alt="Andrea Berrino"
+                class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
+                loading="lazy"
+              />
+              <!-- Badges Deportivos y Estrella de Gloria -->
+              <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 card-badges-wrap">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
+                    Natación
+                  </span>
+                  
+                    <span class="bg-sky-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
+                      Panamericana / Récord
+                    </span>
+                  
+                </div>
+                
               </div>
-              <img src="assets/ivanna_hd.jpg" alt="Ivanna Madruga" class="card-athlete-photo" loading="lazy">
+              
+                <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-white/20">
+                  #04
+                </span>
+              
             </div>
-            <div class="card-content-body">
-              <h3 class="card-name-title">IVANNA MADRUGA</h3>
-              <p class="card-athlete-bio">Formada en Club Atlético Río Tercero. Cuartos de final singles en Roland Garros 1980, finalista de dobles en US Open, N° 14 del ranking mundial WTA, capitana de Fed Cup, pionera del tenis sudamericano.</p>
-              <div class="card-club-formador-box">
-                <svg class="club-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                <span class="club-label-prefix">CLUB DE ORIGEN:</span>
-                <span class="club-name-text">CLUB ATLÉTICO RÍO TERCERO</span>
+
+            <!-- Datos Editoriales Enriquecidos -->
+            <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
+              <div>
+                <!-- Club Formador -->
+                <div class="card-club-formador-box flex items-center gap-1.5 text-xs font-mono font-bold text-sky-700 mb-1">
+                  <svg class="club-badge-icon w-3.5 h-3.5 text-sky-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span class="text-slate-400 font-semibold">ORIGEN:</span>
+                  <span class="text-slate-800 uppercase tracking-tight">C.A. Río Tercero / Natatorios Locales</span>
+                </div>
+
+                <!-- Nombre del Atleta -->
+                <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-black uppercase tracking-tight text-slate-950 transition-colors card-name-title group-hover:text-sky-600">
+                  Andrea Berrino
+                </h3>
+
+                <!-- Especialidad / Puesto -->
+                
+                  <div class="card-athlete-specialty font-mono text-xs font-bold text-sky-700 mt-0.5 mb-2.5">
+                    Espaldista · Velocidad Pura en 50m y 100m
+                  </div>
+                
+
+                <!-- Biografía Deportiva -->
+                <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                  Formada en las piscinas del Club Atlético Río Tercero y natatorios municipales. Medallista de Bronce en los Juegos Panamericanos de Lima 2019, campeona y récord continental en 50m y 100m estilo espalda. Participante en múltiples Campeonatos Mundiales de Natación FINA en piscina corta y larga.
+                </p>
+
+                <!-- Bloque de Legado e Impacto en Río Tercero -->
+                
+                  <div class="card-legacy-box bg-slate-50 border-l-2 border-sky-500 p-2.5 rounded-r mb-3.5">
+                    <span class="block font-mono text-[9px] font-black uppercase tracking-wider text-sky-800 mb-0.5">
+                      HUELLA CÍVICA & FORMATIVA
+                    </span>
+                    <p class="font-sans text-xs text-slate-700 leading-snug">
+                      Referente acuática que llevó la natación de Río Tercero a los récords continentales sudamericanos.
+                    </p>
+                  </div>
+                
               </div>
-            </div>
-            <div class="card-telemetry-grid">
-              <div class="card-tele-item">
-                <span class="card-tele-label">ROLAND GARROS</span>
-                <span class="card-tele-val">Cuartos 1980</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">US OPEN</span>
-                <span class="card-tele-val">Finalista Dobles</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">WTA RANKING</span>
-                <span class="card-tele-val">N° 14 del Mundo</span>
+
+              <!-- Cuadrícula de Telemetría (4 métricas 2x2) -->
+              
+                <div class="card-telemetry-grid grid grid-cols-2 gap-2 bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 mb-3">
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">RÉCORD CONTINENTAL</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Plusmarquista Sudamericana en Espalda</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">JUEGOS PANAM</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Medalla de Bronce Lima 2019</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">MUNDIALES FINA</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Múltiple Representante Mundial</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">ORIGEN Y PILETA</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Club Atlético Río Tercero</span>
+                    </div>
+                  
+                </div>
+              
+
+              <!-- Fila Inferior: Consagración y Época -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
+                <div class="telemetry-info">
+                  <span class="block font-mono text-[9px] uppercase tracking-wider text-slate-600 font-bold telemetry-label">
+                    Consagración Cumbre
+                  </span>
+                  <span class="font-sans text-xs font-bold text-slate-900 telemetry-val">
+                    Plusmarquista Sudamericana · Bronce Lima 2019
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  
+                    <span class="font-mono text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                      2010s - Presente
+                    </span>
+                  
+                  <span class="font-mono text-sm font-bold text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all telemetry-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- TARJETA 8: ROCÍO COMBA -->
-          <article class="trading-card" data-discipline="atletismo" data-keywords="rocio comba atletismo lanzamiento disco olimpiada beijing 2008 londres 2012 rio 2016 fabrica militar polideportivo municipal moscu 2013">
-            <div class="card-photo-frame">
-              <div class="card-header-overlay">
-                <span class="card-badge-pill">ATLETISMO · 3x OLÍMPICA</span>
-                <span class="card-glory-star" title="Triple Olímpica">★</span>
+          <article
+            class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card"
+            data-discipline="TIRO"
+          >
+            <!-- Contenedor Fotográfico con proporción equilibrada 16:11 -->
+            <div class="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
+              <img
+                src="assets/ivano_falchetti.jpg"
+                alt="Ivano Falchetti"
+                class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
+                loading="lazy"
+              />
+              <!-- Badges Deportivos y Estrella de Gloria -->
+              <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 card-badges-wrap">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
+                    Tiro
+                  </span>
+                  
+                    <span class="bg-sky-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
+                      Tiro de Precisión
+                    </span>
+                  
+                </div>
+                
               </div>
-              <img src="assets/comba.jpg" alt="Rocío Comba" class="card-athlete-photo" loading="lazy">
+              
+                <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-white/20">
+                  #01
+                </span>
+              
             </div>
-            <div class="card-content-body">
-              <h3 class="card-name-title">ROCÍO COMBA</h3>
-              <p class="card-athlete-bio">Formada en Polideportivo Municipal y Fábrica Militar. Triple representante olímpica (Pekín 2008, Londres 2012, Río 2016), finalista en Campeonato Mundial de Moscú 2013, campeona sudamericana e iberoamericana, actual conductora del área deportiva municipal de Río Tercero.</p>
-              <div class="card-club-formador-box">
-                <svg class="club-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                <span class="club-label-prefix">CLUB DE ORIGEN:</span>
-                <span class="club-name-text">POLIDEPORTIVO / FÁBRICA MILITAR</span>
-              </div>
-            </div>
-            <div class="card-telemetry-grid">
-              <div class="card-tele-item">
-                <span class="card-tele-label">JUEGOS OLÍMPICOS</span>
-                <span class="card-tele-val">08 · 12 · 16 (Triple)</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">MUNDIAL</span>
-                <span class="card-tele-val">Finalista Moscú 13</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">GESTIÓN</span>
-                <span class="card-tele-val">Sec. Deportes Río 3</span>
-              </div>
-            </div>
-          </article>
 
-          <!-- TARJETA 9: CATALINA PRIMO -->
-          <article class="trading-card" data-discipline="futbol" data-keywords="catalina primo futbol seleccion argentina river plate libertadores sportivo 9 de julio afa">
-            <div class="card-photo-frame">
-              <div class="card-header-overlay">
-                <span class="card-badge-pill">FÚTBOL · SELECCIÓN MAYOR</span>
-                <span class="card-glory-star" title="Selección Nacional">★</span>
-              </div>
-              <img src="assets/catalina_primo.png" alt="Catalina Primo" class="card-athlete-photo" loading="lazy">
-            </div>
-            <div class="card-content-body">
-              <h3 class="card-name-title">CATALINA PRIMO</h3>
-              <p class="card-athlete-bio">Formada en Club Sportivo 9 de Julio. Delantera de River Plate e integrante de la Selección Argentina de Fútbol Femenino mayor, campeona de Primera División y participante de Copa Libertadores.</p>
-              <div class="card-club-formador-box">
-                <svg class="club-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                <span class="club-label-prefix">CLUB DE ORIGEN:</span>
-                <span class="club-name-text">CLUB SPORTIVO 9 DE JULIO</span>
-              </div>
-            </div>
-            <div class="card-telemetry-grid">
-              <div class="card-tele-item">
-                <span class="card-tele-label">SELECCIÓN</span>
-                <span class="card-tele-val">Selección Mayor AFA</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">CLUB ACTUAL</span>
-                <span class="card-tele-val">River Plate</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">TORNEOS</span>
-                <span class="card-tele-val">Copa Libertadores</span>
-              </div>
-            </div>
-          </article>
+            <!-- Datos Editoriales Enriquecidos -->
+            <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
+              <div>
+                <!-- Club Formador -->
+                <div class="card-club-formador-box flex items-center gap-1.5 text-xs font-mono font-bold text-sky-700 mb-1">
+                  <svg class="club-badge-icon w-3.5 h-3.5 text-sky-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span class="text-slate-400 font-semibold">ORIGEN:</span>
+                  <span class="text-slate-800 uppercase tracking-tight">Tiro Federal Río Tercero</span>
+                </div>
 
-          <!-- TARJETA 10: IVANO FALCHETTI -->
-          <article class="trading-card" data-discipline="tiro" data-keywords="ivano falchetti tiro deportivo tiro federal helice fosa olimpica precision">
-            <div class="card-photo-frame">
-              <div class="card-header-overlay">
-                <span class="card-badge-pill">TIRO · PRECISIÓN & FOSA</span>
-                <span class="card-glory-star" title="Tiro Deportivo">★</span>
+                <!-- Nombre del Atleta -->
+                <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-black uppercase tracking-tight text-slate-950 transition-colors card-name-title group-hover:text-sky-600">
+                  Ivano Falchetti
+                </h3>
+
+                <!-- Especialidad / Puesto -->
+                
+                  <div class="card-athlete-specialty font-mono text-xs font-bold text-sky-700 mt-0.5 mb-2.5">
+                    Tiro al Vuelo · Fosa Olímpica y Hélice
+                  </div>
+                
+
+                <!-- Biografía Deportiva -->
+                <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                  Consagrado en el tradicional polígono del Tiro Federal Río Tercero. Atleta de élite en las modalidades de fosa olímpica, hélice y tiro al vuelo, sumando podios en certámenes sudamericanos, copas del mundo y copas nacionales argentinas de la Federación de Tiro.
+                </p>
+
+                <!-- Bloque de Legado e Impacto en Río Tercero -->
+                
+                  <div class="card-legacy-box bg-slate-50 border-l-2 border-sky-500 p-2.5 rounded-r mb-3.5">
+                    <span class="block font-mono text-[9px] font-black uppercase tracking-wider text-sky-800 mb-0.5">
+                      HUELLA CÍVICA & FORMATIVA
+                    </span>
+                    <p class="font-sans text-xs text-slate-700 leading-snug">
+                      Guardián y laureado representante de la histórica tradición centenaria de tiro deportivo en Río Tercero.
+                    </p>
+                  </div>
+                
               </div>
-              <img src="assets/ivano_falchetti.jpg" alt="Ivano Falchetti" class="card-athlete-photo" loading="lazy">
-            </div>
-            <div class="card-content-body">
-              <h3 class="card-name-title">IVANO FALCHETTI</h3>
-              <p class="card-athlete-bio">Formado en Tiro Federal Río Tercero. Destacado tirador deportivo de precisión de nivel nacional e internacional en fosa y hélice, laureado representante del Tiro Federal Río Tercero.</p>
-              <div class="card-club-formador-box">
-                <svg class="club-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                <span class="club-label-prefix">CLUB DE ORIGEN:</span>
-                <span class="club-name-text">TIRO FEDERAL RÍO TERCERO</span>
-              </div>
-            </div>
-            <div class="card-telemetry-grid">
-              <div class="card-tele-item">
-                <span class="card-tele-label">DISCIPLINA</span>
-                <span class="card-tele-val">Fosa Olímpica / Hélice</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">NIVEL</span>
-                <span class="card-tele-val">Nacional e Internacional</span>
-              </div>
-              <div class="card-tele-item">
-                <span class="card-tele-label">INSTITUCIÓN</span>
-                <span class="card-tele-val">Tiro Federal Río 3</span>
+
+              <!-- Cuadrícula de Telemetría (4 métricas 2x2) -->
+              
+                <div class="card-telemetry-grid grid grid-cols-2 gap-2 bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 mb-3">
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">MODALIDAD</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Fosa Olímpica y Tiro a la Hélice</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">COMPETENCIA</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Circuitos Nacionales y Mundiales</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">TRAYECTORIA</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Múltiples Títulos y Copas de Oro</span>
+                    </div>
+                  
+                    <div class="card-tele-item flex flex-col">
+                      <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">POLÍGONO BASE</span>
+                      <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">Tiro Federal Río Tercero</span>
+                    </div>
+                  
+                </div>
+              
+
+              <!-- Fila Inferior: Consagración y Época -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
+                <div class="telemetry-info">
+                  <span class="block font-mono text-[9px] uppercase tracking-wider text-slate-600 font-bold telemetry-label">
+                    Consagración Cumbre
+                  </span>
+                  <span class="font-sans text-xs font-bold text-slate-900 telemetry-val">
+                    Múltiple Campeón Nacional e Internacional
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  
+                    <span class="font-mono text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                      1990s - 2020s
+                    </span>
+                  
+                  <span class="font-mono text-sm font-bold text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all telemetry-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </div>
               </div>
             </div>
           </article>
