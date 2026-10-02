@@ -2004,13 +2004,7 @@ body {
   line-height: 1.1;
   letter-spacing: -0.025em;
   color: var(--text-primary);
-  margin-bottom: 1.5rem;
-}
-
-.closing-lead-text {
-  font-size: 1.15rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
+  margin-bottom: 0;
 }
 
 .civic-editorial-footer {
