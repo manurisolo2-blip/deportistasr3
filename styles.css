@@ -1469,22 +1469,23 @@ body {
   box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-/* Espacio Audiovisual: Spot Oficial Municipalidad */
+/* Espacio Audiovisual: Spot Oficial Municipalidad (Scroll-to-Scale Hero) */
 .section-audiovisual-spot {
   position: relative;
   width: 100%;
+  background: var(--bg-canvas, #FAF9F5);
 }
 
-.video-spot-frame {
-  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(15, 23, 42, 0.06);
+#videoSpotContainer {
+  will-change: transform;
+  transform-origin: center center;
 }
 
-.video-play-overlay {
-  transition: opacity 0.35s ease, background-color 0.3s ease;
-}
-
-.video-play-overlay:hover .rounded-full {
-  transform: scale(1.08);
+#videoSpotContainer video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card-club-origin {

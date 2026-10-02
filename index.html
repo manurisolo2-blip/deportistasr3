@@ -980,38 +980,71 @@
     <!-- =========================================================================
          4.1 ESPACIO AUDIOVISUAL: SPOT OFICIAL MUNICIPALIDAD DE RÍO TERCERO
          ========================================================================= -->
-    <section class="section-audiovisual-spot py-20 bg-[#FAF9F5] border-t border-slate-200/60" id="audiovisual" aria-label="Spot Audiovisual Oficial">
-      <div class="container mx-auto px-4 max-w-5xl">
-        <div class="text-center mb-10">
-          <span class="inline-block font-mono text-xs font-bold uppercase tracking-widest text-sky-700 bg-sky-100 px-3.5 py-1 rounded mb-3">
-            DOCUMENTO AUDIOVISUAL OFICIAL
-          </span>
-          <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-slate-950 leading-tight">
-            RÍO TERCERO EN ACCIÓN
-          </h2>
-          <p class="font-sans text-sm sm:text-base text-slate-600 max-w-2xl mx-auto mt-3 leading-relaxed">
-            Spot institucional y archivo deportivo de la Municipalidad de Río Tercero que celebra la vocación atlética, las instituciones formativas y la identidad comunitaria de la Capital Nacional del Deportista.
-          </p>
-        </div>
-
-        <div class="video-spot-frame relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-slate-300/80 bg-slate-950 group">
-          <video
-            src="assets/video_municipalidad.mp4"
-            poster="assets/rio_tercero_hero.webp"
-            controls
-            playsinline
-            preload="metadata"
-            class="w-full h-full object-cover"
-            id="spotVideoOfficial"
-          ></video>
-          <button id="videoPlayOverlayBtn" class="video-play-overlay absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-slate-950/40 backdrop-blur-[2px] transition-all duration-300 hover:bg-slate-950/25 cursor-pointer z-10" aria-label="Reproducir Spot Oficial">
-            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/95 text-sky-600 shadow-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-              <svg class="w-8 h-8 sm:w-10 sm:h-10 fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <span class="mt-3.5 text-white font-mono text-xs uppercase tracking-widest font-bold bg-slate-900/85 px-4 py-1.5 rounded-full border border-white/20 shadow-md">
-              Ver Video Oficial
+    <section class="section-audiovisual-spot relative bg-[#FAF9F5] border-t border-slate-200/60" id="audiovisual" aria-label="Spot Audiovisual Oficial">
+      <!-- Track contenedor para pin de scroll GSAP (180vh) -->
+      <div id="videoScrollTrack" class="relative w-full h-[180vh] flex flex-col justify-start">
+        
+        <!-- Contenedor Sticky a pantalla completa -->
+        <div class="sticky top-0 w-full h-screen flex flex-col items-center justify-center overflow-hidden px-4 z-10">
+          
+          <!-- Encabezado sutil previo a la expansión -->
+          <div class="text-center mb-6 z-20 max-w-xl transition-opacity duration-300" id="videoIntroHeader">
+            <span class="inline-block font-mono text-xs font-bold uppercase tracking-widest text-sky-800 bg-sky-100/90 border border-sky-300/60 px-3.5 py-1 rounded mb-2 shadow-sm">
+              DOCUMENTO AUDIOVISUAL OFICIAL
             </span>
-          </button>
+            <p class="font-sans text-xs sm:text-sm text-slate-600 font-medium">
+              Desplázate hacia abajo para expandir el video institucional de Río Tercero
+            </p>
+          </div>
+
+          <!-- Marco del Video que escala al hacer scroll -->
+          <div
+            id="videoSpotContainer"
+            class="relative w-[92vw] max-w-5xl aspect-video rounded-2xl overflow-hidden shadow-[0_25px_65px_-12px_rgba(15,23,42,0.35)] border border-slate-300/80 bg-slate-950 will-change-transform"
+            style="transform-origin: center center;"
+          >
+            <video
+              src="assets/video_municipalidad.mp4"
+              poster="assets/rio_tercero_hero.webp"
+              autoplay
+              loop
+              muted
+              playsinline
+              preload="auto"
+              class="w-full h-full object-cover"
+              id="spotVideoOfficial"
+            ></video>
+
+            <!-- Video Overlay Content (inspirado en VideoScrollHero) -->
+            <div
+              id="videoOverlayText"
+              class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20 flex flex-col justify-end p-6 sm:p-10 pointer-events-none transition-opacity duration-500"
+            >
+              <div class="max-w-2xl">
+                <span class="inline-block font-mono text-xs font-bold uppercase tracking-wider text-sky-400 mb-1">
+                  MUNICIPALIDAD DE RÍO TERCERO
+                </span>
+                <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-tight mb-2 drop-shadow-md">
+                  RÍO TERCERO EN ACCIÓN
+                </h2>
+                <p class="font-sans text-xs sm:text-sm md:text-base text-slate-200 line-clamp-2 sm:line-clamp-none drop-shadow">
+                  Spot institucional y archivo deportivo oficial de la Capital Nacional del Deportista que celebra las instituciones formativas y el legado comunitario.
+                </p>
+              </div>
+            </div>
+
+            <!-- Botón de Control de Sonido -->
+            <button
+              id="videoSoundToggle"
+              class="absolute bottom-4 right-4 z-20 bg-slate-900/85 hover:bg-slate-900 text-white font-mono text-xs px-3.5 py-2 rounded-full backdrop-blur-md border border-white/20 shadow-xl flex items-center gap-2 transition-all cursor-pointer hover:scale-105"
+              aria-label="Activar o desactivar sonido"
+            >
+              <svg class="w-4 h-4 text-sky-400 sound-icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+              <svg class="w-4 h-4 text-emerald-400 sound-icon-on hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              <span id="videoSoundLabel">Activar Sonido</span>
+            </button>
+          </div>
+
         </div>
       </div>
     </section>

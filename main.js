@@ -571,31 +571,83 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // Control Interactivo del Video Spot Oficial
+  // Scroll-to-Scale Video Hero Expansion (Inspirado en video-scroll-hero.tsx)
   // ------------------------------------------------------------------------
+  const videoScrollTrack = document.getElementById('videoScrollTrack');
+  const videoSpotContainer = document.getElementById('videoSpotContainer');
+  const videoOverlayText = document.getElementById('videoOverlayText');
+  const videoIntroHeader = document.getElementById('videoIntroHeader');
   const spotVideo = document.getElementById('spotVideoOfficial');
-  const videoPlayOverlayBtn = document.getElementById('videoPlayOverlayBtn');
+  const videoSoundToggle = document.getElementById('videoSoundToggle');
 
-  if (spotVideo && videoPlayOverlayBtn) {
-    videoPlayOverlayBtn.addEventListener('click', () => {
-      spotVideo.play();
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReducedMotion && videoScrollTrack && videoSpotContainer) {
+    const isMobile = window.innerWidth < 768;
+    const startScale = isMobile ? 0.6 : 0.38;
+
+    gsap.set(videoSpotContainer, {
+      scale: startScale,
+      transformOrigin: 'center center'
     });
 
-    spotVideo.addEventListener('play', () => {
-      videoPlayOverlayBtn.style.opacity = '0';
-      videoPlayOverlayBtn.style.pointerEvents = 'none';
-    });
+    if (videoOverlayText) {
+      gsap.set(videoOverlayText, {
+        opacity: 0,
+        y: 24
+      });
+    }
 
-    spotVideo.addEventListener('pause', () => {
-      if (spotVideo.currentTime === 0 || spotVideo.ended) {
-        videoPlayOverlayBtn.style.opacity = '1';
-        videoPlayOverlayBtn.style.pointerEvents = 'auto';
+    const videoTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: videoScrollTrack,
+        start: 'top top',
+        end: '+=120%',
+        pin: true,
+        scrub: 0.7,
+        anticipatePin: 1
       }
     });
 
-    spotVideo.addEventListener('ended', () => {
-      videoPlayOverlayBtn.style.opacity = '1';
-      videoPlayOverlayBtn.style.pointerEvents = 'auto';
+    // 1. Escala el video progresivamente con el scroll hasta ocupar su tamaño pleno
+    videoTl
+      .to(videoSpotContainer, {
+        scale: 1,
+        ease: 'power1.out',
+        duration: 0.75
+      })
+      // 2. Transición suave del encabezado introductorio
+      .to(videoIntroHeader, {
+        opacity: 0.1,
+        y: -14,
+        duration: 0.35
+      }, 0)
+      // 3. Aparición del texto superpuesto en el video
+      .to(videoOverlayText, {
+        opacity: 1,
+        y: 0,
+        ease: 'power2.out',
+        duration: 0.35
+      }, 0.45);
+  }
+
+  // Control de Sonido Interactivo para el Video
+  if (spotVideo && videoSoundToggle) {
+    const soundIconOff = videoSoundToggle.querySelector('.sound-icon-off');
+    const soundIconOn = videoSoundToggle.querySelector('.sound-icon-on');
+    const videoSoundLabel = document.getElementById('videoSoundLabel');
+
+    videoSoundToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      spotVideo.muted = !spotVideo.muted;
+      if (!spotVideo.muted) {
+        if (spotVideo.paused) spotVideo.play();
+        if (soundIconOff) soundIconOff.classList.add('hidden');
+        if (soundIconOn) soundIconOn.classList.remove('hidden');
+        if (videoSoundLabel) videoSoundLabel.textContent = 'Silenciar';
+      } else {
+        if (soundIconOff) soundIconOff.classList.remove('hidden');
+        if (soundIconOn) soundIconOn.classList.add('hidden');
+        if (videoSoundLabel) videoSoundLabel.textContent = 'Activar Sonido';
+      }
     });
   }
 
