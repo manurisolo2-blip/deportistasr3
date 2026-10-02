@@ -1672,7 +1672,7 @@ body {
   color: #FFFFFF !important;
 }
 
-.section-clubs-editorial p {
+.section-clubs-editorial > .container > div:first-child p {
   color: rgba(255, 255, 255, 0.92) !important;
 }
 
@@ -1708,6 +1708,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.club-editorial-card p {
+  color: #475569 !important;
 }
 
 .club-editorial-card:hover {
@@ -1785,23 +1789,25 @@ body {
   margin-bottom: 0.35rem;
 }
 
+.club-editorial-card .club-focus-tag,
 .club-focus-tag {
-  min-height: 2.4rem;
+  min-height: 2.2rem;
   display: flex;
   align-items: center;
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #0077B6 !important;
-  margin-bottom: 0.75rem;
-  line-height: 1.4;
+  margin-bottom: 0.65rem;
+  line-height: 1.35;
   letter-spacing: 0.25px;
 }
 
+.club-editorial-card .club-desc-text,
 .club-desc-text {
   flex: 1 1 auto;
   font-size: 0.88rem;
-  color: #475569 !important;
+  color: #334155 !important;
   line-height: 1.55;
   margin-bottom: 1.25rem;
 }
@@ -1909,7 +1915,7 @@ body {
   color: #FFFFFF !important;
 }
 
-.section-proposals-editorial p {
+.section-proposals-editorial > .container > div:first-child p {
   color: rgba(255, 255, 255, 0.92) !important;
 }
 

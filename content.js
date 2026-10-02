@@ -446,7 +446,7 @@ window.SITE_CONTENT = {
       acronym: "CART",
       founded: "Fundado en 1917 (Centenario)",
       focus: "Fútbol formativo y superior · Básquetbol · Tenis · Bochas",
-      description: "Fundado en 1917 (Centenario). Estadio principal de fútbol, canchas auxiliares y polideportivo cubierto. Fútbol formativo y superior (LRRF y torneos provinciales), básquetbol, tenis y bochas.",
+      description: "Institución centenaria fundada en 1917. Cuenta con estadio de fútbol reglamentario, polideportivo cubierto y canchas auxiliares. Es un pilar histórico del deporte formativo y de alta competencia en la región.",
       crest: "assets/escudo_cart.jpg",
       colors: "Azul y Blanco",
       athleteOrigin: "Claudio López, Ivanna Madruga, Andrea Berrino"
@@ -455,8 +455,8 @@ window.SITE_CONTENT = {
       name: "Club Sportivo 9 de Julio",
       acronym: "9 DE JULIO",
       founded: "Fundado en 1927 (Centenario)",
-      focus: "Básquetbol · Fútbol · Vóleibol · Hockey sobre césped · Tenis",
-      description: "Fundado en 1927 (Centenario). Complejo Deportivo «Gregorio Gutiérrez», parqué de básquetbol y canchas de piso sintético. Básquetbol (Liga Cordobesa, federales y ex LNB), fútbol, vóleibol, hockey sobre césped y tenis.",
+      focus: "Básquetbol federado · Fútbol · Vóleibol · Hockey · Tenis",
+      description: "Fundado en 1927. Posee el Complejo «Gregorio Gutiérrez» con parqué para básquetbol y canchas de piso sintético. Referente provincial y nacional con amplia participación en torneos federados.",
       crest: "assets/escudo_9dejulio.png",
       colors: "Celeste y Blanco",
       athleteOrigin: "Pablo Prigioni, Gustavo Fernández, Catalina Primo"
@@ -465,8 +465,8 @@ window.SITE_CONTENT = {
       name: "Club Deportivo Independiente",
       acronym: "CDI",
       founded: "Mediados del Siglo XX",
-      focus: "Fútbol oficial y formativo en LRRF · Tenis · Bochas · Deportes recreativos",
-      description: "Fundado a mediados del Siglo XX. Estadio «Pura Molina», complejo de tenis y frontón. Fútbol oficial y formativo en LRRF, tenis, bochas y deportes recreativos.",
+      focus: "Fútbol oficial LRRF · Tenis · Bochas · Formación Social",
+      description: "Fundado a mediados del Siglo XX. Dispone del Estadio «Pura Molina», complejo de tenis y frontón. Destacado semillero de planteles juveniles en la Liga Riotercerense y centro de encuentro barrial.",
       crest: "assets/escudo_independiente.png",
       colors: "Rojo y Negro",
       athleteOrigin: "Planteles formativos LRRF y tenis regional"
@@ -475,8 +475,8 @@ window.SITE_CONTENT = {
       name: "Club Deportivo Casino",
       acronym: "CASINO",
       founded: "Mediados del Siglo XX",
-      focus: "Fútbol federado de mayores y juveniles · Bochas · Actividades comunitarias",
-      description: "Fundado a mediados del Siglo XX. Cancha de fútbol reglamentaria y sede social histórica. Fútbol federado de mayores y divisiones juveniles, bochas y actividades comunitarias.",
+      focus: "Fútbol de mayores y juveniles · Bochas · Deporte Social",
+      description: "Nacido a mediados del Siglo XX. Cuenta con cancha reglamentaria y sede social tradicional. Histórico competidor en torneos oficiales de la LRRF con fuerte labor comunitaria y de divisiones inferiores.",
       crest: "assets/escudo_casino.png",
       colors: "Verde y Blanco",
       athleteOrigin: "Divisiones juveniles y fútbol federado"
@@ -485,8 +485,8 @@ window.SITE_CONTENT = {
       name: "Club Vecinos Unidos",
       acronym: "VECINOS UNIDOS",
       founded: "Segunda mitad del Siglo XX",
-      focus: "Fútbol formativo · Fútbol femenino · Primera división · Contención social barrial",
-      description: "Fundado en la segunda mitad del Siglo XX. Campo de juego barrial y áreas de entrenamiento multideporte. Fútbol formativo, fútbol femenino, primera división y contención social barrial.",
+      focus: "Fútbol formativo · Fútbol femenino · Primera división LRRF",
+      description: "Institución barrial reconocida popularmente como «El León». Dispone de campo de juego y áreas multideporte, destacándose como gran semillero infantil y pionero en el desarrollo del fútbol femenino.",
       crest: "assets/escudo_vecinosunidos.png",
       colors: "Amarillo y Negro",
       athleteOrigin: "Semillero barrial y fútbol femenino"
@@ -495,11 +495,11 @@ window.SITE_CONTENT = {
       name: "Río Tercero Rugby Club",
       acronym: "RTRC",
       founded: "Etapa contemporánea federada",
-      focus: "Rugby masculino y femenino · Hockey formativo",
-      description: "Etapa contemporánea federada. Predio con canchas de rugby reglamentarias de césped natural y club house. Rugby masculino y femenino en diversas categorías y hockey formativo.",
+      focus: "Rugby masculino y femenino · Hockey sobre césped formativo",
+      description: "Hogar de «Los Zorros» en la Unión Cordobesa de Rugby. Posee predio deportivo propio con canchas de césped natural y club house, promoviendo los valores del rugby y el hockey en todas sus divisiones.",
       crest: "assets/escudo_rtrc.png",
       colors: "Bordó / Azul y Blanco",
-      athleteOrigin: "Fernando «Peny» Herrera y formativas de rugby"
+      athleteOrigin: "Fernando «Peny» Herrera y formativas"
     }
   ],
 
