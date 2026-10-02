@@ -271,19 +271,11 @@ document.addEventListener('DOMContentLoaded', () => {
             class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
             loading="lazy"
           />
-          <!-- Badges Deportivos y Estrella de Gloria -->
-          <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 card-badges-wrap">
-            <div class="flex items-center gap-1.5 flex-wrap">
-              <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
-                ${atleta.disciplina}
-              </span>
-              ${atleta.categoria ? `
-                <span class="bg-sky-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-category">
-                  ${atleta.categoria}
-                </span>
-              ` : ''}
-            </div>
-            ${atleta.destacado ? `<span class="card-glory-star" title="Consagración Deportiva">★</span>` : ''}
+          <!-- Badge de Disciplina Deportiva -->
+          <div class="absolute top-2.5 left-2.5 z-10 card-badges-wrap">
+            <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2.5 py-1 rounded uppercase tracking-wider card-badge-discipline shadow-sm">
+              ${atleta.disciplina}
+            </span>
           </div>
           ${atleta.dorsal ? `
             <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-white/20">
@@ -491,36 +483,6 @@ document.addEventListener('DOMContentLoaded', () => {
           ease: 'power2.out',
           duration: 0.35
         }, 0.62);
-    }
-
-    // Control de reproducción y audio del video municipal en el hero
-    const heroVideo = document.getElementById('heroVideoAsset');
-    const heroAudioToggle = document.getElementById('heroAudioToggle');
-
-    if (heroVideo) {
-      heroVideo.play().catch(() => {});
-    }
-
-    if (heroVideo && heroAudioToggle) {
-      const iconMuted = heroAudioToggle.querySelector('.audio-icon-muted');
-      const iconUnmuted = heroAudioToggle.querySelector('.audio-icon-unmuted');
-      const audioText = heroAudioToggle.querySelector('.audio-text');
-
-      heroAudioToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        heroVideo.muted = !heroVideo.muted;
-        if (heroVideo.muted) {
-          if (iconMuted) iconMuted.style.display = 'block';
-          if (iconUnmuted) iconUnmuted.style.display = 'none';
-          if (audioText) audioText.textContent = 'ACTIVAR AUDIO';
-          heroAudioToggle.setAttribute('aria-label', 'Activar audio');
-        } else {
-          if (iconMuted) iconMuted.style.display = 'none';
-          if (iconUnmuted) iconUnmuted.style.display = 'block';
-          if (audioText) audioText.textContent = 'SILENCIAR';
-          heroAudioToggle.setAttribute('aria-label', 'Silenciar audio');
-        }
-      });
     }
 
     // Efecto Telón (Curtain Parallax): el fondo y contenido suben y cubren limpiamente al Hero
