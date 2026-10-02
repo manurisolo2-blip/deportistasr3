@@ -380,16 +380,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------------------------------------
   if (typeof gsap !== 'undefined' && !prefersReducedMotion) {
 
-    // Efecto Telón (Curtain Parallax): atenuación y sutil escala en profundidad del Hero mientras la cortina lo tapa
+    // Efecto Telón (Curtain Parallax): el fondo y contenido suben y cubren limpiamente al Hero
     if (typeof ScrollTrigger !== 'undefined' && heroSection) {
       gsap.to(heroSection, {
-        opacity: 0.45,
-        scale: 0.96,
+        opacity: 0.5,
         ease: 'none',
         scrollTrigger: {
           trigger: '.main-body-curtain',
           start: 'top bottom',
-          end: 'top 10%',
+          end: 'top 15%',
           scrub: true
         }
       });
