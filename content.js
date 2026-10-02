@@ -18,7 +18,12 @@ window.DEPORTISTAS_DATA = [
     dorsal: '09',
     imagenUrl: 'assets/prigioni.jpg',
     destacado: true,
-    descripcion: 'Formado en Club Sportivo 9 de Julio. Bronce Olímpico Pekín 2008, 4 temporadas en NBA (Knicks, Rockets, Clippers), multicampeón con Baskonia (ACB/EuroLiga), actual DT de la Selección Argentina de Básquetbol masculina mayor.'
+    descripcion: 'Formado en Club Sportivo 9 de Julio. Bronce Olímpico Pekín 2008, 4 temporadas en NBA (Knicks, Rockets, Clippers), multicampeón con Baskonia (ACB/EuroLiga), actual DT de la Selección Argentina de Básquetbol masculina mayor.',
+    telemetria: [
+      { label: 'PALMARÉS', val: 'Bronce Pekín 08' },
+      { label: 'TRAYECTORIA', val: '4 Temporadas NBA' },
+      { label: 'ROL ACTUAL', val: 'DT Selección Mayor' }
+    ]
   },
   {
     id: '2',
@@ -30,7 +35,12 @@ window.DEPORTISTAS_DATA = [
     dorsal: '37',
     imagenUrl: 'assets/pechito.jpg',
     destacado: true,
-    descripcion: 'Iniciado en los kartódromos de Río 3. Tricampeón Mundial WTCC (2014, 2015, 2016), Campeón Mundial de Resistencia WEC con Toyota Gazoo Racing, ganador de las 24 Horas de Le Mans (2021), múltiple campeón TC2000 y Top Race V6.'
+    descripcion: 'Iniciado en los kartódromos de Río 3. Tricampeón Mundial WTCC (2014, 2015, 2016), Campeón Mundial de Resistencia WEC con Toyota Gazoo Racing, ganador de las 24 Horas de Le Mans (2021), múltiple campeón TC2000 y Top Race V6.',
+    telemetria: [
+      { label: 'PALMARÉS', val: '3x WTCC · 2x WEC' },
+      { label: 'HITO MÁXIMO', val: '24h Le Mans 2021' },
+      { label: 'NACIONAL', val: 'TC2000 · Top Race' }
+    ]
   },
   {
     id: '3',
@@ -41,7 +51,12 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Olímpico / Mundial',
     dorsal: '07',
     imagenUrl: 'assets/piojo_hd.jpg',
-    descripcion: 'Formado en C.A. Río Tercero y Sportivo 9 de Julio. Plata Olímpica Atlanta 1996, doble mundialista (Francia 1998 y Corea-Japón 2002), campeón con Racing Club, Valencia CF (doble finalista Champions), Lazio y América.'
+    descripcion: 'Formado en C.A. Río Tercero y Sportivo 9 de Julio. Plata Olímpica Atlanta 1996, doble mundialista (Francia 1998 y Corea-Japón 2002), campeón con Racing Club, Valencia CF (doble finalista Champions), Lazio y América.',
+    telemetria: [
+      { label: 'PALMARÉS', val: 'Plata Atlanta 96' },
+      { label: 'MUNDIALES', val: 'Francia 98 · Corea 02' },
+      { label: 'EUROPA', val: 'Valencia · Lazio' }
+    ]
   },
   {
     id: '4',
@@ -52,7 +67,12 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Grand Slam / Élite',
     dorsal: '01',
     imagenUrl: 'assets/gustavo_hd.jpg',
-    descripcion: 'Formado en polvo de ladrillo de Río Tercero y Sportivo 9 de Julio. 5 Grand Slams singles (Roland Garros 2016, 2019; Abierto de Australia 2017, 2019; Wimbledon 2019) y 3 en dobles, ex N° 1 del ranking mundial ITF, abanderado paralímpico Río 2016.'
+    descripcion: 'Formado en polvo de ladrillo de Río Tercero y Sportivo 9 de Julio. 5 Grand Slams singles (Roland Garros 2016, 2019; Abierto de Australia 2017, 2019; Wimbledon 2019) y 3 en dobles, ex N° 1 del ranking mundial ITF, abanderado paralímpico Río 2016.',
+    telemetria: [
+      { label: 'GRAND SLAMS', val: '5 Singles · 3 Dobles' },
+      { label: 'RANKING', val: 'Ex N° 1 Mundial ITF' },
+      { label: 'BANDERA', val: 'Abanderado Río 16' }
+    ]
   },
   {
     id: '5',
@@ -63,7 +83,12 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Olímpico / Ironman',
     dorsal: '22',
     imagenUrl: 'assets/oscar_galindez.jpg',
-    descripcion: 'Formado en el Polideportivo Municipal Río Tercero. Oro en Juegos Panamericanos (Mar del Plata 1995, Santo Domingo 2003), 10 veces Campeón Argentino de Triatlón, triunfos Ironman, Rombo de Oro, Olímpico Sydney 2000, Campeón Mundial de Duatlón (1995).'
+    descripcion: 'Formado en el Polideportivo Municipal Río Tercero. Oro en Juegos Panamericanos (Mar del Plata 1995, Santo Domingo 2003), 10 veces Campeón Argentino de Triatlón, triunfos Ironman, Rombo de Oro, Olímpico Sydney 2000, Campeón Mundial de Duatlón (1995).',
+    telemetria: [
+      { label: 'PANAMERICANOS', val: 'Oro 1995 · Oro 2003' },
+      { label: 'IRONMAN', val: 'Múltiple Campeón' },
+      { label: 'OLÍMPICO', val: 'Sydney 2000' }
+    ]
   },
   {
     id: '6',
@@ -74,7 +99,12 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Triple Olímpica',
     dorsal: '08',
     imagenUrl: 'assets/comba.jpg',
-    descripcion: 'Formada en Polideportivo Municipal y Fábrica Militar. Triple representante olímpica (Pekín 2008, Londres 2012, Río 2016), finalista en Campeonato Mundial de Moscú 2013, campeona sudamericana e iberoamericana, actual conductora del área deportiva municipal de Río Tercero.'
+    descripcion: 'Formada en Polideportivo Municipal y Fábrica Militar. Triple representante olímpica (Pekín 2008, Londres 2012, Río 2016), finalista en Campeonato Mundial de Moscú 2013, campeona sudamericana e iberoamericana, actual conductora del área deportiva municipal de Río Tercero.',
+    telemetria: [
+      { label: 'JUEGOS OLÍMPICOS', val: '08 · 12 · 16 (Triple)' },
+      { label: 'MUNDIAL', val: 'Finalista Moscú 13' },
+      { label: 'GESTIÓN', val: 'Sec. Deportes Río 3' }
+    ]
   },
   {
     id: '7',
@@ -85,7 +115,12 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Pionera Grand Slam',
     dorsal: '14',
     imagenUrl: 'assets/ivanna_hd.jpg',
-    descripcion: 'Formada en Club Atlético Río Tercero. Cuartos de final singles en Roland Garros 1980, finalista de dobles en US Open, N° 14 del ranking mundial WTA, capitana de Fed Cup, pionera del tenis sudamericano.'
+    descripcion: 'Formada en Club Atlético Río Tercero. Cuartos de final singles en Roland Garros 1980, finalista de dobles en US Open, N° 14 del ranking mundial WTA, capitana de Fed Cup, pionera del tenis sudamericano.',
+    telemetria: [
+      { label: 'ROLAND GARROS', val: 'Cuartos 1980' },
+      { label: 'US OPEN', val: 'Finalista Dobles' },
+      { label: 'WTA RANKING', val: 'N° 14 del Mundo' }
+    ]
   },
   {
     id: '8',
@@ -96,7 +131,12 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Profesional AFA',
     dorsal: '11',
     imagenUrl: 'assets/catalina_primo.png',
-    descripcion: 'Formada en Club Sportivo 9 de Julio. Delantera de River Plate e integrante de la Selección Argentina de Fútbol Femenino mayor, campeona de Primera División y participante de Copa Libertadores.'
+    descripcion: 'Formada en Club Sportivo 9 de Julio. Delantera de River Plate e integrante de la Selección Argentina de Fútbol Femenino mayor, campeona de Primera División y participante de Copa Libertadores.',
+    telemetria: [
+      { label: 'SELECCIÓN', val: 'Selección Mayor AFA' },
+      { label: 'CLUB ACTUAL', val: 'River Plate' },
+      { label: 'TORNEOS', val: 'Copa Libertadores' }
+    ]
   },
   {
     id: '9',
@@ -107,7 +147,12 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Panamericana / Récord',
     dorsal: '04',
     imagenUrl: 'assets/andrea_berrino.jpg',
-    descripcion: 'Formada en C.A. Río Tercero y natatorios de Río Tercero. Plusmarquista sudamericana en 50m y 100m espalda, medalla de bronce panamericana en Lima 2019, múltiple mundialista de natación.'
+    descripcion: 'Formada en C.A. Río Tercero y natatorios de Río Tercero. Plusmarquista sudamericana en 50m y 100m espalda, medalla de bronce panamericana en Lima 2019, múltiple mundialista de natación.',
+    telemetria: [
+      { label: 'RÉCORD', val: 'Plusmarquista Sudam.' },
+      { label: 'PANAMERICANO', val: 'Bronce Lima 2019' },
+      { label: 'ESPECIALIDAD', val: '50m y 100m Espalda' }
+    ]
   },
   {
     id: '10',
@@ -118,7 +163,12 @@ window.DEPORTISTAS_DATA = [
     categoria: 'Tiro de Precisión',
     dorsal: '01',
     imagenUrl: 'assets/ivano_falchetti.jpg',
-    descripcion: 'Formado en Tiro Federal Río Tercero. Destacado tirador deportivo de precisión de nivel nacional e internacional en fosa y hélice, laureado representante del Tiro Federal Río Tercero.'
+    descripcion: 'Formado en Tiro Federal Río Tercero. Destacado tirador deportivo de precisión de nivel nacional e internacional en fosa y hélice, laureado representante del Tiro Federal Río Tercero.',
+    telemetria: [
+      { label: 'DISCIPLINA', val: 'Fosa Olímpica / Hélice' },
+      { label: 'NIVEL', val: 'Nacional e Internacional' },
+      { label: 'INSTITUCIÓN', val: 'Tiro Federal Río 3' }
+    ]
   }
 ];
 

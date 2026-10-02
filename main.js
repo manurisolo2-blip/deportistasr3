@@ -285,6 +285,17 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="card-athlete-bio">${atleta.descripcion || ''}</p>
           </div>
 
+          ${atleta.telemetria && atleta.telemetria.length > 0 ? `
+            <div class="card-telemetry-grid">
+              ${atleta.telemetria.map(t => `
+                <div class="card-tele-item">
+                  <span class="card-tele-label">${t.label}</span>
+                  <span class="card-tele-val">${t.val}</span>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+
           <!-- Telemetría y Palmarés Inferior -->
           <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
             <div class="telemetry-info">
