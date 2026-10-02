@@ -120,14 +120,14 @@
       <div class="container filter-controls-row flex flex-col md:flex-row md:items-center justify-between gap-4">
         <!-- Botonera de Chips -->
         <div class="chips-horizontal-bar flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none" id="disciplineChipsContainer" role="tablist">
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap active shadow-sm" data-filter="TODOS" role="tab" aria-selected="true">TODOS</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="BÁSQUETBOL" role="tab" aria-selected="false">BÁSQUETBOL</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="AUTOMOVILISMO" role="tab" aria-selected="false">AUTOMOVILISMO</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="NATACIÓN" role="tab" aria-selected="false">NATACIÓN</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="FÚTBOL" role="tab" aria-selected="false">FÚTBOL</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="TIRO" role="tab" aria-selected="false">TIRO</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="TENIS" role="tab" aria-selected="false">TENIS</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="ATLETISMO" role="tab" aria-selected="false">ATLETISMO</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-none transition-all whitespace-nowrap active shadow-sm" data-filter="TODOS" role="tab" aria-selected="true">TODOS</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-none transition-all whitespace-nowrap" data-filter="BÁSQUETBOL" role="tab" aria-selected="false">BÁSQUETBOL</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-none transition-all whitespace-nowrap" data-filter="AUTOMOVILISMO" role="tab" aria-selected="false">AUTOMOVILISMO</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-none transition-all whitespace-nowrap" data-filter="NATACIÓN" role="tab" aria-selected="false">NATACIÓN</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-none transition-all whitespace-nowrap" data-filter="FÚTBOL" role="tab" aria-selected="false">FÚTBOL</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-none transition-all whitespace-nowrap" data-filter="TIRO" role="tab" aria-selected="false">TIRO</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-none transition-all whitespace-nowrap" data-filter="TENIS" role="tab" aria-selected="false">TENIS</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-none transition-all whitespace-nowrap" data-filter="ATLETISMO" role="tab" aria-selected="false">ATLETISMO</button>
         </div>
 
         <!-- Campo de Búsqueda -->
@@ -135,7 +135,7 @@
           <input
             type="text"
             id="athleteSearchInput"
-            class="search-input-control search-input-field w-full bg-white border border-slate-300 rounded-md px-3.5 py-1.5 text-sm text-slate-900 placeholder:text-slate-500 focus:outline-none font-sans"
+            class="search-input-control search-input-field w-full bg-white border border-slate-300 rounded-none px-3.5 py-1.5 text-sm text-slate-900 placeholder:text-slate-500 focus:outline-none font-sans"
             placeholder="Buscar atleta o club..."
             aria-label="Buscar atleta o club"
             autocomplete="off"
