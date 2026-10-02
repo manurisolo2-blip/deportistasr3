@@ -8,17 +8,39 @@
    1. VARIABLES DE DISEÑO & TOKENS DE COLOR (MODO CLARO EDITORIAL)
    -------------------------------------------------------------------------- */
 :root {
-  /* Canvas y Superficies - MODO CLARO PURO */
-  --bg-canvas: #F8FAFC;         /* Blanco tiza / Slate 50 */
-  --bg-surface: #FFFFFF;        /* Blanco puro / Tarjetas */
-  --bg-muted: #F1F5F9;          /* Gris asfáltico ultra claro / Slate 100 */
+  /* Canvas y Superficies - MODO CLARO PURO OFF-WHITE */
+  --bg-canvas: #FAF9F5;         /* Off-white editorial cálido */
+  --bg-surface: #FFFFFF;        /* Blanco puro / Tarjetas y superficies */
+  --bg-muted: #F1F4F8;          /* Gris técnico suave */
   --bg-subtle: #E2E8F0;         /* Borde y separador sutil / Slate 200 */
   --bg-badge-slate: #0F172A;    /* Fondo carbón oscuro para chips activos / Slate 900 */
+
+  /* Paleta Oficial Río Tercero (Celeste Base & Verde Acento) */
+  --color-celeste: #0092DF;           /* Celeste oficial del logo de Río 3 */
+  --color-celeste-dark: #0077B6;      /* Para texto con contraste sobre fondos claros */
+  --color-celeste-light: #E0F2FE;     /* Para fondos de chips y badges sutiles */
+  --color-celeste-border: rgba(0, 146, 223, 0.3);
+  --color-verde-acento: #41A934;      /* Verde oficial del logo como acento */
+  --color-verde-dark: #2E8B22;        /* Verde oscuro para contraste legible */
+  --color-verde-light: #DCFCE7;       /* Verde suave para fondos de acento */
+  --color-verde-border: rgba(65, 169, 52, 0.35);
+
+  /* Reasignación cromática institucional */
+  --accent-gold: var(--color-celeste);
+  --accent-gold-dark: var(--color-celeste-dark);
+  --accent-gold-light: var(--color-celeste-light);
+  --accent-gold-border: var(--color-celeste-border);
+  --accent-track: var(--color-celeste);
+  --accent-track-light: var(--color-celeste-light);
+  --accent-track-border: var(--color-celeste-border);
+  --accent-sprint: var(--color-verde-acento);
+  --accent-sprint-light: var(--color-verde-light);
+  --accent-sprint-border: var(--color-verde-border);
 
   /* Bordes Mecánicos y Estructurados */
   --border-card: #E2E8F0;       /* Borde estándar de tarjeta / Slate 200 */
   --border-strong: #CBD5E1;     /* Borde contrastado / Slate 300 */
-  --border-hover: #94A3B8;      /* Borde en interacción / Slate 400 */
+  --border-hover: var(--color-celeste); /* Borde en interacción */
 
   /* Tipografía y Textos */
   --text-primary: #0F172A;      /* Tinta profunda / Negro carbón / Slate 900 (Títulos) */
@@ -26,21 +48,6 @@
   --text-muted: #475569;        /* Slate 600 legible / Metadatos */
   --text-dim: #64748B;          /* Slate 500 / Etiquetas técnicas */
   --text-white: #FFFFFF;
-
-  /* Color de Acento Primario (Gloria / Medalla / Oro Deportivo) */
-  --accent-gold: #D97706;       /* Ámbar / Dorado ocre deportivo / Amber 600 */
-  --accent-gold-dark: #B45309;  /* Ocre profundo / Amber 700 */
-  --accent-gold-light: #FEF3C7; /* Fondo tenue de medalla / Amber 100 */
-  --accent-gold-border: rgba(217, 119, 6, 0.35);
-
-  /* Color de Acento Secundario (Energía / Pista / Telemetría) */
-  --accent-track: #2563EB;      /* Azul cobalto atlético / Blue 600 */
-  --accent-track-light: #EFF6FF;/* Fondo chip azul tenue / Blue 50 */
-  --accent-track-border: rgba(37, 99, 235, 0.2);
-
-  --accent-sprint: #16A34A;     /* Verde deportivo / Green 600 */
-  --accent-sprint-light: #DCFCE7;
-  --accent-sprint-border: rgba(22, 163, 74, 0.2);
 
   /* Sistema Tipográfico Dinámico - 2 Tipografías Sobrias: Plus Jakarta Sans & Inter */
   --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -53,7 +60,7 @@
   --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
   --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
   --shadow-card: 0 10px 24px -4px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
-  --shadow-hover: 0 20px 32px -8px rgba(15, 23, 42, 0.12), 0 4px 12px -2px rgba(217, 119, 6, 0.15);
+  --shadow-hover: 0 20px 32px -8px rgba(15, 23, 42, 0.12), 0 4px 12px -2px rgba(0, 146, 223, 0.18);
 
   /* Curvas de Transición */
   --ease-mechanical: cubic-bezier(0.16, 1, 0.3, 1);
@@ -91,8 +98,8 @@ body {
 }
 
 ::selection {
-  background-color: #FBBF24; /* amber-400 */
-  color: #000000;
+  background-color: var(--color-celeste-light, #E0F2FE);
+  color: var(--color-celeste-dark, #0077B6);
 }
 
 /* Accesibilidad: Enlace para saltar al contenido principal */
@@ -122,7 +129,7 @@ body {
   left: 0;
   width: 0%;
   height: 3px;
-  background: var(--accent-gold);
+  background: var(--color-celeste, #0092DF);
   z-index: 10000;
   transition: width 0.05s linear;
 }
@@ -257,7 +264,7 @@ body {
 
 .nav-anchor:hover,
 .nav-anchor.active {
-  color: var(--text-primary);
+  color: var(--color-celeste, #0092DF);
 }
 
 .nav-anchor.active::after {
@@ -267,14 +274,14 @@ body {
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--accent-gold);
+  background: var(--color-celeste, #0092DF);
 }
 
 .header-action-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--text-primary);
+  background: var(--color-celeste, #0092DF);
   color: var(--text-white);
   font-family: var(--font-sub);
   font-size: 0.78rem;
@@ -288,7 +295,7 @@ body {
 }
 
 .header-action-btn:hover {
-  background: #1E293B;
+  background: var(--color-celeste-dark, #0077B6);
   transform: translateY(-1px);
 }
 
@@ -390,7 +397,7 @@ body {
   }
 
   .nav-anchor.active {
-    color: var(--accent-gold);
+    color: var(--color-celeste, #0092DF);
     font-weight: 800;
   }
 
@@ -481,8 +488,8 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--accent-gold);
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2);
+  background: var(--color-verde-acento, #41A934);
+  box-shadow: 0 0 0 3px var(--color-verde-border);
 }
 
 .civic-badge-text {
@@ -505,7 +512,7 @@ body {
 }
 
 .hero-title-highlight {
-  color: var(--accent-gold);
+  color: var(--color-celeste, #0092DF);
 }
 
 .hero-lead-row {
@@ -562,7 +569,7 @@ body {
 }
 
 .hero-editorial-title .highlight {
-  color: #D97706; /* amber-600 */
+  color: var(--color-celeste, #0092DF);
 }
 
 .hero-editorial-lead {
@@ -699,7 +706,7 @@ body {
 }
 
 .bento-hall-star {
-  color: var(--accent-gold);
+  color: var(--color-verde-acento, #41A934);
   font-size: 1.1rem;
 }
 
@@ -799,7 +806,7 @@ body {
 }
 
 .bento-metric-card.accent-track {
-  border-left: 4px solid var(--accent-track);
+  border-left: 4px solid var(--color-verde-acento, #41A934);
 }
 
 .metric-card-header {
@@ -836,7 +843,7 @@ body {
   font-family: var(--font-sub);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--accent-gold);
+  color: var(--color-verde-acento, #41A934);
 }
 
 .metric-card-label {
@@ -970,10 +977,11 @@ body {
   transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
-.search-input-field:focus {
+.search-input-field:focus,
+.search-input-control:focus {
   background: var(--bg-surface);
-  border-color: var(--text-primary);
-  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
+  border-color: var(--color-celeste, #0092DF) !important;
+  box-shadow: 0 0 0 3px var(--color-celeste-border) !important;
 }
 
 .search-shortcut-badge {
@@ -1031,15 +1039,15 @@ body {
 }
 
 .filter-chip-btn:hover {
-  border-color: var(--text-primary);
-  color: var(--text-primary);
+  border-color: var(--color-celeste, #0092DF);
+  color: var(--color-celeste-dark, #0077B6);
   background: var(--bg-canvas);
 }
 
 .filter-chip-btn.active {
-  background: var(--text-primary) !important; /* bg-slate-900 */
-  color: var(--text-white) !important;        /* text-white */
-  border-color: var(--text-primary) !important;
+  background: var(--color-celeste, #0092DF) !important;
+  color: var(--text-white) !important;
+  border-color: var(--color-celeste, #0092DF) !important;
   box-shadow: var(--shadow-sm);
 }
 
@@ -1054,7 +1062,7 @@ body {
 }
 
 .filter-chip-btn.active .chip-count-pill {
-  background: rgba(255, 255, 255, 0.22) !important;
+  background: rgba(255, 255, 255, 0.28) !important;
   color: #FFFFFF !important;
 }
 
@@ -1175,7 +1183,7 @@ body {
 
 .trading-card:hover {
   transform: translateY(-6px);
-  border-color: var(--accent-gold);
+  border-color: var(--color-celeste, #0092DF) !important;
   box-shadow: var(--shadow-hover);
 }
 
@@ -1257,13 +1265,13 @@ body {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: var(--accent-gold);
+  background: var(--color-verde-acento, #41A934);
   color: var(--text-white);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(65, 169, 52, 0.3);
 }
 
 /* Badges Deportivos Superiores */
@@ -1290,8 +1298,8 @@ body {
 }
 
 .card-badge-category {
-  background: #F59E0B;
-  color: #020617;
+  background: var(--color-verde-acento, #41A934);
+  color: #FFFFFF;
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 700;
@@ -1305,7 +1313,7 @@ body {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 700;
-  color: #B45309; /* amber-700 */
+  color: var(--color-celeste-dark, #0077B6);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 0.25rem;
@@ -1355,8 +1363,8 @@ body {
 }
 
 .trading-card:hover .telemetry-arrow {
-  color: #020617;
-  transform: translateX(2px);
+  color: var(--color-verde-acento, #41A934);
+  transform: translateX(3px);
 }
 
 /* Cuerpo de la Tarjeta */
@@ -1387,7 +1395,7 @@ body {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 700;
-  color: #B45309;
+  color: var(--color-celeste-dark, #0077B6);
   margin-bottom: 0.95rem;
   width: fit-content;
   letter-spacing: 0.2px;
@@ -1396,7 +1404,7 @@ body {
 .club-badge-icon {
   width: 13px;
   height: 13px;
-  stroke: var(--accent-track);
+  stroke: var(--color-celeste, #0092DF);
   flex-shrink: 0;
 }
 
@@ -1488,7 +1496,7 @@ body {
 .empty-state-reset-btn {
   display: inline-flex;
   padding: 0.6rem 1.25rem;
-  background: var(--text-primary);
+  background: var(--color-celeste, #0092DF);
   color: var(--text-white);
   font-family: var(--font-sub);
   font-size: 0.8rem;
@@ -1496,6 +1504,12 @@ body {
   border-radius: 6px;
   border: none;
   cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.empty-state-reset-btn:hover {
+  background: var(--color-celeste-dark, #0077B6);
+  transform: translateY(-1px);
 }
 
 /* --------------------------------------------------------------------------
@@ -1567,7 +1581,7 @@ body {
 }
 
 .club-editorial-card {
-  background: #F8FAFC;
+  background: var(--bg-canvas, #FAF9F5);
   border: 1px solid var(--border-card);
   border-radius: 12px;
   padding: 2rem 1.75rem;
@@ -1580,8 +1594,8 @@ body {
 
 .club-editorial-card:hover {
   transform: translateY(-4px);
-  border-color: var(--accent-track);
-  box-shadow: var(--shadow-md);
+  border-color: var(--color-celeste, #0092DF);
+  box-shadow: var(--shadow-hover);
 }
 
 .club-card-top {
@@ -1603,6 +1617,11 @@ body {
   justify-content: center;
   box-shadow: var(--shadow-sm);
   flex-shrink: 0;
+  transition: border-color var(--transition-fast);
+}
+
+.club-editorial-card:hover .club-crest-frame {
+  border-color: var(--color-celeste-border);
 }
 
 .club-crest-img {
@@ -1641,8 +1660,8 @@ body {
 .club-focus-tag {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-weight: 700;
+  color: var(--color-celeste-dark, #0077B6);
   margin-bottom: 0.75rem;
   line-height: 1.4;
   letter-spacing: 0.25px;
@@ -1665,7 +1684,7 @@ body {
 }
 
 .club-origin-footer strong {
-  color: var(--text-primary);
+  color: var(--color-verde-dark, #2E8B22);
   font-weight: 700;
 }
 
@@ -1674,7 +1693,7 @@ body {
    -------------------------------------------------------------------------- */
 .section-timeline-editorial {
   padding: clamp(5rem, 8vw, 7rem) 0;
-  background: var(--bg-muted);
+  background: var(--bg-canvas, #FAF9F5);
   border-bottom: none;
 }
 
@@ -1693,15 +1712,18 @@ body {
   align-items: baseline;
   background: var(--bg-surface);
   border: 1px solid var(--border-card);
+  border-left: 4px solid var(--color-verde-acento, #41A934);
   border-radius: 8px;
   padding: 1.5rem 2rem;
-  box-shadow: none;
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .timeline-milestone-item:hover {
   transform: translateX(4px);
-  border-color: var(--border-strong);
+  border-color: var(--color-celeste-border);
+  border-left-color: var(--color-verde-dark, #2E8B22);
+  box-shadow: var(--shadow-md);
 }
 
 @media (max-width: 640px) {
@@ -1716,7 +1738,7 @@ body {
   font-family: var(--font-mono);
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--color-celeste, #0092DF) !important;
   letter-spacing: -0.01em;
   background: transparent !important;
   border: none !important;
@@ -1768,7 +1790,7 @@ body {
 }
 
 .proposal-dossier-card {
-  background: var(--bg-surface);
+  background: var(--bg-canvas, #FAF9F5);
   border: 1px solid var(--border-card);
   border-radius: 12px;
   padding: 2.2rem 1.8rem;
@@ -1776,12 +1798,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .proposal-dossier-card:hover {
   transform: translateY(-4px);
-  border-color: var(--accent-track);
+  border-color: var(--color-celeste, #0092DF);
+  box-shadow: var(--shadow-hover);
 }
 
 .proposal-top-meta {
@@ -1797,7 +1820,7 @@ body {
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: var(--text-muted);
+  color: var(--color-celeste, #0092DF);
 }
 
 .proposal-target-tag {
@@ -1824,7 +1847,7 @@ body {
    -------------------------------------------------------------------------- */
 .section-civic-closing {
   padding: clamp(5rem, 8vw, 7rem) 0 3rem;
-  background: var(--bg-muted);
+  background: var(--bg-canvas, #FAF9F5);
   border-top: none;
 }
 
@@ -1832,6 +1855,24 @@ body {
   text-align: center;
   max-width: 900px;
   margin: 0 auto 4rem;
+  position: relative;
+  padding: 3.5rem 2.5rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+}
+
+.closing-banner-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-celeste, #0092DF) 0%, var(--color-verde-acento, #41A934) 100%);
+  border-radius: 2px;
 }
 
 .closing-headline-display {
@@ -2529,11 +2570,23 @@ body {
 
 .group:hover .card-name-title,
 .trading-card:hover .card-name-title {
-  color: #D97706 !important; /* amber-600 */
+  color: var(--color-celeste, #0092DF) !important;
 }
 
 .group:hover .telemetry-arrow,
 .trading-card:hover .telemetry-arrow {
-  color: #020617 !important;
+  color: var(--color-verde-acento, #41A934) !important;
   transform: translateX(3px) !important;
 }
+
+/* Utilidades cromáticas oficiales Río Tercero */
+.text-celeste { color: var(--color-celeste, #0092DF) !important; }
+.text-celeste-dark { color: var(--color-celeste-dark, #0077B6) !important; }
+.bg-celeste { background-color: var(--color-celeste, #0092DF) !important; }
+.border-celeste { border-color: var(--color-celeste, #0092DF) !important; }
+
+.text-verde { color: var(--color-verde-acento, #41A934) !important; }
+.text-verde-dark { color: var(--color-verde-dark, #2E8B22) !important; }
+.bg-verde { background-color: var(--color-verde-acento, #41A934) !important; }
+.bg-verde-light { background-color: var(--color-verde-light, #DCFCE7) !important; }
+.border-verde { border-color: var(--color-verde-acento, #41A934) !important; }

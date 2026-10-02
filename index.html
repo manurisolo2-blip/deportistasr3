@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#F8FAFC">
+  <meta name="theme-color" content="#FAF9F5">
   <meta name="color-scheme" content="light">
 
   <title>Río Tercero · Capital Nacional del Deportista | Directorio Oficial & Archivo Atlético</title>
@@ -90,7 +90,7 @@
         <div class="hero-editorial-max max-w-3xl">
           <h1 class="hero-editorial-title text-6xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight text-slate-950 font-['Plus_Jakarta_Sans',sans-serif] leading-[0.9]">
             CAPITAL NACIONAL <br>
-            <span class="text-amber-600 highlight">DEL DEPORTISTA</span>
+            <span class="highlight text-celeste" style="color: var(--color-celeste, #0092DF);">DEL DEPORTISTA</span>
           </h1>
 
           <p class="hero-editorial-lead mt-4 text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl">
@@ -104,18 +104,18 @@
     <!-- =========================================================================
          3. CONTROLES: FILTROS TÁCTILES Y BÚSQUEDA
          ========================================================================= -->
-    <section class="section-filter-explorer sticky top-0 z-20 bg-[#F8FAFC]/95 backdrop-blur-md py-4" id="explorador" aria-label="Filtros y Búsqueda">
+    <section class="section-filter-explorer sticky top-0 z-20 bg-[#FAF9F5]/95 backdrop-blur-md py-4" id="explorador" aria-label="Filtros y Búsqueda">
       <div class="container filter-controls-row flex flex-col md:flex-row md:items-center justify-between gap-4">
         <!-- Botonera de Chips -->
         <div class="chips-horizontal-bar flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none" id="disciplineChipsContainer" role="tablist">
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap active bg-slate-950 text-white shadow-sm" data-filter="TODOS" role="tab" aria-selected="true">TODOS</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="BÁSQUETBOL" role="tab" aria-selected="false">BÁSQUETBOL</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="AUTOMOVILISMO" role="tab" aria-selected="false">AUTOMOVILISMO</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="NATACIÓN" role="tab" aria-selected="false">NATACIÓN</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="FÚTBOL" role="tab" aria-selected="false">FÚTBOL</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="TIRO" role="tab" aria-selected="false">TIRO</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="TENIS" role="tab" aria-selected="false">TENIS</button>
-          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap bg-white text-slate-700 border border-slate-300 hover:border-slate-500 hover:text-slate-950" data-filter="ATLETISMO" role="tab" aria-selected="false">ATLETISMO</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap active shadow-sm" data-filter="TODOS" role="tab" aria-selected="true">TODOS</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="BÁSQUETBOL" role="tab" aria-selected="false">BÁSQUETBOL</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="AUTOMOVILISMO" role="tab" aria-selected="false">AUTOMOVILISMO</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="NATACIÓN" role="tab" aria-selected="false">NATACIÓN</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="FÚTBOL" role="tab" aria-selected="false">FÚTBOL</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="TIRO" role="tab" aria-selected="false">TIRO</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="TENIS" role="tab" aria-selected="false">TENIS</button>
+          <button class="filter-chip-btn px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider rounded-md transition-all whitespace-nowrap" data-filter="ATLETISMO" role="tab" aria-selected="false">ATLETISMO</button>
         </div>
 
         <!-- Campo de Búsqueda -->
@@ -123,7 +123,7 @@
           <input
             type="text"
             id="athleteSearchInput"
-            class="search-input-control w-full bg-white border border-slate-300 rounded-md px-3.5 py-1.5 text-sm text-slate-900 placeholder:text-slate-600 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 font-sans"
+            class="search-input-control search-input-field w-full bg-white border border-slate-300 rounded-md px-3.5 py-1.5 text-sm text-slate-900 placeholder:text-slate-500 focus:outline-none font-sans"
             placeholder="Buscar atleta o club..."
             aria-label="Buscar atleta o club"
             autocomplete="off"
@@ -515,7 +515,7 @@
     <div aria-hidden="true" class="section-divider-curve" style="background-color: #FFFFFF;">
       <div class="curve-wrap">
         <svg viewBox="0 0 1536 220" preserveAspectRatio="none" class="curve-svg">
-          <path d="M 1544 -4 L -8 -4 L -8 135 C 250 55, 450 180, 768 120 C 1080 60, 1320 170, 1544 100 Z" fill="#F8FAFC"></path>
+          <path d="M 1544 -4 L -8 -4 L -8 135 C 250 55, 450 180, 768 120 C 1080 60, 1320 170, 1544 100 Z" fill="#FAF9F5"></path>
         </svg>
       </div>
     </div>
@@ -668,7 +668,7 @@
     <div aria-hidden="true" class="section-divider-curve" style="background-color: #FFFFFF;">
       <div class="curve-wrap">
         <svg viewBox="0 0 1536 220" preserveAspectRatio="none" class="curve-svg">
-          <path d="M 1544 224 L -8 224 L -8 85 C 250 165, 450 40, 768 100 C 1080 160, 1320 50, 1544 120 Z" fill="#F1F5F9"></path>
+          <path d="M 1544 224 L -8 224 L -8 85 C 250 165, 450 40, 768 100 C 1080 160, 1320 50, 1544 120 Z" fill="#FAF9F5"></path>
         </svg>
       </div>
     </div>
@@ -765,7 +765,7 @@
     <div aria-hidden="true" class="section-divider-curve" style="background-color: #FFFFFF;">
       <div class="curve-wrap">
         <svg viewBox="0 0 1536 220" preserveAspectRatio="none" class="curve-svg">
-          <path d="M 1544 -4 L -8 -4 L -8 135 C 250 55, 450 180, 768 120 C 1080 60, 1320 170, 1544 100 Z" fill="#F1F5F9"></path>
+          <path d="M 1544 -4 L -8 -4 L -8 135 C 250 55, 450 180, 768 120 C 1080 60, 1320 170, 1544 100 Z" fill="#FAF9F5"></path>
         </svg>
       </div>
     </div>
@@ -834,7 +834,7 @@
     <div aria-hidden="true" class="section-divider-curve" style="background-color: #FFFFFF;">
       <div class="curve-wrap">
         <svg viewBox="0 0 1536 220" preserveAspectRatio="none" class="curve-svg">
-          <path d="M 1544 224 L -8 224 L -8 85 C 250 165, 450 40, 768 100 C 1080 160, 1320 50, 1544 120 Z" fill="#F1F5F9"></path>
+          <path d="M 1544 224 L -8 224 L -8 85 C 250 165, 450 40, 768 100 C 1080 160, 1320 50, 1544 120 Z" fill="#FAF9F5"></path>
         </svg>
       </div>
     </div>

@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cardsGrid.innerHTML = filtrados.map(atleta => `
       <article
-        class="group relative bg-white border border-slate-200 rounded-lg overflow-hidden flex flex-col transition-all duration-200 hover:-translate-y-1 hover:border-slate-900 hover:shadow-lg trading-card ${
+        class="group relative bg-white border border-slate-200 rounded-lg overflow-hidden flex flex-col transition-all duration-200 hover:-translate-y-1 hover:shadow-lg trading-card ${
           atleta.destacado ? 'card-featured' : ''
         }"
         data-discipline="${atleta.disciplina.toUpperCase()}"
@@ -250,21 +250,24 @@ document.addEventListener('DOMContentLoaded', () => {
             class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
             loading="lazy"
           />
-          <!-- Badges Deportivos -->
-          <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10 card-badges-wrap">
+          <!-- Badges Deportivos y Estrella de Gloria -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10 card-badges-wrap">
             <span class="bg-slate-900/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider card-badge-discipline">
               ${atleta.disciplina}
             </span>
+            ${atleta.destacado ? `<span class="card-glory-star" title="Consagración Deportiva">★</span>` : ''}
           </div>
         </div>
 
         <!-- Datos Editoriales -->
         <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
           <div>
-            <p class="font-mono text-xs font-bold text-slate-500 uppercase tracking-widest card-club-origin">
-              ${atleta.clubOrigen}
-            </p>
-            <h3 class="mt-1 font-['Plus_Jakarta_Sans',sans-serif] text-3xl font-black uppercase tracking-tight text-slate-950 group-hover:text-slate-700 transition-colors card-name-title">
+            <div class="card-club-formador-box">
+              <svg class="club-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span class="club-label-prefix">ORIGEN:</span>
+              <span class="club-name-text">${atleta.clubOrigen}</span>
+            </div>
+            <h3 class="mt-1 font-['Plus_Jakarta_Sans',sans-serif] text-3xl font-black uppercase tracking-tight text-slate-950 transition-colors card-name-title">
               ${atleta.nombre}
             </h3>
             <p class="card-athlete-bio">${atleta.descripcion || ''}</p>
@@ -280,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ${atleta.logroPrincipal}
               </span>
             </div>
-            <span class="font-mono text-xs font-bold text-slate-600 group-hover:text-slate-950 group-hover:translate-x-0.5 transition-all telemetry-arrow" aria-hidden="true">
+            <span class="font-mono text-xs font-bold text-slate-600 group-hover:translate-x-0.5 transition-all telemetry-arrow" aria-hidden="true">
               →
             </span>
           </div>
