@@ -1570,10 +1570,7 @@ body {
 }
 
 .club-badge-icon {
-  width: 13px;
-  height: 13px;
-  stroke: var(--color-celeste, #0092DF);
-  flex-shrink: 0;
+  display: none !important;
 }
 
 .club-label-prefix {
