@@ -1362,11 +1362,11 @@ body {
   display: none !important;
 }
 
-/* Contenedor Fotográfico (Proporción equilibrada 16:11 con presencia nítida) */
+/* Contenedor Fotográfico (Proporción heroica cuadrada 1:1 para máxima presencia) */
 .card-photo-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 1 / 1;
   background: #F1F5F9;
   border-bottom: 1px solid var(--border-card);
   overflow: hidden;
@@ -1375,13 +1375,27 @@ body {
 .card-athlete-photo {
   width: 100%;
   height: 100%;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  object-position: top center;
+  object-position: center 15%;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   filter: grayscale(100%) contrast(110%);
   transition: filter 300ms ease, transform 300ms ease;
+}
+
+/* Encuadres personalizados por disciplina y postura */
+.card-athlete-photo[src*="andrea_berrino"] {
+  object-position: center center !important;
+}
+.card-athlete-photo[src*="comba"] {
+  object-position: center 25% !important;
+}
+.card-athlete-photo[src*="pechito"] {
+  object-position: center 10% !important;
+}
+.card-athlete-photo[src*="prigioni"] {
+  object-position: center 12% !important;
 }
 
 /* Biografía deportiva enriquecida */
@@ -1583,67 +1597,10 @@ body {
   color: var(--text-primary);
 }
 
-/* Bloque de Legado y Huella Cívica */
-.card-legacy-box {
-  background: #F8FAFC;
-  border-left: 3px solid var(--color-celeste, #0092DF);
-  padding: 0.55rem 0.75rem;
-  border-radius: 0 6px 6px 0;
-  margin-bottom: 0.85rem;
-}
-
-.card-legacy-label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #0369A1;
-  margin-bottom: 0.15rem;
-}
-
-.card-legacy-text {
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  color: #334155;
-  line-height: 1.4;
-  margin: 0;
-}
-
-/* Barra de Telemetría (4 Métricas en Grilla 2x2 Equilibrada) */
+/* Ocultar cajas de sobreinformación a pedido del usuario */
+.card-legacy-box,
 .card-telemetry-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.55rem;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
-  padding: 0.65rem 0.75rem;
-  margin-bottom: 0.85rem;
-}
-
-.card-tele-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.card-tele-label {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  font-weight: 800;
-  color: #64748B;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.card-tele-val {
-  font-family: var(--font-body);
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: #0F172A;
-  line-height: 1.25;
+  display: none !important;
 }
 
 .telemetry-epoch-badge {
@@ -2152,21 +2109,17 @@ body {
   max-width: 900px;
   margin: 0 auto 4rem;
   position: relative;
-  isolation: isolate;
   padding: 3.5rem 2.5rem;
-  background: var(--bg-canvas, #FAF9F5);
-  border-radius: 16px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  border: 4px solid transparent;
+  background: linear-gradient(#FFFFFF, #FFFFFF) padding-box,
+              linear-gradient(90deg, var(--color-celeste, #0092DF) 0%, var(--color-verde-acento, #41A934) 100%) border-box;
   box-shadow: 0 14px 38px -10px rgba(0, 146, 223, 0.12), 0 4px 16px -2px rgba(65, 169, 52, 0.08);
 }
 
 .closing-banner-box::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 19px;
-  background: linear-gradient(90deg, var(--color-celeste, #0092DF) 0%, var(--color-verde-acento, #41A934) 100%);
-  z-index: -1;
-  pointer-events: none;
+  display: none !important;
 }
 
 .closing-headline-display {
@@ -2553,7 +2506,7 @@ body {
 
   .trading-card.card-featured .card-photo-frame,
   .card-photo-frame {
-    aspect-ratio: 16 / 11;
+    aspect-ratio: 1 / 1;
     min-height: auto;
     height: auto;
     border-right: none;

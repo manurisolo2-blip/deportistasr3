@@ -263,8 +263,8 @@ document.addEventListener('DOMContentLoaded', () => {
         class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card"
         data-discipline="${atleta.disciplina.toUpperCase()}"
       >
-        <!-- Contenedor Fotográfico con proporción equilibrada 16:11 -->
-        <div class="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
+        <!-- Contenedor Fotográfico con proporción cuadrada 1:1 de alto impacto -->
+        <div class="relative aspect-square w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
           <img
             src="${atleta.imagenUrl}"
             alt="${atleta.nombre}"
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ` : ''}
         </div>
 
-        <!-- Datos Editoriales Enriquecidos -->
+        <!-- Datos Editoriales Limpios y Equilibrados -->
         <div class="p-5 flex-1 flex flex-col justify-between relative z-10 card-content-body">
           <div>
             <!-- Club Formador -->
@@ -305,35 +305,11 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
             ` : ''}
 
-            <!-- Biografía Deportiva -->
-            <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+            <!-- Biografía Deportiva Concisa -->
+            <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
               ${atleta.descripcion || ''}
             </p>
-
-            <!-- Bloque de Legado e Impacto en Río Tercero -->
-            ${atleta.legado ? `
-              <div class="card-legacy-box bg-slate-50 border-l-2 border-sky-500 p-2.5 rounded-r mb-3.5">
-                <span class="block font-mono text-[9px] font-black uppercase tracking-wider text-sky-800 mb-0.5">
-                  HUELLA CÍVICA & FORMATIVA
-                </span>
-                <p class="font-sans text-xs text-slate-700 leading-snug">
-                  ${atleta.legado}
-                </p>
-              </div>
-            ` : ''}
           </div>
-
-          <!-- Cuadrícula de Telemetría (4 métricas 2x2) -->
-          ${atleta.telemetria && atleta.telemetria.length > 0 ? `
-            <div class="card-telemetry-grid grid grid-cols-2 gap-2 bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 mb-3">
-              ${atleta.telemetria.map(t => `
-                <div class="card-tele-item flex flex-col">
-                  <span class="card-tele-label font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">${t.label}</span>
-                  <span class="card-tele-val font-sans text-xs font-bold text-slate-900 leading-tight">${t.val}</span>
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
 
           <!-- Fila Inferior: Consagración y Época -->
           <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-left card-telemetry-row">
