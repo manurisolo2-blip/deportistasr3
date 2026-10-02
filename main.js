@@ -493,6 +493,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 0.62);
     }
 
+    // Control de reproducción y audio del video municipal en el hero
+    const heroVideo = document.getElementById('heroVideoAsset');
+    const heroAudioToggle = document.getElementById('heroAudioToggle');
+
+    if (heroVideo) {
+      heroVideo.play().catch(() => {});
+    }
+
+    if (heroVideo && heroAudioToggle) {
+      const iconMuted = heroAudioToggle.querySelector('.audio-icon-muted');
+      const iconUnmuted = heroAudioToggle.querySelector('.audio-icon-unmuted');
+      const audioText = heroAudioToggle.querySelector('.audio-text');
+
+      heroAudioToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        heroVideo.muted = !heroVideo.muted;
+        if (heroVideo.muted) {
+          if (iconMuted) iconMuted.style.display = 'block';
+          if (iconUnmuted) iconUnmuted.style.display = 'none';
+          if (audioText) audioText.textContent = 'ACTIVAR AUDIO';
+          heroAudioToggle.setAttribute('aria-label', 'Activar audio');
+        } else {
+          if (iconMuted) iconMuted.style.display = 'none';
+          if (iconUnmuted) iconUnmuted.style.display = 'block';
+          if (audioText) audioText.textContent = 'SILENCIAR';
+          heroAudioToggle.setAttribute('aria-label', 'Silenciar audio');
+        }
+      });
+    }
+
     // Efecto Telón (Curtain Parallax): el fondo y contenido suben y cubren limpiamente al Hero
     if (typeof ScrollTrigger !== 'undefined' && heroSection) {
       gsap.to(heroSection, {

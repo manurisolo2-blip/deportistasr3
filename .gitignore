@@ -24,3 +24,6 @@ screenshot_*.png
 # Scratch
 scratch/
 
+# Local raw video backup
+/VIDEO MUNICIPALIDAD ITR3.mp4
+
