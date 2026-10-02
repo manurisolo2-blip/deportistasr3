@@ -45,8 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------------------------------------
   const progressLine = document.getElementById('scrollProgressLine');
   const siteHeader = document.getElementById('siteHeader');
+  const heroSection = document.getElementById('inicio');
 
-  window.addEventListener('scroll', () => {
+  function updateHeaderAndScroll() {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     
@@ -56,13 +57,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (siteHeader) {
-      if (scrollTop > 40) {
+      const hero = heroSection || document.getElementById('inicio');
+      const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
+      const threshold = heroHeight - 75;
+
+      if (scrollTop >= threshold) {
         siteHeader.classList.add('scrolled');
       } else {
         siteHeader.classList.remove('scrolled');
       }
     }
-  }, { passive: true });
+  }
+
+  window.addEventListener('scroll', updateHeaderAndScroll, { passive: true });
+  window.addEventListener('resize', updateHeaderAndScroll, { passive: true });
+  if (lenis) {
+    lenis.on('scroll', updateHeaderAndScroll);
+  }
+  updateHeaderAndScroll();
 
   // ------------------------------------------------------------------------
   // 4. NAVEGACIÓN SUAVE ENTRE ANCLAS & ESTADO ACTIVO
