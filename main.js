@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="font-mono text-xs font-bold text-slate-500 uppercase tracking-widest card-club-origin">
               ${atleta.clubOrigen}
             </p>
-            <h3 class="mt-1 font-['Bebas_Neue',sans-serif] text-3xl font-black uppercase tracking-tight text-slate-950 group-hover:text-slate-700 transition-colors card-name-title">
+            <h3 class="mt-1 font-['Plus_Jakarta_Sans',sans-serif] text-3xl font-black uppercase tracking-tight text-slate-950 group-hover:text-slate-700 transition-colors card-name-title">
               ${atleta.nombre}
             </h3>
             <p class="card-athlete-bio">${atleta.descripcion || ''}</p>
