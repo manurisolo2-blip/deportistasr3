@@ -417,7 +417,7 @@ window.SITE_CONTENT = {
       founded: "Mediados del Siglo XX",
       focus: "Fútbol oficial y formativo en LRRF · Tenis · Bochas · Deportes recreativos",
       description: "Fundado a mediados del Siglo XX. Estadio «Pura Molina», complejo de tenis y frontón. Fútbol oficial y formativo en LRRF, tenis, bochas y deportes recreativos.",
-      crest: "",
+      crest: "assets/escudo_independiente.png",
       colors: "Rojo y Negro",
       athleteOrigin: "Planteles formativos LRRF y tenis regional"
     },
@@ -427,7 +427,7 @@ window.SITE_CONTENT = {
       founded: "Mediados del Siglo XX",
       focus: "Fútbol federado de mayores y juveniles · Bochas · Actividades comunitarias",
       description: "Fundado a mediados del Siglo XX. Cancha de fútbol reglamentaria y sede social histórica. Fútbol federado de mayores y divisiones juveniles, bochas y actividades comunitarias.",
-      crest: "",
+      crest: "assets/escudo_casino.png",
       colors: "Verde y Blanco",
       athleteOrigin: "Divisiones juveniles y fútbol federado"
     },
@@ -437,7 +437,7 @@ window.SITE_CONTENT = {
       founded: "Segunda mitad del Siglo XX",
       focus: "Fútbol formativo · Fútbol femenino · Primera división · Contención social barrial",
       description: "Fundado en la segunda mitad del Siglo XX. Campo de juego barrial y áreas de entrenamiento multideporte. Fútbol formativo, fútbol femenino, primera división y contención social barrial.",
-      crest: "",
+      crest: "assets/escudo_vecinosunidos.png",
       colors: "Amarillo y Negro",
       athleteOrigin: "Semillero barrial y fútbol femenino"
     },
@@ -447,7 +447,7 @@ window.SITE_CONTENT = {
       founded: "Etapa contemporánea federada",
       focus: "Rugby masculino y femenino · Hockey formativo",
       description: "Etapa contemporánea federada. Predio con canchas de rugby reglamentarias de césped natural y club house. Rugby masculino y femenino en diversas categorías y hockey formativo.",
-      crest: "",
+      crest: "assets/escudo_rtrc.png",
       colors: "Bordó / Azul y Blanco",
       athleteOrigin: "Fernando «Peny» Herrera y formativas de rugby"
     }
