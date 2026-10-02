@@ -1664,8 +1664,16 @@ body {
    -------------------------------------------------------------------------- */
 .section-clubs-editorial {
   padding: clamp(5rem, 8vw, 7rem) 0;
-  background: #FFFFFF;
+  background: linear-gradient(160deg, #0077B6 0%, #0092DF 100%);
   border-bottom: none;
+}
+
+.section-clubs-editorial h2 {
+  color: #FFFFFF !important;
+}
+
+.section-clubs-editorial p {
+  color: rgba(255, 255, 255, 0.92) !important;
 }
 
 .clubs-grid-strip {
@@ -1687,11 +1695,11 @@ body {
 }
 
 .club-editorial-card {
-  background: var(--bg-canvas, #FAF9F5);
-  border: 1px solid var(--border-card);
+  background: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: 12px;
   padding: 2rem 1.75rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 12px 28px -6px rgba(0, 30, 80, 0.22);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1700,8 +1708,8 @@ body {
 
 .club-editorial-card:hover {
   transform: translateY(-4px);
-  border-color: var(--color-celeste, #0092DF);
-  box-shadow: var(--shadow-hover);
+  border-color: #FFFFFF;
+  box-shadow: 0 20px 38px -6px rgba(0, 30, 80, 0.32);
 }
 
 .club-card-top {
@@ -1740,7 +1748,7 @@ body {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--text-muted);
+  color: #64748B !important;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   background: transparent !important;
@@ -1759,15 +1767,15 @@ body {
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  color: var(--text-primary);
+  color: #0F172A !important;
   margin-bottom: 0.35rem;
 }
 
 .club-focus-tag {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-celeste-dark, #0077B6);
+  font-weight: 600;
+  color: #0077B6 !important;
   margin-bottom: 0.75rem;
   line-height: 1.4;
   letter-spacing: 0.25px;
@@ -1775,22 +1783,22 @@ body {
 
 .club-desc-text {
   font-size: 0.88rem;
-  color: var(--text-secondary);
+  color: #475569 !important;
   line-height: 1.55;
   margin-bottom: 0;
 }
 
 .club-origin-footer {
-  border-top: 1px solid var(--border-card);
+  border-top: 1px solid #E2E8F0;
   padding-top: 0.85rem;
   margin-top: 1.25rem;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: var(--text-secondary);
+  color: #334155 !important;
 }
 
 .club-origin-footer strong {
-  color: var(--color-verde-dark, #2E8B22);
+  color: #2E8B22 !important;
   font-weight: 700;
 }
 
@@ -1872,8 +1880,16 @@ body {
    -------------------------------------------------------------------------- */
 .section-proposals-editorial {
   padding: clamp(5rem, 8vw, 7rem) 0;
-  background: var(--bg-surface);
+  background: linear-gradient(160deg, #0077B6 0%, #0092DF 100%);
   border-bottom: none;
+}
+
+.section-proposals-editorial h2 {
+  color: #FFFFFF !important;
+}
+
+.section-proposals-editorial p {
+  color: rgba(255, 255, 255, 0.92) !important;
 }
 
 .proposals-editorial-grid {
@@ -1896,11 +1912,11 @@ body {
 }
 
 .proposal-dossier-card {
-  background: var(--bg-canvas, #FAF9F5);
-  border: 1px solid var(--border-card);
+  background: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: 12px;
   padding: 2.2rem 1.8rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 12px 28px -6px rgba(0, 30, 80, 0.22);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1909,8 +1925,8 @@ body {
 
 .proposal-dossier-card:hover {
   transform: translateY(-4px);
-  border-color: var(--color-celeste, #0092DF);
-  box-shadow: var(--shadow-hover);
+  border-color: #FFFFFF;
+  box-shadow: 0 20px 38px -6px rgba(0, 30, 80, 0.32);
 }
 
 .proposal-top-meta {
@@ -1926,7 +1942,7 @@ body {
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: var(--color-celeste, #0092DF);
+  color: #0077B6 !important;
 }
 
 .proposal-target-tag {
@@ -1937,14 +1953,14 @@ body {
   font-family: var(--font-sub);
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #0F172A !important;
   line-height: 1.25;
   margin-bottom: 0.75rem;
 }
 
 .proposal-card-detail {
   font-size: 0.88rem;
-  color: var(--text-secondary);
+  color: #475569 !important;
   line-height: 1.6;
 }
 
