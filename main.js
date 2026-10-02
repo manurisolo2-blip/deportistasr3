@@ -57,14 +57,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (siteHeader) {
-      const hero = heroSection || document.getElementById('inicio');
-      const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
-      const threshold = heroHeight - 75;
+      const contenido = document.getElementById('contenido') || document.getElementById('explorador');
+      let inHero = true;
 
-      if (scrollTop >= threshold) {
+      if (contenido) {
+        const rect = contenido.getBoundingClientRect();
+        // El header está en el hero mientras el telón de contenido no alcance la cabecera
+        inHero = rect.top > (siteHeader.offsetHeight || 65);
+      } else {
+        const hero = heroSection || document.getElementById('inicio');
+        const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
+        inHero = scrollTop < heroHeight;
+      }
+
+      if (!inHero) {
         siteHeader.classList.add('scrolled');
+        siteHeader.classList.remove('in-hero');
       } else {
         siteHeader.classList.remove('scrolled');
+        siteHeader.classList.add('in-hero');
       }
     }
   }
