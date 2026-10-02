@@ -86,37 +86,37 @@
         <div class="hero-bg-overlay"></div>
       </div>
 
-      <div class="container relative z-10 flex flex-col items-center justify-center text-center w-full">
-        <!-- Contenedor Expansivo en Scroll (ScrollExpandMedia) -->
-        <div class="hero-expand-container relative w-full flex items-center justify-center">
+      <div class="hero-expand-container relative w-full h-full flex items-center justify-center">
+        
+        <!-- Tarjeta central que se agranda hasta ocupar todo el hero -->
+        <div class="hero-expand-card" id="heroExpandCard">
+          <img src="assets/rio_tercero_hero.webp" alt="Río Tercero Capital Nacional del Deportista" class="hero-expand-media-asset" loading="eager">
+          <div class="hero-expand-overlay"></div>
           
-          <!-- Tarjeta central de medios que se expande con el scroll -->
-          <div class="hero-expand-card" id="heroExpandCard">
-            <img src="assets/rio_tercero_hero.webp" alt="Río Tercero Capital Nacional del Deportista" class="hero-expand-media-asset" loading="eager">
-            <div class="hero-expand-overlay"></div>
-            <div class="hero-expand-inner-badge" id="heroExpandInnerBadge">
-              <span class="badge-date">RÍO TERCERO · CÓRDOBA</span>
-              <span class="badge-hint font-mono text-xs">DESLIZÁ PARA EXPANDIR ↓</span>
-            </div>
-          </div>
-
-          <!-- Capa de Títulos Deslizantes que se separan horizontalmente al scrollear -->
-          <div class="hero-expand-titles-layer">
-            <div class="hero-editorial-max max-w-4xl mx-auto text-center">
-              <h1 class="hero-editorial-title hero-title-left text-center text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight text-slate-950 font-['Plus_Jakarta_Sans',sans-serif] leading-[0.9]" id="heroTitleLeft">
-                CAPITAL NACIONAL
-              </h1>
-              <h1 class="hero-editorial-title hero-title-right text-center text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight text-celeste font-['Plus_Jakarta_Sans',sans-serif] leading-[0.9]" id="heroTitleRight" style="color: var(--color-celeste, #0092DF);">
-                DEL DEPORTISTA
+          <!-- Capa de Texto que aparece una vez agrandado todo el hero -->
+          <div class="hero-expand-text-layer" id="heroExpandTextLayer">
+            <div class="hero-editorial-max max-w-4xl mx-auto text-center px-4">
+              <span class="hero-tag-pill inline-block mb-3 text-xs font-mono font-bold tracking-widest uppercase text-sky-300 bg-black/40 backdrop-blur-sm px-3.5 py-1 border border-white/20">
+                RÍO TERCERO · CÓRDOBA · LEY 27.378
+              </span>
+              <h1 class="hero-editorial-title text-center text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white font-['Plus_Jakarta_Sans',sans-serif] leading-[0.92]">
+                CAPITAL NACIONAL <br>
+                <span class="highlight text-sky-400" style="color: #38BDF8;">DEL DEPORTISTA</span>
               </h1>
 
-              <p class="hero-editorial-lead mx-auto text-center mt-4 text-slate-700 text-base sm:text-lg leading-relaxed max-w-2xl" id="heroLeadText">
+              <p class="hero-editorial-lead mx-auto text-center mt-5 text-slate-100 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl font-medium">
                 Declarada formalmente Capital Nacional del Deportista por la Ley Nacional N.º 27.378 del Congreso de la Nación, Río Tercero es cuna de figuras olímpicas y campeones mundiales. Su comunidad celebra cada 16 de noviembre el Día del Deportista y la Semana del Deporte como homenaje formativo y reparación simbólica tras los sucesos industriales de 1995.
               </p>
             </div>
           </div>
 
+          <!-- Indicador inicial en la tarjeta -->
+          <div class="hero-expand-inner-badge" id="heroExpandInnerBadge">
+            <span class="badge-hint font-mono text-xs">DESLIZÁ PARA EXPANDIR ↓</span>
+          </div>
+
         </div>
+
       </div>
     </section>
 

@@ -380,66 +380,62 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------------------------------------
   if (typeof gsap !== 'undefined' && !prefersReducedMotion) {
 
-    // Scroll Expansion Hero (ScrollExpandMedia): Expansión central y desplazamiento de títulos
+    // Scroll Expansion Hero: No hay texto inicial -> Se agranda todo el hero -> Aparece el texto
     const heroCard = document.getElementById('heroExpandCard');
-    const titleLeft = document.getElementById('heroTitleLeft');
-    const titleRight = document.getElementById('heroTitleRight');
-    const heroLead = document.getElementById('heroLeadText');
+    const heroTextLayer = document.getElementById('heroExpandTextLayer');
     const heroExpandHint = document.getElementById('heroExpandInnerBadge');
     const heroBackdrop = document.querySelector('.hero-bg-backdrop');
 
-    if (typeof ScrollTrigger !== 'undefined' && heroSection && heroCard && titleLeft && titleRight) {
-      const isMobile = window.innerWidth < 768;
-      const targetWidth = isMobile ? '94vw' : '1100px';
-      const targetHeight = isMobile ? '68vh' : '76vh';
-      const textShift = isMobile ? 120 : 260;
+    if (typeof ScrollTrigger !== 'undefined' && heroSection && heroCard && heroTextLayer) {
+      // Estado inicial: sin texto visible
+      gsap.set(heroTextLayer, {
+        opacity: 0,
+        y: 28,
+        scale: 0.96
+      });
 
       const heroExpandTl = gsap.timeline({
         scrollTrigger: {
           trigger: heroSection,
           start: 'top top',
-          end: '+=85%',
+          end: '+=125%',
           pin: true,
-          scrub: 0.65,
+          scrub: 0.7,
           anticipatePin: 1
         }
       });
 
+      // 1. La tarjeta se agranda desde el centro hasta ocupar todo el hero (0% a 65%)
       heroExpandTl
         .to(heroCard, {
-          width: targetWidth,
-          height: targetHeight,
-          borderRadius: isMobile ? '12px' : '18px',
-          boxShadow: '0 35px 80px -20px rgba(0, 0, 0, 0.65)',
-          ease: 'power1.inOut'
-        }, 0)
-        .to(titleLeft, {
-          x: -textShift,
-          opacity: 0.2,
-          ease: 'power1.inOut'
-        }, 0)
-        .to(titleRight, {
-          x: textShift,
-          opacity: 0.2,
-          ease: 'power1.inOut'
+          width: '100vw',
+          height: '100vh',
+          borderRadius: 0,
+          boxShadow: 'none',
+          ease: 'power2.inOut',
+          duration: 0.65
         }, 0)
         .to(heroExpandHint, {
           opacity: 0,
-          y: 15,
-          ease: 'power1.out'
+          y: 10,
+          ease: 'power1.out',
+          duration: 0.2
         }, 0)
         .to(heroBackdrop, {
-          opacity: 0.15,
-          ease: 'power1.out'
+          opacity: 0,
+          ease: 'power1.out',
+          duration: 0.45
         }, 0);
 
-      if (heroLead) {
-        heroExpandTl.to(heroLead, {
-          opacity: 0.2,
-          y: -15,
-          ease: 'power1.out'
-        }, 0);
-      }
+      // 2. Una vez que ocupa todo el hero, aparece el texto (62% a 100%)
+      heroExpandTl
+        .to(heroTextLayer, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          ease: 'power2.out',
+          duration: 0.35
+        }, 0.62);
     }
 
     // Efecto Telón (Curtain Parallax): el fondo y contenido suben y cubren limpiamente al Hero
