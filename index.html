@@ -109,9 +109,14 @@
     </section>
 
     <!-- =========================================================================
-         3. CONTROLES: FILTROS TÁCTILES Y BÚSQUEDA
+         TELÓN DE CONTENIDO PRINCIPAL (CURTAIN PARALLAX)
          ========================================================================= -->
-    <section class="section-filter-explorer sticky top-0 z-20 bg-[#FAF9F5]/95 backdrop-blur-md py-4" id="explorador" aria-label="Filtros y Búsqueda">
+    <div class="main-body-curtain" id="contenido">
+
+      <!-- =========================================================================
+           3. CONTROLES: FILTROS TÁCTILES Y BÚSQUEDA
+           ========================================================================= -->
+      <section class="section-filter-explorer sticky top-0 z-20 bg-[#FAF9F5]/95 backdrop-blur-md py-4" id="explorador" aria-label="Filtros y Búsqueda">
       <div class="container filter-controls-row flex flex-col md:flex-row md:items-center justify-between gap-4">
         <!-- Botonera de Chips -->
         <div class="chips-horizontal-bar flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none" id="disciplineChipsContainer" role="tablist">
@@ -874,6 +879,8 @@
 
       </div>
     </footer>
+
+    </div> <!-- /.main-body-curtain -->
 
   </main>
 

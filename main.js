@@ -365,9 +365,24 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCards();
 
   // ------------------------------------------------------------------------
-  // 6. ANIMACIONES MECÁNICAS DE ENTRADA CON GSAP
+  // 6. ANIMACIONES MECÁNICAS DE ENTRADA CON GSAP & EFECTO TELÓN
   // ------------------------------------------------------------------------
   if (typeof gsap !== 'undefined' && !prefersReducedMotion) {
+
+    // Efecto Telón (Curtain Parallax): atenuación y sutil escala en profundidad del Hero mientras la cortina lo tapa
+    if (typeof ScrollTrigger !== 'undefined' && heroSection) {
+      gsap.to(heroSection, {
+        opacity: 0.45,
+        scale: 0.96,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.main-body-curtain',
+          start: 'top bottom',
+          end: 'top 10%',
+          scrub: true
+        }
+      });
+    }
 
     // Entrada sutil del Hero Bento
     gsap.from('#heroBentoCard', {
