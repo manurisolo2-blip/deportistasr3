@@ -27,6 +27,7 @@ export function VideoScrollHero({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [userManuallyPaused, setUserManuallyPaused] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
@@ -67,6 +68,29 @@ export function VideoScrollHero({
   }, [enableAnimations, shouldReduceMotion, startScale, maxScale]);
 
   useEffect(() => {
+    if (!videoRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          if (videoRef.current && !videoRef.current.paused) {
+            videoRef.current.pause();
+            setIsPlaying(false);
+          }
+        } else {
+          if (!userManuallyPaused && videoRef.current && videoRef.current.paused) {
+            videoRef.current.play().catch(() => {});
+            setIsPlaying(true);
+          }
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(videoRef.current);
+    return () => observer.disconnect();
+  }, [userManuallyPaused]);
+
+  useEffect(() => {
     const handleFullscreenChange = () => {
       setIsFullscreen(Boolean(document.fullscreenElement));
     };
@@ -88,9 +112,11 @@ export function VideoScrollHero({
     if (videoRef.current.paused) {
       videoRef.current.play().catch(() => {});
       setIsPlaying(true);
+      setUserManuallyPaused(false);
     } else {
       videoRef.current.pause();
       setIsPlaying(false);
+      setUserManuallyPaused(true);
     }
   };
 

@@ -664,6 +664,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------------------------------------
   // Control de Play / Pausa (Botón simplificado y clic en video)
   // ------------------------------------------------------------------------
+  let isVideoInView = false;
+  let userManuallyPaused = false;
+
   function updatePlayPauseUI(isPaused) {
     if (!videoPlayToggle) return;
     const playIconPlay = videoPlayToggle.querySelector('.play-icon-play');
@@ -681,14 +684,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function handleUserTogglePlay() {
+    if (!spotVideo) return;
+    if (spotVideo.paused) {
+      userManuallyPaused = false;
+      spotVideo.play().catch(() => {});
+    } else {
+      userManuallyPaused = true;
+      spotVideo.pause();
+    }
+  }
+
   if (spotVideo && videoPlayToggle) {
     videoPlayToggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (spotVideo.paused) {
-        spotVideo.play().catch(() => {});
-      } else {
-        spotVideo.pause();
-      }
+      handleUserTogglePlay();
     });
 
     spotVideo.addEventListener('play', () => updatePlayPauseUI(false));
@@ -699,13 +709,59 @@ document.addEventListener('DOMContentLoaded', () => {
   if (spotVideo) {
     spotVideo.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (spotVideo.paused) {
-        spotVideo.play().catch(() => {});
-      } else {
-        spotVideo.pause();
-      }
+      handleUserTogglePlay();
     });
   }
+
+  // ------------------------------------------------------------------------
+  // Pausar automáticamente cuando NO esté en pantalla (IntersectionObserver)
+  // ------------------------------------------------------------------------
+  if (typeof IntersectionObserver !== 'undefined' && spotVideo) {
+    // Si al cargar la página el video no está dentro de la pantalla, pausarlo
+    const rect = (videoSpotContainer || spotVideo).getBoundingClientRect();
+    const isInitiallyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    if (!isInitiallyVisible && !spotVideo.paused) {
+      spotVideo.pause();
+    }
+
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isVideoInView = entry.isIntersecting;
+          if (!entry.isIntersecting) {
+            // Fuera de la pantalla: pausar el video
+            if (!spotVideo.paused) {
+              spotVideo.pause();
+            }
+          } else {
+            // En pantalla: reanudar si el usuario no lo pausó manualmente
+            if (!userManuallyPaused && spotVideo.paused) {
+              spotVideo.play().catch(() => {});
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.15
+      }
+    );
+
+    videoObserver.observe(videoSpotContainer || spotVideo);
+  }
+
+  // Pausar también si la pestaña pasa a segundo plano
+  document.addEventListener('visibilitychange', () => {
+    if (!spotVideo) return;
+    if (document.hidden) {
+      if (!spotVideo.paused) {
+        spotVideo.pause();
+      }
+    } else {
+      if (isVideoInView && !userManuallyPaused && spotVideo.paused) {
+        spotVideo.play().catch(() => {});
+      }
+    }
+  });
 
   // ------------------------------------------------------------------------
   // Barra interactiva para adelantar y atrasar (Seek Scrubber)
@@ -747,7 +803,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const pct = parseFloat(videoProgressBar.value);
       spotVideo.currentTime = (pct / 100) * duration;
       isSeeking = false;
-      if (spotVideo.paused) {
+      if (isVideoInView && !userManuallyPaused && spotVideo.paused) {
         spotVideo.play().catch(() => {});
       }
     });
