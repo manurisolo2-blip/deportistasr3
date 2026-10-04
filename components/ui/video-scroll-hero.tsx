@@ -15,18 +15,23 @@ export function VideoScrollHero({
   videoSrc = "assets/video_municipalidad.mp4",
   enableAnimations = true,
   className = "",
-  startScale = 0.8,
+  startScale = 0.35,
   maxScale = 1.0,
 }: VideoScrollHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const [scrollScale, setScrollScale] = useState(startScale);
+  const [isFrenado, setIsFrenado] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
-    if (!enableAnimations || shouldReduceMotion) return;
+    if (!enableAnimations || shouldReduceMotion) {
+      setScrollScale(maxScale);
+      setIsFrenado(true);
+      return;
+    }
 
     const handleScroll = () => {
       if (!containerRef.current) return;
@@ -35,33 +40,36 @@ export function VideoScrollHero({
       const containerHeight = containerRef.current.offsetHeight;
       const windowHeight = window.innerHeight;
       
-      // Calculate scroll progress based on container position
       const scrolled = Math.max(0, -rect.top);
       const maxScroll = containerHeight - windowHeight;
       const rawProgress = Math.min(scrolled / maxScroll, 1);
       
-      // Hold initial scale until 20% scroll, then grow gently to maxScale
-      const holdThreshold = 0.2;
-      const progress = rawProgress < holdThreshold 
-        ? 0 
-        : Math.min((rawProgress - holdThreshold) / (1 - holdThreshold), 1);
-      
-      const newScale = startScale + (progress * (maxScale - startScale));
-      setScrollScale(newScale);
+      // Fase 1 (0% a 50% de scroll): el video se agranda de chiquito (startScale) a maxScale
+      // Fase 2 (50% a 100%): se frena (mantiene maxScale y habilita maximizar)
+      const growthCutoff = 0.52;
+      if (rawProgress < growthCutoff) {
+        const growthProgress = rawProgress / growthCutoff;
+        const currentScale = startScale + growthProgress * (maxScale - startScale);
+        setScrollScale(currentScale);
+        setIsFrenado(false);
+      } else {
+        setScrollScale(maxScale);
+        setIsFrenado(true);
+      }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [enableAnimations, shouldReduceMotion, startScale, maxScale]);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
       setIsFullscreen(Boolean(document.fullscreenElement));
     };
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
   }, []);
 
   const toggleFullscreen = () => {
@@ -80,17 +88,17 @@ export function VideoScrollHero({
       {/* Hero Section with Video */}
       <div
         ref={containerRef}
-        className="relative h-[160vh] bg-background"
+        className="relative h-[200vh] bg-background"
       >
         {/* Fixed Video Container */}
         <div className="sticky top-0 w-full h-screen flex flex-col items-center justify-center overflow-hidden px-4 z-10">
           <div
             ref={videoWrapperRef}
-            className={`relative flex items-center justify-center will-change-transform transition-transform duration-100 ${
+            className={`relative flex items-center justify-center will-change-transform transition-transform duration-75 ${
               isFullscreen ? "w-screen h-screen bg-black" : ""
             }`}
             style={{
-              transform: shouldAnimate ? `scale(${scrollScale})` : 'scale(1)',
+              transform: shouldAnimate ? `scale(${scrollScale})` : "scale(1)",
               transformOrigin: "center center",
             }}
           >
@@ -99,7 +107,7 @@ export function VideoScrollHero({
               loop
               muted={isMuted}
               playsInline
-              className={`w-[88vw] max-w-5xl aspect-video object-cover shadow-2xl rounded-2xl border border-border/40 ${
+              className={`w-[88vw] max-w-4xl aspect-video object-cover shadow-2xl rounded-2xl border border-border/40 ${
                 isFullscreen ? "!w-full !h-full !max-w-none !rounded-none !border-0 object-contain" : ""
               }`}
             >
@@ -113,8 +121,8 @@ export function VideoScrollHero({
                 isFullscreen ? "rounded-none" : ""
               }`}
               initial={{ opacity: 0 }}
-              animate={{ opacity: scrollScale > startScale + 0.05 || isFullscreen ? 1 : 0.4 }}
-              transition={{ duration: 0.4 }}
+              animate={{ opacity: isFrenado || isFullscreen ? 1 : 0 }}
+              transition={{ duration: 0.3 }}
             >
               <div className="max-w-2xl text-white">
                 <span className="inline-block font-mono text-xs font-bold uppercase tracking-wider text-sky-400 mb-1">
@@ -129,12 +137,18 @@ export function VideoScrollHero({
               </div>
             </motion.div>
 
-            {/* Controles Flotantes: Audio y Maximizar */}
-            <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2">
+            {/* Controles Flotantes: Aparecen ÚNICAMENTE cuando se frena el video */}
+            <div
+              className={`absolute bottom-4 right-4 z-20 flex items-center gap-2 transition-all duration-300 ${
+                isFrenado || isFullscreen
+                  ? "opacity-100 pointer-events-auto translate-y-0"
+                  : "opacity-0 pointer-events-none translate-y-2"
+              }`}
+            >
               <button
                 type="button"
                 onClick={() => setIsMuted(!isMuted)}
-                className="bg-slate-900/85 hover:bg-slate-900 text-white font-mono text-xs px-3.5 py-2 rounded-full backdrop-blur-md border border-white/20 shadow-xl flex items-center gap-2 transition-all cursor-pointer hover:scale-105"
+                className="bg-slate-900/90 hover:bg-slate-900 text-white font-mono text-xs px-3.5 py-2 rounded-full backdrop-blur-md border border-white/20 shadow-xl flex items-center gap-2 transition-all cursor-pointer hover:scale-105"
                 aria-label={isMuted ? "Activar Sonido" : "Silenciar"}
               >
                 <span>{isMuted ? "Activar Sonido" : "Silenciar"}</span>
@@ -143,10 +157,10 @@ export function VideoScrollHero({
               <button
                 type="button"
                 onClick={toggleFullscreen}
-                className="bg-slate-900/85 hover:bg-slate-900 text-white font-mono text-xs px-3.5 py-2 rounded-full backdrop-blur-md border border-white/20 shadow-xl flex items-center gap-2 transition-all cursor-pointer hover:scale-105"
-                aria-label={isFullscreen ? "Minimizar" : "Maximizar"}
+                className="bg-slate-900/90 hover:bg-slate-900 text-white font-mono text-xs px-3.5 py-2 rounded-full backdrop-blur-md border border-white/20 shadow-xl flex items-center gap-2 transition-all cursor-pointer hover:scale-105"
+                aria-label={isFullscreen ? "Restaurar" : "Maximizar"}
               >
-                <span>{isFullscreen ? "Minimizar" : "Maximizar"}</span>
+                <span>{isFullscreen ? "Restaurar" : "Maximizar"}</span>
               </button>
             </div>
           </div>

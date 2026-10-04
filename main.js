@@ -571,20 +571,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // Scroll-to-Scale Video Hero Expansion (Inspirado en video-scroll-hero.tsx)
+  // Espacio Audiovisual: Spot Oficial Municipalidad (Scroll-to-Scale)
+  // Comportamiento: Inicia chiquito -> Scroll agranda un poco -> Se frena -> Se puede maximizar
   // ------------------------------------------------------------------------
   const videoScrollTrack = document.getElementById('videoScrollTrack');
   const videoSpotContainer = document.getElementById('videoSpotContainer');
   const videoOverlayText = document.getElementById('videoOverlayText');
   const videoIntroHeader = document.getElementById('videoIntroHeader');
   const spotVideo = document.getElementById('spotVideoOfficial');
+  const videoFloatingControls = document.getElementById('videoFloatingControls');
   const videoSoundToggle = document.getElementById('videoSoundToggle');
   const videoMaximizeBtn = document.getElementById('videoMaximizeBtn');
 
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReducedMotion && videoScrollTrack && videoSpotContainer) {
     const isMobile = window.innerWidth < 768;
-    // Escala inicial donde el video ya se aprecia entero y proporcionado en pantalla
-    const startScale = isMobile ? 0.86 : 0.80;
+    // 1. El video aparece CHIQUITO en la pantalla
+    const startScale = isMobile ? 0.46 : 0.35;
 
     gsap.set(videoSpotContainer, {
       scale: startScale,
@@ -594,42 +596,71 @@ document.addEventListener('DOMContentLoaded', () => {
     if (videoOverlayText) {
       gsap.set(videoOverlayText, {
         opacity: 0,
-        y: 18
+        y: 16
       });
+    }
+
+    if (videoFloatingControls) {
+      gsap.set(videoFloatingControls, {
+        opacity: 0,
+        y: 10,
+        pointerEvents: 'none'
+      });
+      videoFloatingControls.classList.remove('is-revealed');
     }
 
     const videoTl = gsap.timeline({
       scrollTrigger: {
         trigger: videoScrollTrack,
         start: 'top top',
-        end: '+=85%',
+        end: '+=100%',
         pin: true,
         scrub: 0.65,
-        anticipatePin: 1
+        anticipatePin: 1,
+        onUpdate: (self) => {
+          // Cuando el video termina de agrandarse y SE FRENA (progreso >= 52%),
+          // se habilitan los controles y podés maximizar el video
+          if (self.progress >= 0.52) {
+            if (videoFloatingControls) videoFloatingControls.classList.add('is-revealed');
+          } else {
+            if (videoFloatingControls) videoFloatingControls.classList.remove('is-revealed');
+          }
+        }
       }
     });
 
-    // 1. Fase de espera inicial (0% a 25%): El usuario ve el video entero y minimizado
-    // 2. Fase de crecimiento controlado (25% a 75%): El video crece un poco (de startScale a 1.0)
+    // Fase A: Al hacer scroll, el video se agranda un poco (de startScale a 1.0)
     videoTl
       .to(videoSpotContainer, {
         scale: 1,
         ease: 'power1.out',
-        duration: 0.55
-      }, 0.25)
-      // Desvanecimiento suave del encabezado introductorio
+        duration: 0.52
+      }, 0)
+      // Desvanecimiento sutil del encabezado introductorio
       .to(videoIntroHeader, {
-        opacity: 0.15,
-        y: -10,
+        opacity: 0.1,
+        y: -12,
         duration: 0.35
-      }, 0.25)
-      // Aparición del texto superpuesto en el video
+      }, 0)
+      // Revelación del rótulo informativo
       .to(videoOverlayText, {
         opacity: 1,
         y: 0,
         ease: 'power2.out',
-        duration: 0.40
-      }, 0.40);
+        duration: 0.32
+      }, 0.22)
+      // Fase B: SE FRENA. Al frenarse (52% del recorrido), se revela el botón de Maximizar
+      .to(videoFloatingControls, {
+        opacity: 1,
+        y: 0,
+        pointerEvents: 'auto',
+        duration: 0.12
+      }, 0.52)
+      // El video permanece frenado y visible durante el resto del pin para contemplarlo o maximizarlo
+      .to({}, { duration: 0.48 }, 0.52);
+  } else if (videoFloatingControls) {
+    // Si el usuario prefiere movimiento reducido o no hay GSAP, mostrar controles directamente
+    videoFloatingControls.classList.add('is-revealed');
   }
 
   // Control de Sonido Interactivo para el Video
@@ -642,14 +673,14 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
       spotVideo.muted = !spotVideo.muted;
       if (!spotVideo.muted) {
-        if (spotVideo.paused) spotVideo.play();
+        if (spotVideo.paused) spotVideo.play().catch(() => {});
         if (soundIconOff) soundIconOff.classList.add('hidden');
         if (soundIconOn) soundIconOn.classList.remove('hidden');
         if (videoSoundLabel) videoSoundLabel.textContent = 'Silenciar';
       } else {
         if (soundIconOff) soundIconOff.classList.remove('hidden');
         if (soundIconOn) soundIconOn.classList.add('hidden');
-        if (videoSoundLabel) videoSoundLabel.textContent = 'Activar Sonido';
+        if (videoSoundLabel) videoSoundLabel.textContent = 'Sonido';
       }
     });
   }
