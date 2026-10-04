@@ -1638,9 +1638,14 @@ body {
   min-height: 16px !important;
   max-width: 16px !important;
   max-height: 16px !important;
-  display: inline-block !important;
+  display: inline-block;
   flex-shrink: 0 !important;
   color: #ffffff !important;
+}
+
+.video-ctrl-icon.hidden,
+.video-ctrl-btn .hidden {
+  display: none !important;
 }
 
 .play-icon-pause,
