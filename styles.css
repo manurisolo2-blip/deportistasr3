@@ -1481,40 +1481,15 @@ body {
 .section-audiovisual-spot {
   position: relative;
   width: 100%;
-  background-color: #0b1120;
+  background: var(--bg-canvas, #FAF9F5);
   border-top: 1px solid rgba(226, 232, 240, 0.8);
   overflow: clip;
-}
-
-/* Capa de fondo deportivo ("atrás de lo blanco") */
-.audiovisual-sports-underlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(ellipse at center, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.75) 100%),
-    linear-gradient(to bottom, #FAF9F5 0%, rgba(15, 23, 42, 0.45) 14%, rgba(15, 23, 42, 0.55) 78%, #FAF9F5 100%),
-    url('assets/deportes_fondo.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.95;
-}
-
-@media (max-width: 768px) {
-  .audiovisual-sports-underlay {
-    background-attachment: scroll;
-  }
 }
 
 .video-scroll-track {
   position: relative;
   width: 100%;
-  height: 155vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1531,13 +1506,13 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 1.5rem 1rem;
+  padding: 1.25rem 1rem;
   z-index: 20;
 }
 
 .video-intro-header {
   text-align: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
   z-index: 25;
   max-width: 36rem;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -1555,78 +1530,16 @@ body {
   border: 1px solid rgba(125, 211, 252, 0.6);
   padding: 0.3rem 0.85rem;
   border-radius: 9999px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .video-intro-subtitle {
   font-family: var(--font-sans, sans-serif);
   font-size: 0.875rem;
-  color: #334155;
-  font-weight: 600;
+  color: #475569;
+  font-weight: 500;
   margin: 0;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
-}
-
-/* Bloque de transición deportiva en el espacio previo a Clubes */
-.video-sports-bridge {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 3rem 1.5rem 4.5rem 1.5rem;
-  text-align: center;
-}
-
-.sports-bridge-inner {
-  max-width: 42rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.65rem;
-}
-
-.sports-bridge-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-family: var(--font-mono, monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #38bdf8;
-  background: rgba(15, 23, 42, 0.82);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  padding: 0.35rem 0.95rem;
-  border-radius: 9999px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-}
-
-.sports-bridge-title {
-  font-family: 'Plus Jakarta Sans', var(--font-sans, sans-serif);
-  font-size: clamp(1.5rem, 3.2vw, 2.4rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  line-height: 1.15;
-  margin: 0;
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85);
-}
-
-.sports-bridge-desc {
-  font-family: var(--font-sans, sans-serif);
-  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
-  color: #e2e8f0;
-  margin: 0;
-  line-height: 1.5;
-  max-width: 32rem;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 /* Marco del Video principal */
@@ -2137,7 +2050,7 @@ body {
    8. SECCIÓN DE CLUBES & PATRIMONIO FORMATIVO
    -------------------------------------------------------------------------- */
 .section-clubs-editorial {
-  padding: clamp(5rem, 8vw, 7rem) 0;
+  padding: clamp(2.5rem, 4vw, 3.5rem) 0 clamp(4.5rem, 7vw, 6.5rem) 0;
   background: var(--color-celeste, #0092DF);
   border-bottom: none;
 }

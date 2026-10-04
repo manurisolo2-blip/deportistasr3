@@ -609,7 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollTrigger: {
         trigger: videoScrollTrack,
         start: 'top top',
-        end: '+=80%',
+        end: '+=65%',
         pin: true,
         scrub: 0.65,
         anticipatePin: 1,
