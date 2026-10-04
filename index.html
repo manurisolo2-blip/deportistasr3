@@ -1013,42 +1013,68 @@
               id="spotVideoOfficial"
             ></video>
 
-            <!-- Video Overlay Content (Inspirado en archivo histórico editorial) -->
-            <div id="videoOverlayText">
-              <div class="video-overlay-inner">
-                <span class="video-overlay-tag">
-                  MUNICIPALIDAD DE RÍO TERCERO
-                </span>
-                <h2 class="video-overlay-title">
-                  RÍO TERCERO EN ACCIÓN
-                </h2>
-                <p class="video-overlay-desc">
-                  Spot institucional y archivo deportivo oficial de la Capital Nacional del Deportista que celebra las instituciones formativas y el legado comunitario.
-                </p>
-              </div>
-            </div>
-
-            <!-- Controles Flotantes del Video: Aparecen ÚNICAMENTE cuando el video se frena -->
+            <!-- Barra de Controles de Reproducción: Barra para adelantar/atrasar y botones simplificados (Aparecen al frenarse) -->
             <div id="videoFloatingControls" class="video-floating-controls" aria-label="Controles del video">
-              <!-- Botón de Control de Sonido -->
+              <!-- Botón Play / Pausa -->
+              <button
+                id="videoPlayToggle"
+                type="button"
+                class="video-ctrl-btn"
+                aria-label="Pausar o reanudar video"
+                title="Pausar video"
+              >
+                <svg class="video-ctrl-icon play-icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <rect x="6" y="4" width="4" height="16" rx="1"/>
+                  <rect x="14" y="4" width="4" height="16" rx="1"/>
+                </svg>
+                <svg class="video-ctrl-icon play-icon-play hidden" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </button>
+
+              <!-- Barra interactiva para adelantar y atrasar -->
+              <div class="video-progress-wrap" title="Adelantar o atrasar video">
+                <input
+                  id="videoProgressBar"
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="0.1"
+                  value="0"
+                  class="video-progress-slider"
+                  aria-label="Barra para adelantar y atrasar video"
+                />
+              </div>
+
+              <!-- Indicador de Tiempo -->
+              <div class="video-time-display" id="videoTimeDisplay" aria-live="off">0:00 / 0:00</div>
+
+              <!-- Botón Simplificado de Sonido -->
               <button
                 id="videoSoundToggle"
                 type="button"
                 class="video-ctrl-btn"
-                aria-label="Activar o desactivar sonido"
+                aria-label="Activar sonido"
+                title="Activar sonido"
               >
-                <svg class="video-ctrl-icon sound-icon-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-                <svg class="video-ctrl-icon sound-icon-on hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                <span id="videoSoundLabel">Sonido</span>
+                <svg class="video-ctrl-icon sound-icon-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                  <line x1="23" y1="9" x2="17" y2="15"/>
+                  <line x1="17" y1="9" x2="23" y2="15"/>
+                </svg>
+                <svg class="video-ctrl-icon sound-icon-on hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                </svg>
               </button>
 
-              <!-- Botón Opcional de Maximizar / Pantalla Completa -->
+              <!-- Botón Simplificado de Maximizar / Pantalla Completa -->
               <button
                 id="videoMaximizeBtn"
                 type="button"
                 class="video-ctrl-btn"
-                aria-label="Maximizar video a pantalla completa"
-                title="Maximizar video a pantalla completa"
+                aria-label="Pantalla completa"
+                title="Pantalla completa"
               >
                 <svg class="video-ctrl-icon max-icon-expand" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
@@ -1056,7 +1082,6 @@
                 <svg class="video-ctrl-icon max-icon-compress hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7"/>
                 </svg>
-                <span id="videoMaximizeLabel">Maximizar</span>
               </button>
             </div>
           </div>
