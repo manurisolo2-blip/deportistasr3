@@ -161,9 +161,9 @@ export function VideoScrollHero({
               Tu navegador no soporta la reproducción de video.
             </video>
 
-            {/* Barra de Controles: Barra para adelantar/atrasar y botones simplificados */}
+            {/* Barra de Controles: Liquid Glass ultra-transparente según referencia (Sin engranaje ni tiempo) */}
             <div
-              className={`absolute bottom-3 left-3 right-3 z-20 flex items-center gap-2 bg-slate-950/85 backdrop-blur-md border border-white/15 rounded-full px-3 py-1.5 shadow-2xl transition-all duration-300 ${
+              className={`absolute bottom-3 left-3 right-3 z-20 flex items-center gap-2.5 bg-slate-950/25 backdrop-blur-xl border border-white/15 border-t-white/30 rounded-lg px-3 py-1.5 shadow-2xl transition-all duration-300 ${
                 isFrenado || isFullscreen
                   ? "opacity-100 pointer-events-auto translate-y-0"
                   : "opacity-0 pointer-events-none translate-y-2"
@@ -173,19 +173,19 @@ export function VideoScrollHero({
               <button
                 type="button"
                 onClick={togglePlay}
-                className="w-8 h-8 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer hover:scale-105"
+                className="w-7 h-7 flex items-center justify-center text-white/90 hover:text-white hover:bg-white/10 rounded transition-all cursor-pointer hover:scale-105 active:scale-95"
                 aria-label={isPlaying ? "Pausar" : "Reanudar"}
                 title={isPlaying ? "Pausar" : "Reanudar"}
               >
                 {isPlaying ? (
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
                 ) : (
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 )}
               </button>
 
               {/* Barra para adelantar y atrasar */}
-              <div className="flex-1 flex items-center relative h-6">
+              <div className="flex-1 flex items-center relative h-5 px-1 cursor-pointer">
                 <input
                   type="range"
                   min="0"
@@ -193,44 +193,42 @@ export function VideoScrollHero({
                   step="0.1"
                   value={progressPct}
                   onChange={handleSeek}
-                  className="w-full h-1.5 rounded-full appearance-none bg-white/20 accent-sky-400 cursor-pointer"
+                  style={{
+                    background: `linear-gradient(to right, #ffffff ${progressPct}%, rgba(255,255,255,0.25) ${progressPct}%)`
+                  }}
+                  className="w-full h-[3px] hover:h-[5px] rounded appearance-none cursor-pointer accent-white transition-all"
                   aria-label="Adelantar o atrasar video"
                   title="Adelantar o atrasar"
                 />
               </div>
 
-              {/* Tiempo */}
-              <span className="font-mono text-xs text-slate-300 tabular-nums whitespace-nowrap px-1">
-                {formatTime(currentTime)} / {formatTime(duration)}
-              </span>
-
               {/* Silenciar / Activar sonido */}
               <button
                 type="button"
                 onClick={() => setIsMuted(!isMuted)}
-                className="w-8 h-8 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-sky-400 transition-all cursor-pointer hover:scale-105"
+                className="w-7 h-7 flex items-center justify-center text-white/90 hover:text-white hover:bg-white/10 rounded transition-all cursor-pointer hover:scale-105 active:scale-95"
                 aria-label={isMuted ? "Activar Sonido" : "Silenciar"}
                 title={isMuted ? "Activar Sonido" : "Silenciar"}
               >
                 {isMuted ? (
-                  <svg className="w-4 h-4 text-sky-400 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                  <svg className="w-4 h-4 text-white stroke-current fill-none stroke-2" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
                 ) : (
-                  <svg className="w-4 h-4 text-emerald-400 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                  <svg className="w-4 h-4 text-white stroke-current fill-none stroke-2" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
                 )}
               </button>
 
-              {/* Maximizar / Restaurar */}
+              {/* Maximizar / Restaurar (4 esquinas) */}
               <button
                 type="button"
                 onClick={toggleFullscreen}
-                className="w-8 h-8 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-sky-400 transition-all cursor-pointer hover:scale-105"
+                className="w-7 h-7 flex items-center justify-center text-white/90 hover:text-white hover:bg-white/10 rounded transition-all cursor-pointer hover:scale-105 active:scale-95"
                 aria-label={isFullscreen ? "Restaurar" : "Maximizar"}
                 title={isFullscreen ? "Restaurar" : "Maximizar"}
               >
                 {isFullscreen ? (
-                  <svg className="w-4 h-4 text-amber-400 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7"/></svg>
+                  <svg className="w-4 h-4 text-white stroke-current fill-none stroke-2" viewBox="0 0 24 24"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
                 ) : (
-                  <svg className="w-4 h-4 text-sky-400 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <svg className="w-4 h-4 text-white stroke-current fill-none stroke-2" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
                 )}
               </button>
             </div>

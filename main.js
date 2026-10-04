@@ -719,7 +719,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (duration > 0) {
       const pct = (current / duration) * 100;
       videoProgressBar.value = pct;
-      videoProgressBar.style.background = `linear-gradient(to right, #38bdf8 ${pct}%, rgba(255,255,255,0.22) ${pct}%)`;
+      videoProgressBar.style.background = `linear-gradient(to right, #ffffff ${pct}%, rgba(255,255,255,0.25) ${pct}%)`;
     }
     if (videoTimeDisplay) {
       videoTimeDisplay.textContent = `${formatVideoTime(current)} / ${formatVideoTime(duration)}`;
@@ -736,7 +736,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const duration = spotVideo.duration || 0;
       const pct = parseFloat(videoProgressBar.value);
       const targetTime = (pct / 100) * duration;
-      videoProgressBar.style.background = `linear-gradient(to right, #38bdf8 ${pct}%, rgba(255,255,255,0.22) ${pct}%)`;
+      videoProgressBar.style.background = `linear-gradient(to right, #ffffff ${pct}%, rgba(255,255,255,0.25) ${pct}%)`;
       if (videoTimeDisplay) {
         videoTimeDisplay.textContent = `${formatVideoTime(targetTime)} / ${formatVideoTime(duration)}`;
       }

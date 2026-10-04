@@ -1016,7 +1016,7 @@
               id="spotVideoOfficial"
             ></video>
 
-            <!-- Barra de Controles de Reproducción: Barra para adelantar/atrasar y botones simplificados (Aparecen al frenarse) -->
+            <!-- Barra de Controles de Reproducción: Liquid Glass ultra-transparente según referencia (Sin engranaje ni tiempo) -->
             <div id="videoFloatingControls" class="video-floating-controls" aria-label="Controles del video">
               <!-- Botón Play / Pausa -->
               <button
@@ -1031,7 +1031,7 @@
                   <rect x="14" y="4" width="4" height="16" rx="1"/>
                 </svg>
                 <svg class="video-ctrl-icon play-icon-play hidden" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <polygon points="5 3 19 12 5 21 5 3"/>
+                  <polygon points="6 4 20 12 6 20 6 4"/>
                 </svg>
               </button>
 
@@ -1049,9 +1049,6 @@
                 />
               </div>
 
-              <!-- Indicador de Tiempo -->
-              <div class="video-time-display" id="videoTimeDisplay" aria-live="off">0:00 / 0:00</div>
-
               <!-- Botón Simplificado de Sonido -->
               <button
                 id="videoSoundToggle"
@@ -1061,17 +1058,18 @@
                 title="Activar sonido"
               >
                 <svg class="video-ctrl-icon sound-icon-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                  <path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none"/>
                   <line x1="23" y1="9" x2="17" y2="15"/>
                   <line x1="17" y1="9" x2="23" y2="15"/>
                 </svg>
                 <svg class="video-ctrl-icon sound-icon-on hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                  <path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none"/>
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
                 </svg>
               </button>
 
-              <!-- Botón Simplificado de Maximizar / Pantalla Completa -->
+              <!-- Botón Simplificado de Maximizar / Pantalla Completa (4 esquinas) -->
               <button
                 id="videoMaximizeBtn"
                 type="button"
@@ -1079,11 +1077,11 @@
                 aria-label="Pantalla completa"
                 title="Pantalla completa"
               >
-                <svg class="video-ctrl-icon max-icon-expand" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                <svg class="video-ctrl-icon max-icon-expand" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
                 </svg>
-                <svg class="video-ctrl-icon max-icon-compress hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7"/>
+                <svg class="video-ctrl-icon max-icon-compress hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
                 </svg>
               </button>
             </div>

@@ -1653,7 +1653,7 @@ body {
   background: #000;
 }
 
-/* Barra de Controles de Reproducción Minimalista: Aparece ÚNICAMENTE cuando se frena el video */
+/* Barra de Controles de Reproducción: Liquid Glass ultra-transparente según referencia (Sin engranaje) */
 #videoFloatingControls {
   position: absolute;
   bottom: 0.85rem;
@@ -1662,53 +1662,55 @@ body {
   z-index: 30;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(15, 23, 42, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 9999px;
-  padding: 0.35rem 0.65rem;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.55);
+  gap: 0.65rem;
+  background: rgba(10, 15, 29, 0.25);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  padding: 0.45rem 0.85rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(10px) scale(0.98);
-  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease, background-color 0.2s ease;
 }
 
 #videoFloatingControls.is-revealed {
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
-  transform: translateY(0) scale(1) !important;
+  transform: translateY(0) !important;
 }
 
-/* Botones simplificados (icon-only, minimalistas) */
+/* Botones simplificados planos sin fondo circular (idénticos a la referencia) */
 .video-ctrl-btn {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 32px !important;
-  height: 32px !important;
-  min-width: 32px !important;
-  min-height: 32px !important;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
   padding: 0 !important;
-  border-radius: 50% !important;
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  border: none !important;
   color: #ffffff !important;
+  opacity: 0.9 !important;
   cursor: pointer !important;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, color 0.2s ease !important;
+  transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease !important;
   user-select: none !important;
   flex-shrink: 0 !important;
   box-shadow: none !important;
 }
 
 .video-ctrl-btn:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
-  border-color: rgba(56, 189, 248, 0.7) !important;
-  color: #38bdf8 !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.12) !important;
   transform: scale(1.08) !important;
 }
 
@@ -1717,43 +1719,34 @@ body {
 }
 
 .video-ctrl-icon {
-  width: 15px !important;
-  height: 15px !important;
-  min-width: 15px !important;
-  min-height: 15px !important;
-  max-width: 15px !important;
-  max-height: 15px !important;
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
   display: inline-block !important;
   flex-shrink: 0 !important;
-  stroke-width: 2.2;
-}
-
-.play-icon-pause,
-.play-icon-play {
   color: #ffffff !important;
 }
 
+.play-icon-pause,
+.play-icon-play,
 .sound-icon-off,
-.max-icon-expand {
-  color: #38bdf8 !important;
-}
-
-.sound-icon-on {
-  color: #34d399 !important;
-}
-
+.sound-icon-on,
+.max-icon-expand,
 .max-icon-compress {
-  color: #fbbf24 !important;
+  color: #ffffff !important;
 }
 
-/* Barra de progreso para adelantar y atrasar */
+/* Barra interactiva para adelantar y atrasar (Línea blanca horizontal según referencia) */
 .video-progress-wrap {
   flex: 1;
   display: flex;
   align-items: center;
   position: relative;
-  height: 24px;
-  margin: 0 0.35rem;
+  height: 20px;
+  margin: 0 0.5rem;
   cursor: pointer;
 }
 
@@ -1761,9 +1754,9 @@ body {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 5px;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.22);
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.25);
   outline: none;
   cursor: pointer;
   position: relative;
@@ -1772,63 +1765,56 @@ body {
   margin: 0;
 }
 
+.video-progress-wrap:hover .video-progress-slider,
 .video-progress-slider:hover {
-  height: 7px;
+  height: 5px;
 }
 
 .video-progress-slider::-webkit-slider-runnable-track {
   height: 100%;
-  border-radius: 9999px;
+  border-radius: 3px;
   background: transparent;
 }
 
 .video-progress-slider::-moz-range-track {
   height: 100%;
-  border-radius: 9999px;
+  border-radius: 3px;
   background: transparent;
 }
 
 .video-progress-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 13px;
-  height: 13px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #38bdf8;
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  background: #ffffff;
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   cursor: pointer;
-  margin-top: -4px;
-  transition: transform 0.15s ease, background-color 0.15s ease;
+  margin-top: -3.5px;
+  transition: transform 0.15s ease;
 }
 
+.video-progress-wrap:hover .video-progress-slider::-webkit-slider-thumb,
 .video-progress-slider:hover::-webkit-slider-thumb {
-  transform: scale(1.25);
-  background: #0ea5e9;
+  transform: scale(1.3);
 }
 
 .video-progress-slider::-moz-range-thumb {
-  width: 13px;
-  height: 13px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #38bdf8;
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  background: #ffffff;
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   cursor: pointer;
-  transition: transform 0.15s ease, background-color 0.15s ease;
+  transition: transform 0.15s ease;
 }
 
-/* Indicador de tiempo */
-.video-time-display {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: #cbd5e1;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-  padding: 0 0.25rem;
-  user-select: none;
-  flex-shrink: 0;
+.video-progress-wrap:hover .video-progress-slider::-moz-range-thumb,
+.video-progress-slider:hover::-moz-range-thumb {
+  transform: scale(1.3);
 }
 
 /* Modo Pantalla Completa / Maximizado */
