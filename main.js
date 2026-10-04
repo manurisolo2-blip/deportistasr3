@@ -579,10 +579,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const videoIntroHeader = document.getElementById('videoIntroHeader');
   const spotVideo = document.getElementById('spotVideoOfficial');
   const videoSoundToggle = document.getElementById('videoSoundToggle');
+  const videoMaximizeBtn = document.getElementById('videoMaximizeBtn');
 
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReducedMotion && videoScrollTrack && videoSpotContainer) {
     const isMobile = window.innerWidth < 768;
-    const startScale = isMobile ? 0.6 : 0.38;
+    // Escala inicial donde el video ya se aprecia entero y proporcionado en pantalla
+    const startScale = isMobile ? 0.86 : 0.80;
 
     gsap.set(videoSpotContainer, {
       scale: startScale,
@@ -592,7 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (videoOverlayText) {
       gsap.set(videoOverlayText, {
         opacity: 0,
-        y: 24
+        y: 18
       });
     }
 
@@ -600,33 +602,34 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollTrigger: {
         trigger: videoScrollTrack,
         start: 'top top',
-        end: '+=120%',
+        end: '+=85%',
         pin: true,
-        scrub: 0.7,
+        scrub: 0.65,
         anticipatePin: 1
       }
     });
 
-    // 1. Escala el video progresivamente con el scroll hasta ocupar su tamaño pleno
+    // 1. Fase de espera inicial (0% a 25%): El usuario ve el video entero y minimizado
+    // 2. Fase de crecimiento controlado (25% a 75%): El video crece un poco (de startScale a 1.0)
     videoTl
       .to(videoSpotContainer, {
         scale: 1,
         ease: 'power1.out',
-        duration: 0.75
-      })
-      // 2. Transición suave del encabezado introductorio
+        duration: 0.55
+      }, 0.25)
+      // Desvanecimiento suave del encabezado introductorio
       .to(videoIntroHeader, {
-        opacity: 0.1,
-        y: -14,
+        opacity: 0.15,
+        y: -10,
         duration: 0.35
-      }, 0)
-      // 3. Aparición del texto superpuesto en el video
+      }, 0.25)
+      // Aparición del texto superpuesto en el video
       .to(videoOverlayText, {
         opacity: 1,
         y: 0,
         ease: 'power2.out',
-        duration: 0.35
-      }, 0.45);
+        duration: 0.40
+      }, 0.40);
   }
 
   // Control de Sonido Interactivo para el Video
@@ -648,6 +651,98 @@ document.addEventListener('DOMContentLoaded', () => {
         if (soundIconOn) soundIconOn.classList.add('hidden');
         if (videoSoundLabel) videoSoundLabel.textContent = 'Activar Sonido';
       }
+    });
+  }
+
+  // ------------------------------------------------------------------------
+  // Control Opcional de Maximizar / Pantalla Completa
+  // ------------------------------------------------------------------------
+  function updateMaximizeUI(isMaximized) {
+    if (!videoMaximizeBtn) return;
+    const maxIconExpand = videoMaximizeBtn.querySelector('.max-icon-expand');
+    const maxIconCompress = videoMaximizeBtn.querySelector('.max-icon-compress');
+    const videoMaximizeLabel = document.getElementById('videoMaximizeLabel');
+
+    if (isMaximized) {
+      if (maxIconExpand) maxIconExpand.classList.add('hidden');
+      if (maxIconCompress) maxIconCompress.classList.remove('hidden');
+      if (videoMaximizeLabel) videoMaximizeLabel.textContent = 'Minimizar';
+      videoMaximizeBtn.setAttribute('title', 'Restaurar tamaño normal (Esc)');
+      videoMaximizeBtn.setAttribute('aria-label', 'Restaurar tamaño normal');
+    } else {
+      if (maxIconExpand) maxIconExpand.classList.remove('hidden');
+      if (maxIconCompress) maxIconCompress.classList.add('hidden');
+      if (videoMaximizeLabel) videoMaximizeLabel.textContent = 'Maximizar';
+      videoMaximizeBtn.setAttribute('title', 'Maximizar video a pantalla completa');
+      videoMaximizeBtn.setAttribute('aria-label', 'Maximizar video a pantalla completa');
+    }
+  }
+
+  function toggleMaximize() {
+    if (!videoSpotContainer) return;
+
+    const isCurrentlyFullscreen = 
+      document.fullscreenElement === videoSpotContainer || 
+      document.webkitFullscreenElement === videoSpotContainer ||
+      videoSpotContainer.classList.contains('is-cinema-maximized');
+
+    if (!isCurrentlyFullscreen) {
+      // Intentar API de Fullscreen nativa del navegador
+      if (videoSpotContainer.requestFullscreen) {
+        videoSpotContainer.requestFullscreen().catch(() => {
+          videoSpotContainer.classList.add('is-cinema-maximized');
+          updateMaximizeUI(true);
+        });
+      } else if (videoSpotContainer.webkitRequestFullscreen) {
+        videoSpotContainer.webkitRequestFullscreen();
+      } else if (spotVideo && spotVideo.webkitEnterFullscreen) {
+        spotVideo.webkitEnterFullscreen(); // iOS Safari
+      } else {
+        videoSpotContainer.classList.add('is-cinema-maximized');
+        updateMaximizeUI(true);
+      }
+    } else {
+      // Salir de pantalla completa
+      if (document.exitFullscreen && document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+      } else if (document.webkitExitFullscreen && document.webkitFullscreenElement) {
+        document.webkitExitFullscreen();
+      }
+      videoSpotContainer.classList.remove('is-cinema-maximized');
+      updateMaximizeUI(false);
+    }
+  }
+
+  if (videoMaximizeBtn) {
+    videoMaximizeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMaximize();
+    });
+  }
+
+  // Sincronizar estado con eventos del navegador (F11 o Esc nativo)
+  document.addEventListener('fullscreenchange', () => {
+    const isFull = document.fullscreenElement === videoSpotContainer;
+    updateMaximizeUI(isFull);
+  });
+  document.addEventListener('webkitfullscreenchange', () => {
+    const isFull = document.webkitFullscreenElement === videoSpotContainer;
+    updateMaximizeUI(isFull);
+  });
+
+  // Salir con Escape en modo fallback
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoSpotContainer && videoSpotContainer.classList.contains('is-cinema-maximized')) {
+      videoSpotContainer.classList.remove('is-cinema-maximized');
+      updateMaximizeUI(false);
+    }
+  });
+
+  // Doble clic sobre el video para maximizar/restaurar
+  if (videoSpotContainer) {
+    videoSpotContainer.addEventListener('dblclick', (e) => {
+      if (e.target.closest('button')) return;
+      toggleMaximize();
     });
   }
 
