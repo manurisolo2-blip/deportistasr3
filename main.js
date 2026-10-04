@@ -631,13 +631,17 @@ document.addEventListener('DOMContentLoaded', () => {
         scale: 1,
         ease: 'power1.out',
         duration: 0.52
-      }, 0)
-      // Desvanecimiento sutil del encabezado introductorio
-      .to(videoIntroHeader, {
+      }, 0);
+
+    if (videoIntroHeader) {
+      videoTl.to(videoIntroHeader, {
         opacity: 0.1,
         y: -12,
         duration: 0.35
-      }, 0)
+      }, 0);
+    }
+
+    videoTl
       // Fase B: SE FRENA. Al frenarse (52% del recorrido), se revela la barra de controles
       .to(videoFloatingControls, {
         opacity: 1,

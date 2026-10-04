@@ -1510,37 +1510,7 @@ body {
   z-index: 20;
 }
 
-.video-intro-header {
-  text-align: center;
-  margin-bottom: 0.85rem;
-  z-index: 25;
-  max-width: 36rem;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
 
-.video-intro-badge {
-  display: inline-block;
-  font-family: var(--font-mono, monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #0369a1;
-  background: rgba(224, 242, 254, 0.95);
-  border: 1px solid rgba(125, 211, 252, 0.6);
-  padding: 0.3rem 0.85rem;
-  border-radius: 9999px;
-  margin-bottom: 0.35rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.video-intro-subtitle {
-  font-family: var(--font-sans, sans-serif);
-  font-size: 0.875rem;
-  color: #475569;
-  font-weight: 500;
-  margin: 0;
-}
 
 /* Marco del Video principal */
 #videoSpotContainer {
