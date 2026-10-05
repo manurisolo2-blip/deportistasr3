@@ -698,7 +698,7 @@ export function ScrollMorphHero({
             Mosaico Dinámico de Atletas
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tight uppercase font-['Plus_Jakarta_Sans',sans-serif]">
-            Cuna de Campeones
+            Capital Nacional del Deportista
           </h2>
           <p className="text-xs md:text-sm text-slate-600 max-w-lg leading-relaxed mt-2">
             Haz clic en cualquier tarjeta para desplegar la ficha técnica, biografía deportiva y telemetría de consagración.
