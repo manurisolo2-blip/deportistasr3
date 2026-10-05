@@ -3531,78 +3531,90 @@ body {
 }
 
 /* =========================================================================
-   ESTILO SHIMMER TEXT (HERO & TEXTO INFERIOR DE CIERRE CÍVICO)
-   Efecto de barrido luminoso continuo inspirado en shimmer-text.tsx
+   ESTILO SHINE / RESPLANDOR (HERO & CIERRE CÍVICO)
+   El texto permanece 100% sólido y legible en todo momento (NUNCA desaparece).
+   El haz de luz brillante recorre las letras de izquierda a derecha.
    ========================================================================= */
-.shimmer-text {
-  display: inline-block;
-  background-clip: text !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-repeat: no-repeat;
-  background-size: 220% 100%;
-  animation: shimmerSweep 3s linear infinite;
-}
 
 /* 1. Hero: Título principal ("CAPITAL NACIONAL") */
 .hero-shimmer-top {
-  color: #FFFFFF !important;
-  --shimmer-contrast: rgba(224, 242, 254, 0.95);
+  display: inline-block;
+  color: #FFFFFF;
   background-image: linear-gradient(
-    90deg,
+    110deg,
     #FFFFFF 0%,
     #FFFFFF 28%,
-    var(--shimmer-contrast) 48%,
-    #FFFFFF 68%,
+    #BAE6FD 45%,
+    #FFFFFF 55%,
+    #FFFFFF 70%,
     #FFFFFF 100%
   );
-  animation-delay: 0.4s;
+  background-size: 200% 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: shineGleam 4s ease-in-out infinite;
 }
 
 /* 2. Hero: Highlight ("DEL DEPORTISTA") */
 .hero-shimmer-highlight {
+  display: inline-block;
   color: #38BDF8 !important;
-  --shimmer-contrast: #FFFFFF;
   background-image: linear-gradient(
-    90deg,
+    110deg,
     #38BDF8 0%,
     #38BDF8 28%,
-    var(--shimmer-contrast) 48%,
-    #38BDF8 68%,
+    #FFFFFF 45%,
+    #E0F2FE 55%,
+    #38BDF8 70%,
     #38BDF8 100%
   );
-  animation-delay: 0.8s;
+  background-size: 200% 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: shineGleam 4s ease-in-out infinite;
+  animation-delay: 0.4s;
 }
 
 /* 3. Cierre Cívico inferior ("RÍO TERCERO ES EL CORAZÓN DEPORTIVO DE LA NACIÓN") */
+/* Texto oscuro 100% sólido con destello celeste oficial */
 .closing-shimmer-text {
   color: #0F172A !important;
-  --shimmer-contrast: #0092DF;
   background-image: linear-gradient(
-    90deg,
+    110deg,
     #0F172A 0%,
     #0F172A 28%,
-    var(--shimmer-contrast) 48%,
-    #0F172A 68%,
+    #0092DF 46%,
+    #38BDF8 50%,
+    #0092DF 54%,
+    #0F172A 72%,
     #0F172A 100%
   );
-  animation-delay: 1.2s;
+  background-size: 200% 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: shineGleam 4.2s ease-in-out infinite;
+  animation-delay: 0.8s;
 }
 
-@keyframes shimmerSweep {
-  0% {
-    background-position: 180% 0;
+@keyframes shineGleam {
+  0%, 15% {
+    background-position: 100% 0;
   }
-  50% {
-    background-position: -80% 0;
-  }
-  100% {
-    background-position: -80% 0;
+  65%, 100% {
+    background-position: -100% 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .shimmer-text {
+  .hero-shimmer-top,
+  .hero-shimmer-highlight,
+  .closing-shimmer-text {
     animation: none !important;
     background-image: none !important;
     -webkit-text-fill-color: currentColor !important;
