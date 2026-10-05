@@ -3201,3 +3201,357 @@ body {
 .bg-verde { background-color: var(--color-verde-acento, #41A934) !important; }
 .bg-verde-light { background-color: var(--color-verde-light, #DCFCE7) !important; }
 .border-verde { border-color: var(--color-verde-acento, #41A934) !important; }
+
+/* =========================================================================
+   MODAL DE FICHA EDITORIAL DE DEPORTISTA (ALTA RESOLUCIÓN E INTERACTIVIDAD)
+   ========================================================================= */
+.trading-card {
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.25s ease !important;
+}
+
+.trading-card:hover {
+  border-color: rgba(0, 146, 223, 0.45) !important;
+  box-shadow: 0 20px 35px -10px rgba(0, 146, 223, 0.15), 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+}
+
+.trading-card:focus-visible {
+  outline: 2px solid var(--color-celeste, #0092DF);
+  outline-offset: 3px;
+}
+
+.athlete-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: rgba(10, 15, 29, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.athlete-modal-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.athlete-modal-backdrop.hidden {
+  display: none;
+}
+
+.athlete-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 940px;
+  max-height: 92vh;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 1.25rem;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 146, 223, 0.15);
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: scale(0.95) translateY(16px);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.athlete-modal-backdrop.is-open .athlete-modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.athlete-modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 30;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: rgba(241, 245, 249, 0.95);
+  color: #334155;
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.athlete-modal-close-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: rotate(90deg) scale(1.05);
+}
+
+.athlete-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .athlete-modal-grid {
+    grid-template-columns: 360px 1fr;
+  }
+}
+
+.athlete-modal-media-col {
+  position: relative;
+  padding: 1.5rem;
+  background: #0f172a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .athlete-modal-media-col {
+    border-radius: 1.25rem 0 0 1.25rem;
+  }
+}
+
+.athlete-modal-photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #1e293b;
+}
+
+@media (min-width: 768px) {
+  .athlete-modal-photo-wrap {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+.athlete-modal-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.athlete-modal-badges {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.athlete-modal-badge-discipline {
+  background: rgba(15, 23, 42, 0.94);
+  color: #38bdf8;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.athlete-modal-badge-dorsal {
+  background: rgba(0, 0, 0, 0.88);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.55rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.athlete-modal-info-col {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.athlete-modal-header {
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0.75rem;
+}
+
+.athlete-modal-club-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0077b6;
+  text-transform: uppercase;
+}
+
+.athlete-modal-club-row .club-label {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.athlete-modal-name {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #020617;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0.35rem 0 0.15rem 0;
+}
+
+.athlete-modal-specialty {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0284c7;
+}
+
+.athlete-modal-achievement-box {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 0.625rem;
+  padding: 0.85rem 1rem;
+}
+
+.athlete-modal-achievement-box .achievement-kicker {
+  display: block;
+  color: #0369a1;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.athlete-modal-achievement-box .achievement-title {
+  color: #0c4a6e;
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin: 0.25rem 0 0 0;
+  line-height: 1.35;
+}
+
+.athlete-modal-bio-box .box-kicker,
+.athlete-modal-telemetry-box .box-kicker {
+  display: block;
+  color: #64748b;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.athlete-modal-bio-box .bio-text {
+  color: #334155;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.athlete-modal-telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem;
+}
+
+.athlete-modal-telemetry-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.75rem;
+}
+
+.athlete-modal-telemetry-item .item-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.athlete-modal-telemetry-item .item-val {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 0.15rem;
+  line-height: 1.25;
+}
+
+.athlete-modal-legacy-box {
+  border-left: 3px solid var(--color-celeste, #0092DF);
+  padding-left: 0.85rem;
+  background: #f8fafc;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0 0.375rem 0.375rem 0;
+}
+
+.athlete-modal-legacy-box .legacy-text {
+  font-style: italic;
+  color: #475569;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.athlete-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+  margin-top: auto;
+}
+
+.athlete-modal-epoca-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.375rem;
+}
+
+.athlete-modal-action-btn {
+  background: var(--color-celeste, #0092DF);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.athlete-modal-action-btn:hover {
+  background: var(--color-celeste-dark, #0077B6);
+  transform: translateY(-1px);
+}
+

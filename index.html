@@ -1472,6 +1472,76 @@
 
   </main>
 
+  <!-- =========================================================================
+       MODAL DE DETALLE DE DEPORTISTA (FICHA EDITORIAL EN ALTA RESOLUCIÓN)
+       ========================================================================= -->
+  <div id="athleteDetailModal" class="athlete-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modalAthleteName" aria-hidden="true">
+    <div class="athlete-modal-card" id="athleteModalCard">
+      <!-- Botón de Cerrar Superior -->
+      <button type="button" class="athlete-modal-close-btn" id="athleteModalCloseBtn" aria-label="Cerrar ficha">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="athlete-modal-grid">
+        <!-- Columna Izquierda: Imagen Grande de Alta Resolución -->
+        <div class="athlete-modal-media-col">
+          <div class="athlete-modal-photo-wrap">
+            <img id="modalAthleteImg" src="" alt="" class="athlete-modal-photo" />
+            <div class="athlete-modal-badges">
+              <span id="modalAthleteDiscipline" class="athlete-modal-badge-discipline"></span>
+              <span id="modalAthleteDorsal" class="athlete-modal-badge-dorsal hidden"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Información Editorial, Historial y Telemetría -->
+        <div class="athlete-modal-info-col">
+          <div class="athlete-modal-header">
+            <div class="athlete-modal-club-row">
+              <span class="club-label">CLUB DE ORIGEN:</span>
+              <span id="modalAthleteClub" class="club-value"></span>
+            </div>
+            <h2 id="modalAthleteName" class="athlete-modal-name"></h2>
+            <div id="modalAthleteSpecialty" class="athlete-modal-specialty"></div>
+          </div>
+
+          <!-- Consagración Cumbre -->
+          <div class="athlete-modal-achievement-box">
+            <span class="achievement-kicker">CONSAGRACIÓN CUMBRE</span>
+            <p id="modalAthleteAchievement" class="achievement-title"></p>
+          </div>
+
+          <!-- Trayectoria & Biografía -->
+          <div class="athlete-modal-bio-box">
+            <span class="box-kicker">TRAYECTORIA & HISTORIAL</span>
+            <p id="modalAthleteBio" class="bio-text"></p>
+          </div>
+
+          <!-- Telemetría de Rendimiento -->
+          <div id="modalAthleteTelemetryBox" class="athlete-modal-telemetry-box">
+            <span class="box-kicker">TELEMETRÍA DE RENDIMIENTO</span>
+            <div id="modalAthleteTelemetryGrid" class="athlete-modal-telemetry-grid"></div>
+          </div>
+
+          <!-- Legado y Cita -->
+          <div id="modalAthleteLegacyBox" class="athlete-modal-legacy-box">
+            <p id="modalAthleteLegacy" class="legacy-text"></p>
+          </div>
+
+          <!-- Footer de la Ficha -->
+          <div class="athlete-modal-footer">
+            <span id="modalAthleteEpoca" class="athlete-modal-epoca-tag"></span>
+            <button type="button" class="athlete-modal-action-btn" id="modalAthleteActionClose">Cerrar Ficha</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <!-- GSAP y Lenis para scroll suave -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>

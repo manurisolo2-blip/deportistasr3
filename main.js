@@ -260,8 +260,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cardsGrid.innerHTML = filtrados.map(atleta => `
       <article
-        class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card"
+        class="group relative bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl trading-card cursor-pointer"
         data-discipline="${atleta.disciplina.toUpperCase()}"
+        data-id="${atleta.id}"
+        tabindex="0"
+        role="button"
+        aria-label="Ver ficha detallada de ${atleta.nombre}"
       >
         <!-- Contenedor Fotográfico con proporción cuadrada 1:1 de alto impacto -->
         <div class="relative aspect-square w-full overflow-hidden bg-slate-100 border-b border-slate-200 card-photo-frame">
@@ -400,6 +404,171 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Render inicial de tarjetas
   renderCards();
+
+  // ------------------------------------------------------------------------
+  // MODAL INTERACTIVO DE DETALLE DE DEPORTISTA (FICHA EDITORIAL EN ALTA RESOLUCIÓN)
+  // ------------------------------------------------------------------------
+  const athleteModal = document.getElementById('athleteDetailModal');
+  const athleteModalCloseBtn = document.getElementById('athleteModalCloseBtn');
+  const modalAthleteActionClose = document.getElementById('modalAthleteActionClose');
+  const athleteModalCard = document.getElementById('athleteModalCard');
+
+  const modalImg = document.getElementById('modalAthleteImg');
+  const modalDiscipline = document.getElementById('modalAthleteDiscipline');
+  const modalDorsal = document.getElementById('modalAthleteDorsal');
+  const modalClub = document.getElementById('modalAthleteClub');
+  const modalName = document.getElementById('modalAthleteName');
+  const modalSpecialty = document.getElementById('modalAthleteSpecialty');
+  const modalAchievement = document.getElementById('modalAthleteAchievement');
+  const modalBio = document.getElementById('modalAthleteBio');
+  const modalTelemetryBox = document.getElementById('modalAthleteTelemetryBox');
+  const modalTelemetryGrid = document.getElementById('modalAthleteTelemetryGrid');
+  const modalLegacyBox = document.getElementById('modalAthleteLegacyBox');
+  const modalLegacy = document.getElementById('modalAthleteLegacy');
+  const modalEpoca = document.getElementById('modalAthleteEpoca');
+
+  function openAthleteModal(athlete) {
+    if (!athleteModal || !athlete) return;
+
+    if (modalImg) {
+      modalImg.src = athlete.imagenUrl || '';
+      modalImg.alt = athlete.nombre || 'Deportista de Río Tercero';
+    }
+    if (modalDiscipline) modalDiscipline.textContent = athlete.disciplina || '';
+    if (modalDorsal) {
+      if (athlete.dorsal) {
+        modalDorsal.textContent = `#${athlete.dorsal}`;
+        modalDorsal.classList.remove('hidden');
+      } else {
+        modalDorsal.classList.add('hidden');
+      }
+    }
+    if (modalClub) modalClub.textContent = athlete.clubOrigen || 'Río Tercero';
+    if (modalName) modalName.textContent = athlete.nombre || '';
+    if (modalSpecialty) {
+      if (athlete.especialidad) {
+        modalSpecialty.textContent = athlete.especialidad;
+        modalSpecialty.classList.remove('hidden');
+      } else {
+        modalSpecialty.classList.add('hidden');
+      }
+    }
+    if (modalAchievement) modalAchievement.textContent = athlete.logroPrincipal || '';
+    if (modalBio) modalBio.textContent = athlete.descripcion || '';
+
+    // Telemetría
+    if (modalTelemetryGrid && modalTelemetryBox) {
+      if (athlete.telemetria && athlete.telemetria.length > 0) {
+        modalTelemetryGrid.innerHTML = athlete.telemetria.map(item => `
+          <div class="athlete-modal-telemetry-item">
+            <span class="item-label">${item.label}</span>
+            <span class="item-val">${item.val}</span>
+          </div>
+        `).join('');
+        modalTelemetryBox.classList.remove('hidden');
+      } else {
+        modalTelemetryBox.classList.add('hidden');
+      }
+    }
+
+    // Legado
+    if (modalLegacyBox && modalLegacy) {
+      if (athlete.legado) {
+        modalLegacy.textContent = `"${athlete.legado}"`;
+        modalLegacyBox.classList.remove('hidden');
+      } else {
+        modalLegacyBox.classList.add('hidden');
+      }
+    }
+
+    // Época
+    if (modalEpoca) {
+      if (athlete.epoca) {
+        modalEpoca.textContent = `Época: ${athlete.epoca}`;
+        modalEpoca.classList.remove('hidden');
+      } else {
+        modalEpoca.classList.add('hidden');
+      }
+    }
+
+    // Mostrar modal con animación fluida
+    athleteModal.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      athleteModal.classList.add('is-open');
+    });
+    athleteModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (typeof lenis !== 'undefined' && lenis) {
+      lenis.stop();
+    }
+    if (athleteModalCloseBtn) {
+      athleteModalCloseBtn.focus();
+    }
+  }
+
+  function closeAthleteModal() {
+    if (!athleteModal || !athleteModal.classList.contains('is-open')) return;
+    athleteModal.classList.remove('is-open');
+    athleteModal.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {
+      athleteModal.classList.add('hidden');
+      document.body.style.overflow = '';
+      if (typeof lenis !== 'undefined' && lenis) {
+        lenis.start();
+      }
+    }, 280);
+  }
+
+  if (athleteModalCloseBtn) athleteModalCloseBtn.addEventListener('click', closeAthleteModal);
+  if (modalAthleteActionClose) modalAthleteActionClose.addEventListener('click', closeAthleteModal);
+
+  if (athleteModal) {
+    athleteModal.addEventListener('click', (e) => {
+      if (e.target === athleteModal) {
+        closeAthleteModal();
+      }
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && athleteModal && athleteModal.classList.contains('is-open')) {
+      closeAthleteModal();
+    }
+  });
+
+  // Delegación de clics y teclado en tarjetas del directorio
+  if (cardsGrid) {
+    cardsGrid.addEventListener('click', (e) => {
+      const card = e.target.closest('.trading-card');
+      if (!card || !window.DEPORTISTAS_DATA) return;
+      const athleteId = card.getAttribute('data-id');
+      const athleteName = card.querySelector('.card-name-title')?.textContent.trim();
+      const athlete = window.DEPORTISTAS_DATA.find(d => 
+        (athleteId && String(d.id) === String(athleteId)) ||
+        (athleteName && normalize(d.nombre) === normalize(athleteName))
+      );
+      if (athlete) {
+        openAthleteModal(athlete);
+      }
+    });
+
+    cardsGrid.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const card = e.target.closest('.trading-card');
+        if (card && window.DEPORTISTAS_DATA) {
+          e.preventDefault();
+          const athleteId = card.getAttribute('data-id');
+          const athleteName = card.querySelector('.card-name-title')?.textContent.trim();
+          const athlete = window.DEPORTISTAS_DATA.find(d => 
+            (athleteId && String(d.id) === String(athleteId)) ||
+            (athleteName && normalize(d.nombre) === normalize(athleteName))
+          );
+          if (athlete) openAthleteModal(athlete);
+        }
+      }
+    });
+  }
+
 
   // ------------------------------------------------------------------------
   // 6. ANIMACIONES MECÁNICAS DE ENTRADA CON GSAP & EFECTO TELÓN
