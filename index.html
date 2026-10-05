@@ -82,31 +82,40 @@
          2. HERO SECTION EDITORIAL
          ========================================================================= -->
     <section class="section-hero-editorial" id="inicio">
-      <!-- Fondo Editorial Panorámico de Río Tercero (Vista aérea y Palacio Municipal) -->
+      <!-- Fondo Atmosférico y Radial Glow de Río Tercero -->
       <div class="hero-bg-backdrop" aria-hidden="true">
         <img src="assets/rio_tercero_hero.webp" alt="Vista aérea de Río Tercero y Palacio Municipal" class="hero-bg-img" loading="eager" decoding="async">
         <div class="hero-bg-overlay"></div>
+        <div class="hero-ambient-glow"></div>
       </div>
 
+      <!-- Constelación 3D de las 20 Tarjetas de Atletas (Capa de Fondo 3D) -->
+      <div class="hero-morph-stage" id="heroMorphStage">
+        <div class="hero-morph-universe" id="heroMorphUniverse">
+          <!-- Las 20 tarjetas 3D se inyectan dinámicamente con JS -->
+        </div>
+      </div>
+
+      <!-- Contenedor del Hero Expandible Central -->
       <div class="hero-expand-container relative w-full h-full flex items-center justify-center">
         
-        <!-- Tarjeta central que se agranda hasta ocupar todo el hero -->
+        <!-- Tarjeta central expandible que crece al hacer scroll -->
         <div class="hero-expand-card" id="heroExpandCard">
           <img src="assets/rio_tercero_hero.webp" alt="Río Tercero Capital Nacional del Deportista" class="hero-expand-media-asset" loading="eager">
           <div class="hero-expand-overlay"></div>
           
-          <!-- Capa de Texto que aparece una vez agrandado todo el hero -->
+          <!-- Capa de Texto Central que escala de chico a grande -->
           <div class="hero-expand-text-layer" id="heroExpandTextLayer">
-            <div class="hero-editorial-max max-w-4xl mx-auto text-center px-4">
-              <span class="hero-tag-pill inline-block mb-3 text-xs font-mono font-bold tracking-widest uppercase text-sky-300 bg-black/40 backdrop-blur-sm px-3.5 py-1 border border-white/20">
+            <div class="hero-editorial-max max-w-4xl mx-auto text-center px-4" id="heroTextContainer">
+              <span class="hero-tag-pill inline-block mb-2 text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase text-sky-300 bg-black/60 backdrop-blur-md px-3 py-1 border border-white/20 whitespace-nowrap" id="heroTagPill">
                 RÍO TERCERO · CÓRDOBA · LEY 27.378
               </span>
-              <h1 class="hero-editorial-title text-center text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white font-['Plus_Jakarta_Sans',sans-serif] leading-[0.92]">
-                <span class="shimmer-text hero-shimmer-top">CAPITAL NACIONAL</span> <br>
-                <span class="highlight text-sky-400 shimmer-text hero-shimmer-highlight" style="color: #38BDF8;">DEL DEPORTISTA</span>
+              <h1 class="hero-editorial-title text-center font-black uppercase tracking-tight text-white font-['Plus_Jakarta_Sans',sans-serif] leading-[0.92]" id="heroTitle">
+                <span class="block shimmer-text hero-shimmer-top whitespace-nowrap">CAPITAL NACIONAL</span>
+                <span class="block highlight text-sky-400 shimmer-text hero-shimmer-highlight whitespace-nowrap" style="color: #38BDF8;">DEL DEPORTISTA</span>
               </h1>
 
-              <p class="hero-editorial-lead mx-auto text-center mt-5 text-slate-100 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl font-medium">
+              <p class="hero-editorial-lead mx-auto text-center mt-4 text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl font-medium" id="heroLead">
                 Declarada formalmente Capital Nacional del Deportista por la Ley Nacional N.º 27.378 del Congreso de la Nación, Río Tercero es cuna de figuras olímpicas y campeones mundiales. Su comunidad celebra cada 16 de noviembre el Día del Deportista y la Semana del Deporte como homenaje formativo y reparación simbólica tras los sucesos industriales de 1995.
               </p>
             </div>
@@ -114,7 +123,7 @@
 
           <!-- Indicador inicial en la tarjeta -->
           <div class="hero-expand-inner-badge" id="heroExpandInnerBadge">
-            <span class="badge-hint font-mono text-xs">DESLIZÁ PARA EXPANDIR ↓</span>
+            <span class="badge-hint font-mono text-[10px] sm:text-xs">DESLIZÁ PARA EXPANDIR ↓</span>
           </div>
 
         </div>
@@ -164,73 +173,6 @@
          ========================================================================= -->
     <section class="section-trading-cards" id="directorio">
       <div class="container">
-
-        <!-- =========================================================================
-             MOSAICO DINÁMICO & CONSTELACIÓN 3D DE ATLETAS (SCROLL MORPH HERO)
-             ========================================================================= -->
-        <div class="athletes-morph-showcase" id="athletesMorphShowcase">
-          <div class="morph-showcase-header text-center mb-6">
-            <span class="morph-kicker inline-block font-mono text-[10px] font-bold tracking-widest text-sky-700 bg-sky-100/90 px-3 py-1 rounded-full uppercase mb-2 border border-sky-300/40">
-              EXPLORADOR INTERACTIVO 3D · SCROLL MORPH
-            </span>
-            <h2 class="morph-headline text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-slate-950 font-['Plus_Jakarta_Sans',sans-serif]">
-              Constelación de Figuras de Río Tercero
-            </h2>
-            <p class="morph-subtext text-xs sm:text-sm text-slate-600 max-w-xl mx-auto mt-2 leading-relaxed">
-              Deslizá para transformar la constelación o hacé clic en cualquier tarjeta para desplegar su ficha oficial en alta resolución, biografía deportiva y telemetría de consagración.
-            </p>
-
-            <!-- Selector de Fase Interactiva -->
-            <div class="morph-mode-selector flex items-center justify-center gap-2 mt-4 flex-wrap" id="morphModeSelector">
-              <button type="button" class="morph-mode-btn active" data-phase="circle">
-                <span>🪐 Constelación Circular</span>
-              </button>
-              <button type="button" class="morph-mode-btn" data-phase="arc">
-                <span>⌒ Arco Panorámico</span>
-              </button>
-              <button type="button" class="morph-mode-btn" data-phase="scatter">
-                <span>✦ Dispersión 3D</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Escenario 3D Interactivo -->
-          <div class="morph-stage-box relative w-full h-[620px] sm:h-[700px] md:h-[750px] rounded-2xl border border-slate-200/90 bg-slate-950 overflow-hidden shadow-2xl select-none mb-12" id="morphStageBox">
-            
-            <!-- Resplandor de Fondo -->
-            <div class="morph-ambient-glow" aria-hidden="true"></div>
-
-            <!-- Centro Editorial de la Constelación -->
-            <div class="morph-center-emblem" id="morphCenterEmblem">
-              <div class="emblem-inner text-center pointer-events-none">
-                <span class="emblem-kicker font-mono text-[10px] font-bold text-sky-400 uppercase tracking-widest block mb-1">
-                  CAPITAL NACIONAL DEL DEPORTISTA
-                </span>
-                <h3 class="emblem-title text-xl sm:text-3xl font-black uppercase text-white font-['Plus_Jakarta_Sans',sans-serif] tracking-tight leading-tight">
-                  Cuna de Campeones
-                </h3>
-                <span class="emblem-tagline font-mono text-[11px] font-bold text-slate-300 block mt-1">
-                  20 LEYENDAS Y MEDALLISTAS
-                </span>
-                <span class="emblem-hint font-mono text-[9px] font-bold text-sky-300 bg-sky-950/70 border border-sky-500/30 px-2.5 py-0.5 rounded-full inline-block mt-3">
-                  TOCÁ CUALQUIER TARJETA PARA VER FICHA ↓
-                </span>
-              </div>
-            </div>
-
-            <!-- Contenedor 3D de las 20 tarjetas -->
-            <div class="morph-cards-universe" id="morphCardsUniverse">
-              <!-- Las 20 tarjetas se inyectan dinámicamente con JS -->
-            </div>
-
-            <!-- Indicador inferior de interacción -->
-            <div class="morph-bottom-status">
-              <span class="font-mono text-[10px] text-slate-400 tracking-wider">
-                SCROLL O ARRASTRÁ PARA MORPHEAR · 3D INTERACTIVO
-              </span>
-            </div>
-          </div>
-        </div>
 
         
         <div class="directory-meta-header">

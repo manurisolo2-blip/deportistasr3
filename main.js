@@ -575,68 +575,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------------------------------------
   if (typeof gsap !== 'undefined' && !prefersReducedMotion) {
 
-    // Scroll Expansion Hero: No hay texto inicial -> Se agranda todo el hero -> Aparece el texto
-    const heroCard = document.getElementById('heroExpandCard');
-    const heroTextLayer = document.getElementById('heroExpandTextLayer');
-    const heroExpandHint = document.getElementById('heroExpandInnerBadge');
-    const heroBackdrop = document.querySelector('.hero-bg-backdrop');
-
-    if (typeof ScrollTrigger !== 'undefined' && heroSection && heroCard && heroTextLayer) {
-      // Estado inicial: sin texto visible
-      gsap.set(heroTextLayer, {
-        opacity: 0,
-        y: 28,
-        scale: 0.96
-      });
-
-      const heroExpandTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: heroSection,
-          start: 'top top',
-          end: '+=125%',
-          pin: true,
-          scrub: 0.7,
-          anticipatePin: 1
-        }
-      });
-
-      // 1. La tarjeta se agranda desde el centro hasta ocupar todo el hero (0% a 65%)
-      heroExpandTl
-        .to(heroCard, {
-          width: '100vw',
-          height: '100vh',
-          borderRadius: 0,
-          boxShadow: 'none',
-          ease: 'power2.inOut',
-          duration: 0.65
-        }, 0)
-        .to(heroExpandHint, {
-          opacity: 0,
-          y: 10,
-          ease: 'power1.out',
-          duration: 0.2
-        }, 0)
-        .to(heroBackdrop, {
-          opacity: 0,
-          ease: 'power1.out',
-          duration: 0.45
-        }, 0);
-
-      // 2. Una vez que ocupa todo el hero, aparece el texto (62% a 100%)
-      heroExpandTl
-        .to(heroTextLayer, {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          ease: 'power2.out',
-          duration: 0.35
-        }, 0.62);
-    }
-
-    // Efecto Telón (Curtain Parallax): el fondo y contenido suben y cubren limpiamente al Hero
+    // Efecto Telón (Curtain Parallax): el contenido principal sube y cubre el Hero
     if (typeof ScrollTrigger !== 'undefined' && heroSection) {
       gsap.to(heroSection, {
-        opacity: 0.5,
+        opacity: 0.35,
         ease: 'none',
         scrollTrigger: {
           trigger: '.main-body-curtain',
@@ -1108,20 +1050,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ------------------------------------------------------------------------
-  // 12. MOSAICO DINÁMICO & CONSTELACIÓN 3D DE ATLETAS (SCROLL MORPH HERO)
+  // 12. HERO SCROLL-EXPAND & CONSTELACIÓN 3D DE ATLETAS INTEGRADA AL FONDO
   // ------------------------------------------------------------------------
-  function initAthletesMorph() {
-    const stage = document.getElementById('morphStageBox');
-    const universe = document.getElementById('morphCardsUniverse');
-    const modeButtons = document.querySelectorAll('.morph-mode-btn');
-    if (!stage || !universe || !window.DEPORTISTAS_DATA) return;
+  function initHeroScrollMorph() {
+    const heroSection = document.getElementById('inicio');
+    const heroCard = document.getElementById('heroExpandCard');
+    const heroTitle = document.getElementById('heroTitle');
+    const heroTagPill = document.getElementById('heroTagPill');
+    const heroLead = document.getElementById('heroLead');
+    const heroBadge = document.getElementById('heroExpandInnerBadge');
+    const heroUniverse = document.getElementById('heroMorphUniverse');
 
-    // Crear 20 tarjetas representativas a partir de los datos oficiales
+    if (!heroSection || !heroUniverse || !window.DEPORTISTAS_DATA) return;
+
+    // Crear las 20 tarjetas oficiales de atletas de Río Tercero
     const rawData = window.DEPORTISTAS_DATA;
     const athletes = rawData.length >= 20 ? rawData.slice(0, 20) : [...rawData, ...rawData].slice(0, 20);
     const total = athletes.length;
 
-    universe.innerHTML = athletes.map((atleta, i) => `
+    heroUniverse.innerHTML = athletes.map((atleta, i) => `
       <div class="morph-card-item" data-id="${atleta.id}" data-index="${i}" tabindex="0" role="button" aria-label="Abrir ficha técnica de ${atleta.nombre}">
         <div class="morph-card-inner">
           <!-- Cara Frontal -->
@@ -1144,147 +1091,268 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `).join('');
 
-    const cardEls = universe.querySelectorAll('.morph-card-item');
+    const cardEls = heroUniverse.querySelectorAll('.morph-card-item');
 
-    // Generar coordenadas dispersas pseudoaleatorias
-    const scatterCoords = athletes.map(() => ({
-      x: (Math.random() - 0.5) * 850,
-      y: (Math.random() - 0.5) * 550,
-      rot: (Math.random() - 0.5) * 60,
-      scale: 0.75
-    }));
+    // Coordenadas dispersas deterministas para la fase inicial (Scatter)
+    const scatterCoords = athletes.map((_, i) => {
+      const sx = Math.sin((i + 1) * 12.9898) * 43758.5453;
+      const sy = Math.cos((i + 1) * 78.233) * 43758.5453;
+      const sr = Math.sin((i + 1) * 37.719) * 43758.5453;
+      const rx = sx - Math.floor(sx);
+      const ry = sy - Math.floor(sy);
+      const rr = sr - Math.floor(sr);
+      return {
+        x: (rx - 0.5) * 1350,
+        y: (ry - 0.5) * 850,
+        rot: (rr - 0.5) * 120,
+        scale: 0.55,
+        opacity: 0
+      };
+    });
 
-    let currentPhase = 'circle';
-
-    function calculateTargets(phase) {
-      const rect = stage.getBoundingClientRect();
-      const W = rect.width || 800;
-      const H = rect.height || 680;
+    function calculateTargets(phase, rotateVal = 0) {
+      const W = window.innerWidth;
+      const H = window.innerHeight;
       const isMobile = W < 768;
       const minDim = Math.min(W, H);
 
       return athletes.map((_, i) => {
         if (phase === 'scatter') {
-          const s = scatterCoords[i];
-          return { x: s.x, y: s.y, rot: s.rot, scale: s.scale, opacity: 0.85 };
+          return scatterCoords[i];
         }
 
-        if (phase === 'arc') {
-          const spread = isMobile ? 115 : 145;
-          const step = spread / (total - 1);
-          const arcRadius = isMobile ? minDim * 1.15 : minDim * 0.98;
-          const startAngle = -90 - spread / 2;
-          const angle = startAngle + i * step;
+        if (phase === 'line') {
+          const lineSpacing = isMobile ? 54 : 74;
+          const lineX = (i - total / 2 + 0.5) * lineSpacing;
+          return {
+            x: lineX,
+            y: isMobile ? 130 : 160,
+            rot: 0,
+            scale: isMobile ? 0.78 : 0.92,
+            opacity: 0.95
+          };
+        }
+
+        if (phase === 'circle') {
+          // Constelación circular que orbita en el fondo alrededor del hero central
+          const circleRadius = isMobile 
+            ? Math.min(W * 0.44, 185) 
+            : Math.min(minDim * 0.44, 385);
+          const angle = (i / total) * 360;
           const rad = (angle * Math.PI) / 180;
           return {
-            x: Math.cos(rad) * arcRadius,
-            y: Math.sin(rad) * arcRadius + H * 0.35 + arcRadius * 0.85,
+            x: Math.cos(rad) * circleRadius,
+            y: Math.sin(rad) * circleRadius,
             rot: angle + 90,
-            scale: isMobile ? 0.88 : 1,
+            scale: isMobile ? 0.82 : 1.0,
             opacity: 1
           };
         }
 
-        // 'circle' (Constelación Orbital)
-        const circleRadius = Math.min(minDim * 0.40, isMobile ? 180 : 315);
-        const angle = (i / total) * 360;
-        const rad = (angle * Math.PI) / 180;
-        return {
-          x: Math.cos(rad) * circleRadius,
-          y: Math.sin(rad) * circleRadius,
-          rot: angle + 90,
-          scale: isMobile ? 0.84 : 1,
-          opacity: 1
-        };
+        if (phase === 'arc') {
+          // Arco panorámico inferior
+          const baseRadius = Math.min(W, H * 1.5);
+          const arcRadius = baseRadius * (isMobile ? 1.35 : 1.15);
+          const arcApexY = H * (isMobile ? 0.35 : 0.28);
+          const arcCenterY = arcApexY + arcRadius;
+          const spreadAngle = isMobile ? 110 : 140;
+          const startAngle = -90 - spreadAngle / 2;
+          const step = spreadAngle / (total - 1);
+          const maxRotation = spreadAngle * 0.75;
+          const boundedRotation = -rotateVal * maxRotation;
+          const currentArcAngle = startAngle + i * step + boundedRotation;
+          const rad = (currentArcAngle * Math.PI) / 180;
+          return {
+            x: Math.cos(rad) * arcRadius,
+            y: Math.sin(rad) * arcRadius + arcCenterY,
+            rot: currentArcAngle + 90,
+            scale: isMobile ? 1.05 : 1.4,
+            opacity: 1
+          };
+        }
       });
     }
 
-    function renderPhase(phase, duration = 1.0) {
-      currentPhase = phase;
-      const targets = calculateTargets(phase);
+    const isMobile = window.innerWidth < 768;
 
+    // Configuración inicial cuando el Hero está minimizado:
+    // Las frases aparecen en chico cuando el hero está minimizado
+    if (typeof gsap !== 'undefined') {
+      if (heroTitle) {
+        gsap.set(heroTitle, {
+          scale: isMobile ? 0.45 : 0.38,
+          transformOrigin: 'center center'
+        });
+      }
+      if (heroTagPill) {
+        gsap.set(heroTagPill, {
+          scale: isMobile ? 0.75 : 0.8,
+          transformOrigin: 'center center'
+        });
+      }
+      if (heroLead) {
+        gsap.set(heroLead, {
+          opacity: 0,
+          y: 15
+        });
+      }
+      if (heroBadge) {
+        gsap.set(heroBadge, {
+          opacity: 1,
+          y: 0
+        });
+      }
+
+      // Tarjetas 3D en estado inicial (Scatter disperso)
       cardEls.forEach((card, i) => {
-        const t = targets[i];
-        if (typeof gsap !== 'undefined') {
+        gsap.set(card, scatterCoords[i]);
+      });
+
+      let introTimeout1 = null;
+      let introTimeout2 = null;
+
+      // Secuencia de animación automática de entrada:
+      // 1. A los 400ms: vuelan a formación de Línea horizontal
+      introTimeout1 = setTimeout(() => {
+        const lineTargets = calculateTargets('line');
+        cardEls.forEach((card, i) => {
+          const t = lineTargets[i];
           gsap.to(card, {
             x: t.x,
             y: t.y,
             rotation: t.rot,
             scale: t.scale,
             opacity: t.opacity,
-            duration: duration,
-            ease: 'power3.out',
-            overwrite: 'auto'
+            duration: 0.85,
+            ease: 'power2.out',
+            delay: i * 0.02
           });
-        } else {
-          card.style.transform = `translate(${t.x}px, ${t.y}px) rotate(${t.rot}deg) scale(${t.scale})`;
-          card.style.opacity = t.opacity;
+        });
+      }, 400);
+
+      // 2. A los 1900ms: florecen a la Constelación Circular orbital en el fondo
+      introTimeout2 = setTimeout(() => {
+        const circleTargets = calculateTargets('circle');
+        cardEls.forEach((card, i) => {
+          const t = circleTargets[i];
+          gsap.to(card, {
+            x: t.x,
+            y: t.y,
+            rotation: t.rot,
+            scale: t.scale,
+            opacity: t.opacity,
+            duration: 1.25,
+            ease: 'back.out(1.15)',
+            delay: i * 0.025
+          });
+        });
+      }, 1900);
+    }
+
+    // Sincronización con ScrollTrigger:
+    // El hero se agranda, las frases se agrandan a la par, y las cartas en el fondo morphean al arco
+    if (typeof ScrollTrigger !== 'undefined' && heroSection && heroCard) {
+      const heroTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroSection,
+          start: 'top top',
+          end: '+=140%',
+          pin: true,
+          scrub: 0.7,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            const p = self.progress;
+
+            if (p > 0.01) {
+              if (introTimeout1) { clearTimeout(introTimeout1); introTimeout1 = null; }
+              if (introTimeout2) { clearTimeout(introTimeout2); introTimeout2 = null; }
+            }
+
+            // Interpolación de morphing de las 20 tarjetas en el fondo (de círculo a arco)
+            const morphVal = Math.min(p / 0.72, 1);
+            const rotateVal = Math.max(0, (p - 0.45) / 0.55);
+
+            const circleTargets = calculateTargets('circle');
+            const arcTargets = calculateTargets('arc', rotateVal);
+
+            cardEls.forEach((card, i) => {
+              const c = circleTargets[i];
+              const a = arcTargets[i];
+
+              const curX = c.x + (a.x - c.x) * morphVal;
+              const curY = c.y + (a.y - c.y) * morphVal;
+              const curRot = c.rot + (a.rot - c.rot) * morphVal;
+              const curScale = c.scale + (a.scale - c.scale) * morphVal;
+              const curOpacity = c.opacity + (a.opacity - c.opacity) * morphVal;
+
+              gsap.set(card, {
+                x: curX,
+                y: curY,
+                rotation: curRot,
+                scale: curScale,
+                opacity: curOpacity,
+                overwrite: 'auto'
+              });
+            });
+          }
         }
       });
 
-      modeButtons.forEach(btn => {
-        if (btn.getAttribute('data-phase') === phase) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
+      // 1. La tarjeta central se expande hasta ocupar toda la pantalla (0% a 70% del scroll)
+      heroTimeline
+        .to(heroCard, {
+          width: '100%',
+          height: '100%',
+          borderRadius: 0,
+          boxShadow: 'none',
+          ease: 'power2.inOut',
+          duration: 0.7
+        }, 0)
+        // 2. Las frases se van agrandando proporcionalmente a la tarjeta (0% a 70%)
+        .to(heroTitle, {
+          scale: 1,
+          ease: 'power2.inOut',
+          duration: 0.7
+        }, 0)
+        .to(heroTagPill, {
+          scale: 1,
+          ease: 'power2.inOut',
+          duration: 0.7
+        }, 0)
+        // 3. El indicador inicial desaparece de inmediato al scrollear
+        .to(heroBadge, {
+          opacity: 0,
+          y: 12,
+          ease: 'power1.out',
+          duration: 0.18
+        }, 0)
+        // 4. El texto de bajada editorial aparece una vez agrandado el hero (50% a 85%)
+        .to(heroLead, {
+          opacity: 1,
+          y: 0,
+          ease: 'power2.out',
+          duration: 0.35
+        }, 0.5);
     }
 
-    // Render inicial
-    setTimeout(() => {
-      renderPhase('circle', 0.8);
-    }, 150);
-
-    // Botones de modo interactivo
-    modeButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const ph = btn.getAttribute('data-phase') || 'circle';
-        renderPhase(ph, 1.2);
-      });
-    });
-
-    // ScrollTrigger para morphing reactivo al deslizar la pantalla
-    if (typeof ScrollTrigger !== 'undefined') {
-      ScrollTrigger.create({
-        trigger: stage,
-        start: 'top 70%',
-        end: 'bottom 30%',
-        onEnter: () => renderPhase('circle', 1.0),
-        onLeave: () => renderPhase('arc', 1.2),
-        onEnterBack: () => renderPhase('circle', 1.0),
-      });
-    }
-
-    // Efecto de inclinación 3D (Parallax) con el movimiento del ratón
-    stage.addEventListener('mousemove', (e) => {
-      const rect = stage.getBoundingClientRect();
-      const nx = (e.clientX - rect.left) / rect.width - 0.5;
-      const ny = (e.clientY - rect.top) / rect.height - 0.5;
+    // Efecto Parallax en el fondo 3D con el cursor del mouse
+    window.addEventListener('mousemove', (e) => {
+      if (window.scrollY > window.innerHeight) return;
+      const nx = (e.clientX / window.innerWidth) - 0.5;
+      const ny = (e.clientY / window.innerHeight) - 0.5;
       if (typeof gsap !== 'undefined') {
-        gsap.to(universe, {
+        gsap.to(heroUniverse, {
           rotationY: nx * 14,
           rotationX: -ny * 12,
-          duration: 0.5,
+          duration: 0.6,
           ease: 'power1.out',
           overwrite: 'auto'
         });
       }
     });
 
-    stage.addEventListener('mouseleave', () => {
-      if (typeof gsap !== 'undefined') {
-        gsap.to(universe, {
-          rotationY: 0,
-          rotationX: 0,
-          duration: 0.8,
-          ease: 'power2.out'
-        });
-      }
-    });
-
-    // Clic en cualquier tarjeta de la constelación -> abre la ficha técnica modal con la foto grande
-    universe.addEventListener('click', (e) => {
+    // Clic en cualquier tarjeta de la constelación -> abre la ficha técnica modal en grande
+    heroUniverse.addEventListener('click', (e) => {
       const card = e.target.closest('.morph-card-item');
       if (!card) return;
       const id = card.getAttribute('data-id');
@@ -1295,7 +1363,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Accesibilidad teclado (Enter / Espacio)
-    universe.addEventListener('keydown', (e) => {
+    heroUniverse.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         const card = e.target.closest('.morph-card-item');
         if (card) {
@@ -1309,12 +1377,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Redimensionamiento responsivo
     window.addEventListener('resize', () => {
-      renderPhase(currentPhase, 0.3);
+      if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
+      }
     });
   }
 
-  // Inicializar Mosaico 3D
-  initAthletesMorph();
+  // Inicializar Hero Scroll-Morph integrado
+  initHeroScrollMorph();
 
   // Sincronización inicial completada con renderCards()
 });
