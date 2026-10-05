@@ -1106,5 +1106,215 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
+  // ------------------------------------------------------------------------
+  // 12. MOSAICO DINÁMICO & CONSTELACIÓN 3D DE ATLETAS (SCROLL MORPH HERO)
+  // ------------------------------------------------------------------------
+  function initAthletesMorph() {
+    const stage = document.getElementById('morphStageBox');
+    const universe = document.getElementById('morphCardsUniverse');
+    const modeButtons = document.querySelectorAll('.morph-mode-btn');
+    if (!stage || !universe || !window.DEPORTISTAS_DATA) return;
+
+    // Crear 20 tarjetas representativas a partir de los datos oficiales
+    const rawData = window.DEPORTISTAS_DATA;
+    const athletes = rawData.length >= 20 ? rawData.slice(0, 20) : [...rawData, ...rawData].slice(0, 20);
+    const total = athletes.length;
+
+    universe.innerHTML = athletes.map((atleta, i) => `
+      <div class="morph-card-item" data-id="${atleta.id}" data-index="${i}" tabindex="0" role="button" aria-label="Abrir ficha técnica de ${atleta.nombre}">
+        <div class="morph-card-inner">
+          <!-- Cara Frontal -->
+          <div class="morph-card-face morph-card-front">
+            <img src="${atleta.imagenUrl}" alt="${atleta.nombre}" class="morph-card-img" loading="eager" />
+            <div class="morph-card-overlay"></div>
+            <div class="morph-card-info">
+              <span class="morph-card-badge">${atleta.disciplina}</span>
+              <h4 class="morph-card-title">${atleta.nombre}</h4>
+            </div>
+            ${atleta.dorsal ? `<span class="morph-card-dorsal">#${atleta.dorsal}</span>` : ''}
+          </div>
+          <!-- Cara Posterior (Flip 3D) -->
+          <div class="morph-card-face morph-card-back">
+            <span class="morph-back-club">${atleta.clubOrigen}</span>
+            <p class="morph-back-achievement">${atleta.logroPrincipal}</p>
+            <div class="morph-back-action">VER FICHA</div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    const cardEls = universe.querySelectorAll('.morph-card-item');
+
+    // Generar coordenadas dispersas pseudoaleatorias
+    const scatterCoords = athletes.map(() => ({
+      x: (Math.random() - 0.5) * 850,
+      y: (Math.random() - 0.5) * 550,
+      rot: (Math.random() - 0.5) * 60,
+      scale: 0.75
+    }));
+
+    let currentPhase = 'circle';
+
+    function calculateTargets(phase) {
+      const rect = stage.getBoundingClientRect();
+      const W = rect.width || 800;
+      const H = rect.height || 680;
+      const isMobile = W < 768;
+      const minDim = Math.min(W, H);
+
+      return athletes.map((_, i) => {
+        if (phase === 'scatter') {
+          const s = scatterCoords[i];
+          return { x: s.x, y: s.y, rot: s.rot, scale: s.scale, opacity: 0.85 };
+        }
+
+        if (phase === 'arc') {
+          const spread = isMobile ? 115 : 145;
+          const step = spread / (total - 1);
+          const arcRadius = isMobile ? minDim * 1.15 : minDim * 0.98;
+          const startAngle = -90 - spread / 2;
+          const angle = startAngle + i * step;
+          const rad = (angle * Math.PI) / 180;
+          return {
+            x: Math.cos(rad) * arcRadius,
+            y: Math.sin(rad) * arcRadius + H * 0.35 + arcRadius * 0.85,
+            rot: angle + 90,
+            scale: isMobile ? 0.88 : 1,
+            opacity: 1
+          };
+        }
+
+        // 'circle' (Constelación Orbital)
+        const circleRadius = Math.min(minDim * 0.40, isMobile ? 180 : 315);
+        const angle = (i / total) * 360;
+        const rad = (angle * Math.PI) / 180;
+        return {
+          x: Math.cos(rad) * circleRadius,
+          y: Math.sin(rad) * circleRadius,
+          rot: angle + 90,
+          scale: isMobile ? 0.84 : 1,
+          opacity: 1
+        };
+      });
+    }
+
+    function renderPhase(phase, duration = 1.0) {
+      currentPhase = phase;
+      const targets = calculateTargets(phase);
+
+      cardEls.forEach((card, i) => {
+        const t = targets[i];
+        if (typeof gsap !== 'undefined') {
+          gsap.to(card, {
+            x: t.x,
+            y: t.y,
+            rotation: t.rot,
+            scale: t.scale,
+            opacity: t.opacity,
+            duration: duration,
+            ease: 'power3.out',
+            overwrite: 'auto'
+          });
+        } else {
+          card.style.transform = `translate(${t.x}px, ${t.y}px) rotate(${t.rot}deg) scale(${t.scale})`;
+          card.style.opacity = t.opacity;
+        }
+      });
+
+      modeButtons.forEach(btn => {
+        if (btn.getAttribute('data-phase') === phase) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    // Render inicial
+    setTimeout(() => {
+      renderPhase('circle', 0.8);
+    }, 150);
+
+    // Botones de modo interactivo
+    modeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const ph = btn.getAttribute('data-phase') || 'circle';
+        renderPhase(ph, 1.2);
+      });
+    });
+
+    // ScrollTrigger para morphing reactivo al deslizar la pantalla
+    if (typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.create({
+        trigger: stage,
+        start: 'top 70%',
+        end: 'bottom 30%',
+        onEnter: () => renderPhase('circle', 1.0),
+        onLeave: () => renderPhase('arc', 1.2),
+        onEnterBack: () => renderPhase('circle', 1.0),
+      });
+    }
+
+    // Efecto de inclinación 3D (Parallax) con el movimiento del ratón
+    stage.addEventListener('mousemove', (e) => {
+      const rect = stage.getBoundingClientRect();
+      const nx = (e.clientX - rect.left) / rect.width - 0.5;
+      const ny = (e.clientY - rect.top) / rect.height - 0.5;
+      if (typeof gsap !== 'undefined') {
+        gsap.to(universe, {
+          rotationY: nx * 14,
+          rotationX: -ny * 12,
+          duration: 0.5,
+          ease: 'power1.out',
+          overwrite: 'auto'
+        });
+      }
+    });
+
+    stage.addEventListener('mouseleave', () => {
+      if (typeof gsap !== 'undefined') {
+        gsap.to(universe, {
+          rotationY: 0,
+          rotationX: 0,
+          duration: 0.8,
+          ease: 'power2.out'
+        });
+      }
+    });
+
+    // Clic en cualquier tarjeta de la constelación -> abre la ficha técnica modal con la foto grande
+    universe.addEventListener('click', (e) => {
+      const card = e.target.closest('.morph-card-item');
+      if (!card) return;
+      const id = card.getAttribute('data-id');
+      const athlete = window.DEPORTISTAS_DATA.find(d => String(d.id) === String(id));
+      if (athlete) {
+        openAthleteModal(athlete);
+      }
+    });
+
+    // Accesibilidad teclado (Enter / Espacio)
+    universe.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const card = e.target.closest('.morph-card-item');
+        if (card) {
+          e.preventDefault();
+          const id = card.getAttribute('data-id');
+          const athlete = window.DEPORTISTAS_DATA.find(d => String(d.id) === String(id));
+          if (athlete) openAthleteModal(athlete);
+        }
+      }
+    });
+
+    // Redimensionamiento responsivo
+    window.addEventListener('resize', () => {
+      renderPhase(currentPhase, 0.3);
+    });
+  }
+
+  // Inicializar Mosaico 3D
+  initAthletesMorph();
+
   // Sincronización inicial completada con renderCards()
 });

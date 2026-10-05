@@ -164,6 +164,74 @@
          ========================================================================= -->
     <section class="section-trading-cards" id="directorio">
       <div class="container">
+
+        <!-- =========================================================================
+             MOSAICO DINÁMICO & CONSTELACIÓN 3D DE ATLETAS (SCROLL MORPH HERO)
+             ========================================================================= -->
+        <div class="athletes-morph-showcase" id="athletesMorphShowcase">
+          <div class="morph-showcase-header text-center mb-6">
+            <span class="morph-kicker inline-block font-mono text-[10px] font-bold tracking-widest text-sky-700 bg-sky-100/90 px-3 py-1 rounded-full uppercase mb-2 border border-sky-300/40">
+              EXPLORADOR INTERACTIVO 3D · SCROLL MORPH
+            </span>
+            <h2 class="morph-headline text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-slate-950 font-['Plus_Jakarta_Sans',sans-serif]">
+              Constelación de Figuras de Río Tercero
+            </h2>
+            <p class="morph-subtext text-xs sm:text-sm text-slate-600 max-w-xl mx-auto mt-2 leading-relaxed">
+              Deslizá para transformar la constelación o hacé clic en cualquier tarjeta para desplegar su ficha oficial en alta resolución, biografía deportiva y telemetría de consagración.
+            </p>
+
+            <!-- Selector de Fase Interactiva -->
+            <div class="morph-mode-selector flex items-center justify-center gap-2 mt-4 flex-wrap" id="morphModeSelector">
+              <button type="button" class="morph-mode-btn active" data-phase="circle">
+                <span>🪐 Constelación Circular</span>
+              </button>
+              <button type="button" class="morph-mode-btn" data-phase="arc">
+                <span>⌒ Arco Panorámico</span>
+              </button>
+              <button type="button" class="morph-mode-btn" data-phase="scatter">
+                <span>✦ Dispersión 3D</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Escenario 3D Interactivo -->
+          <div class="morph-stage-box relative w-full h-[620px] sm:h-[700px] md:h-[750px] rounded-2xl border border-slate-200/90 bg-slate-950 overflow-hidden shadow-2xl select-none mb-12" id="morphStageBox">
+            
+            <!-- Resplandor de Fondo -->
+            <div class="morph-ambient-glow" aria-hidden="true"></div>
+
+            <!-- Centro Editorial de la Constelación -->
+            <div class="morph-center-emblem" id="morphCenterEmblem">
+              <div class="emblem-inner text-center pointer-events-none">
+                <span class="emblem-kicker font-mono text-[10px] font-bold text-sky-400 uppercase tracking-widest block mb-1">
+                  CAPITAL NACIONAL DEL DEPORTISTA
+                </span>
+                <h3 class="emblem-title text-xl sm:text-3xl font-black uppercase text-white font-['Plus_Jakarta_Sans',sans-serif] tracking-tight leading-tight">
+                  Cuna de Campeones
+                </h3>
+                <span class="emblem-tagline font-mono text-[11px] font-bold text-slate-300 block mt-1">
+                  20 LEYENDAS Y MEDALLISTAS
+                </span>
+                <span class="emblem-hint font-mono text-[9px] font-bold text-sky-300 bg-sky-950/70 border border-sky-500/30 px-2.5 py-0.5 rounded-full inline-block mt-3">
+                  TOCÁ CUALQUIER TARJETA PARA VER FICHA ↓
+                </span>
+              </div>
+            </div>
+
+            <!-- Contenedor 3D de las 20 tarjetas -->
+            <div class="morph-cards-universe" id="morphCardsUniverse">
+              <!-- Las 20 tarjetas se inyectan dinámicamente con JS -->
+            </div>
+
+            <!-- Indicador inferior de interacción -->
+            <div class="morph-bottom-status">
+              <span class="font-mono text-[10px] text-slate-400 tracking-wider">
+                SCROLL O ARRASTRÁ PARA MORPHEAR · 3D INTERACTIVO
+              </span>
+            </div>
+          </div>
+        </div>
+
         
         <div class="directory-meta-header">
           <div>

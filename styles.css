@@ -3622,3 +3622,293 @@ body {
 }
 
 
+
+
+/* =========================================================================
+   MOSAICO DINÁMICO & CONSTELACIÓN 3D DE ATLETAS (SCROLL MORPH HERO)
+   ========================================================================= */
+.athletes-morph-showcase {
+  margin-bottom: 3.5rem;
+  padding: 1rem 0;
+}
+
+.morph-showcase-header {
+  margin-bottom: 1.5rem;
+}
+
+.morph-kicker {
+  letter-spacing: 0.12em;
+}
+
+.morph-mode-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.morph-mode-btn {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+}
+
+.morph-mode-btn:hover {
+  background: #f8fafc;
+  border-color: var(--color-celeste, #0092DF);
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+.morph-mode-btn.active {
+  background: var(--color-celeste, #0092DF);
+  color: #ffffff;
+  border-color: var(--color-celeste, #0092DF);
+  box-shadow: 0 4px 12px rgba(0, 146, 223, 0.25);
+}
+
+.morph-stage-box {
+  position: relative;
+  width: 100%;
+  height: 640px;
+  border-radius: 1.25rem;
+  background: radial-gradient(circle at center, #0F172A 0%, #020617 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 146, 223, 0.15);
+  overflow: hidden;
+  perspective: 1200px;
+  -webkit-perspective: 1200px;
+  user-select: none;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .morph-stage-box {
+    height: 740px;
+  }
+}
+
+.morph-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 146, 223, 0.22) 0%, rgba(56, 189, 248, 0.08) 45%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: blur(20px);
+}
+
+.morph-center-emblem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  pointer-events: none;
+  width: 300px;
+  max-width: 85%;
+  text-align: center;
+}
+
+.morph-cards-universe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  pointer-events: auto;
+}
+
+.morph-card-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 114px;
+  margin-left: -40px;
+  margin-top: -57px;
+  perspective: 1000px;
+  cursor: pointer;
+  z-index: 10;
+  touch-action: manipulation;
+}
+
+@media (min-width: 768px) {
+  .morph-card-item {
+    width: 90px;
+    height: 128px;
+    margin-left: -45px;
+    margin-top: -64px;
+  }
+}
+
+.morph-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+.morph-card-item:hover .morph-card-inner,
+.morph-card-item:focus-visible .morph-card-inner {
+  transform: rotateY(180deg) scale(1.15);
+  box-shadow: 0 18px 40px rgba(0, 146, 223, 0.45), 0 0 0 1px rgba(56, 189, 248, 0.6);
+  z-index: 50;
+}
+
+.morph-card-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.morph-card-front {
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.morph-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: grayscale(80%) contrast(115%);
+  transition: filter 0.3s ease;
+  display: block;
+}
+
+.morph-card-item:hover .morph-card-img {
+  filter: grayscale(0%) contrast(100%);
+}
+
+.morph-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(2, 6, 23, 0.95) 0%, rgba(2, 6, 23, 0.45) 50%, transparent 100%);
+}
+
+.morph-card-info {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  right: 6px;
+  text-align: left;
+}
+
+.morph-card-badge {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 6.5px;
+  font-weight: 700;
+  color: #38bdf8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.morph-card-title {
+  font-family: var(--font-display);
+  font-size: 8.5px;
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.morph-card-dorsal {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-family: var(--font-mono, monospace);
+  font-size: 7px;
+  font-weight: 800;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 1px 4px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.morph-card-back {
+  background: #020617;
+  border: 1px solid rgba(56, 189, 248, 0.6);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 6px;
+  text-align: center;
+}
+
+.morph-back-club {
+  font-family: var(--font-mono, monospace);
+  font-size: 6.5px;
+  font-weight: 800;
+  color: #38bdf8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+}
+
+.morph-back-achievement {
+  font-size: 7.5px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 3px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.morph-back-action {
+  background: var(--color-celeste, #0092DF);
+  color: #ffffff;
+  font-family: var(--font-mono, monospace);
+  font-size: 7px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 146, 223, 0.3);
+}
+
+.morph-bottom-status {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+}
