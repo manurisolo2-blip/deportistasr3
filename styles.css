@@ -351,48 +351,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* Enlaces a Redes Sociales en Navegación (ITR3 y munirio3) */
-.header-social-group {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.header-social-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.65rem;
-  font-family: var(--font-mono, monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--color-celeste-dark, #0077B6);
-  background: rgba(0, 146, 223, 0.08);
-  border: 1px solid rgba(0, 146, 223, 0.22);
-  border-radius: 9999px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  line-height: 1;
-}
-
-.header-social-item svg {
-  flex-shrink: 0;
-  stroke: currentColor;
-}
-
-.header-social-item:hover {
-  background: var(--color-celeste, #0092DF);
-  border-color: var(--color-celeste, #0092DF);
-  color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(0, 146, 223, 0.25);
-}
-
-.site-header.scrolled .header-social-item {
-  background: rgba(0, 146, 223, 0.06);
-}
-
 /* Botón de Menú Móvil (Hamburger) */
 .mobile-nav-toggle {
   display: none;
@@ -506,22 +464,6 @@ body {
     padding: 0.9rem;
     font-size: 0.9rem;
     margin-top: 1rem;
-  }
-
-  .header-social-group {
-    width: 100%;
-    display: flex;
-    gap: 0.75rem;
-    margin-top: 0.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(0, 146, 223, 0.15);
-  }
-
-  .header-social-item {
-    flex: 1;
-    justify-content: center;
-    padding: 0.65rem 1rem;
-    font-size: 0.8rem;
   }
 }
 
@@ -2522,40 +2464,73 @@ body {
 .footer-social-group {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  gap: 0.65rem;
+  margin-top: 0.55rem;
   flex-wrap: wrap;
 }
 
-.footer-social-pill {
+.footer-social-icon-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.28rem 0.68rem;
-  font-family: var(--font-mono, monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 146, 223, 0.25);
   color: var(--color-celeste-dark, #0077B6);
-  background: rgba(0, 146, 223, 0.08);
-  border: 1px solid rgba(0, 146, 223, 0.22);
-  border-radius: 9999px;
   text-decoration: none;
-  transition: all 0.2s ease;
-  line-height: 1;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  position: relative;
 }
 
-.footer-social-pill svg {
+.footer-social-icon-btn svg,
+.footer-social-icon-btn .footer-ig-icon {
+  width: 19px;
+  height: 19px;
   flex-shrink: 0;
   stroke: currentColor;
+  transition: transform 0.25s ease, stroke 0.25s ease;
 }
 
-.footer-social-pill:hover {
-  background: var(--color-celeste, #0092DF);
-  border-color: var(--color-celeste, #0092DF);
+.footer-social-icon-btn:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  border-color: transparent;
   color: #ffffff;
-  transform: translateY(-1.5px);
-  box-shadow: 0 4px 12px rgba(0, 146, 223, 0.25);
+  transform: translateY(-2px) scale(1.08);
+  box-shadow: 0 6px 16px rgba(214, 36, 159, 0.35);
+}
+
+.footer-social-icon-btn:hover svg {
+  stroke: #ffffff;
+  transform: scale(1.05);
+}
+
+.footer-social-icon-btn[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 0.3rem 0.6rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: #0f172a;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 50;
+}
+
+.footer-social-icon-btn[data-tooltip]:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .footer-inline-link {
