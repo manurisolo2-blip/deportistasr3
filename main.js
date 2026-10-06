@@ -281,11 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
               ${atleta.disciplina}
             </span>
           </div>
-          ${atleta.dorsal ? `
-            <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-white/20">
-              #${atleta.dorsal}
-            </span>
-          ` : ''}
         </div>
 
         <!-- Datos Editoriales Limpios y Equilibrados -->
@@ -436,12 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (modalDiscipline) modalDiscipline.textContent = athlete.disciplina || '';
     if (modalDorsal) {
-      if (athlete.dorsal) {
-        modalDorsal.textContent = `#${athlete.dorsal}`;
-        modalDorsal.classList.remove('hidden');
-      } else {
-        modalDorsal.classList.add('hidden');
-      }
+      modalDorsal.classList.add('hidden');
     }
     if (modalClub) modalClub.textContent = athlete.clubOrigen || 'Río Tercero';
     if (modalName) modalName.textContent = athlete.nombre || '';
@@ -575,19 +565,48 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------------------------------------
   if (typeof gsap !== 'undefined' && !prefersReducedMotion) {
 
-    // Scroll Expansion Hero: No hay texto inicial -> Se agranda todo el hero -> Aparece el texto
+    // Scroll Expansion Hero: El texto aparece cuando está chico y se agranda durante la animación
     const heroCard = document.getElementById('heroExpandCard');
     const heroTextLayer = document.getElementById('heroExpandTextLayer');
+    const heroTitle = document.getElementById('heroTitle');
+    const heroTagPill = document.getElementById('heroTagPill');
+    const heroLead = document.getElementById('heroLead');
     const heroExpandHint = document.getElementById('heroExpandInnerBadge');
     const heroBackdrop = document.querySelector('.hero-bg-backdrop');
 
     if (typeof ScrollTrigger !== 'undefined' && heroSection && heroCard && heroTextLayer) {
-      // Estado inicial: sin texto visible
+      const isMobile = window.innerWidth < 768;
+      const initialTitleScale = isMobile ? 0.38 : 0.44;
+      const initialPillScale = isMobile ? 0.72 : 0.78;
+
+      // Estado inicial: Texto visible desde que la tarjeta está chica
       gsap.set(heroTextLayer, {
-        opacity: 0,
-        y: 28,
-        scale: 0.96
+        opacity: 1,
+        y: 0,
+        scale: 1
       });
+
+      if (heroTitle) {
+        gsap.set(heroTitle, {
+          scale: initialTitleScale,
+          transformOrigin: 'center center'
+        });
+      }
+
+      if (heroTagPill) {
+        gsap.set(heroTagPill, {
+          scale: initialPillScale,
+          transformOrigin: 'center center'
+        });
+      }
+
+      // La bajada editorial aparece una vez que la tarjeta se agranda
+      if (heroLead) {
+        gsap.set(heroLead, {
+          opacity: 0,
+          y: 20
+        });
+      }
 
       const heroExpandTl = gsap.timeline({
         scrollTrigger: {
@@ -600,7 +619,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // 1. La tarjeta se agranda desde el centro hasta ocupar todo el hero (0% a 65%)
+      // 1. La tarjeta se agranda desde el centro hasta ocupar todo el hero (0% a 70%)
       heroExpandTl
         .to(heroCard, {
           width: '100vw',
@@ -608,29 +627,40 @@ document.addEventListener('DOMContentLoaded', () => {
           borderRadius: 0,
           boxShadow: 'none',
           ease: 'power2.inOut',
-          duration: 0.65
+          duration: 0.7
         }, 0)
+        // 2. El título se va agrandando proporcionalmente a la tarjeta durante el scroll (0% a 70%)
+        .to(heroTitle, {
+          scale: 1,
+          ease: 'power2.inOut',
+          duration: 0.7
+        }, 0)
+        // 3. El tag pill se agranda a tamaño normal (0% a 70%)
+        .to(heroTagPill, {
+          scale: 1,
+          ease: 'power2.inOut',
+          duration: 0.7
+        }, 0)
+        // 4. El indicador "Deslizá para expandir" se oculta al comenzar el scroll
         .to(heroExpandHint, {
           opacity: 0,
           y: 10,
           ease: 'power1.out',
-          duration: 0.2
+          duration: 0.18
         }, 0)
+        // 5. El fondo difuminado desaparece
         .to(heroBackdrop, {
           opacity: 0,
           ease: 'power1.out',
           duration: 0.45
-        }, 0);
-
-      // 2. Una vez que ocupa todo el hero, aparece el texto (62% a 100%)
-      heroExpandTl
-        .to(heroTextLayer, {
+        }, 0)
+        // 6. El texto de bajada editorial aparece progresivamente una vez agrandado el hero (50% a 85%)
+        .to(heroLead, {
           opacity: 1,
           y: 0,
-          scale: 1,
           ease: 'power2.out',
           duration: 0.35
-        }, 0.62);
+        }, 0.5);
     }
 
     // Efecto Telón (Curtain Parallax): el fondo y contenido suben y cubren limpiamente al Hero

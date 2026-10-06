@@ -782,10 +782,29 @@ body {
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  opacity: 0;
-  transform: translateY(28px) scale(0.96);
+  opacity: 1;
   will-change: opacity, transform;
   padding: 1.5rem;
+}
+
+#heroTextContainer {
+  transform-origin: center center;
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#heroTitle {
+  transform-origin: center center;
+  will-change: transform;
+}
+
+#heroTagPill {
+  transform-origin: center center;
+  will-change: transform;
 }
 
 .hero-expand-text-layer .hero-editorial-title {

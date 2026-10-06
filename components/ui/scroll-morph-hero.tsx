@@ -14,7 +14,6 @@ export interface AthleteData {
   clubOrigen: string;
   logroPrincipal: string;
   categoria?: string;
-  dorsal?: string;
   epoca?: string;
   imagenUrl: string;
   descripcion?: string;
@@ -92,11 +91,6 @@ function FlipCard({
               {athlete.nombre}
             </p>
           </div>
-          {athlete.dorsal && (
-            <span className="absolute top-1 right-1 font-mono text-[7px] font-bold text-white/90 bg-black/60 px-1 py-0.5 rounded">
-              #{athlete.dorsal}
-            </span>
-          )}
         </div>
 
         {/* Back Face */}
@@ -131,7 +125,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Club Sportivo 9 de Julio",
     logroPrincipal: "Bronce Pekín 2008 · Ex NBA · DT Selección",
     categoria: "Olímpico / NBA",
-    dorsal: "09",
     epoca: "2000s - Presente",
     imagenUrl: "assets/prigioni.jpg",
     descripcion: "Iniciado en las formativas de Club Sportivo 9 de Julio. Medallista de Bronce en los Juegos Olímpicos de Pekín 2008 con la Generación Dorada, disputó 4 temporadas en la NBA (Knicks, Rockets, Clippers), multicampeón de ACB/Euroliga y actual DT de la Selección Argentina Mayor.",
@@ -150,7 +143,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Kartódromo Municipal Río 3",
     logroPrincipal: "3x WTCC · Ganador 24h Le Mans · 2x WEC",
     categoria: "Mundial FIA",
-    dorsal: "37",
     epoca: "2000s - Presente",
     imagenUrl: "assets/pechito.jpg",
     descripcion: "Forjado en los kartódromos y circuitos de tierra de Río Tercero. Tricampeón Mundial WTCC (2014, 2015, 2016), bicampeón del Mundial de Resistencia WEC con Toyota Gazoo Racing y triunfador absoluto de las 24 Horas de Le Mans en 2021.",
@@ -169,7 +161,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "C.A. Río Tercero / Sportivo 9 de Julio",
     logroPrincipal: "Plata Atlanta 1996 · 2x Mundialista FIFA",
     categoria: "Olímpico / Mundial",
-    dorsal: "07",
     epoca: "1990s - 2000s",
     imagenUrl: "assets/piojo_lopez.jpg",
     descripcion: "Medallista de plata en Atlanta 1996 y mundialista con la Selección Argentina en Francia 1998 y Corea-Japón 2002. Figura histórica de Valencia CF, Lazio y Racing Club.",
@@ -188,7 +179,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Club Sportivo 9 de Julio",
     logroPrincipal: "N.º 1 del Mundo · 5x Grand Slam · 2x Roland Garros",
     categoria: "Grand Slam / ITF",
-    dorsal: "01",
     epoca: "2010s - Presente",
     imagenUrl: "assets/gustavo_fernandez.jpg",
     descripcion: "Ex número 1 del ranking mundial individual de la ITF, ganador de múltiples torneos de Grand Slam (Australian Open, Roland Garros, Wimbledon) y abanderado paralímpico nacional.",
@@ -207,7 +197,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Club Sportivo 9 de Julio",
     logroPrincipal: "Top 14 WTA · Finalista Roland Garros Dobles",
     categoria: "Grand Slam / WTA",
-    dorsal: "14",
     epoca: "1970s - 1980s",
     imagenUrl: "assets/ivanna_madruga.jpg",
     descripcion: "Pionera absoluta del tenis femenino argentino profesional. Alcanzó el puesto 14 del ranking mundial WTA, disputó finales de dobles en Roland Garros y representó al país en Copa Federación.",
@@ -226,7 +215,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Deporte Comunitario Río 3",
     logroPrincipal: "Olímpico Sydney 2000 · Subcampeón Mundial Ironman",
     categoria: "Olímpico / Ironman",
-    dorsal: "01",
     epoca: "1990s - 2010s",
     imagenUrl: "assets/oscar_galindez.jpg",
     descripcion: "Leyenda viva del triatlón mundial. Representante olímpico en Sydney 2000, subcampeón del mundo Ironman 70.3 y ganador en múltiples ediciones del Ironman de Brasil.",
@@ -245,7 +233,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Club Sportivo 9 de Julio",
     logroPrincipal: "Panamericana · Récords Sudamericanos",
     categoria: "Internacional FINA",
-    dorsal: "04",
     epoca: "2010s - Presente",
     imagenUrl: "assets/andrea_berrino.jpg",
     descripcion: "Representante argentina en Copas del Mundo y Juegos Panamericanos. Poseedora de múltiples plusmarcas argentinas y sudamericanas en 50m, 100m y 200m espalda.",
@@ -264,7 +251,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Gimnasia Río Tercero",
     logroPrincipal: "Múltiple Campeona Sudamericana · Panamericana",
     categoria: "Internacional FIG",
-    dorsal: "10",
     epoca: "1990s - 2000s",
     imagenUrl: "assets/anahi_sosa.jpg",
     descripcion: "Dominadora absoluta de la gimnasia rítmica argentina durante más de una década, con múltiples medallas en Juegos Panamericanos y Sudamericanos.",
@@ -283,7 +269,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Club Deportivo Casino",
     logroPrincipal: "Campeón Panamericano · Primera División",
     categoria: "AFA / Internacional",
-    dorsal: "03",
     epoca: "2010s - Presente",
     imagenUrl: "assets/lucas_suarez.jpg",
     descripcion: "Formado en las canchas de Río Tercero. Campeón en Juegos Panamericanos de Lima 2019 con la Selección Argentina Sub-23 y actual defensor de Primera División (Talleres de Córdoba).",
@@ -302,7 +287,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Tiro Federal Río Tercero",
     logroPrincipal: "Campeón Sudamericano · Récord Nacional",
     categoria: "Federativo / ISSF",
-    dorsal: "12",
     epoca: "2000s - Presente",
     imagenUrl: "assets/nicolas_tagarelli.jpg",
     descripcion: "Tirador de alto rendimiento con destacada participación en torneos sudamericanos y panamericanos en tiro al vuelo y fosa olímpica.",
@@ -321,7 +305,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Centro Deportivo Río Tercero",
     logroPrincipal: "3x Olímpica (Pekín 2008, Londres 2012, Río 2016)",
     categoria: "Olímpica / World Athletics",
-    dorsal: "15",
     epoca: "2000s - 2010s",
     imagenUrl: "assets/rocio_comba.jpg",
     descripcion: "La atleta femenina más laureada de la ciudad. Tres participaciones olímpicas consecutivas y plusmarquista nacional de lanzamiento de disco.",
@@ -340,7 +323,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Club Deportivo Central",
     logroPrincipal: "Campeón Mundial y Panamericano",
     categoria: "Mundial / Federativo",
-    dorsal: "08",
     epoca: "1990s - 2010s",
     imagenUrl: "assets/pato_silva.jpg",
     descripcion: "Campeón del Mundo de bochas, deporte de riquísima tradición en la ciudad con decenas de títulos internacionales.",
@@ -359,7 +341,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Club Sportivo 9 de Julio",
     logroPrincipal: "Liga Nacional de Básquet",
     categoria: "Profesional AdC",
-    dorsal: "11",
     epoca: "2010s - Presente",
     imagenUrl: "assets/franco_ferrato.jpg",
     descripcion: "Formado en las divisiones formativas de Río Tercero, compitió en la Liga Nacional y Torneo Nacional de Ascenso.",
@@ -378,7 +359,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Talleres y Pistas Río 3",
     logroPrincipal: "Campeón Argentino de Turismo",
     categoria: "Nacional CDA",
-    dorsal: "05",
     epoca: "1980s - 1990s",
     imagenUrl: "assets/fernando_cravero.jpg",
     descripcion: "Piloto apasionado y protagonista durante años de los certámenes nacionales de automovilismo de velocidad en pista.",
@@ -397,7 +377,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Velódromo Río Tercero",
     logroPrincipal: "Campeón Argentino de Ciclismo en Ruta",
     categoria: "Federativo UCRA",
-    dorsal: "06",
     epoca: "1970s - 1980s",
     imagenUrl: "assets/pato_rossi.jpg",
     descripcion: "Pedalista histórico que conquistó pruebas clásicas del calendario ciclista argentino de ruta y pista.",
@@ -416,7 +395,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Gimnasio Municipal de Box",
     logroPrincipal: "Campeón Provincial y Nacional",
     categoria: "FAB / Profesional",
-    dorsal: "75",
     epoca: "1980s - 1990s",
     imagenUrl: "assets/walter_maldonado.jpg",
     descripcion: "Púgil valiente y técnico que representó a Río Tercero en los cuadriláteros más exigentes del país.",
@@ -435,7 +413,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Los Zorros Rugby Club",
     logroPrincipal: "Unión Cordobesa de Rugby",
     categoria: "Unión Cordobesa",
-    dorsal: "07",
     epoca: "2000s - 2010s",
     imagenUrl: "assets/gabriel_reinaldi.jpg",
     descripcion: "Capitán y referente de Los Zorros Rugby Club, impulsando la disciplina de la ovalada en la ciudad.",
@@ -454,7 +431,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Club Sportivo 9 de Julio",
     logroPrincipal: "Primera División AFA · Carrera en Europa",
     categoria: "AFA / Internacional",
-    dorsal: "05",
     epoca: "2000s - 2010s",
     imagenUrl: "assets/lucas_rimoldi.jpg",
     descripcion: "Mediocampista con amplia trayectoria en la Primera División de Argentina (Racing Club, Colón, Talleres) y fútbol europeo.",
@@ -473,7 +449,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Centro Deportivo Río Tercero",
     logroPrincipal: "Campeona Nacional y Sudamericana",
     categoria: "World Athletics",
-    dorsal: "19",
     epoca: "2010s - Presente",
     imagenUrl: "assets/noelia_martinez.jpg",
     descripcion: "Velocista destacada en pruebas cortas y postas, con títulos sudamericanos y podios nacionales.",
@@ -492,7 +467,6 @@ const DEFAULT_ATHLETES: AthleteData[] = [
     clubOrigen: "Club Atlético Río Tercero",
     logroPrincipal: "Campeón Panamericano y Mundialista",
     categoria: "FIPV / Mundial",
-    dorsal: "20",
     epoca: "2000s - Presente",
     imagenUrl: "assets/maximiliano_cavallone.jpg",
     descripcion: "Representante argentino en campeonatos mundiales de pelota vasca y frontón, con múltiples consagraciones.",
@@ -818,11 +792,6 @@ export function ScrollMorphHero({
                   <div className="absolute top-3 left-3 bg-slate-900/90 text-white font-mono text-xs font-bold px-2.5 py-1 rounded uppercase tracking-wider">
                     {selectedAthlete.disciplina}
                   </div>
-                  {selectedAthlete.dorsal && (
-                    <span className="absolute bottom-3 right-3 bg-black/75 backdrop-blur-sm text-white font-mono text-xs font-bold px-2.5 py-1 rounded border border-white/20">
-                      #{selectedAthlete.dorsal}
-                    </span>
-                  )}
                 </div>
               </div>
 
