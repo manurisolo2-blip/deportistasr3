@@ -576,26 +576,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (typeof ScrollTrigger !== 'undefined' && heroSection && heroCard && heroTextLayer) {
       const isMobile = window.innerWidth < 768;
-      const initialTitleScale = isMobile ? 0.32 : 0.40;
-      const initialPillScale = isMobile ? 0.65 : 0.72;
+      const targetTitleScale = isMobile ? 2.3 : 3.1;
+      const targetPillScale = isMobile ? 1.25 : 1.45;
 
-      // Estado inicial: Texto visible desde que la tarjeta está chica, perfectamente centrado en el medio
+      // Estado inicial: Texto centrado en el medio de la tarjeta chica con escala base 1.0
       gsap.set(heroTextLayer, {
         opacity: 1,
-        y: 0,
-        scale: 1
+        y: 0
       });
 
       if (heroTitle) {
         gsap.set(heroTitle, {
-          scale: initialTitleScale,
+          scale: 1,
           transformOrigin: 'center center'
         });
       }
 
       if (heroTagPill) {
         gsap.set(heroTagPill, {
-          scale: initialPillScale,
+          scale: 1,
           transformOrigin: 'center center'
         });
       }
@@ -630,15 +629,15 @@ document.addEventListener('DOMContentLoaded', () => {
           ease: 'power2.inOut',
           duration: 0.7
         }, 0)
-        // 2. El título se va agrandando proporcionalmente a la tarjeta durante el scroll (0% a 70%)
+        // 2. El título se agranda progresivamente a medida que la tarjeta se expande (0% a 70%)
         .to(heroTitle, {
-          scale: 1,
+          scale: targetTitleScale,
           ease: 'power2.inOut',
           duration: 0.7
         }, 0)
-        // 3. El tag pill se agranda a tamaño normal (0% a 70%)
+        // 3. El tag pill se agranda suavemente (0% a 70%)
         .to(heroTagPill, {
-          scale: 1,
+          scale: targetPillScale,
           ease: 'power2.inOut',
           duration: 0.7
         }, 0)

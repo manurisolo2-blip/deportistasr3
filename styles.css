@@ -802,11 +802,16 @@ body {
 }
 
 #heroTitle {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif) !important;
+  font-size: clamp(1.4rem, 4.5vw, 1.85rem) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: -0.02em !important;
+  line-height: 0.95 !important;
+  text-align: center !important;
+  margin: 0 auto !important;
   transform-origin: center center;
   will-change: transform;
-  text-align: center;
-  margin: 0 auto;
-  line-height: 0.95;
 }
 
 #heroTitle span {
@@ -815,10 +820,21 @@ body {
 }
 
 #heroTagPill {
-  transform-origin: center center;
-  will-change: transform;
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: clamp(0.58rem, 1.8vw, 0.68rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7dd3fc;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
   white-space: nowrap;
   margin-bottom: 0.65rem;
+  transform-origin: center center;
+  will-change: transform;
 }
 
 #heroLead {
