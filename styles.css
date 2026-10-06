@@ -789,6 +789,7 @@ body {
 }
 
 #heroTextContainer {
+  position: relative;
   transform-origin: center center;
   will-change: transform;
   display: flex;
@@ -820,9 +821,21 @@ body {
 }
 
 #heroLead {
-  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 92%;
+  max-width: 44rem;
+  padding: 0 0.75rem;
+  box-sizing: border-box;
+  margin: 0 !important;
   opacity: 0;
-  margin-top: 1.25rem;
+  visibility: hidden;
+  pointer-events: none;
+  font-size: clamp(0.84rem, 1.15vw, 1.02rem);
+  line-height: 1.6;
+  text-align: center;
+  will-change: opacity, transform;
 }
 
 .hero-expand-text-layer .hero-editorial-title {

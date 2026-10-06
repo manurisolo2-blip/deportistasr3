@@ -574,81 +574,89 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroBackdrop = document.querySelector('.hero-bg-backdrop');
 
     if (typeof ScrollTrigger !== 'undefined' && heroSection && heroCard && heroTextLayer) {
-      const isMobile = window.innerWidth < 768;
-      const targetTitleScale = isMobile ? 2.3 : 3.1;
+      const mm = gsap.matchMedia();
 
-      // Estado inicial: Texto centrado en el medio de la tarjeta chica con escala base 1.0
-      gsap.set(heroTextLayer, {
-        opacity: 1,
-        y: 0
-      });
+      mm.add({
+        isDesktop: "(min-width: 768px)",
+        isMobile: "(max-width: 767px)"
+      }, (context) => {
+        const { isMobile } = context.conditions;
+        const targetTitleScale = isMobile ? 1.95 : 2.75;
+        const titleHeight = (heroTitle && heroTitle.offsetHeight) ? heroTitle.offsetHeight : (isMobile ? 64 : 84);
+        const expansionY = (titleHeight * (targetTitleScale - 1)) / 2;
+        const leadGap = isMobile ? 18 : 28;
+        const leadYTarget = Math.round(expansionY + leadGap);
 
-      if (heroTitle) {
-        gsap.set(heroTitle, {
-          scale: 1,
-          transformOrigin: 'center center'
-        });
-      }
-
-      // La bajada editorial no ocupa espacio al inicio para que el título esté 100% centrado al medio
-      if (heroLead) {
-        gsap.set(heroLead, {
-          display: 'none',
-          opacity: 0,
-          y: 20
-        });
-      }
-
-      const heroExpandTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: heroSection,
-          start: 'top top',
-          end: '+=125%',
-          pin: true,
-          scrub: 0.7,
-          anticipatePin: 1
-        }
-      });
-
-      // 1. La tarjeta se agranda desde el centro hasta ocupar todo el hero (0% a 70%)
-      heroExpandTl
-        .to(heroCard, {
-          width: '100vw',
-          height: '100vh',
-          borderRadius: 0,
-          boxShadow: 'none',
-          ease: 'power2.inOut',
-          duration: 0.7
-        }, 0)
-        // 2. El título se agranda progresivamente a medida que la tarjeta se expande (0% a 70%)
-        .to(heroTitle, {
-          scale: targetTitleScale,
-          ease: 'power2.inOut',
-          duration: 0.7
-        }, 0)
-        // 3. El indicador "Deslizá para expandir" se oculta al comenzar el scroll
-        .to(heroExpandHint, {
-          opacity: 0,
-          y: 10,
-          ease: 'power1.out',
-          duration: 0.18
-        }, 0)
-        // 5. El fondo difuminado desaparece
-        .to(heroBackdrop, {
-          opacity: 0,
-          ease: 'power1.out',
-          duration: 0.45
-        }, 0)
-        // 6. El texto de bajada editorial aparece progresivamente una vez agrandado el hero
-        .set(heroLead, {
-          display: 'block'
-        }, 0.48)
-        .to(heroLead, {
+        // Estado inicial: Texto centrado en el medio de la tarjeta chica con escala base 1.0
+        gsap.set(heroTextLayer, {
           opacity: 1,
-          y: 0,
-          ease: 'power2.out',
-          duration: 0.35
-        }, 0.5);
+          y: 0
+        });
+
+        if (heroTitle) {
+          gsap.set(heroTitle, {
+            scale: 1,
+            transformOrigin: 'center center'
+          });
+        }
+
+        // La bajada editorial no ocupa espacio en el flujo normal para que el título esté 100% centrado al medio
+        if (heroLead) {
+          gsap.set(heroLead, {
+            autoAlpha: 0,
+            xPercent: -50,
+            y: leadYTarget + 14
+          });
+        }
+
+        const heroExpandTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: heroSection,
+            start: 'top top',
+            end: '+=125%',
+            pin: true,
+            scrub: 0.7,
+            anticipatePin: 1
+          }
+        });
+
+        // 1. La tarjeta se agranda desde el centro hasta ocupar todo el hero (0% a 70%)
+        heroExpandTl
+          .to(heroCard, {
+            width: '100vw',
+            height: '100vh',
+            borderRadius: 0,
+            boxShadow: 'none',
+            ease: 'power2.inOut',
+            duration: 0.7
+          }, 0)
+          // 2. El título se agranda progresivamente a medida que la tarjeta se expande (0% a 70%)
+          .to(heroTitle, {
+            scale: targetTitleScale,
+            ease: 'power2.inOut',
+            duration: 0.7
+          }, 0)
+          // 3. El indicador "Deslizá para expandir" se oculta al comenzar el scroll
+          .to(heroExpandHint, {
+            opacity: 0,
+            y: 10,
+            ease: 'power1.out',
+            duration: 0.18
+          }, 0)
+          // 4. El fondo difuminado desaparece
+          .to(heroBackdrop, {
+            opacity: 0,
+            ease: 'power1.out',
+            duration: 0.45
+          }, 0)
+          // 5. El texto de bajada editorial aparece suavemente debajo del título agrandado sin solaparse
+          .to(heroLead, {
+            autoAlpha: 1,
+            y: leadYTarget,
+            ease: 'power2.out',
+            duration: 0.28
+          }, 0.5);
+      });
     }
 
     // Efecto Telón (Curtain Parallax): el fondo y contenido suben y cubren limpiamente al Hero
