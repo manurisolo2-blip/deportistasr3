@@ -804,15 +804,21 @@ body {
 
 #heroTitle {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif) !important;
-  font-size: clamp(1.4rem, 4.5vw, 1.85rem) !important;
+  font-size: clamp(2.4rem, 5.8vw, 4.85rem) !important;
   font-weight: 900 !important;
   text-transform: uppercase !important;
   letter-spacing: -0.02em !important;
-  line-height: 0.95 !important;
+  line-height: 0.92 !important;
   text-align: center !important;
   margin: 0 auto !important;
+  width: max-content;
+  max-width: 100%;
   transform-origin: center center;
   will-change: transform;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  backface-visibility: hidden;
 }
 
 #heroTitle span {
@@ -3685,6 +3691,23 @@ body {
     animation: none !important;
     background-image: none !important;
     -webkit-text-fill-color: currentColor !important;
+  }
+  .hero-expand-card {
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  #heroTitle {
+    transform: none !important;
+  }
+  #heroLead {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-50%) translateY(28px) !important;
+  }
+  .hero-expand-inner-badge {
+    display: none !important;
   }
 }
 

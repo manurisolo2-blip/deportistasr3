@@ -581,13 +581,10 @@ document.addEventListener('DOMContentLoaded', () => {
         isMobile: "(max-width: 767px)"
       }, (context) => {
         const { isMobile } = context.conditions;
-        const targetTitleScale = isMobile ? 1.95 : 2.75;
-        const titleHeight = (heroTitle && heroTitle.offsetHeight) ? heroTitle.offsetHeight : (isMobile ? 64 : 84);
-        const expansionY = (titleHeight * (targetTitleScale - 1)) / 2;
-        const leadGap = isMobile ? 18 : 28;
-        const leadYTarget = Math.round(expansionY + leadGap);
+        const initialTitleScale = isMobile ? 0.58 : 0.36;
+        const leadYTarget = isMobile ? 18 : 28;
 
-        // Estado inicial: Texto centrado en el medio de la tarjeta chica con escala base 1.0
+        // Estado inicial: Texto centrado en el medio de la tarjeta chica
         gsap.set(heroTextLayer, {
           opacity: 1,
           y: 0
@@ -595,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (heroTitle) {
           gsap.set(heroTitle, {
-            scale: 1,
+            scale: initialTitleScale,
             transformOrigin: 'center center'
           });
         }
@@ -630,9 +627,9 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: 'power2.inOut',
             duration: 0.7
           }, 0)
-          // 2. El título se agranda progresivamente a medida que la tarjeta se expande (0% a 70%)
+          // 2. El título se agranda hasta su escala nativa 1.0 (resolución vectorial 100% nítida)
           .to(heroTitle, {
-            scale: targetTitleScale,
+            scale: 1,
             ease: 'power2.inOut',
             duration: 0.7
           }, 0)
