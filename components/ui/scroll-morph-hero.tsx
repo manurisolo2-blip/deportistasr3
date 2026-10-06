@@ -841,16 +841,16 @@ export function ScrollMorphHero({
                       <span className="block font-mono text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">
                         Telemetría de Rendimiento
                       </span>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {selectedAthlete.telemetria.map((item, idx) => (
                           <div
                             key={idx}
-                            className="bg-slate-50 border border-slate-200/80 rounded-md p-2"
+                            className="bg-transparent p-0"
                           >
-                            <span className="block font-mono text-[9px] font-bold text-slate-400 uppercase">
+                            <span className="block font-mono text-[9px] font-bold text-slate-400 uppercase tracking-wider">
                               {item.label}
                             </span>
-                            <span className="text-xs font-bold text-slate-800">
+                            <span className="text-xs font-bold text-slate-800 mt-0.5 block">
                               {item.val}
                             </span>
                           </div>
@@ -861,7 +861,7 @@ export function ScrollMorphHero({
 
                   {/* Legado */}
                   {selectedAthlete.legado && (
-                    <div className="border-t border-slate-100 pt-3">
+                    <div className="border-l-2 border-sky-500 pl-3 py-1 bg-transparent">
                       <p className="text-xs italic text-slate-500">
                         "{selectedAthlete.legado}"
                       </p>
@@ -871,7 +871,7 @@ export function ScrollMorphHero({
 
                 <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
                   {selectedAthlete.epoca && (
-                    <span className="font-mono text-xs font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
+                    <span className="font-mono text-xs font-bold text-slate-500">
                       Época: {selectedAthlete.epoca}
                     </span>
                   )}
