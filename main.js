@@ -569,7 +569,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroCard = document.getElementById('heroExpandCard');
     const heroTextLayer = document.getElementById('heroExpandTextLayer');
     const heroTitle = document.getElementById('heroTitle');
-    const heroTagPill = document.getElementById('heroTagPill');
     const heroLead = document.getElementById('heroLead');
     const heroExpandHint = document.getElementById('heroExpandInnerBadge');
     const heroBackdrop = document.querySelector('.hero-bg-backdrop');
@@ -577,7 +576,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof ScrollTrigger !== 'undefined' && heroSection && heroCard && heroTextLayer) {
       const isMobile = window.innerWidth < 768;
       const targetTitleScale = isMobile ? 2.3 : 3.1;
-      const targetPillScale = isMobile ? 1.25 : 1.45;
 
       // Estado inicial: Texto centrado en el medio de la tarjeta chica con escala base 1.0
       gsap.set(heroTextLayer, {
@@ -587,13 +585,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (heroTitle) {
         gsap.set(heroTitle, {
-          scale: 1,
-          transformOrigin: 'center center'
-        });
-      }
-
-      if (heroTagPill) {
-        gsap.set(heroTagPill, {
           scale: 1,
           transformOrigin: 'center center'
         });
@@ -635,13 +626,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ease: 'power2.inOut',
           duration: 0.7
         }, 0)
-        // 3. El tag pill se agranda suavemente (0% a 70%)
-        .to(heroTagPill, {
-          scale: targetPillScale,
-          ease: 'power2.inOut',
-          duration: 0.7
-        }, 0)
-        // 4. El indicador "Deslizá para expandir" se oculta al comenzar el scroll
+        // 3. El indicador "Deslizá para expandir" se oculta al comenzar el scroll
         .to(heroExpandHint, {
           opacity: 0,
           y: 10,
