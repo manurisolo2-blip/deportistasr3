@@ -814,11 +814,11 @@ export function ScrollMorphHero({
                   )}
 
                   {/* Consagración Cumbre */}
-                  <div className="bg-sky-50 border border-sky-200/80 rounded-lg p-3 mb-4">
-                    <span className="block font-mono text-[10px] font-bold text-sky-800 uppercase tracking-wider">
+                  <div className="relative bg-white rounded-xl p-3.5 mb-4 border-[2.5px] border-transparent [background:linear-gradient(#ffffff,#ffffff)_padding-box,linear-gradient(90deg,#0092df_0%,#41a934_100%)_border-box] shadow-[0_10px_25px_-8px_rgba(0,146,223,0.12),0_4px_12px_-2px_rgba(65,169,52,0.08)]">
+                    <span className="block font-mono text-[10px] font-bold text-sky-700 uppercase tracking-wider">
                       Consagración Cumbre
                     </span>
-                    <p className="text-sm font-bold text-slate-900 mt-0.5">
+                    <p className="text-base font-extrabold text-slate-900 mt-0.5 leading-snug">
                       {selectedAthlete.logroPrincipal}
                     </p>
                   </div>

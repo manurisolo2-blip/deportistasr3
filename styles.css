@@ -3428,28 +3428,35 @@ body {
 }
 
 .athlete-modal-achievement-box {
-  background: #f0f9ff;
-  border: 1px solid #bae6fd;
-  border-radius: 0.625rem;
-  padding: 0.85rem 1rem;
+  position: relative;
+  background-color: #FFFFFF;
+  border-radius: 14px;
+  border: 2.5px solid transparent;
+  background: linear-gradient(#FFFFFF, #FFFFFF) padding-box,
+              linear-gradient(90deg, var(--color-celeste, #0092DF) 0%, var(--color-verde-acento, #41A934) 100%) border-box;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 10px 25px -8px rgba(0, 146, 223, 0.12), 0 4px 12px -2px rgba(65, 169, 52, 0.08);
+  margin-bottom: 0.5rem;
 }
 
 .athlete-modal-achievement-box .achievement-kicker {
   display: block;
-  color: #0369a1;
+  color: var(--color-celeste-dark, #0077B6);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .athlete-modal-achievement-box .achievement-title {
-  color: #0c4a6e;
-  font-size: 0.95rem;
+  color: #0F172A;
+  font-family: var(--font-display, var(--font-sans));
+  font-size: 1.05rem;
   font-weight: 800;
-  margin: 0.25rem 0 0 0;
+  margin: 0.35rem 0 0 0;
   line-height: 1.35;
+  letter-spacing: -0.01em;
 }
 
 .athlete-modal-bio-box .box-kicker,
