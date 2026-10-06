@@ -784,7 +784,8 @@ body {
   pointer-events: none;
   opacity: 1;
   will-change: opacity, transform;
-  padding: 1.5rem;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
 }
 
 #heroTextContainer {
@@ -795,16 +796,35 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
+  max-width: 56rem;
+  margin: 0 auto;
+  text-align: center;
 }
 
 #heroTitle {
   transform-origin: center center;
   will-change: transform;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 0.95;
+}
+
+#heroTitle span {
+  display: block;
+  white-space: nowrap;
 }
 
 #heroTagPill {
   transform-origin: center center;
   will-change: transform;
+  white-space: nowrap;
+  margin-bottom: 0.65rem;
+}
+
+#heroLead {
+  display: none;
+  opacity: 0;
+  margin-top: 1.25rem;
 }
 
 .hero-expand-text-layer .hero-editorial-title {

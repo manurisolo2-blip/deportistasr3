@@ -576,10 +576,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (typeof ScrollTrigger !== 'undefined' && heroSection && heroCard && heroTextLayer) {
       const isMobile = window.innerWidth < 768;
-      const initialTitleScale = isMobile ? 0.38 : 0.44;
-      const initialPillScale = isMobile ? 0.72 : 0.78;
+      const initialTitleScale = isMobile ? 0.32 : 0.40;
+      const initialPillScale = isMobile ? 0.65 : 0.72;
 
-      // Estado inicial: Texto visible desde que la tarjeta está chica
+      // Estado inicial: Texto visible desde que la tarjeta está chica, perfectamente centrado en el medio
       gsap.set(heroTextLayer, {
         opacity: 1,
         y: 0,
@@ -600,9 +600,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      // La bajada editorial aparece una vez que la tarjeta se agranda
+      // La bajada editorial no ocupa espacio al inicio para que el título esté 100% centrado al medio
       if (heroLead) {
         gsap.set(heroLead, {
+          display: 'none',
           opacity: 0,
           y: 20
         });
@@ -654,7 +655,10 @@ document.addEventListener('DOMContentLoaded', () => {
           ease: 'power1.out',
           duration: 0.45
         }, 0)
-        // 6. El texto de bajada editorial aparece progresivamente una vez agrandado el hero (50% a 85%)
+        // 6. El texto de bajada editorial aparece progresivamente una vez agrandado el hero
+        .set(heroLead, {
+          display: 'block'
+        }, 0.48)
         .to(heroLead, {
           opacity: 1,
           y: 0,
