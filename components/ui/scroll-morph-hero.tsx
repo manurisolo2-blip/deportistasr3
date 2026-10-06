@@ -814,7 +814,7 @@ export function ScrollMorphHero({
                   )}
 
                   {/* Consagración Cumbre */}
-                  <div className="relative bg-white rounded-xl p-3.5 mb-4 border-[2.5px] border-transparent [background:linear-gradient(#ffffff,#ffffff)_padding-box,linear-gradient(90deg,#0092df_0%,#41a934_100%)_border-box] shadow-[0_10px_25px_-8px_rgba(0,146,223,0.12),0_4px_12px_-2px_rgba(65,169,52,0.08)]">
+                  <div className="relative bg-white rounded-2xl p-4 mb-4 border-[3.5px] border-transparent [background:linear-gradient(#ffffff,#ffffff)_padding-box,linear-gradient(90deg,#0092df_0%,#41a934_100%)_border-box] shadow-[0_12px_30px_-8px_rgba(0,146,223,0.14),0_4px_14px_-2px_rgba(65,169,52,0.08)]">
                     <span className="block font-mono text-[10px] font-bold text-sky-700 uppercase tracking-wider">
                       Consagración Cumbre
                     </span>
@@ -871,7 +871,7 @@ export function ScrollMorphHero({
 
                 <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
                   {selectedAthlete.epoca && (
-                    <span className="font-mono text-xs font-bold text-slate-500">
+                    <span className="bg-slate-900 text-white font-mono text-xs font-bold px-2.5 py-1 rounded tracking-wide">
                       Época: {selectedAthlete.epoca}
                     </span>
                   )}

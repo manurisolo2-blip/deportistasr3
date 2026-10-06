@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="flex items-center gap-2">
               ${atleta.epoca ? `
-                <span class="font-mono text-[10px] font-bold text-slate-500">
+                <span class="bg-slate-900 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded tracking-wide">
                   ${atleta.epoca}
                 </span>
               ` : ''}
