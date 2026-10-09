@@ -1424,13 +1424,14 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  grid-auto-rows: 1fr;
+  align-items: stretch;
 }
 
 @media (min-width: 640px) {
   .trading-cards-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.75rem;
+    align-items: stretch;
   }
 }
 
@@ -1438,6 +1439,7 @@ body {
   .trading-cards-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.75rem;
+    align-items: stretch;
   }
 }
 
@@ -1445,10 +1447,11 @@ body {
   .trading-cards-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    align-items: stretch;
   }
 }
 
-/* Componente Trading Card */
+/* Componente Trading Card: Misma altura uniforme en toda la colección */
 .trading-card {
   position: relative;
   background: var(--bg-surface);
@@ -1458,7 +1461,7 @@ body {
   box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  height: 100%;
   transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color 0.25s ease;
 }
 
@@ -1485,6 +1488,7 @@ body {
   background: #F1F5F9;
   border-bottom: 1px solid var(--border-card);
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .card-athlete-photo {
@@ -1494,33 +1498,67 @@ body {
   object-fit: cover;
   object-position: center 15%;
   image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
   filter: grayscale(100%) contrast(110%);
   transition: filter 300ms ease, transform 300ms ease;
 }
 
-/* Encuadres personalizados por disciplina y postura */
-.card-athlete-photo[src*="andrea_berrino"] {
-  object-position: center center !important;
-}
-.card-athlete-photo[src*="comba"] {
-  object-position: center 25% !important;
-}
-.card-athlete-photo[src*="pechito"] {
-  object-position: center 10% !important;
-}
+/* =========================================================================
+   ENCUADRES FOTOGRÁFICOS PERSONALIZADOS POR DEPORTISTA (10 DEPORTISTAS)
+   Alineación de encuadre óptimo para rostros, posturas y acción deportiva
+   ========================================================================= */
+
+/* 1. Pablo Prigioni - Retrato frontal mirando a cámara */
 .card-athlete-photo[src*="prigioni"] {
-  object-position: center 12% !important;
+  object-position: center 15% !important;
 }
 
-/* Biografía deportiva enriquecida */
-.card-athlete-bio {
-  font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 0.82rem;
-  color: #475569;
-  line-height: 1.5;
-  margin-top: 0.25rem;
-  margin-bottom: 0.75rem;
+/* 2. José María «Pechito» López - Gorra Citroën / WTCC */
+.card-athlete-photo[src*="pechito"] {
+  object-position: center 8% !important;
+}
+
+/* 3. Claudio «Piojo» López - Festejo camiseta Valencia */
+.card-athlete-photo[src*="piojo"] {
+  object-position: 48% 12% !important;
+}
+
+/* 4. Gustavo Fernández - Tenis adaptado en silla de ruedas */
+.card-athlete-photo[src*="gustavo"] {
+  object-position: center 18% !important;
+}
+
+/* 5. Oscar Galíndez - Cruce de meta Ironman Mar del Plata */
+.card-athlete-photo[src*="oscar_galindez"],
+.card-athlete-photo[src*="galindez"] {
+  object-position: center 4% !important;
+}
+
+/* 6. Rocío Comba - Celebración con bandera argentina */
+.card-athlete-photo[src*="comba"] {
+  object-position: 45% 15% !important;
+}
+
+/* 7. Ivanna Madruga - Acción tenística con vincha */
+.card-athlete-photo[src*="ivanna"] {
+  object-position: center 6% !important;
+}
+
+/* 8. Catalina Primo - Retrato con brazos cruzados */
+.card-athlete-photo[src*="catalina_primo"],
+.card-athlete-photo[src*="primo"] {
+  object-position: center 8% !important;
+}
+
+/* 9. Andrea Berrino - Partida espalda natación piscina */
+.card-athlete-photo[src*="andrea_berrino"],
+.card-athlete-photo[src*="berrino"] {
+  object-position: 42% 46% !important;
+}
+
+/* 10. Ivano Falchetti - Postura de tiro al blanco con rifle */
+.card-athlete-photo[src*="ivano_falchetti"],
+.card-athlete-photo[src*="falchetti"] {
+  object-position: 36% 14% !important;
 }
 
 .trading-card:hover .card-athlete-photo,
@@ -1917,26 +1955,50 @@ body {
   transform: translateX(3px);
 }
 
-/* Cuerpo de la Tarjeta */
+/* Cuerpo de la Tarjeta con Altura Modular y Alineación Perfecta */
 .card-content-body {
   padding: 1.25rem 1.35rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-grow: 1;
+  flex: 1 1 auto;
   position: relative;
   z-index: 2;
+  box-sizing: border-box;
+}
+
+.card-club-formador-box {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-celeste-dark, #0077B6);
+  height: 1.25rem;
+  line-height: 1.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.25rem;
+  width: 100%;
 }
 
 .card-name-title {
-  font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--text-primary);
-  margin-top: 0.2rem;
-  margin-bottom: 0.15rem;
+  min-height: 3.25rem;
+  max-height: 3.25rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 0.15rem;
+  margin-bottom: 0.25rem;
 }
 
 /* Especialidad y Puesto */
@@ -1946,21 +2008,69 @@ body {
   font-weight: 700;
   color: var(--color-celeste-dark, #0077B6);
   letter-spacing: 0.02em;
+  height: 1.25rem;
+  line-height: 1.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.1rem;
   margin-bottom: 0.65rem;
 }
 
-/* Identidad Comunitaria (Club Formador) */
-.card-club-formador-box {
-  display: inline-flex;
+/* Biografía deportiva normalizada a 4 líneas exactas */
+.card-athlete-bio {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.8125rem;
+  color: #475569;
+  line-height: 1.45;
+  height: 4.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+/* Fila Inferior de Telemetría alineada */
+.card-telemetry-row {
+  padding-top: 0.75rem;
+  border-top: 1px solid #F1F5F9;
+  display: flex;
   align-items: center;
-  gap: 0.45rem;
+  justify-content: space-between;
+  min-height: 3.5rem;
+  flex-shrink: 0;
+}
+
+.telemetry-info {
+  flex: 1;
+  min-width: 0;
+  padding-right: 0.5rem;
+}
+
+.telemetry-label {
+  display: block;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 9px;
   font-weight: 700;
-  color: var(--color-celeste-dark, #0077B6);
-  margin-bottom: 0.4rem;
-  width: fit-content;
-  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748B;
+  margin-bottom: 0.15rem;
+}
+
+.telemetry-val {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.25;
+  height: 1.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .club-badge-icon {
@@ -2946,26 +3056,42 @@ body {
 
   .card-content-body {
     padding: 1.15rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 auto;
   }
 
   .card-name-title {
-    font-size: 1.45rem;
+    font-size: 1.25rem;
     font-weight: 800;
     letter-spacing: -0.02em;
-    line-height: 1.15;
-    margin-bottom: 0.45rem;
+    line-height: 1.2;
+    min-height: 3rem;
+    max-height: 3rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.25rem;
   }
 
   .card-club-formador-box {
     font-size: 0.7rem;
-    padding: 0.25rem 0.5rem;
-    margin-bottom: 0.75rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    margin-bottom: 0.25rem;
   }
 
-  .card-bio-paragraph {
-    font-size: 0.84rem;
-    line-height: 1.5;
-    margin-bottom: 0.9rem;
+  .card-athlete-bio {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    height: 4.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
   }
 
   .card-telemetry-grid {

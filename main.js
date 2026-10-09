@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <img
             src="${atleta.imagenUrl}"
             alt="${atleta.nombre}"
-            class="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
+            class="w-full h-full object-cover filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 card-athlete-photo"
             loading="lazy"
           />
           <!-- Badge de Disciplina Deportiva -->
