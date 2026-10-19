@@ -699,7 +699,8 @@ document.addEventListener('DOMContentLoaded', () => {
             y: 28,
             stagger: 0.08,
             duration: 0.65,
-            ease: 'power2.out'
+            ease: 'power2.out',
+            clearProps: 'transform'
           });
         }
       });
