@@ -32,6 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
         lenis.raf(time * 1000);
       });
       gsap.ticker.lagSmoothing(0);
+
+      // Sincronización bidireccional: cuando ScrollTrigger crea/actualiza pines o dimensiones
+      ScrollTrigger.addEventListener('refresh', () => {
+        if (lenis) lenis.resize();
+      });
+    }
+
+    // Observador continuo de dimensiones del documento para que el límite de Lenis nunca quede desfasado
+    if (typeof ResizeObserver !== 'undefined') {
+      const resizeObserver = new ResizeObserver(() => {
+        if (lenis) lenis.resize();
+      });
+      resizeObserver.observe(document.body);
     }
   }
 
@@ -337,6 +350,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (typeof ScrollTrigger !== 'undefined') {
       ScrollTrigger.refresh();
+    }
+    if (lenis) {
+      lenis.resize();
     }
   }
 
@@ -1132,5 +1148,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // Sincronización inicial completada con renderCards()
+  // Sincronización inicial completa tras construir pines y tarjetas
+  if (typeof ScrollTrigger !== 'undefined') {
+    ScrollTrigger.refresh();
+  }
+  if (lenis) {
+    lenis.resize();
+  }
+
+  // Sincronización de seguridad al terminar la carga de imágenes, fuentes web y recursos pesados
+  window.addEventListener('load', () => {
+    if (typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.refresh();
+    }
+    if (lenis) {
+      lenis.resize();
+    }
+    updateHeaderAndScroll();
+  });
 });

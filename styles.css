@@ -97,6 +97,23 @@ body {
   line-height: 1.6;
 }
 
+/* Soporte y sincronización nativa de Lenis Smooth Scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 ::selection {
   background-color: var(--color-celeste-light, #E0F2FE);
   color: var(--color-celeste-dark, #0077B6);
@@ -2600,7 +2617,7 @@ body {
    12. CIERRE CÍVICO & FOOTER EDITORIAL EN MODO CLARO
    -------------------------------------------------------------------------- */
 .section-civic-closing {
-  padding: clamp(5rem, 8vw, 7rem) 0 3rem;
+  padding: clamp(5rem, 8vw, 7rem) 0 clamp(5rem, 8.5vw, 7.5rem);
   background: var(--bg-canvas, #FAF9F5);
   border-top: none;
 }
@@ -2636,6 +2653,7 @@ body {
 .civic-editorial-footer {
   border-top: none;
   padding-top: 2.5rem;
+  padding-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -3200,7 +3218,7 @@ body {
 
   /* Cierre Cívico & Footer */
   .section-civic-closing {
-    padding: 3.25rem 0 2rem;
+    padding: 3.5rem 0 clamp(4rem, 10vw, 6rem);
   }
 
   .closing-banner-box {
