@@ -311,11 +311,9 @@ document.addEventListener('DOMContentLoaded', () => {
             </h3>
 
             <!-- Especialidad / Puesto -->
-            ${atleta.especialidad ? `
-              <div class="card-athlete-specialty font-mono text-xs font-bold text-sky-700 mt-0.5 mb-2.5">
-                ${atleta.especialidad}
-              </div>
-            ` : ''}
+            <div class="card-athlete-specialty font-mono text-xs font-bold text-sky-700 mt-0.5 mb-2.5">
+              ${atleta.especialidad || '&nbsp;'}
+            </div>
 
             <!-- Biografía Deportiva Concisa -->
             <p class="card-athlete-bio text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
@@ -704,19 +702,17 @@ document.addEventListener('DOMContentLoaded', () => {
       delay: 0.25
     });
 
-    // Entrada de Trading Cards al entrar al viewport
+    // Entrada de Trading Cards al entrar al viewport (Fade suave y perfectamente alineado)
     if (cardsGrid) {
       ScrollTrigger.batch('.trading-card', {
-        start: 'top 88%',
+        start: 'top 92%',
         once: true,
         onEnter: (batch) => {
           gsap.from(batch, {
             opacity: 0,
-            y: 28,
-            stagger: 0.08,
-            duration: 0.65,
+            duration: 0.45,
             ease: 'power2.out',
-            clearProps: 'transform'
+            clearProps: 'all'
           });
         }
       });
