@@ -777,91 +777,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ------------------------------------------------------------------------
   // ------------------------------------------------------------------------
-  // Espacio Audiovisual: Spot Oficial Municipalidad (Scroll-to-Scale)
-  // Comportamiento: Inicia chiquito -> Scroll agranda un poco -> Se frena -> Se puede controlar y maximizar
-  // ------------------------------------------------------------------------
-  const videoScrollTrack = document.getElementById('videoScrollTrack');
-  const videoSpotContainer = document.getElementById('videoSpotContainer');
-  const videoIntroHeader = document.getElementById('videoIntroHeader');
-  const spotVideo = document.getElementById('spotVideoOfficial');
-  const videoFloatingControls = document.getElementById('videoFloatingControls');
-  const videoPlayToggle = document.getElementById('videoPlayToggle');
-  const videoProgressBar = document.getElementById('videoProgressBar');
-  const videoTimeDisplay = document.getElementById('videoTimeDisplay');
-  const videoSoundToggle = document.getElementById('videoSoundToggle');
-  const videoMaximizeBtn = document.getElementById('videoMaximizeBtn');
-
-  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReducedMotion && videoScrollTrack && videoSpotContainer) {
-    const isMobile = window.innerWidth < 768;
-    // 1. El video aparece CHIQUITO en la pantalla
-    const startScale = isMobile ? 0.46 : 0.35;
-
-    gsap.set(videoSpotContainer, {
-      scale: startScale,
-      transformOrigin: 'center center'
-    });
-
-    if (videoFloatingControls) {
-      gsap.set(videoFloatingControls, {
-        opacity: 0,
-        y: 10,
-        pointerEvents: 'none'
-      });
-      videoFloatingControls.classList.remove('is-revealed');
-    }
-
-    const videoTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: videoScrollTrack,
-        start: 'top top',
-        end: '+=65%',
-        pin: true,
-        scrub: 0.65,
-        anticipatePin: 1,
-        onUpdate: (self) => {
-          // Cuando el video termina de agrandarse y SE FRENA (progreso >= 52%),
-          // se habilitan los controles y la barra de reproducción
-          if (self.progress >= 0.52) {
-            if (videoFloatingControls) videoFloatingControls.classList.add('is-revealed');
-          } else {
-            if (videoFloatingControls) videoFloatingControls.classList.remove('is-revealed');
-          }
-        }
-      }
-    });
-
-    // Fase A: Al hacer scroll, el video se agranda un poco (de startScale a 1.0)
-    videoTl
-      .to(videoSpotContainer, {
-        scale: 1,
-        ease: 'power1.out',
-        duration: 0.52
-      }, 0);
-
-    if (videoIntroHeader) {
-      videoTl.to(videoIntroHeader, {
-        opacity: 0.1,
-        y: -12,
-        duration: 0.35
-      }, 0);
-    }
-
-    videoTl
-      // Fase B: SE FRENA. Al frenarse (52% del recorrido), se revela la barra de controles
-      .to(videoFloatingControls, {
-        opacity: 1,
-        y: 0,
-        pointerEvents: 'auto',
-        duration: 0.12
-      }, 0.52)
-      // El video permanece frenado y visible durante el resto del pin
-      .to({}, { duration: 0.48 }, 0.52);
-  } else if (videoFloatingControls) {
-    videoFloatingControls.classList.add('is-revealed');
-  }
-
-  // ------------------------------------------------------------------------
-  // Reproductor: Formato de Tiempo (mm:ss)
+  // Espacio Audiovisual: Reproductor Scroll-to-Scale con Liquid Glass Controls
+  // Modular para Múltiples Videos (Spot Oficial y Entrevista ITR3)
   // ------------------------------------------------------------------------
   function formatVideoTime(secs) {
     if (!secs || isNaN(secs)) return '0:00';
@@ -870,277 +787,335 @@ document.addEventListener('DOMContentLoaded', () => {
     return `${m}:${s < 10 ? '0' : ''}${s}`;
   }
 
-  // ------------------------------------------------------------------------
-  // Control de Play / Pausa (Botón simplificado y clic en video)
-  // ------------------------------------------------------------------------
-  let isVideoInView = false;
-  let userManuallyPaused = false;
+  function initScrollVideoPlayer({
+    trackId,
+    containerId,
+    videoId,
+    controlsId,
+    playToggleId,
+    progressBarId,
+    soundToggleId,
+    maximizeBtnId
+  }) {
+    const trackEl = document.getElementById(trackId);
+    const containerEl = document.getElementById(containerId);
+    const videoEl = document.getElementById(videoId);
+    const controlsEl = document.getElementById(controlsId);
+    const playToggleEl = document.getElementById(playToggleId);
+    const progressBarEl = document.getElementById(progressBarId);
+    const soundToggleEl = document.getElementById(soundToggleId);
+    const maximizeBtnEl = document.getElementById(maximizeBtnId);
 
-  function updatePlayPauseUI(isPaused) {
-    if (!videoPlayToggle) return;
-    const playIconPlay = videoPlayToggle.querySelector('.play-icon-play');
-    const playIconPause = videoPlayToggle.querySelector('.play-icon-pause');
-    if (isPaused) {
-      if (playIconPlay) playIconPlay.classList.remove('hidden');
-      if (playIconPause) playIconPause.classList.add('hidden');
-      videoPlayToggle.setAttribute('title', 'Reanudar video');
-      videoPlayToggle.setAttribute('aria-label', 'Reanudar video');
-    } else {
-      if (playIconPlay) playIconPlay.classList.add('hidden');
-      if (playIconPause) playIconPause.classList.remove('hidden');
-      videoPlayToggle.setAttribute('title', 'Pausar video');
-      videoPlayToggle.setAttribute('aria-label', 'Pausar video');
-    }
-  }
+    if (!trackEl || !containerEl || !videoEl) return;
 
-  function handleUserTogglePlay() {
-    if (!spotVideo) return;
-    if (spotVideo.paused) {
-      userManuallyPaused = false;
-      spotVideo.play().catch(() => {});
-    } else {
-      userManuallyPaused = true;
-      spotVideo.pause();
-    }
-  }
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReducedMotion) {
+      const isMobile = window.innerWidth < 768;
+      const startScale = isMobile ? 0.46 : 0.35;
 
-  if (spotVideo && videoPlayToggle) {
-    videoPlayToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      handleUserTogglePlay();
-    });
+      gsap.set(containerEl, {
+        scale: startScale,
+        transformOrigin: 'center center'
+      });
 
-    spotVideo.addEventListener('play', () => updatePlayPauseUI(false));
-    spotVideo.addEventListener('pause', () => updatePlayPauseUI(true));
-  }
+      if (controlsEl) {
+        gsap.set(controlsEl, {
+          opacity: 0,
+          y: 10,
+          pointerEvents: 'none'
+        });
+        controlsEl.classList.remove('is-revealed');
+      }
 
-  // Clic directo sobre el video para reproducir/pausar
-  if (spotVideo) {
-    spotVideo.addEventListener('click', (e) => {
-      e.stopPropagation();
-      handleUserTogglePlay();
-    });
-  }
-
-  // ------------------------------------------------------------------------
-  // Pausar automáticamente cuando NO esté en pantalla (IntersectionObserver)
-  // ------------------------------------------------------------------------
-  if (typeof IntersectionObserver !== 'undefined' && spotVideo) {
-    // Si al cargar la página el video no está dentro de la pantalla, pausarlo
-    const rect = (videoSpotContainer || spotVideo).getBoundingClientRect();
-    const isInitiallyVisible = rect.top < window.innerHeight && rect.bottom > 0;
-    if (!isInitiallyVisible && !spotVideo.paused) {
-      spotVideo.pause();
-    }
-
-    const videoObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          isVideoInView = entry.isIntersecting;
-          if (!entry.isIntersecting) {
-            // Fuera de la pantalla: pausar el video
-            if (!spotVideo.paused) {
-              spotVideo.pause();
-            }
-          } else {
-            // En pantalla: reanudar si el usuario no lo pausó manualmente
-            if (!userManuallyPaused && spotVideo.paused) {
-              spotVideo.play().catch(() => {});
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: trackEl,
+          start: 'top top',
+          end: '+=65%',
+          pin: true,
+          scrub: 0.65,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            if (self.progress >= 0.52) {
+              if (controlsEl) controlsEl.classList.add('is-revealed');
+            } else {
+              if (controlsEl) controlsEl.classList.remove('is-revealed');
             }
           }
-        });
-      },
-      {
-        threshold: 0.15
-      }
-    );
+        }
+      });
 
-    videoObserver.observe(videoSpotContainer || spotVideo);
-  }
+      tl.to(containerEl, {
+        scale: 1,
+        ease: 'power1.out',
+        duration: 0.52
+      }, 0);
 
-  // Pausar también si la pestaña pasa a segundo plano
-  document.addEventListener('visibilitychange', () => {
-    if (!spotVideo) return;
-    if (document.hidden) {
-      if (!spotVideo.paused) {
-        spotVideo.pause();
+      if (controlsEl) {
+        tl.to(controlsEl, {
+          opacity: 1,
+          y: 0,
+          pointerEvents: 'auto',
+          duration: 0.12
+        }, 0.52)
+        .to({}, { duration: 0.48 }, 0.52);
       }
-    } else {
-      if (isVideoInView && !userManuallyPaused && spotVideo.paused) {
-        spotVideo.play().catch(() => {});
-      }
+    } else if (controlsEl) {
+      controlsEl.classList.add('is-revealed');
     }
-  });
 
-  // ------------------------------------------------------------------------
-  // Barra interactiva para adelantar y atrasar (Seek Scrubber)
-  // ------------------------------------------------------------------------
-  let isSeeking = false;
+    let isVideoInView = false;
+    let userManuallyPaused = false;
 
-  function updateProgressBar() {
-    if (!spotVideo || isSeeking || !videoProgressBar) return;
-    const duration = spotVideo.duration || 0;
-    const current = spotVideo.currentTime || 0;
-    if (duration > 0) {
-      const pct = (current / duration) * 100;
-      videoProgressBar.value = pct;
-      videoProgressBar.style.background = `linear-gradient(to right, #ffffff ${pct}%, rgba(255,255,255,0.25) ${pct}%)`;
-    }
-    if (videoTimeDisplay) {
-      videoTimeDisplay.textContent = `${formatVideoTime(current)} / ${formatVideoTime(duration)}`;
-    }
-  }
-
-  if (spotVideo && videoProgressBar) {
-    spotVideo.addEventListener('timeupdate', updateProgressBar);
-    spotVideo.addEventListener('loadedmetadata', updateProgressBar);
-
-    // Al arrastrar o hacer clic para adelantar/atrasar
-    videoProgressBar.addEventListener('input', () => {
-      isSeeking = true;
-      const duration = spotVideo.duration || 0;
-      const pct = parseFloat(videoProgressBar.value);
-      const targetTime = (pct / 100) * duration;
-      videoProgressBar.style.background = `linear-gradient(to right, #ffffff ${pct}%, rgba(255,255,255,0.25) ${pct}%)`;
-      if (videoTimeDisplay) {
-        videoTimeDisplay.textContent = `${formatVideoTime(targetTime)} / ${formatVideoTime(duration)}`;
-      }
-    });
-
-    videoProgressBar.addEventListener('change', () => {
-      const duration = spotVideo.duration || 0;
-      const pct = parseFloat(videoProgressBar.value);
-      spotVideo.currentTime = (pct / 100) * duration;
-      isSeeking = false;
-      if (isVideoInView && !userManuallyPaused && spotVideo.paused) {
-        spotVideo.play().catch(() => {});
-      }
-    });
-  }
-
-  // ------------------------------------------------------------------------
-  // Control de Sonido Interactivo (Botón simplificado)
-  // ------------------------------------------------------------------------
-  if (spotVideo && videoSoundToggle) {
-    const soundIconOff = videoSoundToggle.querySelector('.sound-icon-off');
-    const soundIconOn = videoSoundToggle.querySelector('.sound-icon-on');
-
-    videoSoundToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      spotVideo.muted = !spotVideo.muted;
-      if (!spotVideo.muted) {
-        if (spotVideo.paused) spotVideo.play().catch(() => {});
-        if (soundIconOff) soundIconOff.classList.add('hidden');
-        if (soundIconOn) soundIconOn.classList.remove('hidden');
-        videoSoundToggle.setAttribute('title', 'Silenciar sonido');
-        videoSoundToggle.setAttribute('aria-label', 'Silenciar sonido');
+    function updatePlayPauseUI(isPaused) {
+      if (!playToggleEl) return;
+      const playIcon = playToggleEl.querySelector('.play-icon-play');
+      const pauseIcon = playToggleEl.querySelector('.play-icon-pause');
+      if (isPaused) {
+        if (playIcon) playIcon.classList.remove('hidden');
+        if (pauseIcon) pauseIcon.classList.add('hidden');
+        playToggleEl.setAttribute('title', 'Reanudar video');
+        playToggleEl.setAttribute('aria-label', 'Reanudar video');
       } else {
-        if (soundIconOff) soundIconOff.classList.remove('hidden');
-        if (soundIconOn) soundIconOn.classList.add('hidden');
-        videoSoundToggle.setAttribute('title', 'Activar sonido');
-        videoSoundToggle.setAttribute('aria-label', 'Activar sonido');
+        if (playIcon) playIcon.classList.add('hidden');
+        if (pauseIcon) pauseIcon.classList.remove('hidden');
+        playToggleEl.setAttribute('title', 'Pausar video');
+        playToggleEl.setAttribute('aria-label', 'Pausar video');
       }
-    });
-  }
-
-  // ------------------------------------------------------------------------
-  // Control de Maximizar / Pantalla Completa (Botón simplificado)
-  // ------------------------------------------------------------------------
-  function updateMaximizeUI(isMaximized) {
-    if (!videoMaximizeBtn) return;
-    const maxIconExpand = videoMaximizeBtn.querySelector('.max-icon-expand');
-    const maxIconCompress = videoMaximizeBtn.querySelector('.max-icon-compress');
-
-    if (isMaximized) {
-      if (maxIconExpand) maxIconExpand.classList.add('hidden');
-      if (maxIconCompress) maxIconCompress.classList.remove('hidden');
-      videoMaximizeBtn.setAttribute('title', 'Restaurar pantalla (Esc)');
-      videoMaximizeBtn.setAttribute('aria-label', 'Restaurar pantalla');
-    } else {
-      if (maxIconExpand) maxIconExpand.classList.remove('hidden');
-      if (maxIconCompress) maxIconCompress.classList.add('hidden');
-      videoMaximizeBtn.setAttribute('title', 'Pantalla completa');
-      videoMaximizeBtn.setAttribute('aria-label', 'Pantalla completa');
     }
-  }
 
-  function toggleMaximize() {
-    if (!videoSpotContainer) return;
-
-    const isCurrentlyFullscreen = 
-      document.fullscreenElement === videoSpotContainer || 
-      document.webkitFullscreenElement === videoSpotContainer ||
-      videoSpotContainer.classList.contains('is-cinema-maximized');
-
-    if (!isCurrentlyFullscreen) {
-      if (videoSpotContainer.requestFullscreen) {
-        videoSpotContainer.requestFullscreen().catch(() => {
-          videoSpotContainer.classList.add('is-cinema-maximized');
-          updateMaximizeUI(true);
-        });
-      } else if (videoSpotContainer.webkitRequestFullscreen) {
-        videoSpotContainer.webkitRequestFullscreen();
-      } else if (spotVideo && spotVideo.webkitEnterFullscreen) {
-        spotVideo.webkitEnterFullscreen(); // iOS Safari
+    function togglePlay() {
+      if (!videoEl) return;
+      if (videoEl.paused) {
+        userManuallyPaused = false;
+        videoEl.play().catch(() => {});
       } else {
-        videoSpotContainer.classList.add('is-cinema-maximized');
-        updateMaximizeUI(true);
+        userManuallyPaused = true;
+        videoEl.pause();
       }
-    } else {
-      if (document.exitFullscreen && document.fullscreenElement) {
-        document.exitFullscreen().catch(() => {});
-      } else if (document.webkitExitFullscreen && document.webkitFullscreenElement) {
-        document.webkitExitFullscreen();
-      }
-      videoSpotContainer.classList.remove('is-cinema-maximized');
-      updateMaximizeUI(false);
     }
-  }
 
-  if (videoMaximizeBtn) {
-    videoMaximizeBtn.addEventListener('click', (e) => {
+    if (playToggleEl) {
+      playToggleEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePlay();
+      });
+    }
+
+    videoEl.addEventListener('play', () => updatePlayPauseUI(false));
+    videoEl.addEventListener('pause', () => updatePlayPauseUI(true));
+
+    videoEl.addEventListener('click', (e) => {
       e.stopPropagation();
-      toggleMaximize();
+      togglePlay();
     });
-  }
 
-  document.addEventListener('fullscreenchange', () => {
-    const isFull = document.fullscreenElement === videoSpotContainer;
-    updateMaximizeUI(isFull);
-  });
-  document.addEventListener('webkitfullscreenchange', () => {
-    const isFull = document.webkitFullscreenElement === videoSpotContainer;
-    updateMaximizeUI(isFull);
-  });
+    if (typeof IntersectionObserver !== 'undefined') {
+      const rect = containerEl.getBoundingClientRect();
+      const isInitiallyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+      if (!isInitiallyVisible && !videoEl.paused) {
+        videoEl.pause();
+      }
 
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && videoSpotContainer && videoSpotContainer.classList.contains('is-cinema-maximized')) {
-      videoSpotContainer.classList.remove('is-cinema-maximized');
-      updateMaximizeUI(false);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            isVideoInView = entry.isIntersecting;
+            if (!entry.isIntersecting) {
+              if (!videoEl.paused) videoEl.pause();
+            } else {
+              if (!userManuallyPaused && videoEl.paused) {
+                videoEl.play().catch(() => {});
+              }
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      observer.observe(containerEl);
     }
-    // Atajos cuando el contenedor está en pantalla completa
-    const isFull = document.fullscreenElement === videoSpotContainer || (videoSpotContainer && videoSpotContainer.classList.contains('is-cinema-maximized'));
-    if (isFull && spotVideo) {
-      if (e.key === ' ' || e.code === 'Space') {
-        e.preventDefault();
-        if (spotVideo.paused) spotVideo.play().catch(() => {});
-        else spotVideo.pause();
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        spotVideo.currentTime = Math.min(spotVideo.duration || 0, spotVideo.currentTime + 5);
-      } else if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        spotVideo.currentTime = Math.max(0, spotVideo.currentTime - 5);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (!videoEl.paused) videoEl.pause();
+      } else {
+        if (isVideoInView && !userManuallyPaused && videoEl.paused) {
+          videoEl.play().catch(() => {});
+        }
+      }
+    });
+
+    let isSeeking = false;
+    function updateProgress() {
+      if (!videoEl || isSeeking || !progressBarEl) return;
+      const duration = videoEl.duration || 0;
+      const current = videoEl.currentTime || 0;
+      if (duration > 0) {
+        const pct = (current / duration) * 100;
+        progressBarEl.value = pct;
+        progressBarEl.style.background = `linear-gradient(to right, #ffffff ${pct}%, rgba(255,255,255,0.25) ${pct}%)`;
       }
     }
-  });
 
-  if (videoSpotContainer) {
-    videoSpotContainer.addEventListener('dblclick', (e) => {
-      if (e.target.closest('#videoFloatingControls')) return;
-      toggleMaximize();
+    if (progressBarEl) {
+      videoEl.addEventListener('timeupdate', updateProgress);
+      videoEl.addEventListener('loadedmetadata', updateProgress);
+
+      progressBarEl.addEventListener('input', () => {
+        isSeeking = true;
+        const duration = videoEl.duration || 0;
+        const pct = parseFloat(progressBarEl.value);
+        progressBarEl.style.background = `linear-gradient(to right, #ffffff ${pct}%, rgba(255,255,255,0.25) ${pct}%)`;
+      });
+
+      progressBarEl.addEventListener('change', () => {
+        const duration = videoEl.duration || 0;
+        const pct = parseFloat(progressBarEl.value);
+        videoEl.currentTime = (pct / 100) * duration;
+        isSeeking = false;
+        if (isVideoInView && !userManuallyPaused && videoEl.paused) {
+          videoEl.play().catch(() => {});
+        }
+      });
+    }
+
+    if (soundToggleEl) {
+      const soundOff = soundToggleEl.querySelector('.sound-icon-off');
+      const soundOn = soundToggleEl.querySelector('.sound-icon-on');
+
+      soundToggleEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        videoEl.muted = !videoEl.muted;
+        if (!videoEl.muted) {
+          if (videoEl.paused) videoEl.play().catch(() => {});
+          if (soundOff) soundOff.classList.add('hidden');
+          if (soundOn) soundOn.classList.remove('hidden');
+          soundToggleEl.setAttribute('title', 'Silenciar sonido');
+          soundToggleEl.setAttribute('aria-label', 'Silenciar sonido');
+        } else {
+          if (soundOff) soundOff.classList.remove('hidden');
+          if (soundOn) soundOn.classList.add('hidden');
+          soundToggleEl.setAttribute('title', 'Activar sonido');
+          soundToggleEl.setAttribute('aria-label', 'Activar sonido');
+        }
+      });
+    }
+
+    function updateMaxUI(isMax) {
+      if (!maximizeBtnEl) return;
+      const expandIcon = maximizeBtnEl.querySelector('.max-icon-expand');
+      const compressIcon = maximizeBtnEl.querySelector('.max-icon-compress');
+      if (isMax) {
+        if (expandIcon) expandIcon.classList.add('hidden');
+        if (compressIcon) compressIcon.classList.remove('hidden');
+        maximizeBtnEl.setAttribute('title', 'Restaurar pantalla (Esc)');
+        maximizeBtnEl.setAttribute('aria-label', 'Restaurar pantalla');
+      } else {
+        if (expandIcon) expandIcon.classList.remove('hidden');
+        if (compressIcon) compressIcon.classList.add('hidden');
+        maximizeBtnEl.setAttribute('title', 'Pantalla completa');
+        maximizeBtnEl.setAttribute('aria-label', 'Pantalla completa');
+      }
+    }
+
+    function toggleFullscreen() {
+      const isFull =
+        document.fullscreenElement === containerEl ||
+        document.webkitFullscreenElement === containerEl ||
+        containerEl.classList.contains('is-cinema-maximized');
+
+      if (!isFull) {
+        if (containerEl.requestFullscreen) {
+          containerEl.requestFullscreen().catch(() => {
+            containerEl.classList.add('is-cinema-maximized');
+            updateMaxUI(true);
+          });
+        } else if (containerEl.webkitRequestFullscreen) {
+          containerEl.webkitRequestFullscreen();
+        } else if (videoEl.webkitEnterFullscreen) {
+          videoEl.webkitEnterFullscreen();
+        } else {
+          containerEl.classList.add('is-cinema-maximized');
+          updateMaxUI(true);
+        }
+      } else {
+        if (document.exitFullscreen && document.fullscreenElement) {
+          document.exitFullscreen().catch(() => {});
+        } else if (document.webkitExitFullscreen && document.webkitFullscreenElement) {
+          document.webkitExitFullscreen();
+        }
+        containerEl.classList.remove('is-cinema-maximized');
+        updateMaxUI(false);
+      }
+    }
+
+    if (maximizeBtnEl) {
+      maximizeBtnEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleFullscreen();
+      });
+    }
+
+    document.addEventListener('fullscreenchange', () => {
+      const isFull = document.fullscreenElement === containerEl;
+      updateMaxUI(isFull);
+    });
+    document.addEventListener('webkitfullscreenchange', () => {
+      const isFull = document.webkitFullscreenElement === containerEl;
+      updateMaxUI(isFull);
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && containerEl.classList.contains('is-cinema-maximized')) {
+        containerEl.classList.remove('is-cinema-maximized');
+        updateMaxUI(false);
+      }
+      const isFull =
+        document.fullscreenElement === containerEl ||
+        (containerEl && containerEl.classList.contains('is-cinema-maximized'));
+      if (isFull) {
+        if (e.key === ' ' || e.code === 'Space') {
+          e.preventDefault();
+          if (videoEl.paused) videoEl.play().catch(() => {});
+          else videoEl.pause();
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          videoEl.currentTime = Math.min(videoEl.duration || 0, videoEl.currentTime + 5);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          videoEl.currentTime = Math.max(0, videoEl.currentTime - 5);
+        }
+      }
+    });
+
+    containerEl.addEventListener('dblclick', (e) => {
+      if (controlsEl && e.target.closest('#' + controlsId)) return;
+      toggleFullscreen();
     });
   }
+
+  // 1. Inicializar Spot Oficial Municipalidad
+  initScrollVideoPlayer({
+    trackId: 'videoScrollTrack',
+    containerId: 'videoSpotContainer',
+    videoId: 'spotVideoOfficial',
+    controlsId: 'videoFloatingControls',
+    playToggleId: 'videoPlayToggle',
+    progressBarId: 'videoProgressBar',
+    soundToggleId: 'videoSoundToggle',
+    maximizeBtnId: 'videoMaximizeBtn'
+  });
+
+  // 2. Inicializar Entrevista ITR3
+  initScrollVideoPlayer({
+    trackId: 'interviewScrollTrack',
+    containerId: 'interviewSpotContainer',
+    videoId: 'interviewVideoOfficial',
+    controlsId: 'interviewFloatingControls',
+    playToggleId: 'interviewPlayToggle',
+    progressBarId: 'interviewProgressBar',
+    soundToggleId: 'interviewSoundToggle',
+    maximizeBtnId: 'interviewMaximizeBtn'
+  });
 
 
 
