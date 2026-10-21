@@ -1119,6 +1119,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  // ------------------------------------------------------------------------
+  // Crédito secreto en esquina inferior izquierda (Manu y Bauti)
+  // ------------------------------------------------------------------------
+  const secretBtn = document.getElementById('secretCornerBtn');
+  const secretBadge = document.getElementById('secretCornerBadge');
+  let secretTimeout = null;
+
+  if (secretBtn && secretBadge) {
+    secretBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isVisible = secretBadge.classList.toggle('is-visible');
+      if (secretTimeout) clearTimeout(secretTimeout);
+      if (isVisible) {
+        secretTimeout = setTimeout(() => {
+          secretBadge.classList.remove('is-visible');
+        }, 4500);
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (secretBadge.classList.contains('is-visible') && !secretBadge.contains(e.target)) {
+        secretBadge.classList.remove('is-visible');
+        if (secretTimeout) clearTimeout(secretTimeout);
+      }
+    });
+  }
+
   // Sincronización inicial completa tras construir pines y tarjetas
   if (typeof ScrollTrigger !== 'undefined') {
     ScrollTrigger.refresh();
