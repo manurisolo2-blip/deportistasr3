@@ -2623,7 +2623,7 @@ html.lenis, html.lenis body {
    12. CIERRE CÍVICO & FOOTER EDITORIAL EN MODO CLARO
    -------------------------------------------------------------------------- */
 .section-civic-closing {
-  padding: clamp(5rem, 8vw, 7rem) 0 clamp(5rem, 8.5vw, 7.5rem);
+  padding: clamp(5rem, 8vw, 7rem) 0 3rem;
   background: var(--bg-canvas, #FAF9F5);
   border-top: none;
 }
@@ -2659,7 +2659,7 @@ html.lenis, html.lenis body {
 .civic-editorial-footer {
   border-top: none;
   padding-top: 2.5rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 0;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -3250,7 +3250,7 @@ html.lenis, html.lenis body {
 
   /* Cierre Cívico & Footer */
   .section-civic-closing {
-    padding: 3.5rem 0 clamp(4rem, 10vw, 6rem);
+    padding: 3.25rem 0 2rem;
   }
 
   .closing-banner-box {
@@ -3924,9 +3924,9 @@ html.lenis, html.lenis body {
 
 .secret-corner-badge {
   position: fixed;
-  bottom: 22px;
-  left: 22px;
-  background: rgba(15, 23, 42, 0.94);
+  bottom: 20px;
+  left: 20px;
+  background: rgba(15, 23, 42, 0.95);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   color: #FFFFFF;
@@ -3934,24 +3934,24 @@ html.lenis, html.lenis body {
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  padding: 0.6rem 1rem;
+  padding: 0.55rem 0.95rem;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.45), 0 4px 12px -2px rgba(0, 0, 0, 0.25);
   z-index: 99998;
   pointer-events: none;
   opacity: 0;
+  visibility: hidden;
   transform: translateY(8px) scale(0.96);
-  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease;
   user-select: none;
   white-space: nowrap;
 }
 
-/* Revelar con hover o active desde CSS */
-.secret-corner-btn:hover + .secret-corner-badge,
-.secret-corner-btn:active + .secret-corner-badge,
+/* Revelar exclusivamente al tocar / presionar el boton (sin hover accidental) */
 .secret-corner-badge.is-visible {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
   transform: translateY(0) scale(1);
 }

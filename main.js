@@ -1121,13 +1121,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ------------------------------------------------------------------------
   // Crédito secreto en esquina inferior izquierda (Manu y Bauti)
+  // Activación exclusiva al tocar / hacer click (sin hover)
   // ------------------------------------------------------------------------
   const secretBtn = document.getElementById('secretCornerBtn');
   const secretBadge = document.getElementById('secretCornerBadge');
   let secretTimeout = null;
 
   if (secretBtn && secretBadge) {
-    secretBtn.addEventListener('click', (e) => {
+    const handleSecretTrigger = (e) => {
+      if (e.cancelable) e.preventDefault();
       e.stopPropagation();
       const isVisible = secretBadge.classList.toggle('is-visible');
       if (secretTimeout) clearTimeout(secretTimeout);
@@ -1136,10 +1138,13 @@ document.addEventListener('DOMContentLoaded', () => {
           secretBadge.classList.remove('is-visible');
         }, 4500);
       }
-    });
+    };
+
+    secretBtn.addEventListener('click', handleSecretTrigger);
+    secretBtn.addEventListener('touchend', handleSecretTrigger, { passive: false });
 
     document.addEventListener('click', (e) => {
-      if (secretBadge.classList.contains('is-visible') && !secretBadge.contains(e.target)) {
+      if (secretBadge.classList.contains('is-visible') && !secretBadge.contains(e.target) && e.target !== secretBtn) {
         secretBadge.classList.remove('is-visible');
         if (secretTimeout) clearTimeout(secretTimeout);
       }
