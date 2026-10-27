@@ -3904,7 +3904,8 @@ html.lenis, html.lenis body {
 
 
 /* ==========================================================================
-   CRÉDITO SECRETO INFERIOR IZQUIERDO (MANU Y BAUTI)
+   CRÉDITO SECRETO INFERIOR IZQUIERDO (MANU RISOLO Y BAUTI BESORA)
+   Estilo: Liquid Glass Esmerilado & Acabado Cromado
    ========================================================================== */
 .secret-corner-btn {
   position: fixed;
@@ -3924,34 +3925,98 @@ html.lenis, html.lenis body {
 
 .secret-corner-badge {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  color: #FFFFFF;
-  font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 0.55rem 0.95rem;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.45), 0 4px 12px -2px rgba(0, 0, 0, 0.25);
+  bottom: 22px;
+  left: 22px;
   z-index: 99998;
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(8px) scale(0.96);
-  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  max-width: calc(100vw - 32px);
+  
+  /* Efecto Esmerilado de Vidrio Líquido (Liquid Frosted Glass) */
+  backdrop-filter: blur(28px) saturate(200%) contrast(105%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(105%);
+  
+  /* Bisel Cromado pulido reflectivo con fondo grafito translúcido */
+  border: 1.5px solid transparent;
+  background: 
+    linear-gradient(180deg, rgba(26, 36, 52, 0.88) 0%, rgba(12, 18, 30, 0.96) 100%) padding-box,
+    linear-gradient(135deg, #FFFFFF 0%, rgba(190, 210, 230, 0.5) 20%, #FFFFFF 45%, rgba(140, 165, 190, 0.4) 70%, #FFFFFF 100%) border-box;
+
+  /* Reflejos especulares cromados (Chrome Inset & Deep Contact Shadow) */
+  box-shadow: 
+    0 18px 38px -6px rgba(0, 0, 0, 0.55),
+    0 6px 14px -2px rgba(0, 0, 0, 0.35),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.7),
+    inset 0 0 16px 0 rgba(255, 255, 255, 0.1);
+
   user-select: none;
   white-space: nowrap;
+  overflow: hidden;
+  pointer-events: none;
+  
+  /* Transición de aparición/desaparición */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px) scale(0.96);
+  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+              visibility 0.28s ease;
 }
 
-/* Revelar exclusivamente al tocar / presionar el boton (sin hover accidental) */
+/* Brillo superior especular de vidrio líquido (Liquid Glass Sheen) */
+.secret-corner-badge::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 10px;
+  right: 10px;
+  height: 45%;
+  border-radius: 9999px 9999px 0 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.02) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.secret-corner-text {
+  position: relative;
+  z-index: 2;
+  color: rgba(241, 245, 249, 0.88);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.83rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Nombres cromados en blanco puro brillante con destello plateado */
+.secret-corner-names {
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.02em;
+}
+
+/* Revelar exclusivamente al tocar / presionar el botón */
 .secret-corner-badge.is-visible {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0) scale(1);
+}
+
+@media (max-width: 480px) {
+  .secret-corner-badge {
+    bottom: 16px;
+    left: 16px;
+    padding: 0.52rem 0.95rem;
+    font-size: 0.78rem;
+  }
+  .secret-corner-text {
+    font-size: 0.78rem;
+  }
 }
