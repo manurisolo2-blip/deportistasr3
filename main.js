@@ -1117,10 +1117,6 @@ document.addEventListener('DOMContentLoaded', () => {
     maximizeBtnId: 'interviewMaximizeBtn'
   });
 
-
-
-  // Crédito de autores estático en esquina inferior derecha (Manuel Risolo y Bautista Besora)
-
   // Sincronización inicial completa tras construir pines y tarjetas
   if (typeof ScrollTrigger !== 'undefined') {
     ScrollTrigger.refresh();
